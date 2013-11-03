@@ -12,7 +12,7 @@ public class Esquina {
 
 	public void colocarAuto(Guardable<Auto> auto){
 		this.unAuto = auto;
-		auto.actualizarPosicion(this);
+		auto.actualizarEsquina(this);
 	}
 	
 	public void borrarAuto(){
