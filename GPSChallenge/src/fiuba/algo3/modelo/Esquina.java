@@ -22,5 +22,9 @@ public class Esquina {
 	public Vehiculo obtenerAuto() {
 		return this.unVehiculo;
 	}
-	
+
+	public Posicion devolverPosicion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
