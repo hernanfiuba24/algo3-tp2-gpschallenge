@@ -2,13 +2,14 @@ package fiuba.algo3.modelo;
 
 public class Vehiculo implements Guardable {
 
-	public void actualizarEsquina(Esquina esquina) {
-		// Metodo necesario desde la clase Esquina
+	protected Esquina esquinaActual;
+
+	public void actualizarEsquina(Esquina nuevaEsquina) {
+		this.esquinaActual = nuevaEsquina;
 	}
 
 	public Esquina devolverEsquina() {
-		// TODO Auto-generated method stub
-		return null;
+		return esquinaActual;
 	}
 
 	public int movimientos() {

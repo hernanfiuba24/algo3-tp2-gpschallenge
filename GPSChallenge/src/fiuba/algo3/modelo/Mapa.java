@@ -11,8 +11,8 @@ public class Mapa {
 		columnas = columna;
 		
 		tablero = new Esquina [fila][columna];
-		for (int i = 1 ; i <= devolverFilas() ; i++){
-			for (int j = 1 ; j <= devolverColumnas() ; j++){
+		for (int i = 1 ; i <= dameFilas() ; i++){
+			for (int j = 1 ; j <= dameColumnas() ; j++){
 				Posicion posicion = new Posicion(i, j);
 				Esquina esquina = new Esquina(posicion);
 				colocarEsquina(esquina, i ,j );
@@ -20,15 +20,15 @@ public class Mapa {
 		}
 	}
 	
-	public int devolverFilas(){
+	public int dameFilas(){
 		return this.filas;
 	}
 	
-	public int devolverColumnas(){
+	public int dameColumnas(){
 		return this.columnas;
 	}
 	
-	public Esquina devolverEsquina (int fila , int columna){
+	public Esquina dameEsquina (int fila , int columna){
 		return tablero[fila-1][columna-1];
 	}
 	
@@ -39,7 +39,9 @@ public class Mapa {
 	public void moverArriba (Vehiculo unVehiculo){
 		Esquina esquinaActual = unVehiculo.devolverEsquina();
 		Posicion posicionActual = esquinaActual.devolverPosicion();
-		Esquina esquinaFutura = devolverEsquina(posicionActual.devolverPosicionColumna() , posicionActual.devolverPosicionFila() + unVehiculo.movimientos());
+		//¿Porque a la posicion de la fila le suma los movimientos del vehiculo?
+		//Esquina esquinaFutura = this.dameEsquina(posicionActual.devolverPosicionColumna() , posicionActual.devolverPosicionFila() + unVehiculo.movimientos());
+		Esquina esquinaFutura = this.dameEsquina(posicionActual.devolverPosicionFila() - 1,posicionActual.devolverPosicionColumna());
 		esquinaFutura.colocarAuto(unVehiculo);
 		esquinaActual.borrarAuto();
 	}
