@@ -39,7 +39,7 @@ public class Mapa {
 	public void moverArriba (Vehiculo unVehiculo){
 		Esquina esquinaActual = unVehiculo.devolverEsquina();
 		Posicion posicionActual = esquinaActual.devolverPosicion();
-		//¿Porque a la posicion de la fila le suma los movimientos del vehiculo?
+		//Porque a la posicion de la fila le suma los movimientos del vehiculo?
 		//Esquina esquinaFutura = this.dameEsquina(posicionActual.devolverPosicionColumna() , posicionActual.devolverPosicionFila() + unVehiculo.movimientos());
 		Esquina esquinaFutura = this.dameEsquina(posicionActual.devolverPosicionFila() - 1,posicionActual.devolverPosicionColumna());
 		esquinaFutura.colocarAuto(unVehiculo);
