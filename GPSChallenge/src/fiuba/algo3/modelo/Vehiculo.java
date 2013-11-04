@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo;
 
-public class Vehiculo implements Guardable {
-
+public abstract class  Vehiculo implements Guardable<Vehiculo> {
+    protected int movimientos;
 	protected Esquina esquinaActual;
 
 	public void actualizarEsquina(Esquina nuevaEsquina) {
@@ -14,7 +14,7 @@ public class Vehiculo implements Guardable {
 
 	public int movimientos() {
 		// TODO Auto-generated method stub
-		return 0;
+		return movimientos;
 	}
 
 }

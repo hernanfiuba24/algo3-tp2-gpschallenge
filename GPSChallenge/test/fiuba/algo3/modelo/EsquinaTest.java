@@ -16,7 +16,7 @@ public class EsquinaTest {
 	public void testDeberiaColocarUnAutoEnUnaEsquina(){
 		Posicion unaPosicion = new Posicion(3,3);
 		Esquina unaEsquina = new Esquina(unaPosicion);
-		Auto unAuto = new Auto();
+		Auto unAuto = new Auto(unaEsquina);
 		unaEsquina.colocarAuto(unAuto);
 		assertEquals(unaEsquina.obtenerAuto(),unAuto);		
 	}

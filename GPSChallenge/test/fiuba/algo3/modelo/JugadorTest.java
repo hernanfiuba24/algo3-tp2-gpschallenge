@@ -14,15 +14,16 @@ public class JugadorTest {
 
 	@Test
 	public void testJugadorDeberiaPoderJugarArriba() {
-		Jugador unJugador = new Jugador();
+
 		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.dameEsquina(5,5));
+		Jugador unJugador = new Jugador(unAuto);
 		Esquina esquinaPreviaAlMovimiento = unAuto.devolverEsquina();
 
-		unJugador.jugarArriba(unAuto, unMapa);
+		unJugador.jugarArriba(unMapa);
 
 		assertTrue(unAuto.devolverEsquina().devolverPosicion()
 				.devolverPosicionFila() == (esquinaPreviaAlMovimiento
-				.devolverPosicion().devolverPosicionFila() - 1));
+				.devolverPosicion().devolverPosicionFila() - unAuto.movimientos()));
 	}
 }

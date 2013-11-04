@@ -26,4 +26,18 @@ public class Esquina {
 	public Posicion devolverPosicion() {
 		return this.unaPosicion;
 	}
+
+	public void chequearExtras(int movimientos) {
+		if (unaSorpresa != null){
+			unaSorpresa.aplicar(unVehiculo , movimientos);
+		}
+		if (unObstaculo != null){
+			unObstaculo.aplicar(unVehiculo , movimientos);
+		}
+	}
+
+	public void colocarSorpresa(Sorpresa sorpresa) {
+		// TODO Auto-generated method stub
+		this.unaSorpresa = sorpresa;
+	}
 }

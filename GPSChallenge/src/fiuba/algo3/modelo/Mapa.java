@@ -36,13 +36,12 @@ public class Mapa {
 		tablero [fila-1][columna-1] = unaEsquina;
 	}
 	
-	public void moverArriba (Vehiculo unVehiculo){
+	public void moverArriba (Vehiculo unVehiculo, int movimientosHechos){
 		Esquina esquinaActual = unVehiculo.devolverEsquina();
 		Posicion posicionActual = esquinaActual.devolverPosicion();
-		//Porque a la posicion de la fila le suma los movimientos del vehiculo?
-		//Esquina esquinaFutura = this.dameEsquina(posicionActual.devolverPosicionColumna() , posicionActual.devolverPosicionFila() + unVehiculo.movimientos());
 		Esquina esquinaFutura = this.dameEsquina(posicionActual.devolverPosicionFila() - 1,posicionActual.devolverPosicionColumna());
 		esquinaFutura.colocarAuto(unVehiculo);
+		esquinaFutura.chequearExtras(movimientosHechos);
 		esquinaActual.borrarAuto();
 	}
 }
