@@ -35,16 +35,4 @@ public class Mapa {
 		tablero[fila - 1][columna - 1] = unaEsquina;
 	}
 
-	public void mover(Jugador unJugador, Direccion unaDireccion) {
-		Esquina esquinaActual = unJugador.devolverVehiculo().devolverEsquina();
-		Posicion posicionActual = esquinaActual.devolverPosicion();
-		Esquina esquinaFutura = this.dameEsquina(
-				posicionActual.devolverPosicionFila()
-						- unaDireccion.devolverX(),
-				posicionActual.devolverPosicionColumna()
-						- unaDireccion.devolverY());
-		esquinaFutura.colocarAuto(unJugador.devolverVehiculo());
-		esquinaFutura.chequearExtras(unJugador.devolverMovimientosHechos());
-		esquinaActual.borrarAuto();
-	}
 }

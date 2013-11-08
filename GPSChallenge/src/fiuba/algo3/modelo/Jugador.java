@@ -9,6 +9,7 @@ public class Jugador {
 	public Jugador(Vehiculo vehiculo) {
 		this.unVehiculo = vehiculo;
 		this.movimientosHechos = 0;
+		vehiculo.setearJugadorAlQuePertenece(this);
 	}
 
 	public Jugador() {
@@ -17,7 +18,7 @@ public class Jugador {
 
 	public void jugar(Mapa unMapa) {
 		this.movimientosHechos += 1;
-		unMapa.mover(this, this.unaDireccion);
+		unVehiculo.mover(unMapa, this.unaDireccion);
 	}
 
 	public int devolverMovimientosHechos() {
