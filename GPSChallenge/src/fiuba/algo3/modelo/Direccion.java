@@ -1,6 +1,6 @@
 package fiuba.algo3.modelo;
 
-public class Direccion {
+public abstract class Direccion {
 	
 	protected int x;
 	protected int y;
