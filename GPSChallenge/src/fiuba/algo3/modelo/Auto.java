@@ -6,7 +6,7 @@ public class Auto extends Vehiculo {
 		super();
 		// Se puso coordenadas 5,5 como ejemplo, habria que definir donde va a
 		// aparecer el auto cada vez que se crea
-		this.movimientos = 1;
+		this.movimientosPermitidos = 1;
 		this.esquinaActual = unaEsquina;
 	}
 

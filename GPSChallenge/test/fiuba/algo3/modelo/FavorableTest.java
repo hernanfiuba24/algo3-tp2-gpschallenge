@@ -13,9 +13,10 @@ public class FavorableTest {
 		Esquina esquinaConSorpresa = unMapa.dameEsquina(5, 4);
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaFavorable);
 		Jugador unJugador = new Jugador(new Auto(unMapa.dameEsquina(8, 4)));
-		unJugador.jugarArriba(unMapa);
-		unJugador.jugarArriba(unMapa);
-		unJugador.jugarArriba(unMapa);
+		unJugador.setDireccion(new Arriba());
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
 		assertTrue(unJugador.devolverMovimientosHechos() == (3-(3*20/100)));
 	}
 
