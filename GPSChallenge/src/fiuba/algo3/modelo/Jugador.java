@@ -1,5 +1,8 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.direccion.Direccion;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
+
 public class Jugador {
 	
     private Vehiculo unVehiculo;

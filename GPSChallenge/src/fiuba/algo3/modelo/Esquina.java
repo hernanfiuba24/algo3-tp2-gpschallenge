@@ -1,5 +1,8 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.sorpresa.Sorpresa;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
+
 public class Esquina {
 	private boolean visibilidad;
 	private Posicion unaPosicion;

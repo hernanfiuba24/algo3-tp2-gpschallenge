@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.direccion;
 
 public class Abajo extends Direccion {
 	

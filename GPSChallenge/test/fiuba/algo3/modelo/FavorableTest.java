@@ -4,6 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.direccion.Arriba;
+import fiuba.algo3.modelo.sorpresa.Favorable;
+import fiuba.algo3.modelo.vehiculo.Auto;
+
 public class FavorableTest {
 
 	@Test

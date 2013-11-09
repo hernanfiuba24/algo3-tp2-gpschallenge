@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.vehiculo.Auto;
+
 public class AutoTest {
 
 	@Test

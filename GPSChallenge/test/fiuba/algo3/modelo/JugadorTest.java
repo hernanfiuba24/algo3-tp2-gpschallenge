@@ -4,6 +4,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.direccion.Abajo;
+import fiuba.algo3.modelo.direccion.Arriba;
+import fiuba.algo3.modelo.direccion.Derecha;
+import fiuba.algo3.modelo.direccion.Izquierda;
+import fiuba.algo3.modelo.vehiculo.Auto;
+
 public class JugadorTest {
 
 	@Test

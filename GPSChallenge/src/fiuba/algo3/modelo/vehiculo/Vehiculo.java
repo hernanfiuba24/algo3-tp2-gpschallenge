@@ -1,4 +1,11 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.vehiculo;
+
+import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Guardable;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Mapa;
+import fiuba.algo3.modelo.Posicion;
+import fiuba.algo3.modelo.direccion.Direccion;
 
 public abstract class  Vehiculo implements Guardable<Vehiculo> {
     protected int movimientosPermitidos;
