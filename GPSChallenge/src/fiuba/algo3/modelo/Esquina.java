@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo;
 
 public class Esquina {
+	private boolean visibilidad;
 	private Posicion unaPosicion;
 	private Vehiculo unVehiculo;
 	private Obstaculo unObstaculo;
@@ -8,6 +9,7 @@ public class Esquina {
 
 	public Esquina(Posicion posicion) {
 		this.unaPosicion = posicion;
+		this.visibilidad = false;
 	}
 
 	public void colocarAuto(Vehiculo vehiculo) {
@@ -37,7 +39,18 @@ public class Esquina {
 	}
 
 	public void colocarSorpresa(Sorpresa sorpresa) {
-		// TODO Auto-generated method stub
 		this.unaSorpresa = sorpresa;
+	}
+
+	public boolean dameVisibilidad() {
+		return this.visibilidad;
+	}
+
+	public void cambiarVisibilidad() {
+		this.visibilidad = !(this.visibilidad);
+	}
+
+	public boolean devolverVisibilidad() {
+		return this.visibilidad;
 	}
 }

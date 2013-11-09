@@ -1,6 +1,5 @@
 package fiuba.algo3.modelo;
 
-import static org.junit.Assert.*;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -14,7 +13,7 @@ public class MapaTest {
 			Assert.assertEquals(1, mapa.dameColumnas());
 			for (int i = 1 ; i <= mapa.dameFilas() ; i++){
 				for (int j = 1 ; j <= mapa.dameColumnas() ; j++){
-					Assert.assertNotNull(mapa.dameEsquina(i, j));
+					Assert.assertNotNull(mapa.dameEsquina(new Posicion(i, j)));
 				}
 			}
 		}

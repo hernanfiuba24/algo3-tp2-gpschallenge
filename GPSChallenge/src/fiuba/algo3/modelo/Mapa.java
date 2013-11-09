@@ -27,8 +27,9 @@ public class Mapa {
 		return this.columnas;
 	}
 
-	public Esquina dameEsquina(int fila, int columna) {
-		return tablero[fila - 1][columna - 1];
+	public Esquina dameEsquina(Posicion unaPosicion) {
+		return tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
+				.devolverPosicionColumna() - 1];
 	}
 
 	public void colocarEsquina(Esquina unaEsquina, int fila, int columna) {

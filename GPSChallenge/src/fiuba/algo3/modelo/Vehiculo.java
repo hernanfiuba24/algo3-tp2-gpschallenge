@@ -5,6 +5,11 @@ public abstract class  Vehiculo implements Guardable<Vehiculo> {
 	protected Esquina esquinaActual;
 	protected Jugador jugadorAlQuePertenece;
 
+	public Vehiculo(Esquina unaEsquina) {
+		this.movimientosPermitidos = 1;
+		this.esquinaActual = unaEsquina;
+	}
+
 	public void actualizarEsquina(Esquina nuevaEsquina) {
 		this.esquinaActual = nuevaEsquina;
 	}
@@ -17,19 +22,23 @@ public abstract class  Vehiculo implements Guardable<Vehiculo> {
 		return movimientosPermitidos;
 	}
 
-	public void setearJugadorAlQuePertenece(Jugador unJugador){
+	public void setearJugadorAlQuePertenece(Jugador unJugador) {
 		this.jugadorAlQuePertenece = unJugador;
 	}
+
 	public void mover(Mapa unMapa, Direccion unaDireccion) {
 		Esquina esquinaActual = this.devolverEsquina();
 		Posicion posicionActual = esquinaActual.devolverPosicion();
-		Esquina esquinaFutura = unMapa.dameEsquina(
+		Posicion posicionFutura = new Posicion(
 				posicionActual.devolverPosicionFila()
 						- unaDireccion.devolverX(),
 				posicionActual.devolverPosicionColumna()
 						- unaDireccion.devolverY());
+		
+		Esquina esquinaFutura = unMapa.dameEsquina(posicionFutura);
 		esquinaFutura.colocarAuto(this);
-		esquinaFutura.chequearExtras(jugadorAlQuePertenece.devolverMovimientosHechos());
+		esquinaFutura.chequearExtras(jugadorAlQuePertenece
+				.devolverMovimientosHechos());
 		esquinaActual.borrarAuto();
 	}
 

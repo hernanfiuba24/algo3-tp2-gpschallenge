@@ -20,5 +20,12 @@ public class EsquinaTest {
 		unaEsquina.colocarAuto(unAuto);
 		assertEquals(unaEsquina.obtenerAuto(),unAuto);		
 	}
+	
+	@Test
+	public void testDeberiaNoSerVisibleAlCrearse(){
+		Posicion unaPosicion = new Posicion(3,3);
+		Esquina unaEsquina = new Esquina(unaPosicion);
+		assertFalse(unaEsquina.dameVisibilidad());
+	}
 
 }

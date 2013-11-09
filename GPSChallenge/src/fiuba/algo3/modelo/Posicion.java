@@ -16,5 +16,12 @@ public class Posicion {
 	public int devolverPosicionColumna() {
 		return this.columna;
 	}
+	
+	public boolean equals(Posicion unaPosicion){
+		if ((this.devolverPosicionFila() == unaPosicion.devolverPosicionFila()) &&
+		(this.devolverPosicionColumna() == unaPosicion.devolverPosicionColumna()))
+			return true;
+		return false;
+	}
 
 }
