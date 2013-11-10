@@ -2,8 +2,8 @@ package fiuba.algo3.modelo.direccion;
 
 public abstract class Direccion {
 	
-	protected int x;
-	protected int y;
+	protected int x; //  posicion de las fila (en el eje vertical)
+	protected int y; //  posicion de la columna (en el eje horizontal)
 	
 	public int devolverX() {
 		return this.x;
