@@ -4,7 +4,7 @@ public class Izquierda extends Direccion {
 	
 	public Izquierda(){
 		this.x = 0;
-		this.y = -1;
+		this.y = 1;
 	}
 
 }

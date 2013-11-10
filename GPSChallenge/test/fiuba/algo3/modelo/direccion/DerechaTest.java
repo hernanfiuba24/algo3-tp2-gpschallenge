@@ -13,7 +13,7 @@ public class DerechaTest {
 		Derecha unDerecha = new Derecha();
 		
 		assertTrue(unDerecha.devolverX() == 0);
-		assertTrue(unDerecha.devolverY() == 1);
+		assertTrue(unDerecha.devolverY() == -1);
 	}
 
 }

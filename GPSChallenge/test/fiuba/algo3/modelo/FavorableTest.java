@@ -11,18 +11,25 @@ import fiuba.algo3.modelo.vehiculo.Auto;
 public class FavorableTest {
 
 	@Test
-	public void testDeberiaDescontarMovimiento() {
+	public void testDeberiaDescontarUnMovimientoCuandoElJugadorSeMovio5VecesYEncuentraUnaSorpresaFavorableEnElUltimoMovimiento() {
 		Mapa unMapa = new Mapa(8, 8);
 		Favorable unaSorpresaFavorable = new Favorable();
-		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(5, 4));
+		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(3, 4));
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaFavorable);
-		Jugador unJugador = new Jugador(new Auto(
-				unMapa.dameEsquina(new Posicion(8, 4))));
+		
+		Esquina esquinaInicialAuto = unMapa.dameEsquina(new Posicion(8, 4));
+		Auto unAuto = new Auto(esquinaInicialAuto);
+		Jugador unJugador = new Jugador(unAuto);
+		
 		unJugador.setDireccion(new Arriba());
+		
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		assertTrue(unJugador.devolverMovimientosHechos() == (3 - (3 * 20 / 100)));
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);	
+		
+		assertTrue(unJugador.devolverMovimientosHechos() == (5-(5*20/100)));
 	}
 
 }

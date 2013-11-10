@@ -32,12 +32,12 @@ public class Esquina {
 		return this.unaPosicion;
 	}
 
-	public void chequearExtras(int movimientos) {
+	public void chequearExtras(Jugador unJugador) {
 		if (unaSorpresa != null){
-			unaSorpresa.aplicar(unVehiculo , movimientos);
+			unaSorpresa.aplicar(unJugador);
 		}
 		if (unObstaculo != null){
-			unObstaculo.aplicar(unVehiculo , movimientos);
+			//unObstaculo.aplicar(unVehiculo , movimientos);
 		}
 	}
 

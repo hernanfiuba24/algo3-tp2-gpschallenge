@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import static org.junit.Assert.*;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -16,5 +17,18 @@ public class MapaTest {
 					Assert.assertNotNull(mapa.dameEsquina(new Posicion(i, j)));
 				}
 			}
+		}
+		
+		@Test
+		public void testDeberiaDevolverUnaEsquina (){
+			Mapa mapa = new Mapa (2,2);
+			Esquina esquina = mapa.dameEsquina(new Posicion(1,1));
+			
+			int x = 1;
+			int y = 1;
+			
+			assertTrue(esquina.devolverPosicion().devolverPosicionFila() == x);
+			assertTrue(esquina.devolverPosicion().devolverPosicionColumna() == y);
+			
 		}
 }

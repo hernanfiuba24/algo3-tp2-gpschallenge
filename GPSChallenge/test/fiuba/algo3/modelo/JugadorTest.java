@@ -54,7 +54,7 @@ public class JugadorTest {
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5, 5)));
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(5, 6);
+		Posicion posicionFutura = new Posicion(5, 4);
 		unJugador.setDireccion(new Izquierda());
 
 		unJugador.jugar(unMapa);
@@ -69,7 +69,7 @@ public class JugadorTest {
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5, 5)));
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(5, 4);
+		Posicion posicionFutura = new Posicion(5, 6);
 		unJugador.setDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);

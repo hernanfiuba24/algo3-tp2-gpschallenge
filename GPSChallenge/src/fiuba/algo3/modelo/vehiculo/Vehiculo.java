@@ -33,7 +33,7 @@ public abstract class  Vehiculo implements Guardable<Vehiculo> {
 		this.jugadorAlQuePertenece = unJugador;
 	}
 
-	public void mover(Mapa unMapa, Direccion unaDireccion) {
+	public void mover(Mapa unMapa, Direccion unaDireccion, int movimientos) {
 		Esquina esquinaActual = this.devolverEsquina();
 		Posicion posicionActual = esquinaActual.devolverPosicion();
 		Posicion posicionFutura = new Posicion(
@@ -44,9 +44,17 @@ public abstract class  Vehiculo implements Guardable<Vehiculo> {
 		
 		Esquina esquinaFutura = unMapa.dameEsquina(posicionFutura);
 		esquinaFutura.colocarAuto(this);
-		esquinaFutura.chequearExtras(jugadorAlQuePertenece
-				.devolverMovimientosHechos());
+		
+		System.out.println(this.jugadorAlQuePertenece.devolverMovimientosHechos());
+		
+		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
+		
 		esquinaActual.borrarAuto();
+	}
+
+	public Jugador devolverJugador() {
+		return this.jugadorAlQuePertenece;
+		
 	}
 
 }

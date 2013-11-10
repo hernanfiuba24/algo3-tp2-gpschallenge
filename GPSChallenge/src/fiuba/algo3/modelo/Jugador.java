@@ -6,7 +6,7 @@ import fiuba.algo3.modelo.vehiculo.Vehiculo;
 public class Jugador {
 	
     private Vehiculo unVehiculo;
-    private int movimientosHechos;
+    public int movimientosHechos;
 	private Direccion unaDireccion;
     
 	public Jugador(Vehiculo vehiculo) {
@@ -21,7 +21,7 @@ public class Jugador {
 
 	public void jugar(Mapa unMapa) {
 		this.movimientosHechos += 1;
-		unVehiculo.mover(unMapa, this.unaDireccion);
+		unVehiculo.mover(unMapa, this.unaDireccion, this.movimientosHechos);
 	}
 
 	public int devolverMovimientosHechos() {
@@ -34,6 +34,12 @@ public class Jugador {
 
 	public void setDireccion(Direccion direccion) {
 		this.unaDireccion = direccion;
+	}
+
+	public void descontarMovimientos(int movimientosRestantes) {
+	
+		this.movimientosHechos = this.movimientosHechos - movimientosRestantes;
+		
 	}
 
 }

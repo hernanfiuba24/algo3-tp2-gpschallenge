@@ -13,7 +13,7 @@ public class IzquierdaTest {
 		Izquierda unIzquierda = new Izquierda();
 		
 		assertTrue(unIzquierda.devolverX() == 0);
-		assertTrue(unIzquierda.devolverY() == -1);
+		assertTrue(unIzquierda.devolverY() == 1);
 	}
 
 }
