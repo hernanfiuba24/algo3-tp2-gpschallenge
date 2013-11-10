@@ -9,7 +9,7 @@ public class Favorable extends Sorpresa {
 	}
 	
 	public void aplicar(int movimientosHechos){
-		movimientosHechos = movimientosHechos -(movimientosHechos*porcentaje/100);
+		movimientosHechos = movimientosHechos - (movimientosHechos*porcentaje/100);
 	}
 
 }
