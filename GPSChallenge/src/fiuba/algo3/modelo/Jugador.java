@@ -6,7 +6,7 @@ import fiuba.algo3.modelo.vehiculo.Vehiculo;
 public class Jugador {
 	
     private Vehiculo unVehiculo;
-    public int movimientosHechos;
+    private int movimientosHechos;
 	private Direccion unaDireccion;
     
 	public Jugador(Vehiculo vehiculo) {

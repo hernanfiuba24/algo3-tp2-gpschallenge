@@ -17,17 +17,23 @@ public class DesfavorableTest {
 	}
 	
 	@Test
-	public void testDeberiaIncrementarMovimiento() {
-		Mapa unMapa = new Mapa(8, 8);
+	public void testDeberiaIncrementarDosMovimientoCuandoElJugadorSeMovio8vecesYEncuentraUnaSorpresaDesfavorableEnElUltimoMovimiento() {
+		Mapa unMapa = new Mapa(9, 9);
 		Desfavorable unaSorpresaDesfavorable = new Desfavorable();
-		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(5, 4));
+		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(1, 4));
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaDesfavorable);
 		Jugador unJugador = new Jugador(new Auto(
-				unMapa.dameEsquina(new Posicion(8, 4))));
+				unMapa.dameEsquina(new Posicion(9, 4))));
 		unJugador.setDireccion(new Arriba());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		assertTrue(unJugador.devolverMovimientosHechos() == (3 + (3 * 25 / 100)));
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		
+		assertTrue(unJugador.devolverMovimientosHechos() == (8 + (8 * 25 / 100)));
 	}
 }
