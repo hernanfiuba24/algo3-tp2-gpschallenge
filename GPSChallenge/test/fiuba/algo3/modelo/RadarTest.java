@@ -17,7 +17,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testDeberiaPrenderDosEsquinasALaRedonda() {
+	public void testDeberiaPrenderDosEsquinasALaRedondaAlCrearseElAuto() {
 		Mapa unMapa = new Mapa(7, 7);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
@@ -46,6 +46,26 @@ public class RadarTest {
 		
 		assertTrue(unJugador.devolverVehiculo().devolverEsquina().devolverVisibilidad() == true);
 		
+	}
+	
+	@Test
+	public void testDeberianPrenderseLasEsquinas2ALaRedondaLuegoDelMovimientoDelAuto() {
+		Mapa unMapa = new Mapa(20, 20);
+		Radar unRadar = new Radar(unMapa);
+		Auto unAuto = new Auto(unMapa);
+		for (int i = 1; i <= 2; i++) {
+			for (int j = 1; j <= 2; j++) {
+				boolean visibilidad = unRadar.devolverVisibilidad(unMapa.dameEsquina(new Posicion(
+						unAuto.devolverEsquina().devolverPosicion()
+								.devolverPosicionFila() + i, unAuto
+								.devolverEsquina().devolverPosicion()
+								.devolverPosicionColumna() + j)));
+			
+				assertTrue (visibilidad);
+			}
+		}
+		//Chequeo de la esquina donde esta posicionado el auto
+		assertTrue(unAuto.devolverEsquina().devolverVisibilidad() == true);
 	}
 
 }
