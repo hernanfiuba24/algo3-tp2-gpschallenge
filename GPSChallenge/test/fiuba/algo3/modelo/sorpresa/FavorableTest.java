@@ -1,10 +1,14 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.sorpresa;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import fiuba.algo3.modelo.direccion.Arriba;
+import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Mapa;
+import fiuba.algo3.modelo.Posicion;
+import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
@@ -12,16 +16,15 @@ public class FavorableTest {
 
 	@Test
 	public void testDeberiaDescontarUnMovimientoCuandoElJugadorSeMovio5VecesYEncuentraUnaSorpresaFavorableEnElUltimoMovimiento() {
-		Mapa unMapa = new Mapa(15, 15);
+		Mapa unMapa = new Mapa(12, 12);
 		Favorable unaSorpresaFavorable = new Favorable();
-		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(3, 4));
+		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(8,3));
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaFavorable);
-		
-		Esquina esquinaInicialAuto = unMapa.dameEsquina(new Posicion(8, 4));
-		Auto unAuto = new Auto(esquinaInicialAuto);
+	
+		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		
-		unJugador.setDireccion(new Arriba());
+		unJugador.setDireccion(new Abajo());
 		
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);

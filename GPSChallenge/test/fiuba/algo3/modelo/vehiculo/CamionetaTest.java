@@ -1,35 +1,34 @@
 package fiuba.algo3.modelo.vehiculo;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 
 public class CamionetaTest {
 
 	@Test
 	public void testDeberiaCrearseLaCamionetaConUnaEsquinaCuandoLoCreo() {
-		Posicion posicionInicial = new Posicion(3, 2);
-		Esquina esquinaInicial = new Esquina(posicionInicial);
-		Camioneta unaCamioneta = new Camioneta(esquinaInicial);
+		Mapa unMapa = new Mapa(8,8);
+		Camioneta unaCamioneta = new Camioneta(unMapa);
 
-		assertEquals(unaCamioneta.devolverEsquina(), esquinaInicial);
+		assertTrue(unaCamioneta.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
 	}
 
 	@Test
 	public void testDeberiaModificarseEsquinaCuandoActualizoPosicion() {
-		Posicion posicionInicial = new Posicion(3, 2);
-		Esquina esquinaInicial = new Esquina(posicionInicial);
-		Camioneta unaCamioneta = new Camioneta(esquinaInicial);
+		Mapa unMapa = new Mapa(8,8);
+		Camioneta unaCamioneta = new Camioneta(unMapa);
 
 		Posicion posicionFinal = new Posicion(3, 3);
 		Esquina esquinaFinal = new Esquina(posicionFinal);
 
 		unaCamioneta.actualizarEsquina(esquinaFinal);
 
-		assertEquals(unaCamioneta.devolverEsquina(), esquinaFinal);
+		assertTrue(unaCamioneta.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
 
 	}
 

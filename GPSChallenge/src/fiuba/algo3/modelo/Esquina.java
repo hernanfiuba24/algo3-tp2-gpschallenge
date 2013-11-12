@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.obstaculo.Obstaculo;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
@@ -7,8 +8,8 @@ public class Esquina {
 	private boolean visibilidad;
 	private Posicion unaPosicion;
 	private Vehiculo unVehiculo;
-	private Obstaculo unObstaculo;
 	private Sorpresa unaSorpresa;
+	private Obstaculo unObstaculo;
 
 	public Esquina(Posicion posicion) {
 		this.unaPosicion = posicion;
@@ -33,20 +34,16 @@ public class Esquina {
 	}
 
 	public void chequearExtras(Jugador unJugador) {
-		if (unaSorpresa != null){
-			unaSorpresa.aplicar(unJugador);
+		if (this.unaSorpresa != null) {
+			this.unaSorpresa.aplicar(unJugador);
 		}
-		if (unObstaculo != null){
-			//unObstaculo.aplicar(unVehiculo , movimientos);
-		}
+		 if (this.unObstaculo != null) {
+		 this.unObstaculo.aplicar(unJugador);
+		 }
 	}
 
 	public void colocarSorpresa(Sorpresa sorpresa) {
 		this.unaSorpresa = sorpresa;
-	}
-
-	public boolean dameVisibilidad() {
-		return this.visibilidad;
 	}
 
 	public void cambiarVisibilidad() {
@@ -55,5 +52,13 @@ public class Esquina {
 
 	public boolean devolverVisibilidad() {
 		return this.visibilidad;
+	}
+
+	public void colocarObstaculo(Obstaculo obstaculo) {
+		this.unObstaculo = obstaculo;
+	}
+
+	public Obstaculo getObstaculo() {
+		return unObstaculo;
 	}
 }

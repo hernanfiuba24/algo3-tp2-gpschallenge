@@ -3,13 +3,13 @@ package fiuba.algo3.modelo;
 public class Radar {
 
 	private Mapa unMapa;
-	
-	public Radar(Mapa mapa){
+
+	public Radar(Mapa mapa) {
 		this.unMapa = mapa;
 	}
-	
-	public Radar(){
-		
+
+	public Radar() {
+
 	}
 
 	public void cambiarVisibilidad(Esquina unaEsquina) {
@@ -17,6 +17,18 @@ public class Radar {
 	}
 
 	public boolean devolverVisibilidad(Esquina unaEsquina) {
-		return unaEsquina.devolverVisibilidad();		
+		return unaEsquina.devolverVisibilidad();
+	}
+
+	public void cambiarVisibilidadDosALaRedonda(Esquina esquinaActual) {
+		this.cambiarVisibilidad(esquinaActual);
+		for (int i = 1; i <= 2; i++) {
+			for (int j = 1; j <= 2; j++) {
+				this.cambiarVisibilidad(unMapa.dameEsquina(new Posicion(
+						esquinaActual.devolverPosicion().devolverPosicionFila()
+								+ i, esquinaActual.devolverPosicion()
+								.devolverPosicionColumna() + j)));
+			}
+		}
 	}
 }

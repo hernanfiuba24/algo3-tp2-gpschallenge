@@ -22,9 +22,9 @@ public class JugadorTest {
 	public void testJugadorDeberiaPoderJugarArriba() {
 
 		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5, 5)));
+		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(4, 5);
+		Posicion posicionFutura = new Posicion(2, 3);
 		unJugador.setDireccion(new Arriba());
 
 		unJugador.jugar(unMapa);
@@ -37,9 +37,9 @@ public class JugadorTest {
 	public void testJugadorDeberiaPoderJugarAbajo() {
 
 		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5, 5)));
+		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(6, 5);
+		Posicion posicionFutura = new Posicion(4, 3);
 		unJugador.setDireccion(new Abajo());
 
 		unJugador.jugar(unMapa);
@@ -52,9 +52,9 @@ public class JugadorTest {
 	public void testJugadorDeberiaPoderJugarIzquierda() {
 
 		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5, 5)));
+		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(5, 4);
+		Posicion posicionFutura = new Posicion(3, 2);
 		unJugador.setDireccion(new Izquierda());
 
 		unJugador.jugar(unMapa);
@@ -67,9 +67,9 @@ public class JugadorTest {
 	public void testJugadorDeberiaPoderJugarDerecha() {
 
 		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5, 5)));
+		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(5, 6);
+		Posicion posicionFutura = new Posicion(3, 4);
 		unJugador.setDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
