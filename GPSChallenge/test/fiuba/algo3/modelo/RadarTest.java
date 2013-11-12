@@ -61,6 +61,11 @@ public class RadarTest {
 		Mapa unMapa = new Mapa(20, 20);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		unJugador.setDireccion(new Derecha());
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
 		for (int i = 1; i <= 2; i++) {
 			for (int j = 1; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
@@ -90,5 +95,26 @@ public class RadarTest {
 
 		assertTrue(esquinaPrevia.devolverVisibilidad() == false);
 	}
+	
+	@Test
+	public void testDeberianApagarseEsquinasConDistanciaMayorQueDosALaRedonda() {
+		Mapa unMapa = new Mapa(20, 20);
+		Radar unRadar = new Radar(unMapa);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		unJugador.setDireccion(new Derecha());
+		unJugador.jugar(unMapa);
+		for (int i = 3; i <= 5; i++) {
+			for (int j = 3; j <= 5; j++) {
+				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
+						.dameEsquina(new Posicion(unAuto.devolverEsquina()
+								.devolverPosicion().devolverPosicionFila()
+								+ i, unAuto.devolverEsquina()
+								.devolverPosicion().devolverPosicionColumna()
+								+ j)));
 
+				assertTrue(visibilidad == false);
+			}
+		}
+	}
 }
