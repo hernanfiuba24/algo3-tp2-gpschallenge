@@ -9,6 +9,13 @@ import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 
 public class CamionetaTest {
+	
+	@Test
+	public void testCamionetaDeberiaExistir() {
+		Camioneta unaCamioneta = new Camioneta(new Esquina(new Posicion(2,5) ) );
+		assertTrue(unaCamioneta instanceof Camioneta);
+	}
+
 
 	@Test
 	public void testDeberiaCrearseLaCamionetaConUnaEsquinaCuandoLoCreo() {

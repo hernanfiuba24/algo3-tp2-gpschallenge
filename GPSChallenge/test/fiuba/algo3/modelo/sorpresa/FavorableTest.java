@@ -13,6 +13,12 @@ import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class FavorableTest {
+	
+	@Test
+	public void testFavorableDeberiaExistir() {
+		Favorable unaSorpresaFavorable = new Favorable();
+		assertTrue(unaSorpresaFavorable instanceof Favorable);
+	}
 
 	@Test
 	public void testDeberiaDescontarUnMovimientoCuandoElJugadorSeMovio5VecesYEncuentraUnaSorpresaFavorableEnElUltimoMovimiento() {

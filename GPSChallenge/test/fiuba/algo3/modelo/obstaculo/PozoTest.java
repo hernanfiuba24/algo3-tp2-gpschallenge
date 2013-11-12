@@ -14,6 +14,12 @@ import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 
 public class PozoTest {
+	
+	@Test
+	public void testPozoDeberiaExistir() {
+		Pozo unPozo = new Pozo();
+		assertTrue(unPozo instanceof Pozo);
+	}
 
 	@Test
 	public void testDeberiaSumarleTresMovimientosAlAuto() {

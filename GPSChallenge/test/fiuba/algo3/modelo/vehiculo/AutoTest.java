@@ -10,6 +10,12 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class AutoTest {
+	
+	@Test
+	public void testAutoDeberiaExistir() {
+		Auto unAuto = new Auto(new Esquina(new Posicion(2,5) ) );
+		assertTrue(unAuto instanceof Auto);
+	}
 
 	@Test
 	public void testDeberiaCrearseElAutoConUnaEsquinaCuandoLoCreo() {

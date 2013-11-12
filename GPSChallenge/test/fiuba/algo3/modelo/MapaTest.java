@@ -6,6 +6,12 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 public class MapaTest {
+	
+		@Test
+		public void testMapaDeberiaExistir() {
+			Mapa unMapa = new Mapa(12, 12);
+			assertTrue(unMapa instanceof Mapa);
+		}
 
 		@Test
 		public void testDeberiaCrearMapa() {

@@ -8,6 +8,12 @@ import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class RadarTest {
+	
+	@Test
+	public void testRadarDeberiaExistir() {
+		Radar unRadar = new Radar();
+		assertTrue(unRadar instanceof Radar);
+	}
 
 	@Test
 	public void testDeberiaCambiarEstadoDeVisibilidadDeUnaEsquina() {

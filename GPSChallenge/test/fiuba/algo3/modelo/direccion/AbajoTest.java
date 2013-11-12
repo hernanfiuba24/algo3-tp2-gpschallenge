@@ -1,12 +1,16 @@
 package fiuba.algo3.modelo.direccion;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import fiuba.algo3.modelo.direccion.Abajo;
-
 public class AbajoTest {
+	
+	@Test
+	public void testAbajoDeberiaExistir() {
+		Abajo unAbajo = new Abajo();
+		assertTrue(unAbajo instanceof Abajo);
+	}
 
 	@Test
 	public void testCoordenadaXDeberiaSerMenos1YCoordenadaYDeberiaSer0() {
