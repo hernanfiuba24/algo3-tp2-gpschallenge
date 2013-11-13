@@ -27,7 +27,7 @@ public class PozoTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(5, 3));
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
 		esquinaConObstaculo.colocarObstaculo(unPozo);
 
@@ -44,7 +44,7 @@ public class PozoTest {
 		Moto unaMoto = new Moto(unMapa);
 		Jugador unJugador = new Jugador(unaMoto);
 		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(5, 3));
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
 		esquinaConObstaculo.colocarObstaculo(unPozo);
 
@@ -61,7 +61,7 @@ public class PozoTest {
 		Camioneta unaCamioneta = new Camioneta(unMapa);
 		Jugador unJugador = new Jugador(unaCamioneta);
 		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(5, 3));
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
 		esquinaConObstaculo.colocarObstaculo(unPozo);
 

@@ -33,7 +33,7 @@ public class ControlPolicialTest {
 		Esquina esquinaConControl = unMapa.dameEsquina(new Posicion(10, 11));
 		esquinaConControl.colocarObstaculo(control);
 
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 
 		if(control.obtenerProbabilidad() <= 0.5){
@@ -54,7 +54,7 @@ public class ControlPolicialTest {
 		Esquina esquinaConControl = unMapa.dameEsquina(new Posicion(8, 10));
 		esquinaConControl.colocarObstaculo(control);
 
-		unJugador.setDireccion(new Arriba());
+		unJugador.cambiarDireccion(new Arriba());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 
@@ -77,7 +77,7 @@ public class ControlPolicialTest {
 		Esquina esquinaConControl = unMapa.dameEsquina(new Posicion(13, 10));
 		esquinaConControl.colocarObstaculo(control);
 
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);

@@ -28,7 +28,7 @@ public class DesfavorableTest {
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaDesfavorable);
 		Jugador unJugador = new Jugador(new Auto(
 				unMapa.dameEsquina(new Posicion(11, 4))));
-		unJugador.setDireccion(new Arriba());
+		unJugador.cambiarDireccion(new Arriba());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);

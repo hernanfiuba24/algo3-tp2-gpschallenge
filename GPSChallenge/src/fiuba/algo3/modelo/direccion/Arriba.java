@@ -6,5 +6,9 @@ public class Arriba extends Direccion {
 		this.x = 1;
 		this.y = 0;
 	}
+	
+	public Direccion cambiarDireccionContraria() {
+		return (new Abajo());
+	}
 		
 }

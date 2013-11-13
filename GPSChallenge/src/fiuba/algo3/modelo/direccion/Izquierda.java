@@ -7,4 +7,7 @@ public class Izquierda extends Direccion {
 		this.y = 1;
 	}
 
+	public Direccion cambiarDireccionContraria() {
+		return (new Derecha());
+	}
 }

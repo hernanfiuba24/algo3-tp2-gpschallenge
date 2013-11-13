@@ -28,7 +28,7 @@ public class CambioDeVehiculoTest {
 		Jugador unJugador = new Jugador(unAuto);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.dameEsquina(new Posicion(5,3)).colocarSorpresa(unaSorpresaCambioDeVehiculo);
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 		
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -44,7 +44,7 @@ public class CambioDeVehiculoTest {
 		Jugador unJugador = new Jugador(unaMoto);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.dameEsquina(new Posicion(5,3)).colocarSorpresa(unaSorpresaCambioDeVehiculo);
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 		
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -60,7 +60,7 @@ public class CambioDeVehiculoTest {
 		Jugador unJugador = new Jugador(unaCamioneta);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.dameEsquina(new Posicion(5,3)).colocarSorpresa(unaSorpresaCambioDeVehiculo);
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 		
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);

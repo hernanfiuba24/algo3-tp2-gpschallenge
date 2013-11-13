@@ -55,11 +55,11 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 						- unaDireccion.devolverY());
 
 		Esquina esquinaFutura = unMapa.dameEsquina(posicionFutura);
+		
 		esquinaFutura.colocarAuto(this);
-
-		unRadar.cambiarVisibilidadDosALaRedonda(this.esquinaActual);
-
 		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
+		
+		unRadar.cambiarVisibilidadDosALaRedonda(this.esquinaActual);		
 		esquinaFutura.cambiarVisibilidad(true);
 
 		esquinaActual.borrarAuto();

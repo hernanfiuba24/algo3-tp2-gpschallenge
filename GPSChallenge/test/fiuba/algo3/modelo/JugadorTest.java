@@ -25,7 +25,7 @@ public class JugadorTest {
 		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5,5)));
 		Jugador unJugador = new Jugador(unAuto);
 		Posicion posicionFutura = new Posicion(4, 5);
-		unJugador.setDireccion(new Arriba());
+		unJugador.cambiarDireccion(new Arriba());
 
 		unJugador.jugar(unMapa);
 
@@ -40,7 +40,7 @@ public class JugadorTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Posicion posicionFutura = new Posicion(4, 3);
-		unJugador.setDireccion(new Abajo());
+		unJugador.cambiarDireccion(new Abajo());
 
 		unJugador.jugar(unMapa);
 
@@ -55,7 +55,7 @@ public class JugadorTest {
 		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5,5)));
 		Jugador unJugador = new Jugador(unAuto);
 		Posicion posicionFutura = new Posicion(5, 4);
-		unJugador.setDireccion(new Izquierda());
+		unJugador.cambiarDireccion(new Izquierda());
 
 		unJugador.jugar(unMapa);
 
@@ -70,7 +70,7 @@ public class JugadorTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Posicion posicionFutura = new Posicion(3, 4);
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
 

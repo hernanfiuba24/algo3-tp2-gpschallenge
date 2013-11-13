@@ -38,7 +38,7 @@ public class Esquina {
 			this.unaSorpresa.aplicar(unJugador);
 		}
 		 if (this.unObstaculo != null) {
-		 this.unObstaculo.aplicar(unJugador);
+			 this.unObstaculo.aplicar(unJugador);
 		 }
 	}
 

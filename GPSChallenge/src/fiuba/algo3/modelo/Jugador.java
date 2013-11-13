@@ -32,7 +32,7 @@ public class Jugador {
 		return this.unVehiculo;
 	}
 
-	public void setDireccion(Direccion direccion) {
+	public void cambiarDireccion(Direccion direccion) {
 		this.unaDireccion = direccion;
 	}
 
@@ -50,6 +50,14 @@ public class Jugador {
 	public void aumentarMovimientoHechos(int cantidad) {
 		this.movimientosHechos = this.movimientosHechos + cantidad;
 
+	}
+
+	public Direccion devolverDireccion() {
+		return this.unaDireccion;
+	}
+
+	public void cambiarDireccionContraria() {
+		this.unaDireccion = this.unaDireccion.cambiarDireccionContraria();		
 	}
 
 }

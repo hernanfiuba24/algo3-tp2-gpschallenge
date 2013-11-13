@@ -47,7 +47,7 @@ public class RadarTest {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -63,7 +63,7 @@ public class RadarTest {
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -89,7 +89,7 @@ public class RadarTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -106,7 +106,7 @@ public class RadarTest {
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 		for (int i = 3; i <= 5; i++) {
 			for (int j = 3; j <= 5; j++) {
@@ -128,7 +128,7 @@ public class RadarTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
 
@@ -141,10 +141,10 @@ public class RadarTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
-		unJugador.setDireccion(new Derecha());
+		unJugador.cambiarDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
-		unJugador.setDireccion(new Izquierda());
+		unJugador.cambiarDireccion(new Izquierda());
 		unJugador.jugar(unMapa);
 
 		assertTrue(esquinaPrevia.devolverVisibilidad() == true);
