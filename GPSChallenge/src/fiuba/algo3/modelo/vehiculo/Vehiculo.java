@@ -60,6 +60,7 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 		unRadar.cambiarVisibilidadDosALaRedonda(this.esquinaActual);
 
 		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
+		esquinaFutura.cambiarVisibilidad(true);
 
 		esquinaActual.borrarAuto();
 	}

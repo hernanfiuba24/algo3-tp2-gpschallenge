@@ -21,10 +21,10 @@ public class JugadorTest {
 	@Test
 	public void testJugadorDeberiaPoderJugarArriba() {
 
-		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa);
+		Mapa unMapa = new Mapa(10, 10);
+		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5,5)));
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(2, 3);
+		Posicion posicionFutura = new Posicion(4, 5);
 		unJugador.setDireccion(new Arriba());
 
 		unJugador.jugar(unMapa);
@@ -51,10 +51,10 @@ public class JugadorTest {
 	@Test
 	public void testJugadorDeberiaPoderJugarIzquierda() {
 
-		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa);
+		Mapa unMapa = new Mapa(10, 10);
+		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5,5)));
 		Jugador unJugador = new Jugador(unAuto);
-		Posicion posicionFutura = new Posicion(3, 2);
+		Posicion posicionFutura = new Posicion(5, 4);
 		unJugador.setDireccion(new Izquierda());
 
 		unJugador.jugar(unMapa);

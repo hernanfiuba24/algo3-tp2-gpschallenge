@@ -5,10 +5,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.direccion.Derecha;
+import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class RadarTest {
-	
+
 	@Test
 	public void testRadarDeberiaExistir() {
 		Radar unRadar = new Radar();
@@ -92,10 +93,13 @@ public class RadarTest {
 
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
 
 		assertTrue(esquinaPrevia.devolverVisibilidad() == false);
 	}
-	
+
 	@Test
 	public void testDeberianApagarseEsquinasConDistanciaMayorQueDosALaRedonda() {
 		Mapa unMapa = new Mapa(20, 20);
@@ -117,4 +121,33 @@ public class RadarTest {
 			}
 		}
 	}
+
+	@Test
+	public void testSiEsquinaDondeEstabaElAutoEstaDentroDelRadio2DeLaNuevaEsquinaDeberiaEstarPrendida() {
+		Mapa unMapa = new Mapa(12, 12);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		Esquina esquinaPrevia = unAuto.devolverEsquina();
+		unJugador.setDireccion(new Derecha());
+
+		unJugador.jugar(unMapa);
+
+		assertTrue(esquinaPrevia.devolverVisibilidad() == true);
+	}
+
+	@Test
+	public void testSiAutoVaYVieneDeEsquinaLaActualDeberiaEstarPrendida() {
+		Mapa unMapa = new Mapa(12, 12);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		Esquina esquinaPrevia = unAuto.devolverEsquina();
+		unJugador.setDireccion(new Derecha());
+
+		unJugador.jugar(unMapa);
+		unJugador.setDireccion(new Izquierda());
+		unJugador.jugar(unMapa);
+
+		assertTrue(esquinaPrevia.devolverVisibilidad() == true);
+	}
+
 }

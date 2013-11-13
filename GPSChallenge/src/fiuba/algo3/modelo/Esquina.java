@@ -61,4 +61,9 @@ public class Esquina {
 	public Obstaculo getObstaculo() {
 		return unObstaculo;
 	}
+
+	public void cambiarVisibilidad(boolean valor) {
+		this.visibilidad = valor;
+		
+	}
 }

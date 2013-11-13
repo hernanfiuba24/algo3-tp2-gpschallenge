@@ -22,8 +22,8 @@ public class Radar {
 
 	public void cambiarVisibilidadDosALaRedonda(Esquina esquinaActual) {
 		this.cambiarVisibilidad(esquinaActual);
-		for (int i = 1; i <= 2; i++) {
-			for (int j = 1; j <= 2; j++) {
+		for (int i = -2; i <= 2; i++) {
+			for (int j = -2; j <= 2; j++) {
 				this.cambiarVisibilidad(unMapa.dameEsquina(new Posicion(
 						esquinaActual.devolverPosicion().devolverPosicionFila()
 								+ i, esquinaActual.devolverPosicion()
