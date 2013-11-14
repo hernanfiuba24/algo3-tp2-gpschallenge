@@ -20,7 +20,7 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 		// vehiculo en alguna esquina
 		this.esquinaActual = unMapa.dameEsquina(new Posicion(3, 3));
 		Radar unRadar = new Radar(unMapa);
-		unRadar.cambiarVisibilidadDosALaRedonda(this.esquinaActual);
+		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 	}
 
 	public Vehiculo(Esquina unaEsquina) {
@@ -45,7 +45,7 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 
 	public void mover(Mapa unMapa, Direccion unaDireccion) {
 		Radar unRadar = new Radar(unMapa);
-		unRadar.cambiarVisibilidadDosALaRedonda(this.esquinaActual);
+		unRadar.apagarVisibilidadDosALaRedonda(this.esquinaActual);
 
 		Posicion posicionActual = this.devolverEsquina().devolverPosicion();
 		Posicion posicionFutura = new Posicion(
@@ -55,12 +55,11 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 						- unaDireccion.devolverY());
 
 		Esquina esquinaFutura = unMapa.dameEsquina(posicionFutura);
-		
+
 		esquinaFutura.colocarAuto(this);
 		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
-		
-		unRadar.cambiarVisibilidadDosALaRedonda(this.esquinaActual);		
-		esquinaFutura.cambiarVisibilidad(true);
+
+		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 
 		esquinaActual.borrarAuto();
 	}
@@ -73,9 +72,9 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 	public void cambioVehiculo() {
 
 	}
-	
-	public void interactuarCon(Obstaculo obstaculo){
-		
+
+	public void interactuarCon(Obstaculo obstaculo) {
+
 	}
 
 }

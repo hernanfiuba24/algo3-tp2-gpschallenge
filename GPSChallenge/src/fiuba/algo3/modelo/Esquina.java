@@ -46,8 +46,13 @@ public class Esquina {
 		this.unaSorpresa = sorpresa;
 	}
 
-	public void cambiarVisibilidad() {
-		this.visibilidad = !(this.visibilidad);
+	public void encenderVisibilidad() {
+		this.visibilidad = true;
+	}
+	
+	public void apagarVisibilidad() {
+		this.visibilidad = false;
+		
 	}
 
 	public boolean devolverVisibilidad() {
@@ -62,8 +67,6 @@ public class Esquina {
 		return unObstaculo;
 	}
 
-	public void cambiarVisibilidad(boolean valor) {
-		this.visibilidad = valor;
-		
-	}
+	
+
 }

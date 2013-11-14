@@ -12,19 +12,35 @@ public class Radar {
 
 	}
 
-	public void cambiarVisibilidad(Esquina unaEsquina) {
-		unaEsquina.cambiarVisibilidad();
+	public void encenderVisibilidad(Esquina unaEsquina) {
+		unaEsquina.encenderVisibilidad();
+	}
+	
+	public void apagarVisibilidad(Esquina unaEsquina) {
+		unaEsquina.apagarVisibilidad();
 	}
 
 	public boolean devolverVisibilidad(Esquina unaEsquina) {
 		return unaEsquina.devolverVisibilidad();
 	}
 
-	public void cambiarVisibilidadDosALaRedonda(Esquina esquinaActual) {
-		this.cambiarVisibilidad(esquinaActual);
+	public void encenderVisibilidadDosALaRedonda(Esquina esquinaActual) {
+		this.encenderVisibilidad(esquinaActual);
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
-				this.cambiarVisibilidad(unMapa.dameEsquina(new Posicion(
+				this.encenderVisibilidad(unMapa.dameEsquina(new Posicion(
+						esquinaActual.devolverPosicion().devolverPosicionFila()
+								+ i, esquinaActual.devolverPosicion()
+								.devolverPosicionColumna() + j)));
+			}
+		}
+	}
+	
+	public void apagarVisibilidadDosALaRedonda(Esquina esquinaActual) {
+		this.apagarVisibilidad(esquinaActual);
+		for (int i = -2; i <= 2; i++) {
+			for (int j = -2; j <= 2; j++) {
+				this.apagarVisibilidad(unMapa.dameEsquina(new Posicion(
 						esquinaActual.devolverPosicion().devolverPosicionFila()
 								+ i, esquinaActual.devolverPosicion()
 								.devolverPosicionColumna() + j)));

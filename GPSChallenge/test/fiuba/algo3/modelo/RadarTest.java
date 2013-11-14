@@ -20,7 +20,7 @@ public class RadarTest {
 	public void testDeberiaCambiarEstadoDeVisibilidadDeUnaEsquina() {
 		Esquina unaEsquina = new Esquina(new Posicion(3, 2));
 		Radar unRadar = new Radar();
-		unRadar.cambiarVisibilidad(unaEsquina);
+		unRadar.encenderVisibilidad(unaEsquina);
 	}
 
 	@Test
@@ -28,8 +28,8 @@ public class RadarTest {
 		Mapa unMapa = new Mapa(7, 7);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
-		for (int i = 1; i <= 2; i++) {
-			for (int j = 1; j <= 2; j++) {
+		for (int i = -2; i <= 2; i++) {
+			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
 						.dameEsquina(new Posicion(unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionFila()
@@ -67,8 +67,8 @@ public class RadarTest {
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		for (int i = 1; i <= 2; i++) {
-			for (int j = 1; j <= 2; j++) {
+		for (int i = -2; i <= 2; i++) {
+			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
 						.dameEsquina(new Posicion(unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionFila()
