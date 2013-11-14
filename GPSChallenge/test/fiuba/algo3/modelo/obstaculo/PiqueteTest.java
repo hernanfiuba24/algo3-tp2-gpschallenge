@@ -115,8 +115,8 @@ public class PiqueteTest {
 
 		unJugador.jugar(unMapa);
 
-		for (int i = 1; i <= 2; i++) {
-			for (int j = 1; j <= 2; j++) {
+		for (int i = -2; i <= 2; i++) {
+			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
 						.dameEsquina(new Posicion(unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionFila()
