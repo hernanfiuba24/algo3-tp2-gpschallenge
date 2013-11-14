@@ -18,6 +18,12 @@ import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 
 public class PiqueteTest {
+	
+	@Test
+	public void testAbajoDeberiaExistir() {
+		Piquete unPiquete = new Piquete(new Esquina(new Posicion(2,2)));
+		assertTrue(unPiquete instanceof Piquete);
+	}
 
 	@Test
 	public void testDeberiaCambiarleLaDireccionAlAuto() {
