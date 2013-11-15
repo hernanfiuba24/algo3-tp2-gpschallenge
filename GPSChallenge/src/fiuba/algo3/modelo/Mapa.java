@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+
 public class Mapa {
 	private int filas;
 	private int columnas;
@@ -27,9 +29,23 @@ public class Mapa {
 		return this.columnas;
 	}
 
-	public Esquina devolverUnaEsquina(Posicion unaPosicion) {
-		return tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
+	public boolean existeEsquina(Posicion unaPosicion){
+		if ((unaPosicion.devolverPosicionFila() > this.filas) || (unaPosicion.devolverPosicionFila() <= 0)){
+			return false;
+		}
+		if ((unaPosicion.devolverPosicionColumna() > this.columnas) || (unaPosicion.devolverPosicionColumna() <= 0)){
+			return false;
+		}
+		return true;
+	}
+	public Esquina devolverUnaEsquina(Posicion unaPosicion)throws ExcepcionEsquinaInvalida {
+		if (this.existeEsquina(unaPosicion)){
+			return tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
 				.devolverPosicionColumna() - 1];
+		}
+		else{
+			throw new ExcepcionEsquinaInvalida();		
+		}
 	}
 
 	public void agregarUnaEsquina(Esquina unaEsquina, Posicion unaPosicion) {

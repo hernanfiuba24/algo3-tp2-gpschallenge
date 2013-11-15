@@ -5,10 +5,12 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+
 public class MapaTest {
 
 	@Test
-	public void testDeberiaCrearMapa() {
+	public void testDeberiaCrearMapa() throws ExcepcionEsquinaInvalida {
 		Mapa mapa = new Mapa(2, 1);
 		Assert.assertEquals(2, mapa.devolverFilas());
 		Assert.assertEquals(1, mapa.devolverColumnas());
@@ -21,7 +23,7 @@ public class MapaTest {
 	}
 
 	@Test
-	public void testDeberiaDevolverUnaEsquina() {
+	public void testDeberiaDevolverUnaEsquina() throws ExcepcionEsquinaInvalida {
 		Mapa mapa = new Mapa(2, 2);
 		Esquina esquina = mapa.devolverUnaEsquina(new Posicion(1, 1));
 
@@ -31,5 +33,16 @@ public class MapaTest {
 		assertTrue(esquina.devolverPosicion().devolverPosicionFila() == x);
 		assertTrue(esquina.devolverPosicion().devolverPosicionColumna() == y);
 
+	}
+
+	@Test
+	public void testDeberiaSerInvalidaEsquinaFueraDeLimites() {
+		Mapa mapa = new Mapa(2, 2);
+		assertFalse(mapa.existeEsquina(new Posicion(3,2)));
+		assertFalse(mapa.existeEsquina(new Posicion(2,3)));
+		assertFalse(mapa.existeEsquina(new Posicion(-1,2)));
+		assertFalse(mapa.existeEsquina(new Posicion(3,-1)));
+		assertFalse(mapa.existeEsquina(new Posicion(0,2)));
+		assertFalse(mapa.existeEsquina(new Posicion(3,0)));
 	}
 }

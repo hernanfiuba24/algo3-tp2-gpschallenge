@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
@@ -18,7 +19,7 @@ import fiuba.algo3.modelo.vehiculo.Moto;
 public class ControlPolicialTest {
 
 	@Test
-	public void testControlPolicialDeberiaSumarle3MovimientosAlAuto() {
+	public void testControlPolicialDeberiaSumarle3MovimientosAlAuto() throws ExcepcionEsquinaInvalida {
 		ControlPolicial control = new ControlPolicial();
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
@@ -40,7 +41,7 @@ public class ControlPolicialTest {
 	}
 
 	@Test
-	public void testControlPolicialDeberiaSumarle3MovimientosALaMoto() {
+	public void testControlPolicialDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida {
 		ControlPolicial control = new ControlPolicial();
 		Mapa unMapa = new Mapa(20, 20);
 		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
@@ -63,7 +64,7 @@ public class ControlPolicialTest {
 	}
 
 	@Test
-	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() {
+	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {
 		ControlPolicial control = new ControlPolicial();
 		Mapa unMapa = new Mapa(20, 20);
 		Camioneta unaCamioneta = new Camioneta(

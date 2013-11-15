@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo;
 
 import fiuba.algo3.modelo.direccion.Direccion;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Jugador {
@@ -19,7 +20,7 @@ public class Jugador {
 		// Constructor creado solo para Test
 	}
 
-	public void jugar(Mapa unMapa) {
+	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida {
 		this.movimientosHechos += 1;
 		unVehiculo.mover(unMapa, this.unaDireccion);
 	}

@@ -2,6 +2,8 @@ package fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+
 public class Radar {
 
 	private Mapa unMapa;
@@ -26,17 +28,21 @@ public class Radar {
 		return unaEsquina.devolverVisibilidad();
 	}
 
-	public void encenderVisibilidadDosALaRedonda(Esquina esquinaActual) {
+	public void encenderVisibilidadDosALaRedonda(Esquina esquinaActual) throws ExcepcionEsquinaInvalida {
 		ArrayList<Posicion> listaDePosiciones = esquinaActual.devolverPosicionesADistanciaDeRadio(2);
 		for (int indice = 0; indice < listaDePosiciones.size(); indice++){
-			this.encenderVisibilidad(unMapa.devolverUnaEsquina(listaDePosiciones.get(indice)));
+			if (this.unMapa.existeEsquina(listaDePosiciones.get(indice))){
+				this.encenderVisibilidad(unMapa.devolverUnaEsquina(listaDePosiciones.get(indice)));
+			}
 		}
 	}
 	
-	public void apagarVisibilidadDosALaRedonda(Esquina esquinaActual) {
+	public void apagarVisibilidadDosALaRedonda(Esquina esquinaActual) throws ExcepcionEsquinaInvalida {
 		ArrayList<Posicion> listaDePosiciones = esquinaActual.devolverPosicionesADistanciaDeRadio(2);
 		for (int indice = 0; indice < listaDePosiciones.size(); indice++){
-			this.apagarVisibilidad(unMapa.devolverUnaEsquina(listaDePosiciones.get(indice)));
+			if (this.unMapa.existeEsquina(listaDePosiciones.get(indice))){
+					this.apagarVisibilidad(unMapa.devolverUnaEsquina(listaDePosiciones.get(indice)));
+			}
 		}
 	}
 }

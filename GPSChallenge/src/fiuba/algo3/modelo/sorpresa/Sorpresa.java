@@ -1,12 +1,10 @@
 package fiuba.algo3.modelo.sorpresa;
 
 import fiuba.algo3.modelo.Esquina;
-import fiuba.algo3.modelo.Guardable;
 import fiuba.algo3.modelo.Jugador;
 
 
-public abstract class Sorpresa implements Guardable<Sorpresa> {
-		
+public abstract class Sorpresa {		
 
 	public void setearEsquina(Esquina unaEsquina) {
 		

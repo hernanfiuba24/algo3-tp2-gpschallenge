@@ -8,12 +8,13 @@ import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class JugadorTest {
 
 	@Test
-	public void testJugadorDeberiaPoderJugarArriba() {
+	public void testJugadorDeberiaPoderJugarArriba() throws ExcepcionEsquinaInvalida {
 
 		Mapa unMapa = new Mapa(10, 10);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5, 5)));
@@ -28,7 +29,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testJugadorDeberiaPoderJugarAbajo() {
+	public void testJugadorDeberiaPoderJugarAbajo() throws ExcepcionEsquinaInvalida {
 
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
@@ -43,7 +44,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testJugadorDeberiaPoderJugarIzquierda() {
+	public void testJugadorDeberiaPoderJugarIzquierda() throws ExcepcionEsquinaInvalida {
 
 		Mapa unMapa = new Mapa(10, 10);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5, 5)));
@@ -58,7 +59,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testJugadorDeberiaPoderJugarDerecha() {
+	public void testJugadorDeberiaPoderJugarDerecha() throws ExcepcionEsquinaInvalida {
 
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);

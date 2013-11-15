@@ -1,20 +1,20 @@
 package fiuba.algo3.modelo.vehiculo;
 
 import fiuba.algo3.modelo.Esquina;
-import fiuba.algo3.modelo.Guardable;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.Radar;
 import fiuba.algo3.modelo.direccion.Direccion;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 
-public abstract class Vehiculo implements Guardable<Vehiculo> {
+public abstract class Vehiculo {
 	final int movimientosPermitidos = 1;
 	protected Esquina esquinaActual;
 	protected Jugador jugadorAlQuePertenece;
 
-	public Vehiculo(Mapa unMapa) {
+	public Vehiculo(Mapa unMapa) throws ExcepcionEsquinaInvalida {
 		// En esta linea iria una funcion random que posicione el
 		// vehiculo en alguna esquina
 		this.esquinaActual = unMapa.devolverUnaEsquina(new Posicion(3, 3));
@@ -42,7 +42,8 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 		this.jugadorAlQuePertenece = unJugador;
 	}
 
-	public void mover(Mapa unMapa, Direccion unaDireccion) {
+	public void mover(Mapa unMapa, Direccion unaDireccion)
+			throws ExcepcionEsquinaInvalida {
 		Radar unRadar = new Radar(unMapa);
 		unRadar.apagarVisibilidadDosALaRedonda(this.esquinaActual);
 
@@ -54,7 +55,6 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 						- unaDireccion.devolverY());
 
 		Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
-
 		esquinaFutura.colocarVehiculo(this);
 		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
 

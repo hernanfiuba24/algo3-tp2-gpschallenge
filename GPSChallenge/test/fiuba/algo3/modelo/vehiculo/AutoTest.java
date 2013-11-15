@@ -7,12 +7,13 @@ import org.junit.Test;
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class AutoTest {
 
 	@Test
-	public void testDeberiaCrearseElAutoConUnaEsquinaCuandoLoCreo() {
+	public void testDeberiaCrearseElAutoConUnaEsquinaCuandoLoCreo() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
 
@@ -21,7 +22,7 @@ public class AutoTest {
 	}
 
 	@Test
-	public void testDeberiaModificarseEsquinaCuandoActualizoPosicion() {
+	public void testDeberiaModificarseEsquinaCuandoActualizoPosicion() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
 

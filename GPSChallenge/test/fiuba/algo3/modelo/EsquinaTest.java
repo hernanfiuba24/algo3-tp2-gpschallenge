@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.Pozo;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class EsquinaTest {
 
 	@Test
-	public void testDeberiaColocarUnAutoEnUnaEsquina() {
+	public void testDeberiaColocarUnAutoEnUnaEsquina() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
 

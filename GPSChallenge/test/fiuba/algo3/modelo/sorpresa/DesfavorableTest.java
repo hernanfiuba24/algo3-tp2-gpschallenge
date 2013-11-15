@@ -9,13 +9,14 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Arriba;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class DesfavorableTest {
 
 	@Test
-	public void testDeberiaIncrementarDosMovimientoCuandoElJugadorSeMovio8vecesYEncuentraUnaSorpresaDesfavorableEnElUltimoMovimiento() {
+	public void testDeberiaIncrementarDosMovimientoCuandoElJugadorSeMovio8vecesYEncuentraUnaSorpresaDesfavorableEnElUltimoMovimiento() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
 		Desfavorable unaSorpresaDesfavorable = new Desfavorable();
 		Esquina esquinaConSorpresa = unMapa.devolverUnaEsquina(new Posicion(3,

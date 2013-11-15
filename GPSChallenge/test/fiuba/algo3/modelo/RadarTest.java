@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class RadarTest {
@@ -18,7 +19,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testDeberiaPrenderDosEsquinasALaRedondaAlCrearseElAuto() {
+	public void testDeberiaPrenderDosEsquinasALaRedondaAlCrearseElAuto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(7, 7);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
@@ -38,7 +39,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testDeberianEstarPrendidaEsquinaAlJugar() {
+	public void testDeberianEstarPrendidaEsquinaAlJugar() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
@@ -53,7 +54,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testDeberianPrenderseLasEsquinas2ALaRedondaLuegoDelMovimientoDelAuto() {
+	public void testDeberianPrenderseLasEsquinas2ALaRedondaLuegoDelMovimientoDelAuto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
@@ -80,7 +81,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testDeberiaApagarseLaEsquinaDondeEstabaElAutoAntesDeMoverseHaciaOtraEsquina() {
+	public void testDeberiaApagarseLaEsquinaDondeEstabaElAutoAntesDeMoverseHaciaOtraEsquina() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
@@ -97,7 +98,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testDeberianApagarseEsquinasConDistanciaMayorQueDosALaRedonda() {
+	public void testDeberianApagarseEsquinasConDistanciaMayorQueDosALaRedonda() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
@@ -120,7 +121,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testSiEsquinaDondeEstabaElAutoEstaDentroDelRadio2DeLaNuevaEsquinaDeberiaEstarPrendida() {
+	public void testSiEsquinaDondeEstabaElAutoEstaDentroDelRadio2DeLaNuevaEsquinaDeberiaEstarPrendida() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
@@ -133,7 +134,7 @@ public class RadarTest {
 	}
 
 	@Test
-	public void testSiAutoVaYVieneDeEsquinaLaActualDeberiaEstarPrendida() {
+	public void testSiAutoVaYVieneDeEsquinaLaActualDeberiaEstarPrendida() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
