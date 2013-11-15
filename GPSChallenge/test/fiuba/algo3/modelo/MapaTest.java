@@ -6,6 +6,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.vehiculo.Camioneta;
 
 public class MapaTest {
 
@@ -44,5 +45,12 @@ public class MapaTest {
 		assertFalse(mapa.existeEsquina(new Posicion(3,-1)));
 		assertFalse(mapa.existeEsquina(new Posicion(0,2)));
 		assertFalse(mapa.existeEsquina(new Posicion(3,0)));
+	}
+	
+	@Test
+	public void testDeberiaPoderAgregarUnAutoAUnMapaDe1x1() throws ExcepcionEsquinaInvalida{
+		Mapa unMapa = new Mapa(1,1);
+		Camioneta unaCamioneta = new Camioneta(unMapa.devolverUnaEsquina(new Posicion(1,1)));
+		assertTrue(unaCamioneta.devolverEsquina().devolverPosicion().equals(unMapa.devolverUnaEsquina(new Posicion(1,1)).devolverPosicion()));
 	}
 }

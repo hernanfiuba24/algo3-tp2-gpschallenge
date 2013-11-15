@@ -55,7 +55,7 @@ public class RadarTest {
 
 	@Test
 	public void testDeberianPrenderseLasEsquinas2ALaRedondaLuegoDelMovimientoDelAuto() throws ExcepcionEsquinaInvalida {
-		Mapa unMapa = new Mapa(20, 20);
+		Mapa unMapa = new Mapa(3, 6);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
@@ -65,15 +65,17 @@ public class RadarTest {
 		unJugador.jugar(unMapa);
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
-				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.devolverUnaEsquina(new Posicion(unAuto
-								.devolverEsquina().devolverPosicion()
-								.devolverPosicionFila()
-								+ i, unAuto.devolverEsquina()
-								.devolverPosicion().devolverPosicionColumna()
-								+ j)));
-
-				assertTrue(visibilidad);
+				Posicion unaPosicion = new Posicion(unAuto
+						.devolverEsquina().devolverPosicion()
+						.devolverPosicionFila()
+						+ i, unAuto.devolverEsquina()
+						.devolverPosicion().devolverPosicionColumna()
+						+ j);
+				if (unMapa.existeEsquina(unaPosicion)){
+					boolean visibilidad = unRadar.devolverVisibilidad(unMapa
+							.devolverUnaEsquina(unaPosicion));
+					assertTrue(visibilidad == true);
+				}
 			}
 		}
 		// Chequeo de la esquina donde esta posicionado el auto
@@ -99,7 +101,7 @@ public class RadarTest {
 
 	@Test
 	public void testDeberianApagarseEsquinasConDistanciaMayorQueDosALaRedonda() throws ExcepcionEsquinaInvalida {
-		Mapa unMapa = new Mapa(20, 20);
+		Mapa unMapa = new Mapa(4, 4);
 		Radar unRadar = new Radar(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
@@ -107,15 +109,17 @@ public class RadarTest {
 		unJugador.jugar(unMapa);
 		for (int i = 3; i <= 5; i++) {
 			for (int j = 3; j <= 5; j++) {
-				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.devolverUnaEsquina(new Posicion(unAuto
+				Posicion unaPosicion = new Posicion(unAuto
 								.devolverEsquina().devolverPosicion()
 								.devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()
-								+ j)));
-
-				assertTrue(visibilidad == false);
+								+ j);
+				if (unMapa.existeEsquina(unaPosicion)){
+					boolean visibilidad = unRadar.devolverVisibilidad(unMapa
+							.devolverUnaEsquina(unaPosicion));
+					assertTrue(visibilidad == false);
+				}
 			}
 		}
 	}

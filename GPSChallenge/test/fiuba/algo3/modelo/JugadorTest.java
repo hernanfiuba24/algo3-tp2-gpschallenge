@@ -10,9 +10,10 @@ import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
+import fiuba.algo3.modelo.vehiculo.Camioneta;
 
 public class JugadorTest {
-
+	
 	@Test
 	public void testJugadorDeberiaPoderJugarArriba() throws ExcepcionEsquinaInvalida {
 
@@ -71,5 +72,23 @@ public class JugadorTest {
 
 		assertTrue(unAuto.devolverEsquina().devolverPosicion()
 				.equals(posicionFutura));
+	}
+	
+	@Test//(expected = ExcepcionEsquinaInvalida.class) 
+	public void testJugadorDeberiaLanzarExcepcionAlJugarFueraDeLosLimites() throws ExcepcionEsquinaInvalida {
+
+		Mapa unMapa = new Mapa(4, 3);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		unJugador.cambiarDireccion(new Abajo());
+
+		unJugador.jugar(unMapa);
+		unJugador.cambiarDireccion(new Derecha());
+		try{
+			unJugador.jugar(unMapa);
+		}
+		catch (ExcepcionEsquinaInvalida e){
+			assertTrue(e instanceof ExcepcionEsquinaInvalida);
+		}
 	}
 }
