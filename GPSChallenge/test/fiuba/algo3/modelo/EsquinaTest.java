@@ -21,8 +21,8 @@ public class EsquinaTest {
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
 
-		Esquina esquinaFutura = unMapa.dameEsquina(new Posicion(5, 5));
-		esquinaFutura.colocarAuto(unAuto);
+		Esquina esquinaFutura = unMapa.devolverUnaEsquina(new Posicion(5, 5));
+		esquinaFutura.colocarVehiculo(unAuto);
 		assertTrue(esquinaFutura.devolverPosicion().equals(
 				unAuto.devolverEsquina().devolverPosicion()));
 	}

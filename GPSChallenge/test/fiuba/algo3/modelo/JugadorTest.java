@@ -22,7 +22,7 @@ public class JugadorTest {
 	public void testJugadorDeberiaPoderJugarArriba() {
 
 		Mapa unMapa = new Mapa(10, 10);
-		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5,5)));
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5,5)));
 		Jugador unJugador = new Jugador(unAuto);
 		Posicion posicionFutura = new Posicion(4, 5);
 		unJugador.cambiarDireccion(new Arriba());
@@ -52,7 +52,7 @@ public class JugadorTest {
 	public void testJugadorDeberiaPoderJugarIzquierda() {
 
 		Mapa unMapa = new Mapa(10, 10);
-		Auto unAuto = new Auto(unMapa.dameEsquina(new Posicion(5,5)));
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5,5)));
 		Jugador unJugador = new Jugador(unAuto);
 		Posicion posicionFutura = new Posicion(5, 4);
 		unJugador.cambiarDireccion(new Izquierda());

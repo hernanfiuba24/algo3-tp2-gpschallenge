@@ -31,7 +31,7 @@ public class RadarTest {
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.dameEsquina(new Posicion(unAuto.devolverEsquina()
+						.devolverUnaEsquina(new Posicion(unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()
@@ -70,7 +70,7 @@ public class RadarTest {
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.dameEsquina(new Posicion(unAuto.devolverEsquina()
+						.devolverUnaEsquina(new Posicion(unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()
@@ -111,7 +111,7 @@ public class RadarTest {
 		for (int i = 3; i <= 5; i++) {
 			for (int j = 3; j <= 5; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.dameEsquina(new Posicion(unAuto.devolverEsquina()
+						.devolverUnaEsquina(new Posicion(unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()

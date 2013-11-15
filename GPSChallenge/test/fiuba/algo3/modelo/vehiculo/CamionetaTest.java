@@ -33,7 +33,7 @@ public class CamionetaTest {
 		Posicion posicionFinal = new Posicion(3, 3);
 		Esquina esquinaFinal = new Esquina(posicionFinal);
 
-		unaCamioneta.actualizarEsquina(esquinaFinal);
+		unaCamioneta.setearEsquina(esquinaFinal);
 
 		assertTrue(unaCamioneta.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
 

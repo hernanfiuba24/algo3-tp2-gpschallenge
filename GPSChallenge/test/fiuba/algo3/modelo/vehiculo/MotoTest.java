@@ -33,7 +33,7 @@ public class MotoTest {
 		Posicion posicionFinal = new Posicion(3, 3);
 		Esquina esquinaFinal = new Esquina(posicionFinal);
 
-		unaMoto.actualizarEsquina(esquinaFinal);
+		unaMoto.setearEsquina(esquinaFinal);
 
 		assertTrue(unaMoto.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
 	}

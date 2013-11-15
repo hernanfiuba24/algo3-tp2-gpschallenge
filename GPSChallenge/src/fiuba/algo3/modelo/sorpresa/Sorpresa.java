@@ -8,7 +8,7 @@ import fiuba.algo3.modelo.Jugador;
 public abstract class Sorpresa implements Guardable<Sorpresa> {
 		
 
-	public void actualizarEsquina(Esquina unaEsquina) {
+	public void setearEsquina(Esquina unaEsquina) {
 		
 	}
 

@@ -16,11 +16,11 @@ public class MapaTest {
 		@Test
 		public void testDeberiaCrearMapa() {
 			Mapa mapa = new Mapa(2 , 1);
-			Assert.assertEquals(2, mapa.dameFilas());
-			Assert.assertEquals(1, mapa.dameColumnas());
-			for (int i = 1 ; i <= mapa.dameFilas() ; i++){
-				for (int j = 1 ; j <= mapa.dameColumnas() ; j++){
-					Assert.assertNotNull(mapa.dameEsquina(new Posicion(i, j)));
+			Assert.assertEquals(2, mapa.devolverFilas());
+			Assert.assertEquals(1, mapa.devolverColumnas());
+			for (int i = 1 ; i <= mapa.devolverFilas() ; i++){
+				for (int j = 1 ; j <= mapa.devolverColumnas() ; j++){
+					Assert.assertNotNull(mapa.devolverUnaEsquina(new Posicion(i, j)));
 				}
 			}
 		}
@@ -28,7 +28,7 @@ public class MapaTest {
 		@Test
 		public void testDeberiaDevolverUnaEsquina (){
 			Mapa mapa = new Mapa (2,2);
-			Esquina esquina = mapa.dameEsquina(new Posicion(1,1));
+			Esquina esquina = mapa.devolverUnaEsquina(new Posicion(1,1));
 			
 			int x = 1;
 			int y = 1;

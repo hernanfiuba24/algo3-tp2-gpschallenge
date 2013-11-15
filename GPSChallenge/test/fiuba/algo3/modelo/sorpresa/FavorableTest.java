@@ -24,10 +24,10 @@ public class FavorableTest {
 	public void testDeberiaDescontarUnMovimientoCuandoElJugadorSeMovio5VecesYEncuentraUnaSorpresaFavorableEnElUltimoMovimiento() {
 		Mapa unMapa = new Mapa(15, 15);
 		Favorable unaSorpresaFavorable = new Favorable();
-		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(3, 4));
+		Esquina esquinaConSorpresa = unMapa.devolverUnaEsquina(new Posicion(3, 4));
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaFavorable);
 		
-		Esquina esquinaInicialAuto = unMapa.dameEsquina(new Posicion(8, 4));
+		Esquina esquinaInicialAuto = unMapa.devolverUnaEsquina(new Posicion(8, 4));
 		Auto unAuto = new Auto(esquinaInicialAuto);
 		Jugador unJugador = new Jugador(unAuto);
 		

@@ -33,7 +33,7 @@ public class AutoTest {
 		Posicion posicionFinal = new Posicion(3, 3);
 		Esquina esquinaFinal = new Esquina(posicionFinal);
 
-		unAuto.actualizarEsquina(esquinaFinal);
+		unAuto.setearEsquina(esquinaFinal);
 
 		assertTrue(unAuto.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
 

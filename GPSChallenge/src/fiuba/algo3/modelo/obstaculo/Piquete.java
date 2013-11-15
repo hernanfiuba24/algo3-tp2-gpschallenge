@@ -20,7 +20,7 @@ public class Piquete extends Obstaculo {
 	
 	public void aplicar(Auto unAuto) {
 		unAuto.devolverJugador().cambiarDireccionContraria();
-		unAuto.actualizarEsquina(this.esquinaAnterior);
+		unAuto.setearEsquina(this.esquinaAnterior);
 	}
 	
 	public void aplicar(Moto unaMoto) {
@@ -29,7 +29,7 @@ public class Piquete extends Obstaculo {
 	
 	public void aplicar(Camioneta unaCamioneta) {
 		unaCamioneta.devolverJugador().cambiarDireccionContraria();
-		unaCamioneta.actualizarEsquina(this.esquinaAnterior);
+		unaCamioneta.setearEsquina(this.esquinaAnterior);
 	}
 
 }

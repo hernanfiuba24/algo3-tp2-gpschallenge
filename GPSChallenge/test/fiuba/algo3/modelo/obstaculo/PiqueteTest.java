@@ -31,7 +31,7 @@ public class PiqueteTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
-		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(3, 4));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(3, 4));
 		esquinaConObstaculo.colocarObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Derecha());
@@ -47,7 +47,7 @@ public class PiqueteTest {
 		Camioneta unaCamioneta = new Camioneta(unMapa);
 		Jugador unJugador = new Jugador(unaCamioneta);
 		Piquete unPiquete = new Piquete(unaCamioneta.devolverEsquina());
-		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(4, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4, 3));
 		esquinaConObstaculo.colocarObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Abajo());
@@ -63,7 +63,7 @@ public class PiqueteTest {
 		Moto unaMoto = new Moto(unMapa);
 		Jugador unJugador = new Jugador(unaMoto);
 		Piquete unPiquete = new Piquete(unaMoto.devolverEsquina());
-		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(4, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4, 3));
 		esquinaConObstaculo.colocarObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Abajo());
@@ -79,7 +79,7 @@ public class PiqueteTest {
 		Moto unaMoto = new Moto(unMapa);
 		Jugador unJugador = new Jugador(unaMoto);
 		Piquete unPiquete = new Piquete(unaMoto.devolverEsquina());
-		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(4, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4, 3));
 		esquinaConObstaculo.colocarObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Abajo());
@@ -95,7 +95,7 @@ public class PiqueteTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
-		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(4, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4, 3));
 		esquinaConObstaculo.colocarObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Abajo());
@@ -114,7 +114,7 @@ public class PiqueteTest {
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
-		Esquina esquinaConObstaculo = unMapa.dameEsquina(new Posicion(4, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4, 3));
 		esquinaConObstaculo.colocarObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Abajo());
@@ -124,7 +124,7 @@ public class PiqueteTest {
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.dameEsquina(new Posicion(unAuto.devolverEsquina()
+						.devolverUnaEsquina(new Posicion(unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()

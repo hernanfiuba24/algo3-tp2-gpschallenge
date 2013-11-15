@@ -24,10 +24,10 @@ public class DesfavorableTest {
 	public void testDeberiaIncrementarDosMovimientoCuandoElJugadorSeMovio8vecesYEncuentraUnaSorpresaDesfavorableEnElUltimoMovimiento() {
 		Mapa unMapa = new Mapa(20, 20);
 		Desfavorable unaSorpresaDesfavorable = new Desfavorable();
-		Esquina esquinaConSorpresa = unMapa.dameEsquina(new Posicion(3, 4));
+		Esquina esquinaConSorpresa = unMapa.devolverUnaEsquina(new Posicion(3, 4));
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaDesfavorable);
 		Jugador unJugador = new Jugador(new Auto(
-				unMapa.dameEsquina(new Posicion(11, 4))));
+				unMapa.devolverUnaEsquina(new Posicion(11, 4))));
 		unJugador.cambiarDireccion(new Arriba());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);

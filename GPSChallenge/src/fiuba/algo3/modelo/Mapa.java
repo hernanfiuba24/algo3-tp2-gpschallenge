@@ -10,30 +10,30 @@ public class Mapa {
 		columnas = columna;
 
 		tablero = new Esquina[fila][columna];
-		for (int i = 1; i <= dameFilas(); i++) {
-			for (int j = 1; j <= dameColumnas(); j++) {
+		for (int i = 1; i <= devolverFilas(); i++) {
+			for (int j = 1; j <= devolverColumnas(); j++) {
 				Posicion posicion = new Posicion(i, j);
 				Esquina esquina = new Esquina(posicion);
-				colocarEsquina(esquina, i, j);
+				agregarUnaEsquina(esquina, posicion);
 			}
 		}
 	}
 
-	public int dameFilas() {
+	public int devolverFilas() {
 		return this.filas;
 	}
 
-	public int dameColumnas() {
+	public int devolverColumnas() {
 		return this.columnas;
 	}
 
-	public Esquina dameEsquina(Posicion unaPosicion) {
+	public Esquina devolverUnaEsquina(Posicion unaPosicion) {
 		return tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
 				.devolverPosicionColumna() - 1];
 	}
 
-	public void colocarEsquina(Esquina unaEsquina, int fila, int columna) {
-		tablero[fila - 1][columna - 1] = unaEsquina;
+	public void agregarUnaEsquina(Esquina unaEsquina, Posicion unaPosicion) {
+		tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion.devolverPosicionColumna() - 1] = unaEsquina;
 	}
 
 }

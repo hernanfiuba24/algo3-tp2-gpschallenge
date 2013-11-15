@@ -28,7 +28,7 @@ public class Radar {
 		this.encenderVisibilidad(esquinaActual);
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
-				this.encenderVisibilidad(unMapa.dameEsquina(new Posicion(
+				this.encenderVisibilidad(unMapa.devolverUnaEsquina(new Posicion(
 						esquinaActual.devolverPosicion().devolverPosicionFila()
 								+ i, esquinaActual.devolverPosicion()
 								.devolverPosicionColumna() + j)));
@@ -40,7 +40,7 @@ public class Radar {
 		this.apagarVisibilidad(esquinaActual);
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
-				this.apagarVisibilidad(unMapa.dameEsquina(new Posicion(
+				this.apagarVisibilidad(unMapa.devolverUnaEsquina(new Posicion(
 						esquinaActual.devolverPosicion().devolverPosicionFila()
 								+ i, esquinaActual.devolverPosicion()
 								.devolverPosicionColumna() + j)));

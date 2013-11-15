@@ -10,15 +10,14 @@ import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 
 public abstract class Vehiculo implements Guardable<Vehiculo> {
-	protected int movimientosPermitidos;
+	final int movimientosPermitidos = 1;
 	protected Esquina esquinaActual;
 	protected Jugador jugadorAlQuePertenece;
 
 	public Vehiculo(Mapa unMapa) {
-		this.movimientosPermitidos = 1;
 		// En esta linea iria una funcion random que posicione el
 		// vehiculo en alguna esquina
-		this.esquinaActual = unMapa.dameEsquina(new Posicion(3, 3));
+		this.esquinaActual = unMapa.devolverUnaEsquina(new Posicion(3, 3));
 		Radar unRadar = new Radar(unMapa);
 		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 	}
@@ -27,7 +26,7 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 		this.esquinaActual = unaEsquina;
 	}
 
-	public void actualizarEsquina(Esquina nuevaEsquina) {
+	public void setearEsquina(Esquina nuevaEsquina) {
 		this.esquinaActual = nuevaEsquina;
 	}
 
@@ -54,9 +53,9 @@ public abstract class Vehiculo implements Guardable<Vehiculo> {
 				posicionActual.devolverPosicionColumna()
 						- unaDireccion.devolverY());
 
-		Esquina esquinaFutura = unMapa.dameEsquina(posicionFutura);
+		Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
 
-		esquinaFutura.colocarAuto(this);
+		esquinaFutura.colocarVehiculo(this);
 		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
 
 		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);

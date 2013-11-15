@@ -16,9 +16,9 @@ public class Esquina {
 		this.visibilidad = false;
 	}
 
-	public void colocarAuto(Vehiculo vehiculo) {
+	public void colocarVehiculo(Vehiculo vehiculo) {
 		this.unVehiculo = vehiculo;
-		vehiculo.actualizarEsquina(this);
+		vehiculo.setearEsquina(this);
 	}
 
 	public void borrarAuto() {
