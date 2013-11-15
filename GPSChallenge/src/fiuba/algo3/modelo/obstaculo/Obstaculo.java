@@ -8,18 +8,13 @@ import fiuba.algo3.modelo.vehiculo.Moto;
 public abstract class Obstaculo {
 
 	public void aplicar(Jugador unJugador) {
-
+		unJugador.devolverVehiculo().interactuarCon(this);
 	}
 
-	public void aplicar(Auto unAuto) {
-	}
+	public abstract void aplicar(Auto unAuto);
 
-	public void aplicar(Moto unaMoto) {
+	public abstract void aplicar(Moto unaMoto);
 
-	}
-
-	public void aplicar(Camioneta unaCamioneta) {
-
-	}
+	public abstract void aplicar(Camioneta unaCamioneta);
 
 }

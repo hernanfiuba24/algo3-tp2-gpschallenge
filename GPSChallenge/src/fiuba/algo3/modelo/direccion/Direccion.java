@@ -13,8 +13,6 @@ public abstract class Direccion {
 		return this.y;
 	}
 
-	public Direccion cambiarDireccionContraria() {
-		return null;		
-	}
+	public abstract Direccion cambiarDireccionContraria();
 	
 }

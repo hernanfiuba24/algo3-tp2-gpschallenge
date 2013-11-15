@@ -1,16 +1,11 @@
 package fiuba.algo3.modelo.obstaculo;
 
-import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 
 public class Pozo extends Obstaculo {
 
-	public void aplicar(Jugador unJugador){
-		unJugador.devolverVehiculo().interactuarCon(this);
-	}
-	
 	public void aplicar(Auto unAuto){
 		unAuto.devolverJugador().aumentarMovimientoHechos(3);
 	}
