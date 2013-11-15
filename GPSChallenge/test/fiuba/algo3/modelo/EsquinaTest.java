@@ -3,6 +3,8 @@ package fiuba.algo3.modelo;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import fiuba.algo3.modelo.obstaculo.Pozo;
@@ -45,4 +47,23 @@ public class EsquinaTest {
 		assertTrue(unaEsquina.getObstaculo() == unPozo);
 	}
 
+	@Test
+	public void testDeberiaDevolverPosicionesAdyacentesConUnRadio() {
+		int radio = 2;
+		Esquina unaEsquina = new Esquina(new Posicion(3, 4));
+		ArrayList<Posicion> unaListaDePosiciones = unaEsquina
+				.devolverPosicionesADistanciaDeRadio(radio);
+		int indice = 0;
+		for (int i = -2; i <= 2; i++) {
+			for (int j = -2; j <= 2; j++) {
+				assertTrue(unaListaDePosiciones.get(indice).equals(
+						new Posicion(unaEsquina.devolverPosicion()
+								.devolverPosicionFila() + i, unaEsquina
+								.devolverPosicion().devolverPosicionColumna()
+								+ j)));
+				indice++;
+			}
+		}
+
+	}
 }

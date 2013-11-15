@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+
 public class Radar {
 
 	private Mapa unMapa;
@@ -25,26 +27,16 @@ public class Radar {
 	}
 
 	public void encenderVisibilidadDosALaRedonda(Esquina esquinaActual) {
-		this.encenderVisibilidad(esquinaActual);
-		for (int i = -2; i <= 2; i++) {
-			for (int j = -2; j <= 2; j++) {
-				this.encenderVisibilidad(unMapa.devolverUnaEsquina(new Posicion(
-						esquinaActual.devolverPosicion().devolverPosicionFila()
-								+ i, esquinaActual.devolverPosicion()
-								.devolverPosicionColumna() + j)));
-			}
+		ArrayList<Posicion> listaDePosiciones = esquinaActual.devolverPosicionesADistanciaDeRadio(2);
+		for (int indice = 0; indice < listaDePosiciones.size(); indice++){
+			this.encenderVisibilidad(unMapa.devolverUnaEsquina(listaDePosiciones.get(indice)));
 		}
 	}
 	
 	public void apagarVisibilidadDosALaRedonda(Esquina esquinaActual) {
-		this.apagarVisibilidad(esquinaActual);
-		for (int i = -2; i <= 2; i++) {
-			for (int j = -2; j <= 2; j++) {
-				this.apagarVisibilidad(unMapa.devolverUnaEsquina(new Posicion(
-						esquinaActual.devolverPosicion().devolverPosicionFila()
-								+ i, esquinaActual.devolverPosicion()
-								.devolverPosicionColumna() + j)));
-			}
+		ArrayList<Posicion> listaDePosiciones = esquinaActual.devolverPosicionesADistanciaDeRadio(2);
+		for (int indice = 0; indice < listaDePosiciones.size(); indice++){
+			this.apagarVisibilidad(unMapa.devolverUnaEsquina(listaDePosiciones.get(indice)));
 		}
 	}
 }
