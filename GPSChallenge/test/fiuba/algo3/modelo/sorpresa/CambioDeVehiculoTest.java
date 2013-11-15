@@ -16,57 +16,54 @@ import fiuba.algo3.modelo.vehiculo.Moto;
 public class CambioDeVehiculoTest {
 
 	@Test
-	public void testDesfavorableDeberiaExistir() {
-		CambioDeVehiculo unCambioDeVehiculo = new CambioDeVehiculo();
-		assertTrue(unCambioDeVehiculo instanceof CambioDeVehiculo);
-	}
-	
-	@Test
-	public void testDeberiaCambiarDeAutoACamioneta(){
+	public void testDeberiaCambiarDeAutoACamioneta() {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
-		unMapa.devolverUnaEsquina(new Posicion(5,3)).colocarSorpresa(unaSorpresaCambioDeVehiculo);
+		unMapa.devolverUnaEsquina(new Posicion(5, 3)).colocarSorpresa(
+				unaSorpresaCambioDeVehiculo);
 		unJugador.cambiarDireccion(new Abajo());
-		
+
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		
+
 		assertTrue(unJugador.devolverVehiculo() instanceof Camioneta);
-		
+
 	}
-	
+
 	@Test
-	public void testDeberiaCambiarDeMotoAAuto(){
+	public void testDeberiaCambiarDeMotoAAuto() {
 		Mapa unMapa = new Mapa(12, 12);
 		Moto unaMoto = new Moto(unMapa);
 		Jugador unJugador = new Jugador(unaMoto);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
-		unMapa.devolverUnaEsquina(new Posicion(5,3)).colocarSorpresa(unaSorpresaCambioDeVehiculo);
+		unMapa.devolverUnaEsquina(new Posicion(5, 3)).colocarSorpresa(
+				unaSorpresaCambioDeVehiculo);
 		unJugador.cambiarDireccion(new Abajo());
-		
+
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		
+
 		assertTrue(unJugador.devolverVehiculo() instanceof Auto);
-		
+
 	}
-	
+
 	@Test
-	public void testDeberiaCambiarDeCamionetaAMoto(){
+	public void testDeberiaCambiarDeCamionetaAMoto() {
 		Mapa unMapa = new Mapa(12, 12);
 		Camioneta unaCamioneta = new Camioneta(unMapa);
 		Jugador unJugador = new Jugador(unaCamioneta);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
-		unMapa.devolverUnaEsquina(new Posicion(5,3)).colocarSorpresa(unaSorpresaCambioDeVehiculo);
+		unMapa.devolverUnaEsquina(new Posicion(5, 3)).colocarSorpresa(
+				unaSorpresaCambioDeVehiculo);
 		unJugador.cambiarDireccion(new Abajo());
-		
+
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		
+
 		assertTrue(unJugador.devolverVehiculo() instanceof Moto);
-		
+
 	}
 
 }

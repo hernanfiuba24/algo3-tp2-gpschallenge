@@ -13,12 +13,6 @@ import fiuba.algo3.modelo.vehiculo.Auto;
 public class EsquinaTest {
 
 	@Test
-	public void testEsquinaDeberiaExistir() {
-		Esquina unaEsquina = new Esquina(new Posicion(3, 2));
-		assertTrue(unaEsquina instanceof Esquina);
-	}
-
-	@Test
 	public void testDeberiaColocarUnAutoEnUnaEsquina() {
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);

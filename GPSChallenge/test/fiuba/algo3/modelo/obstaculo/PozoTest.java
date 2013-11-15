@@ -14,19 +14,14 @@ import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 
 public class PozoTest {
-	
-	@Test
-	public void testPozoDeberiaExistir() {
-		Pozo unPozo = new Pozo();
-		assertTrue(unPozo instanceof Pozo);
-	}
 
 	@Test
 	public void testDeberiaSumarleTresMovimientosAlAuto() {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
-		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
+				3));
 		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
 		esquinaConObstaculo.colocarObstaculo(unPozo);
@@ -37,13 +32,14 @@ public class PozoTest {
 		assertTrue(unJugador.devolverMovimientosHechos() == 5);
 
 	}
-	
+
 	@Test
 	public void testDeberiaSumarleTresMovimientosALaMoto() {
 		Mapa unMapa = new Mapa(12, 12);
 		Moto unaMoto = new Moto(unMapa);
 		Jugador unJugador = new Jugador(unaMoto);
-		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
+				3));
 		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
 		esquinaConObstaculo.colocarObstaculo(unPozo);
@@ -54,13 +50,14 @@ public class PozoTest {
 		assertTrue(unJugador.devolverMovimientosHechos() == 5);
 
 	}
-	
+
 	@Test
 	public void testNoDeberiaSumarleMovimientosALaCamioneta() {
 		Mapa unMapa = new Mapa(12, 12);
 		Camioneta unaCamioneta = new Camioneta(unMapa);
 		Jugador unJugador = new Jugador(unaCamioneta);
-		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5, 3));
+		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
+				3));
 		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
 		esquinaConObstaculo.colocarObstaculo(unPozo);

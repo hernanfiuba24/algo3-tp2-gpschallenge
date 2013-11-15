@@ -18,30 +18,25 @@ import fiuba.algo3.modelo.vehiculo.Moto;
 public class ControlPolicialTest {
 
 	@Test
-	public void testControlPolicialDeberiaExistir() {
-		ControlPolicial control = new ControlPolicial();
-		assertTrue(control instanceof ControlPolicial);
-	}
-	
-	@Test
 	public void testControlPolicialDeberiaSumarle3MovimientosAlAuto() {
 		ControlPolicial control = new ControlPolicial();
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
 		Jugador unJugador = new Jugador(unAuto);
 
-		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(10, 11));
+		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(10,
+				11));
 		esquinaConControl.colocarObstaculo(control);
 
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 
-		if(control.obtenerProbabilidad() <= 0.5){
+		if (control.obtenerProbabilidad() <= 0.5) {
 			assertTrue(unJugador.devolverMovimientosHechos() == 4);
-		}else{
-			assertTrue(unJugador.devolverMovimientosHechos() == 1);		
+		} else {
+			assertTrue(unJugador.devolverMovimientosHechos() == 1);
 		}
-			
+
 	}
 
 	@Test
@@ -51,41 +46,43 @@ public class ControlPolicialTest {
 		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
 		Jugador unJugador = new Jugador(unaMoto);
 
-		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(8, 10));
+		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(8,
+				10));
 		esquinaConControl.colocarObstaculo(control);
 
 		unJugador.cambiarDireccion(new Arriba());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 
-		if(control.obtenerProbabilidad() <= 0.8){
+		if (control.obtenerProbabilidad() <= 0.8) {
 			assertTrue(unJugador.devolverMovimientosHechos() == 5);
-		}else{
-			assertTrue(unJugador.devolverMovimientosHechos() == 2);		
-		}		
-		
+		} else {
+			assertTrue(unJugador.devolverMovimientosHechos() == 2);
+		}
+
 	}
 
 	@Test
 	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() {
 		ControlPolicial control = new ControlPolicial();
 		Mapa unMapa = new Mapa(20, 20);
-		Camioneta unaCamioneta = new Camioneta(unMapa.devolverUnaEsquina(new Posicion(
-				10, 10)));
+		Camioneta unaCamioneta = new Camioneta(
+				unMapa.devolverUnaEsquina(new Posicion(10, 10)));
 		Jugador unJugador = new Jugador(unaCamioneta);
 
-		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(13, 10));
+		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(13,
+				10));
 		esquinaConControl.colocarObstaculo(control);
 
 		unJugador.cambiarDireccion(new Abajo());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		
-		if(control.obtenerProbabilidad() <= 0.3){
+
+		if (control.obtenerProbabilidad() <= 0.3) {
 			assertTrue(unJugador.devolverMovimientosHechos() == 6);
-		}else{
-			assertTrue(unJugador.devolverMovimientosHechos() == 3);		
+		} else {
+			assertTrue(unJugador.devolverMovimientosHechos() == 3);
 		}
 
 	}

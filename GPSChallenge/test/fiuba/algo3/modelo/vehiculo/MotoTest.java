@@ -9,25 +9,19 @@ import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 
 public class MotoTest {
-	
-	@Test
-	public void testMotoDeberiaExistir() {
-		Moto unaMoto = new Moto(new Esquina(new Posicion(2,5) ) );
-		assertTrue(unaMoto instanceof Moto);
-	}
-
 
 	@Test
 	public void testDeberiaCrearseLaMotoConUnaEsquinaCuandoLoCreo() {
-		Mapa unMapa = new Mapa(8,8);
+		Mapa unMapa = new Mapa(8, 8);
 		Moto unaMoto = new Moto(unMapa);
 
-		assertTrue(unaMoto.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
+		assertTrue(unaMoto.devolverEsquina().devolverPosicion()
+				.equals(new Posicion(3, 3)));
 	}
-	
+
 	@Test
 	public void testDeberiaModificarseEsquinaCuandoActualizoPosicion() {
-		Mapa unMapa = new Mapa(8,8);
+		Mapa unMapa = new Mapa(8, 8);
 		Moto unaMoto = new Moto(unMapa);
 
 		Posicion posicionFinal = new Posicion(3, 3);
@@ -35,6 +29,7 @@ public class MotoTest {
 
 		unaMoto.setearEsquina(esquinaFinal);
 
-		assertTrue(unaMoto.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
+		assertTrue(unaMoto.devolverEsquina().devolverPosicion()
+				.equals(new Posicion(3, 3)));
 	}
 }

@@ -11,12 +11,6 @@ import fiuba.algo3.modelo.vehiculo.Auto;
 public class RadarTest {
 
 	@Test
-	public void testRadarDeberiaExistir() {
-		Radar unRadar = new Radar();
-		assertTrue(unRadar instanceof Radar);
-	}
-
-	@Test
 	public void testDeberiaCambiarEstadoDeVisibilidadDeUnaEsquina() {
 		Esquina unaEsquina = new Esquina(new Posicion(3, 2));
 		Radar unRadar = new Radar();
@@ -31,8 +25,9 @@ public class RadarTest {
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.devolverUnaEsquina(new Posicion(unAuto.devolverEsquina()
-								.devolverPosicion().devolverPosicionFila()
+						.devolverUnaEsquina(new Posicion(unAuto
+								.devolverEsquina().devolverPosicion()
+								.devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()
 								+ j)));
@@ -70,8 +65,9 @@ public class RadarTest {
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.devolverUnaEsquina(new Posicion(unAuto.devolverEsquina()
-								.devolverPosicion().devolverPosicionFila()
+						.devolverUnaEsquina(new Posicion(unAuto
+								.devolverEsquina().devolverPosicion()
+								.devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()
 								+ j)));
@@ -111,8 +107,9 @@ public class RadarTest {
 		for (int i = 3; i <= 5; i++) {
 			for (int j = 3; j <= 5; j++) {
 				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
-						.devolverUnaEsquina(new Posicion(unAuto.devolverEsquina()
-								.devolverPosicion().devolverPosicionFila()
+						.devolverUnaEsquina(new Posicion(unAuto
+								.devolverEsquina().devolverPosicion()
+								.devolverPosicionFila()
 								+ i, unAuto.devolverEsquina()
 								.devolverPosicion().devolverPosicionColumna()
 								+ j)));

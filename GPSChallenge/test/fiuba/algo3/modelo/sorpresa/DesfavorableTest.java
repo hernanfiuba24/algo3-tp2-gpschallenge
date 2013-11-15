@@ -15,16 +15,11 @@ import fiuba.algo3.modelo.vehiculo.Auto;
 public class DesfavorableTest {
 
 	@Test
-	public void testDesfavorableDeberiaExistir() {
-		Desfavorable unaDesfavorable = new Desfavorable();
-		assertTrue(unaDesfavorable instanceof Desfavorable);
-	}
-	
-	@Test
 	public void testDeberiaIncrementarDosMovimientoCuandoElJugadorSeMovio8vecesYEncuentraUnaSorpresaDesfavorableEnElUltimoMovimiento() {
 		Mapa unMapa = new Mapa(20, 20);
 		Desfavorable unaSorpresaDesfavorable = new Desfavorable();
-		Esquina esquinaConSorpresa = unMapa.devolverUnaEsquina(new Posicion(3, 4));
+		Esquina esquinaConSorpresa = unMapa.devolverUnaEsquina(new Posicion(3,
+				4));
 		esquinaConSorpresa.colocarSorpresa(unaSorpresaDesfavorable);
 		Jugador unJugador = new Jugador(new Auto(
 				unMapa.devolverUnaEsquina(new Posicion(11, 4))));
@@ -37,7 +32,7 @@ public class DesfavorableTest {
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
-		
+
 		assertTrue(unJugador.devolverMovimientosHechos() == (8 + (8 * 25 / 100)));
 	}
 }

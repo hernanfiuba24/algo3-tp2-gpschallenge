@@ -10,24 +10,19 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class AutoTest {
-	
-	@Test
-	public void testAutoDeberiaExistir() {
-		Auto unAuto = new Auto(new Esquina(new Posicion(2,5) ) );
-		assertTrue(unAuto instanceof Auto);
-	}
 
 	@Test
 	public void testDeberiaCrearseElAutoConUnaEsquinaCuandoLoCreo() {
-		Mapa unMapa = new Mapa(8,8);
+		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
 
-		assertTrue(unAuto.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
+		assertTrue(unAuto.devolverEsquina().devolverPosicion()
+				.equals(new Posicion(3, 3)));
 	}
 
 	@Test
 	public void testDeberiaModificarseEsquinaCuandoActualizoPosicion() {
-		Mapa unMapa = new Mapa(8,8);
+		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
 
 		Posicion posicionFinal = new Posicion(3, 3);
@@ -35,7 +30,8 @@ public class AutoTest {
 
 		unAuto.setearEsquina(esquinaFinal);
 
-		assertTrue(unAuto.devolverEsquina().devolverPosicion().equals(new Posicion(3,3)));
+		assertTrue(unAuto.devolverEsquina().devolverPosicion()
+				.equals(new Posicion(3, 3)));
 
 	}
 }
