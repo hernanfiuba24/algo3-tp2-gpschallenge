@@ -12,49 +12,64 @@ import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class EsquinaTest {
-
+	
+	Posicion unaPosicion = new Posicion(3, 3);
+	Esquina unaEsquina = new Esquina(unaPosicion);
+	
 	@Test
 	public void testDeberiaColocarUnAutoEnUnaEsquina() {
-		Esquina esquinaFutura = new Esquina(new Posicion(5, 5));
-		Auto unAuto = new Auto(esquinaFutura);
-		esquinaFutura.colocarVehiculo(unAuto);
-		assertTrue(esquinaFutura.devolverPosicion().equals(
+		Auto unAuto = new Auto(unaEsquina);
+		unaEsquina.colocarVehiculo(unAuto);
+		assertTrue(unaEsquina.devolverPosicion().equals(
 				unAuto.devolverEsquina().devolverPosicion()));
 	}
 
 	@Test
 	public void testDeberiaNoSerVisibleAlCrearse() {
-		Posicion unaPosicion = new Posicion(3, 3);
-		Esquina unaEsquina = new Esquina(unaPosicion);
+		assertFalse(unaEsquina.devolverVisibilidad());
+	}
+	
+	@Test 
+	public void testDeberiaTenerUnaPosicionAlCrearse() {
+		assertTrue(unaEsquina.devolverPosicion() == unaPosicion);
+		
+	}
+	
+	@Test
+	public void testDeberiaEncenderLaVisibilidad() {
+		unaEsquina.encenderVisibilidad();
+		assertTrue(unaEsquina.devolverVisibilidad());
+	}
+	
+	@Test
+	public void testDeberiaApagarLaVisibilidad() {
+		unaEsquina.apagarVisibilidad();
 		assertFalse(unaEsquina.devolverVisibilidad());
 	}
 
 	@Test
+	public void testDeberiaBorrarUnVehiculo() {
+		unaEsquina.borrarVehiculo();
+		assertTrue(unaEsquina.devolverVehiculo()== null);
+	}
+	
+	@Test
 	public void testDeberiaPoderColocarUnObstaculo() {
-		Posicion unaPosicion = new Posicion(3, 3);
-		Esquina unaEsquina = new Esquina(unaPosicion);
 		Pozo unPozo = new Pozo();
-
-		unaEsquina.colocarObstaculo(unPozo);
-
+        unaEsquina.colocarObstaculo(unPozo);
 		assertTrue(unaEsquina.devolverObstaculo() == unPozo);
 	}
 	
 	@Test
 	public void testDeberiaPoderColocarUnaSorpresa() {
-		Posicion unaPosicion = new Posicion(3, 3);
-		Esquina unaEsquina = new Esquina(unaPosicion);
 		Favorable unaSorpresaFavorable = new Favorable();
-
 		unaEsquina.colocarSorpresa(unaSorpresaFavorable);
-
 		assertTrue(unaEsquina.devolverSorpresa() == unaSorpresaFavorable);
 	}
 
 	@Test
 	public void testDeberiaDevolverPosicionesAdyacentesConUnRadio() {
 		int radio = 2;
-		Esquina unaEsquina = new Esquina(new Posicion(3, 4));
 		ArrayList<Posicion> unaListaDePosiciones = unaEsquina
 				.devolverPosicionesADistanciaDeRadio(radio);
 		int indice = 0;

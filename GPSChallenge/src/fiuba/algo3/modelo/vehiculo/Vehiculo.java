@@ -60,7 +60,7 @@ public abstract class Vehiculo {
 
 		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 
-		esquinaActual.borrarAuto();
+		esquinaActual.borrarVehiculo();
 	}
 
 	public Jugador devolverJugador() {

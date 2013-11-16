@@ -23,11 +23,11 @@ public class Esquina {
 		vehiculo.setearEsquina(this);
 	}
 
-	public void borrarAuto() {
+	public void borrarVehiculo() {
 		this.unVehiculo = null;
 	}
 
-	public Vehiculo obtenerAuto() {
+	public Vehiculo devolverVehiculo() {
 		return this.unVehiculo;
 	}
 
