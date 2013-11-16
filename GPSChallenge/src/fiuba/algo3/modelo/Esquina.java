@@ -66,7 +66,7 @@ public class Esquina {
 		this.unObstaculo = obstaculo;
 	}
 
-	public Obstaculo getObstaculo() {
+	public Obstaculo devolverObstaculo() {
 		return unObstaculo;
 	}
 
@@ -81,6 +81,10 @@ public class Esquina {
 			}
 		}
 		return PosicionesAdyacentes;
+	}
+
+	public Sorpresa devolverSorpresa() {
+		return this.unaSorpresa;
 	}
 
 }

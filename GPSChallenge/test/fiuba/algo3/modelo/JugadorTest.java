@@ -10,7 +10,6 @@ import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
-import fiuba.algo3.modelo.vehiculo.Camioneta;
 
 public class JugadorTest {
 	

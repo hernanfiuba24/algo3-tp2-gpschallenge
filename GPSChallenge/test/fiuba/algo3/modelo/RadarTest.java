@@ -38,6 +38,7 @@ public class RadarTest {
 		}
 	}
 
+	
 	@Test
 	public void testDeberianEstarPrendidaEsquinaAlJugar() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);

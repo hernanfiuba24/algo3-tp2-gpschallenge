@@ -7,18 +7,16 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.Pozo;
+import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class EsquinaTest {
 
 	@Test
-	public void testDeberiaColocarUnAutoEnUnaEsquina() throws ExcepcionEsquinaInvalida {
-		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa);
-
-		Esquina esquinaFutura = unMapa.devolverUnaEsquina(new Posicion(5, 5));
+	public void testDeberiaColocarUnAutoEnUnaEsquina() {
+		Esquina esquinaFutura = new Esquina(new Posicion(5, 5));
+		Auto unAuto = new Auto(esquinaFutura);
 		esquinaFutura.colocarVehiculo(unAuto);
 		assertTrue(esquinaFutura.devolverPosicion().equals(
 				unAuto.devolverEsquina().devolverPosicion()));
@@ -39,7 +37,18 @@ public class EsquinaTest {
 
 		unaEsquina.colocarObstaculo(unPozo);
 
-		assertTrue(unaEsquina.getObstaculo() == unPozo);
+		assertTrue(unaEsquina.devolverObstaculo() == unPozo);
+	}
+	
+	@Test
+	public void testDeberiaPoderColocarUnaSorpresa() {
+		Posicion unaPosicion = new Posicion(3, 3);
+		Esquina unaEsquina = new Esquina(unaPosicion);
+		Favorable unaSorpresaFavorable = new Favorable();
+
+		unaEsquina.colocarSorpresa(unaSorpresaFavorable);
+
+		assertTrue(unaEsquina.devolverSorpresa() == unaSorpresaFavorable);
 	}
 
 	@Test
