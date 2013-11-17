@@ -90,4 +90,58 @@ public class JugadorTest {
 			assertTrue(e instanceof ExcepcionEsquinaInvalida);
 		}
 	}
+	
+	@Test
+	public void testJugarDeberiaIncrementarEn1LosMovimientosHecho() throws ExcepcionEsquinaInvalida{
+		Mapa unMapa = new Mapa(8, 8);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		unJugador.cambiarDireccion(new Arriba());
+		
+		unJugador.jugar(unMapa);
+		
+		assertTrue(unJugador.devolverMovimientosHechos() == 1);
+		
+	}
+	
+	@Test
+	public void testCambiarDireccionDeberiaAsignarNuevaDireccionALaDireccionDelJugador() throws ExcepcionEsquinaInvalida{
+		Mapa unMapa = new Mapa(8, 8);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		unJugador.cambiarDireccion(new Arriba());
+		
+		assertTrue(unJugador.devolverDireccion() instanceof Arriba);
+	}
+	
+	@Test
+	public void testGuardarVehiculoDeberiaAsignarleElVehiculoAlJugador() throws ExcepcionEsquinaInvalida{
+		Mapa unMapa = new Mapa(8, 8);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		
+		assertTrue(unJugador.devolverVehiculo() == unAuto);
+	}
+	
+	@Test
+	public void testAumentarMovimientosHechosDeberiaSumarleLaCantidadPasadaALosMovimientosDelJugador() throws ExcepcionEsquinaInvalida{
+		Mapa unMapa = new Mapa(8, 8);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		unJugador.aumentarMovimientoHechos(5);
+		
+		assertTrue(unJugador.devolverMovimientosHechos() == 5);
+	}
+	
+	@Test
+	public void testCambiarDireccionContrariaDeberiaAsignarleLaDireccionOpuestaAlJugador() throws ExcepcionEsquinaInvalida{
+		Mapa unMapa = new Mapa(8, 8);
+		Auto unAuto = new Auto(unMapa);
+		Jugador unJugador = new Jugador(unAuto);
+		unJugador.cambiarDireccion(new Arriba());
+		
+		unJugador.cambiarDireccionContraria();
+		
+		assertTrue(unJugador.devolverDireccion() instanceof Abajo);
+	}
 }

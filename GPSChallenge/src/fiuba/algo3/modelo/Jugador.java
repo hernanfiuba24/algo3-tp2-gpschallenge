@@ -16,10 +16,6 @@ public class Jugador {
 		vehiculo.setearJugadorAlQuePertenece(this);
 	}
 
-	public Jugador() {
-		// Constructor creado solo para Test
-	}
-
 	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida {
 		this.movimientosHechos += 1;
 		unVehiculo.mover(unMapa, this.unaDireccion);
@@ -37,9 +33,9 @@ public class Jugador {
 		this.unaDireccion = direccion;
 	}
 
-	public void descontarMovimientos(int movimientosRestantes) {
+	public void descontarMovimientos(int movimientosARestar) {
 
-		this.movimientosHechos = this.movimientosHechos - movimientosRestantes;
+		this.movimientosHechos = this.movimientosHechos - movimientosARestar;
 
 	}
 
@@ -58,7 +54,7 @@ public class Jugador {
 	}
 
 	public void cambiarDireccionContraria() {
-		this.unaDireccion = this.unaDireccion.cambiarDireccionContraria();		
+		this.unaDireccion = this.unaDireccion.cambiarDireccionContraria();
 	}
 
 }
