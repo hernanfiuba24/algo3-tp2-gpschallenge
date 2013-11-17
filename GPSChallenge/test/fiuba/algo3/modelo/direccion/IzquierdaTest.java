@@ -15,5 +15,12 @@ public class IzquierdaTest {
 		assertTrue(unIzquierda.devolverX() == 0);
 		assertTrue(unIzquierda.devolverY() == 1);
 	}
+	
+	@Test
+	public void testCambiarDireccionContrariaDeberiaDevolverDerecha() {
+		Izquierda unaIzquierda = new Izquierda();
+
+		assertTrue(unaIzquierda.cambiarDireccionContraria() instanceof Derecha);
+	}
 
 }

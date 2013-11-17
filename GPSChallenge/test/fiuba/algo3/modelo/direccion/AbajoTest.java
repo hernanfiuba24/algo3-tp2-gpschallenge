@@ -13,4 +13,11 @@ public class AbajoTest {
 		assertTrue(unAbajo.devolverX() == -1);
 		assertTrue(unAbajo.devolverY() == 0);
 	}
+	
+	@Test
+	public void testCambiarDireccionContrariaDeberiaDevolverArriba() {
+		Abajo unAbajo = new Abajo();
+
+		assertTrue(unAbajo.cambiarDireccionContraria() instanceof Arriba);
+	}
 }
