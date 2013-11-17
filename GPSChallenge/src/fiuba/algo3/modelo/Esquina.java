@@ -96,5 +96,11 @@ public class Esquina {
 		this.unaSorpresa = null;
 
 	}
+	
+	public boolean equals(Esquina unaEsquina){
+		if((this.unaPosicion == unaEsquina.devolverPosicion()) && (this.unaSorpresa == unaEsquina.devolverSorpresa()) && (this.unObstaculo == unaEsquina.devolverObstaculo()) && (this.unVehiculo == unaEsquina.devolverVehiculo()) && (this.visibilidad == unaEsquina.devolverVisibilidad()))
+			return true;
+		return false;
+	}
 
 }

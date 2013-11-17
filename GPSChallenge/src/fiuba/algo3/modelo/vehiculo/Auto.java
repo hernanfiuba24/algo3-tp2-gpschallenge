@@ -15,7 +15,7 @@ public class Auto extends Vehiculo {
 		super(unaEsquina);
 	}
 
-	public void cambioVehiculo() {
+	public void cambioDeVehiculo() {
 		this.jugadorAlQuePertenece.guardarVehiculo(new Camioneta(
 				this.esquinaActual));
 	}

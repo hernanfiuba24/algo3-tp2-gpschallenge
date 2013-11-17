@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
@@ -33,6 +34,17 @@ public class CamionetaTest {
 		assertTrue(unaCamioneta.devolverEsquina().devolverPosicion()
 				.equals(new Posicion(3, 3)));
 
+	}
+	
+	@Test
+	public void testCambioDeVehiculoDeberiaCambiarCamionetaPorMoto() throws ExcepcionEsquinaInvalida{
+		Mapa unMapa = new Mapa(12, 12);
+		Camioneta unaCamioneta = new Camioneta(unMapa);
+		Jugador unJugador = new Jugador(unaCamioneta);
+		
+		unaCamioneta.cambioDeVehiculo();
+		
+		assertTrue(unJugador.devolverVehiculo() instanceof Moto);
 	}
 
 }

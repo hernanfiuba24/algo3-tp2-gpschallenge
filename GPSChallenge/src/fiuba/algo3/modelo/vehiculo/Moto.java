@@ -15,7 +15,7 @@ public class Moto extends Vehiculo {
 		super(unaEsquina);
 	}
 
-	public void cambioVehiculo() {
+	public void cambioDeVehiculo() {
 		this.jugadorAlQuePertenece
 				.guardarVehiculo(new Auto(this.esquinaActual));
 	}

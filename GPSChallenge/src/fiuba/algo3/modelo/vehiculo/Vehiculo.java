@@ -68,7 +68,7 @@ public abstract class Vehiculo {
 
 	}
 
-	public void cambioVehiculo() {
+	public void cambioDeVehiculo() {
 
 	}
 
