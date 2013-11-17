@@ -12,10 +12,10 @@ import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class EsquinaTest {
-	
+
 	Posicion unaPosicion = new Posicion(3, 3);
 	Esquina unaEsquina = new Esquina(unaPosicion);
-	
+
 	@Test
 	public void testDeberiaColocarUnAutoEnUnaEsquina() {
 		Auto unAuto = new Auto(unaEsquina);
@@ -28,19 +28,20 @@ public class EsquinaTest {
 	public void testDeberiaNoSerVisibleAlCrearse() {
 		assertFalse(unaEsquina.devolverVisibilidad());
 	}
-	
-	@Test 
+
+	@Test
 	public void testDeberiaTenerUnaPosicionAlCrearse() {
 		assertTrue(unaEsquina.devolverPosicion() == unaPosicion);
-		
+		assertTrue(unaEsquina.devolverPosicion() != null);
+
 	}
-	
+
 	@Test
 	public void testDeberiaEncenderLaVisibilidad() {
 		unaEsquina.encenderVisibilidad();
 		assertTrue(unaEsquina.devolverVisibilidad());
 	}
-	
+
 	@Test
 	public void testDeberiaApagarLaVisibilidad() {
 		unaEsquina.apagarVisibilidad();
@@ -50,21 +51,37 @@ public class EsquinaTest {
 	@Test
 	public void testDeberiaBorrarUnVehiculo() {
 		unaEsquina.borrarVehiculo();
-		assertTrue(unaEsquina.devolverVehiculo()== null);
+		assertTrue(unaEsquina.devolverVehiculo() == null);
 	}
-	
+
 	@Test
 	public void testDeberiaPoderColocarUnObstaculo() {
 		Pozo unPozo = new Pozo();
-        unaEsquina.colocarObstaculo(unPozo);
+		unaEsquina.colocarObstaculo(unPozo);
 		assertTrue(unaEsquina.devolverObstaculo() == unPozo);
 	}
-	
+
+	@Test
+	public void testDeberiaPoderEliminarUnObstaculo() {
+		Pozo unPozo = new Pozo();
+		unaEsquina.colocarObstaculo(unPozo);
+		unaEsquina.borrarObstaculo();
+		assertTrue(unaEsquina.devolverObstaculo() == null);
+	}
+
 	@Test
 	public void testDeberiaPoderColocarUnaSorpresa() {
 		Favorable unaSorpresaFavorable = new Favorable();
 		unaEsquina.colocarSorpresa(unaSorpresaFavorable);
 		assertTrue(unaEsquina.devolverSorpresa() == unaSorpresaFavorable);
+	}
+
+	@Test
+	public void testDeberiaPoderEliminarUnaSorpresa() {
+		Favorable unaSorpresaFavorable = new Favorable();
+		unaEsquina.colocarSorpresa(unaSorpresaFavorable);
+		unaEsquina.borrarSorpresa();
+		assertTrue(unaEsquina.devolverSorpresa() == null);
 	}
 
 	@Test

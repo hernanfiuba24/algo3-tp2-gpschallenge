@@ -40,7 +40,7 @@ public class Esquina {
 			this.unaSorpresa.aplicar(unJugador);
 		}
 		if (this.unObstaculo != null) {
-			//this.unObstaculo.aplicar(unJugador.devolverVehiculo());
+			// this.unObstaculo.aplicar(unJugador.devolverVehiculo());
 			unJugador.devolverVehiculo().interactuarCon(unObstaculo);
 		}
 	}
@@ -85,6 +85,16 @@ public class Esquina {
 
 	public Sorpresa devolverSorpresa() {
 		return this.unaSorpresa;
+	}
+
+	public void borrarObstaculo() {
+		this.unObstaculo = null;
+
+	}
+
+	public void borrarSorpresa() {
+		this.unaSorpresa = null;
+
 	}
 
 }
