@@ -55,7 +55,7 @@ public class PiqueteTest {
 		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,
 				3));
-		esquinaConObstaculo.colocarObstaculo(unPiquete);
+		esquinaConObstaculo.setearObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Abajo());
 
@@ -77,7 +77,7 @@ public class PiqueteTest {
 		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,
 				3));
-		esquinaConObstaculo.colocarObstaculo(unPiquete);
+		esquinaConObstaculo.setearObstaculo(unPiquete);
 
 		unJugador.cambiarDireccion(new Abajo());
 

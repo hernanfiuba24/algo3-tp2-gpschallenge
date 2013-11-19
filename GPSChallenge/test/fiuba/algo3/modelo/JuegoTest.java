@@ -16,8 +16,8 @@ public class JuegoTest {
 		Jugador unJugador = new Jugador(unaMoto);
 		Radar unRadar = new Radar(unMapa);
 		Juego unJuego = new Juego(unMapa, unJugador, unRadar);
-		assertTrue(unJuego.dameMapa() == unMapa);
-		assertTrue(unJuego.dameJugador() == unJugador);
-		assertTrue(unJuego.dameRadar() == unRadar);
+		assertTrue(unJuego.devolverMapa() == unMapa);
+		assertTrue(unJuego.devolverJugador() == unJugador);
+		assertTrue(unJuego.devolverRadar() == unRadar);
 	}
 }

@@ -25,7 +25,7 @@ public class PozoTest {
 				3));
 		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
-		esquinaConObstaculo.colocarObstaculo(unPozo);
+		esquinaConObstaculo.setearObstaculo(unPozo);
 
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -43,7 +43,7 @@ public class PozoTest {
 				3));
 		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
-		esquinaConObstaculo.colocarObstaculo(unPozo);
+		esquinaConObstaculo.setearObstaculo(unPozo);
 
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -61,7 +61,7 @@ public class PozoTest {
 				3));
 		unJugador.cambiarDireccion(new Abajo());
 		Pozo unPozo = new Pozo();
-		esquinaConObstaculo.colocarObstaculo(unPozo);
+		esquinaConObstaculo.setearObstaculo(unPozo);
 
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);

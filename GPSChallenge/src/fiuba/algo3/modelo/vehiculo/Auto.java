@@ -16,7 +16,7 @@ public class Auto extends Vehiculo {
 	}
 
 	public void cambioDeVehiculo() {
-		this.jugadorAlQuePertenece.guardarVehiculo(new Camioneta(
+		this.jugadorAlQuePertenece.setearVehiculo(new Camioneta(
 				this.esquinaActual));
 	}
 

@@ -39,7 +39,7 @@ public class Jugador {
 
 	}
 
-	public void guardarVehiculo(Vehiculo vehiculo) {
+	public void setearVehiculo(Vehiculo vehiculo) {
 		this.unVehiculo = vehiculo;
 		vehiculo.setearJugadorAlQuePertenece(this);
 	}

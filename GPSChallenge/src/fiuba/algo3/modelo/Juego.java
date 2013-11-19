@@ -12,15 +12,15 @@ public class Juego {
 		this.unRadar = radar;
 	}
 
-	public Mapa dameMapa() {
+	public Mapa devolverMapa() {
 		return this.unMapa;
 	}
 
-	public Jugador dameJugador() {
+	public Jugador devolverJugador() {
 		return this.unJugador;
 	}
 
-	public Radar dameRadar() {
+	public Radar devolverRadar() {
 		return this.unRadar;
 	}
 

@@ -21,7 +21,7 @@ public class FavorableTest {
 		Favorable unaSorpresaFavorable = new Favorable();
 		Esquina esquinaConSorpresa = unMapa.devolverUnaEsquina(new Posicion(3,
 				4));
-		esquinaConSorpresa.colocarSorpresa(unaSorpresaFavorable);
+		esquinaConSorpresa.setearSorpresa(unaSorpresaFavorable);
 
 		Esquina esquinaInicialAuto = unMapa.devolverUnaEsquina(new Posicion(8,
 				4));

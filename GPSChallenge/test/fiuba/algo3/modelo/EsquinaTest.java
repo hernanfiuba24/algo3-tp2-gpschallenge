@@ -19,7 +19,7 @@ public class EsquinaTest {
 	@Test
 	public void testDeberiaColocarUnAutoEnUnaEsquina() {
 		Auto unAuto = new Auto(unaEsquina);
-		unaEsquina.colocarVehiculo(unAuto);
+		unaEsquina.setearVehiculo(unAuto);
 		assertTrue(unaEsquina.devolverPosicion().equals(
 				unAuto.devolverEsquina().devolverPosicion()));
 	}
@@ -57,14 +57,14 @@ public class EsquinaTest {
 	@Test
 	public void testDeberiaPoderColocarUnObstaculo() {
 		Pozo unPozo = new Pozo();
-		unaEsquina.colocarObstaculo(unPozo);
+		unaEsquina.setearObstaculo(unPozo);
 		assertTrue(unaEsquina.devolverObstaculo() == unPozo);
 	}
 
 	@Test
 	public void testDeberiaPoderEliminarUnObstaculo() {
 		Pozo unPozo = new Pozo();
-		unaEsquina.colocarObstaculo(unPozo);
+		unaEsquina.setearObstaculo(unPozo);
 		unaEsquina.borrarObstaculo();
 		assertTrue(unaEsquina.devolverObstaculo() == null);
 	}
@@ -72,14 +72,14 @@ public class EsquinaTest {
 	@Test
 	public void testDeberiaPoderColocarUnaSorpresa() {
 		Favorable unaSorpresaFavorable = new Favorable();
-		unaEsquina.colocarSorpresa(unaSorpresaFavorable);
+		unaEsquina.setearSorpresa(unaSorpresaFavorable);
 		assertTrue(unaEsquina.devolverSorpresa() == unaSorpresaFavorable);
 	}
 
 	@Test
 	public void testDeberiaPoderEliminarUnaSorpresa() {
 		Favorable unaSorpresaFavorable = new Favorable();
-		unaEsquina.colocarSorpresa(unaSorpresaFavorable);
+		unaEsquina.setearSorpresa(unaSorpresaFavorable);
 		unaEsquina.borrarSorpresa();
 		assertTrue(unaEsquina.devolverSorpresa() == null);
 	}

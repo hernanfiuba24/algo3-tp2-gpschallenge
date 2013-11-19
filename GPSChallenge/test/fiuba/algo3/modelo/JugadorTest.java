@@ -162,8 +162,8 @@ public class JugadorTest {
 		Favorable unaSorpresaFavorable = new Favorable();
 		
 		Esquina unaEsquinaConSorpresaYObstaculo = unMapa.devolverUnaEsquina(new Posicion(2,3));
-		unaEsquinaConSorpresaYObstaculo.colocarObstaculo(unPozo);
-		unaEsquinaConSorpresaYObstaculo.colocarSorpresa(unaSorpresaFavorable);
+		unaEsquinaConSorpresaYObstaculo.setearObstaculo(unPozo);
+		unaEsquinaConSorpresaYObstaculo.setearSorpresa(unaSorpresaFavorable);
 		
 		unJugador.cambiarDireccion(new Arriba());
 		
@@ -184,8 +184,8 @@ public class JugadorTest {
 		CambioDeVehiculo unCambioDeVehiculo = new CambioDeVehiculo();
 		
 		Esquina unaEsquinaConSorpresaYObstaculo = unMapa.devolverUnaEsquina(new Posicion(2,3));
-		unaEsquinaConSorpresaYObstaculo.colocarObstaculo(unPiquete);
-		unaEsquinaConSorpresaYObstaculo.colocarSorpresa(unCambioDeVehiculo);
+		unaEsquinaConSorpresaYObstaculo.setearObstaculo(unPiquete);
+		unaEsquinaConSorpresaYObstaculo.setearSorpresa(unCambioDeVehiculo);
 		
 		unJugador.cambiarDireccion(new Arriba());
 		

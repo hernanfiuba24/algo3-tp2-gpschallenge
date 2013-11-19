@@ -55,7 +55,7 @@ public abstract class Vehiculo {
 						- unaDireccion.devolverY());
 
 		Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
-		esquinaFutura.colocarVehiculo(this);
+		esquinaFutura.setearVehiculo(this);
 		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
 
 		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);

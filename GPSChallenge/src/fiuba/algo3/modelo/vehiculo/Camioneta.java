@@ -17,7 +17,7 @@ public class Camioneta extends Vehiculo {
 
 	public void cambioDeVehiculo() {
 		this.jugadorAlQuePertenece
-				.guardarVehiculo(new Moto(this.esquinaActual));
+				.setearVehiculo(new Moto(this.esquinaActual));
 	}
 
 	public void interactuarCon(Obstaculo obstaculo) {

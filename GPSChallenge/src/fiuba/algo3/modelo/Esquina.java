@@ -18,7 +18,7 @@ public class Esquina {
 		this.visibilidad = false;
 	}
 
-	public void colocarVehiculo(Vehiculo vehiculo) {
+	public void setearVehiculo(Vehiculo vehiculo) {
 		this.unVehiculo = vehiculo;
 		vehiculo.setearEsquina(this);
 	}
@@ -45,7 +45,7 @@ public class Esquina {
 		}
 	}
 
-	public void colocarSorpresa(Sorpresa sorpresa) {
+	public void setearSorpresa(Sorpresa sorpresa) {
 		this.unaSorpresa = sorpresa;
 	}
 
@@ -62,7 +62,7 @@ public class Esquina {
 		return this.visibilidad;
 	}
 
-	public void colocarObstaculo(Obstaculo obstaculo) {
+	public void setearObstaculo(Obstaculo obstaculo) {
 		this.unObstaculo = obstaculo;
 	}
 

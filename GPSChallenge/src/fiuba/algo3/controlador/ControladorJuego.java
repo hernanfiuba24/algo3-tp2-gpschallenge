@@ -20,9 +20,9 @@ public class ControladorJuego {
 	
 	private class EscuchaBotonDerecha implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.dameJugador().cambiarDireccion(new Derecha());
+			GPSChallenge.devolverJugador().cambiarDireccion(new Derecha());
 			try {
-				GPSChallenge.dameJugador().jugar(GPSChallenge.dameMapa());
+				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
 			}
 		}
@@ -34,9 +34,9 @@ public class ControladorJuego {
 	
 	private class EscuchaBotonArriba implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.dameJugador().cambiarDireccion(new Arriba());
+			GPSChallenge.devolverJugador().cambiarDireccion(new Arriba());
 			try {
-				GPSChallenge.dameJugador().jugar(GPSChallenge.dameMapa());
+				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
 			}
 		}
@@ -48,9 +48,9 @@ public class ControladorJuego {
 	
 	private class EscuchaBotonIzquierda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.dameJugador().cambiarDireccion(new Izquierda());
+			GPSChallenge.devolverJugador().cambiarDireccion(new Izquierda());
 			try {
-				GPSChallenge.dameJugador().jugar(GPSChallenge.dameMapa());
+				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
 			}
 		}
@@ -62,9 +62,9 @@ public class ControladorJuego {
 	
 	private class EscuchaBotonAbajo implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.dameJugador().cambiarDireccion(new Abajo());
+			GPSChallenge.devolverJugador().cambiarDireccion(new Abajo());
 			try {
-				GPSChallenge.dameJugador().jugar(GPSChallenge.dameMapa());
+				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
 			}
 		}
