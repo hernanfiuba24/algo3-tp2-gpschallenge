@@ -41,7 +41,7 @@ public class Jugador {
 
 	public void guardarVehiculo(Vehiculo vehiculo) {
 		this.unVehiculo = vehiculo;
-
+		vehiculo.setearJugadorAlQuePertenece(this);
 	}
 
 	public void aumentarMovimientoHechos(int cantidad) {
