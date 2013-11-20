@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
-public class Juego extends Observado {
+public class Juego {
 
 	private Mapa unMapa;
 	private Radar unRadar;
