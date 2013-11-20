@@ -22,6 +22,7 @@ public class VentanaJuego extends JFrame {
 	private JPanel contentPane;
 	private PanelMapa panelMapa;
 	private final Action action = new SwingAction();
+	private boolean seGuardoJuego = false;
 
 
 	/**
@@ -93,50 +94,56 @@ public class VentanaJuego extends JFrame {
 		btnAbajo.setBounds(92, 602, 141, 52);
 		contentPane.add(btnAbajo);
 
-		JButton btnNewButton = new JButton(new ImageIcon(
+		JButton btnSalirMapa = new JButton(new ImageIcon(
 				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonSalirMapa.png")));
-		btnNewButton.setBorder(BorderFactory.createEmptyBorder());
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		btnSalirMapa.setBorder(BorderFactory.createEmptyBorder());
+		btnSalirMapa.setContentAreaFilled(false);
+		btnSalirMapa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int eleccion = JOptionPane.showConfirmDialog(null,
+				int eleccion = 0;
+				if (!seGuardoJuego){
+					eleccion = JOptionPane.showConfirmDialog(null,
 						"Desea salir sin guardar?");
+				}
 				if (eleccion == 0) {
 					JOptionPane.showMessageDialog(null,
 							"Saliendo del GPSChallenge...");
 					System.exit(0);
 				}
+				
 			}
 		});
-		btnNewButton.setBounds(456, 609, 140, 46);
-		contentPane.add(btnNewButton);
+		btnSalirMapa.setBounds(456, 609, 140, 46);
+		contentPane.add(btnSalirMapa);
 
-		JButton btnNewButton_1 = new JButton(new ImageIcon(
+		JButton btnMenuMapa = new JButton(new ImageIcon(
 				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonMenuMapa.png")));
-		btnNewButton_1.setBorder(BorderFactory.createEmptyBorder());
-		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnMenuMapa.setBorder(BorderFactory.createEmptyBorder());
+		btnMenuMapa.setContentAreaFilled(false);
+		btnMenuMapa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				VentanaPpal unaVentanaPpal = new VentanaPpal();
 				unaVentanaPpal.setVisible(true);
 			}
 		});
-		btnNewButton_1.setBounds(456, 566, 141, 46);
-		contentPane.add(btnNewButton_1);
+		btnMenuMapa.setBounds(456, 566, 141, 46);
+		contentPane.add(btnMenuMapa);
 
-		JButton btnNewButton_2 = new JButton(new ImageIcon(
+		JButton btnGuardarMapa = new JButton(new ImageIcon(
 				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonGuardarMapa.png")));
-		btnNewButton_2.setBorder(BorderFactory.createEmptyBorder());
-		btnNewButton_2.setContentAreaFilled(false);
-		btnNewButton_2.addActionListener(new ActionListener() {
+		btnGuardarMapa.setBorder(BorderFactory.createEmptyBorder());
+		btnGuardarMapa.setContentAreaFilled(false);
+		btnGuardarMapa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//EN ESTA PARTE SE LLAMARIA AL METODO QUE SE ENCARGA DE LA PERSISITENCIA
+				seGuardoJuego = true;
 				JOptionPane.showMessageDialog(null, "Guardando partida...");
 			}
 		});
-		btnNewButton_2.setBounds(456, 523, 141, 46);
-		contentPane.add(btnNewButton_2);
+		btnGuardarMapa.setBounds(456, 523, 141, 46);
+		contentPane.add(btnGuardarMapa);
 
 		// panel_2.setBackgroundImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Samsung\\EclipseWorkspace\\GPSChallenge\\images\\bgImage.jpg"));
 	}
