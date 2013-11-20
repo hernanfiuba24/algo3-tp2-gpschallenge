@@ -42,7 +42,7 @@ public class VentanaJuego extends JFrame {
 		btnArriba.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelMapa.moverIzquierda();
+				panelMapa.moverArriba();
 			}
 		});
 		btnArriba.setBounds(98, 512, 126, 52);
