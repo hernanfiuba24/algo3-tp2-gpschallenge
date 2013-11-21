@@ -1,8 +1,10 @@
 package fiuba.algo3.vista;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,10 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class VentanaJuego extends JFrame {
+public class VentanaJuego extends JFrame implements KeyListener {
 
 	private JPanel contentPane;
 	private PanelMapa panelMapa;
@@ -35,6 +36,10 @@ public class VentanaJuego extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		addKeyListener(this);
+		setFocusable(true);
+		
 
 		JButton btnArriba = new JButton(new ImageIcon(
 				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonArriba.png")));
@@ -156,6 +161,37 @@ public class VentanaJuego extends JFrame {
 
 		public void actionPerformed(ActionEvent e) {
 		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		switch (e.getKeyCode()){
+			case KeyEvent.VK_UP:
+				panelMapa.moverArriba();
+				break;
+			case KeyEvent.VK_DOWN:
+				panelMapa.moverAbajo();
+				break;
+			case KeyEvent.VK_RIGHT:
+				panelMapa.moverDerecha();
+				break;
+			case KeyEvent.VK_LEFT:
+				panelMapa.moverIzquierda();
+				break;
+		}	
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

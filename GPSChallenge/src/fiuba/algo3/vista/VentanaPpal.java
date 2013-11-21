@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -84,6 +86,19 @@ public class VentanaPpal extends JFrame {
 			}
 		});
 		contentPane.add(btnSalir);
+		
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				switch (e.getKeyCode()){
+					case KeyEvent.VK_RIGHT:
+						VentanaJuego unaVentanaJuego = new VentanaJuego();
+						unaVentanaJuego.setVisible(true);
+						dispose();
+				}
+				
+			}
+		});
 	}
 
 }

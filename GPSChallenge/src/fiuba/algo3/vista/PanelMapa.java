@@ -2,13 +2,18 @@ package fiuba.algo3.vista;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class PanelMapa extends JPanel {
+public class PanelMapa extends JPanel /*implements KeyListener */{
 
 	private JLabel auto;
 	//private ImageIcon bgImage;
@@ -18,6 +23,9 @@ public class PanelMapa extends JPanel {
 	public PanelMapa(){
 		
 		setLayout(null);
+		//addKeyListener(this);
+		//setFocusable(true);
+		//setFocusTraversalKeysEnabled(false);
 		
 		auto = new JLabel("");
 		auto.setIcon(new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/car.png")));
@@ -141,4 +149,23 @@ public class PanelMapa extends JPanel {
 		posX-=142;
 		repaint();
 	}
+
+
+/*	@Override
+	public void keyPressed(KeyEvent arg0) {
+	
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		switch (arg0.getKeyCode()){
+			case KeyEvent.VK_RIGHT:
+				moverDerecha();
+		}		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		
+	}*/
 }
