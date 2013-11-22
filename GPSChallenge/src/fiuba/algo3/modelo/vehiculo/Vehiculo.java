@@ -15,8 +15,6 @@ public abstract class Vehiculo {
 	protected Jugador jugadorAlQuePertenece;
 
 	public Vehiculo(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-		// En esta linea iria una funcion random que posicione el
-		// vehiculo en alguna esquina
 		this.esquinaActual = unMapa.devolverUnaEsquina(new Posicion(3, 3));
 		Radar unRadar = new Radar(unMapa);
 		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);
@@ -34,7 +32,7 @@ public abstract class Vehiculo {
 		return esquinaActual;
 	}
 
-	public int movimientos() {
+	public int movimientosPorTurno() {
 		return movimientosPermitidos;
 	}
 
