@@ -2,6 +2,8 @@ package fiuba.algo3.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.direccion.Abajo;
@@ -10,7 +12,7 @@ import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 
-public class ControladorJuego {
+public class ControladorJuego implements Observer {
 	
 	private Juego GPSChallenge;
 	
@@ -72,6 +74,21 @@ public class ControladorJuego {
 	
 	public ActionListener getListenerBotonAbajo() {
 		return new EscuchaBotonAbajo();
+	}
+
+	public int devolverDimensionMapaFila() {
+		int dimensionFila = this.GPSChallenge.devolverMapaFila();
+		return dimensionFila;
+	}
+	
+	public int devolverDimensionMapaColumna(){
+		int dimensionColumna = this.GPSChallenge.devolverMapaColumna();
+		return dimensionColumna;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+				
 	}
 	
 }
