@@ -49,7 +49,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		setFocusable(true);
 		
 		panelMapa = new PanelMapa(this.unControladorJuego.devolverDimensionMapaFila(), this.unControladorJuego.devolverDimensionMapaColumna());
-		panelMapa.setBounds(5, 5, 600, 768);
+		panelMapa.setBounds(5, 5, 660, 730);    
 //		panelMapa.dibujarMapa(unControladorJuego.devolverDimensionMapaFila(), unControladorJuego.devolverDimensionMapaColumna());
 		contentPane.add(panelMapa);
 		panelMapa.setLayout(null);
