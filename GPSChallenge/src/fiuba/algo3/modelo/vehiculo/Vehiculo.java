@@ -66,12 +66,8 @@ public abstract class Vehiculo {
 
 	}
 
-	public void cambioDeVehiculo() {
+	public abstract void cambioDeVehiculo();
 
-	}
-
-	public void interactuarCon(Obstaculo obstaculo) {
-
-	}
+	public abstract void interactuarCon(Obstaculo obstaculo);
 
 }
