@@ -46,12 +46,8 @@ public abstract class Vehiculo {
 		unRadar.apagarVisibilidadDosALaRedonda(this.esquinaActual);
 
 		Posicion posicionActual = this.devolverEsquina().devolverPosicion();
-		Posicion posicionFutura = new Posicion(
-				posicionActual.devolverPosicionFila()
-						- unaDireccion.devolverX(),
-				posicionActual.devolverPosicionColumna()
-						- unaDireccion.devolverY());
-
+		Posicion posicionFutura = posicionActual.calcularPosicionSiguiente(unaDireccion);
+		
 		Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
 		esquinaFutura.setearVehiculo(this);
 		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);

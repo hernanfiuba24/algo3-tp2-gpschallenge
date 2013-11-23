@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.direccion.Direccion;
+
 public class Posicion {
 	private int fila;
 	private int columna;
@@ -22,6 +24,11 @@ public class Posicion {
 		(this.devolverPosicionColumna() == unaPosicion.devolverPosicionColumna()))
 			return true;
 		return false;
+	}
+
+	public Posicion calcularPosicionSiguiente(Direccion unaDireccion) {
+		Posicion unaPosicion = new Posicion(this.devolverPosicionFila() - unaDireccion.devolverX(), this.devolverPosicionColumna() - unaDireccion.devolverY());
+		return unaPosicion;
 	}
 
 }
