@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo.obstaculo;
 
 
-public class RandomizadorTest extends RandomizadorImplementacion{
+public class RandomizadorTesteador extends RandomizadorImplementacion{
 	
 	  private double random;
 
@@ -13,5 +13,5 @@ public class RandomizadorTest extends RandomizadorImplementacion{
       public double obtenerNumeroRandom() {
         return this.random;
       }
-
+      
 }

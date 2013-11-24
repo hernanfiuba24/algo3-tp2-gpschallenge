@@ -21,7 +21,7 @@ public class ControlPolicialTest {
 	@Test
 	public void testControlPolicialDeberiaSumarle3MovimientosAlAuto() throws ExcepcionEsquinaInvalida {
 		
-		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.5);
 				
 		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
@@ -44,7 +44,7 @@ public class ControlPolicialTest {
 	@Test
 	public void testControlPolicialDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida {
 		
-		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.8);
 		
 		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
@@ -68,7 +68,7 @@ public class ControlPolicialTest {
 	@Test
 	public void testControlPolicialNoDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida {
 		
-		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.9);
 		
 		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
@@ -92,7 +92,7 @@ public class ControlPolicialTest {
 	@Test
 	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {		
 		
-		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.3);
 		
 		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
@@ -118,7 +118,7 @@ public class ControlPolicialTest {
 	@Test
 	public void testControlPolicialNoDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {		
 		
-		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.7);
 		
 		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
