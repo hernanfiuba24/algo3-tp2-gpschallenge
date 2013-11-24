@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
@@ -33,6 +34,10 @@ public class Juego extends Observado {
 	
 	public int devolverMapaColumna(){
 		return this.unMapa.devolverColumnas();
+	}
+
+	public void moverJugadorEnDireccion(Direccion unaDireccion) {
+		this.unJugador.cambiarDireccion(unaDireccion);
 	}
 
 }

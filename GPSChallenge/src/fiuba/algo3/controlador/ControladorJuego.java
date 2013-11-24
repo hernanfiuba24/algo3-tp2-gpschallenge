@@ -22,8 +22,8 @@ public class ControladorJuego implements Observer {
 	
 	private class EscuchaBotonDerecha  implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//SIMPLIFICAR ESTO, ROMPE ENCAPSULAMIENTO
-			GPSChallenge.devolverJugador().cambiarDireccion(new Derecha());
+			GPSChallenge.moverJugadorEnDireccion(new Derecha());
+			//GPSChallenge.devolverJugador().cambiarDireccion(new Derecha());
 			try {
 				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
@@ -37,8 +37,7 @@ public class ControladorJuego implements Observer {
 	
 	private class EscuchaBotonArriba implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//SIMPLIFICAR ESTO, ROMPE ENCAPSULAMIENTO
-			GPSChallenge.devolverJugador().cambiarDireccion(new Arriba());
+			GPSChallenge.moverJugadorEnDireccion(new Arriba());
 			try {
 				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
@@ -52,8 +51,7 @@ public class ControladorJuego implements Observer {
 	
 	private class EscuchaBotonIzquierda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//SIMPLIFICAR ESTO, ROMPE ENCAPSULAMIENTO
-			GPSChallenge.devolverJugador().cambiarDireccion(new Izquierda());
+			GPSChallenge.moverJugadorEnDireccion(new Izquierda());
 			try {
 				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
@@ -68,7 +66,7 @@ public class ControladorJuego implements Observer {
 	private class EscuchaBotonAbajo implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			//SIMPLIFICAR ESTO, ROMPE ENCAPSULAMIENTO
-			GPSChallenge.devolverJugador().cambiarDireccion(new Abajo());
+			GPSChallenge.moverJugadorEnDireccion(new Abajo());
 			try {
 				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
 			} catch (ExcepcionEsquinaInvalida e1) {
