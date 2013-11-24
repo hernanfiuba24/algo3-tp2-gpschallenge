@@ -34,9 +34,7 @@ public class Jugador {
 	}
 
 	public void descontarMovimientos(int movimientosARestar) {
-
 		this.movimientosHechos = this.movimientosHechos - movimientosARestar;
-
 	}
 
 	public void setearVehiculo(Vehiculo vehiculo) {
