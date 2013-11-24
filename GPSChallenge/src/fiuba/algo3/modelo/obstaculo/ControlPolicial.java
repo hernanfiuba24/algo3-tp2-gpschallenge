@@ -5,28 +5,25 @@ import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 
 public class ControlPolicial extends Obstaculo {
+
+	private RandomizadorImplementacion randomizador;
 	
-	private double probabilidad;
-	
-	public double obtenerProbabilidad(){
-		return this.probabilidad;
+	public ControlPolicial(RandomizadorImplementacion unRandomizadorImplementacion){
+		this.randomizador = unRandomizadorImplementacion;
 	}
 
 	public void aplicar(Auto unAuto) {
-		this.probabilidad = Math.random();
-		if (this.probabilidad <= 0.5)
+		if (this.randomizador.obtenerNumeroRandom() <= 0.5)
 			unAuto.devolverJugador().aumentarMovimientoHechos(3);
 	}
 
 	public void aplicar(Moto unaMoto) {
-		this.probabilidad = Math.random();
-		if (this.probabilidad <= 0.8)
+		if (this.randomizador.obtenerNumeroRandom() <= 0.8)
 			unaMoto.devolverJugador().aumentarMovimientoHechos(3);
 	}
 
 	public void aplicar(Camioneta unaCamioneta) {
-		this.probabilidad = Math.random();
-		if (this.probabilidad <= 0.3)
+		if (this.randomizador.obtenerNumeroRandom() <= 0.3)
 			unaCamioneta.devolverJugador().aumentarMovimientoHechos(3);
 	}
 }

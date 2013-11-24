@@ -20,29 +20,35 @@ public class ControlPolicialTest {
 
 	@Test
 	public void testControlPolicialDeberiaSumarle3MovimientosAlAuto() throws ExcepcionEsquinaInvalida {
-		ControlPolicial control = new ControlPolicial();
+		
+		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		unRandomizadorTest.numeroRandomADevolver(0.5);
+				
+		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
+		
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
 		Jugador unJugador = new Jugador(unAuto);
 
-		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(10,
-				11));
+		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(10, 11));
 		esquinaConControl.setearObstaculo(control);
 
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 
-		if (control.obtenerProbabilidad() <= 0.5) {
-			assertTrue(unJugador.devolverMovimientosHechos() == 4);
-		} else {
-			assertTrue(unJugador.devolverMovimientosHechos() == 1);
-		}
+		assertTrue(unJugador.devolverMovimientosHechos() == 4);
+	
 
 	}
 
 	@Test
 	public void testControlPolicialDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida {
-		ControlPolicial control = new ControlPolicial();
+		
+		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		unRandomizadorTest.numeroRandomADevolver(0.8);
+		
+		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
+				
 		Mapa unMapa = new Mapa(20, 20);
 		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
 		Jugador unJugador = new Jugador(unaMoto);
@@ -55,17 +61,42 @@ public class ControlPolicialTest {
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 
-		if (control.obtenerProbabilidad() <= 0.8) {
-			assertTrue(unJugador.devolverMovimientosHechos() == 5);
-		} else {
-			assertTrue(unJugador.devolverMovimientosHechos() == 2);
-		}
+		assertTrue(unJugador.devolverMovimientosHechos() == 5);
+	
+	}
+	
+	@Test
+	public void testControlPolicialNoDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida {
+		
+		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		unRandomizadorTest.numeroRandomADevolver(0.9);
+		
+		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
+				
+		Mapa unMapa = new Mapa(20, 20);
+		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
+		Jugador unJugador = new Jugador(unaMoto);
 
+		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(8,
+				10));
+		esquinaConControl.setearObstaculo(control);
+
+		unJugador.cambiarDireccion(new Arriba());
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+
+		assertTrue(unJugador.devolverMovimientosHechos() == 2);
+	
 	}
 
 	@Test
-	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {
-		ControlPolicial control = new ControlPolicial();
+	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {		
+		
+		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		unRandomizadorTest.numeroRandomADevolver(0.3);
+		
+		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
+		
 		Mapa unMapa = new Mapa(20, 20);
 		Camioneta unaCamioneta = new Camioneta(
 				unMapa.devolverUnaEsquina(new Posicion(10, 10)));
@@ -80,11 +111,33 @@ public class ControlPolicialTest {
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
 
-		if (control.obtenerProbabilidad() <= 0.3) {
-			assertTrue(unJugador.devolverMovimientosHechos() == 6);
-		} else {
-			assertTrue(unJugador.devolverMovimientosHechos() == 3);
-		}
+		assertTrue(unJugador.devolverMovimientosHechos() == 6);
+
+	}
+	
+	@Test
+	public void testControlPolicialNoDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {		
+		
+		RandomizadorTest unRandomizadorTest = new RandomizadorTest();
+		unRandomizadorTest.numeroRandomADevolver(0.7);
+		
+		ControlPolicial control = new ControlPolicial(unRandomizadorTest);
+		
+		Mapa unMapa = new Mapa(20, 20);
+		Camioneta unaCamioneta = new Camioneta(
+				unMapa.devolverUnaEsquina(new Posicion(10, 10)));
+		Jugador unJugador = new Jugador(unaCamioneta);
+
+		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(13,
+				10));
+		esquinaConControl.setearObstaculo(control);
+
+		unJugador.cambiarDireccion(new Abajo());
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+		unJugador.jugar(unMapa);
+
+		assertTrue(unJugador.devolverMovimientosHechos() == 3);
 
 	}
 
