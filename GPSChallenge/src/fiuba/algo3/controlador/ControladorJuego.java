@@ -5,29 +5,37 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JOptionPane;
+
 import fiuba.algo3.modelo.Juego;
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.vista.PanelMapa;
 
 public class ControladorJuego implements Observer {
 	
 	private Juego GPSChallenge;
+	private PanelMapa panelMapa;
 	
-	public ControladorJuego(Juego unGPSChallenge){
+	public ControladorJuego(Juego unGPSChallenge, PanelMapa unPanelMapa) throws ExcepcionEsquinaInvalida{
 		this.GPSChallenge = unGPSChallenge;
+		this.panelMapa = unPanelMapa;
+		this.GPSChallenge.addObserver(this);
+		
+		GPSChallenge.setearPosicionInicial();
 	}
 	
-	private class EscuchaBotonDerecha  implements ActionListener {
+	/*private class EscuchaBotonDerecha implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.moverJugadorEnDireccion(new Derecha());
-			//GPSChallenge.devolverJugador().cambiarDireccion(new Derecha());
-			try {
-				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
-			} catch (ExcepcionEsquinaInvalida e1) {
-			}
+			GPSChallenge.jugar(new Derecha());
+//			try {
+//				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
+//			} catch (ExcepcionEsquinaInvalida e1) {
+//			}
 		}
 	}
 	
@@ -37,11 +45,7 @@ public class ControladorJuego implements Observer {
 	
 	private class EscuchaBotonArriba implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.moverJugadorEnDireccion(new Arriba());
-			try {
-				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
-			} catch (ExcepcionEsquinaInvalida e1) {
-			}
+			GPSChallenge.jugar(new Arriba());
 		}
 	}
 	
@@ -51,11 +55,7 @@ public class ControladorJuego implements Observer {
 	
 	private class EscuchaBotonIzquierda implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.moverJugadorEnDireccion(new Izquierda());
-			try {
-				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
-			} catch (ExcepcionEsquinaInvalida e1) {
-			}
+			GPSChallenge.jugar(new Izquierda());
 		}
 	}
 	
@@ -65,18 +65,13 @@ public class ControladorJuego implements Observer {
 	
 	private class EscuchaBotonAbajo implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			//SIMPLIFICAR ESTO, ROMPE ENCAPSULAMIENTO
-			GPSChallenge.moverJugadorEnDireccion(new Abajo());
-			try {
-				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
-			} catch (ExcepcionEsquinaInvalida e1) {
-			}
+			GPSChallenge.jugar(new Abajo());
 		}
 	}
 	
 	public ActionListener getListenerBotonAbajo() {
 		return new EscuchaBotonAbajo();
-	}
+	}*/
 
 	public int devolverDimensionMapaFila() {
 		int dimensionFila = this.GPSChallenge.devolverMapaFila();
@@ -90,7 +85,9 @@ public class ControladorJuego implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-				
+		//actualizarVista
+		//hacer observable a obstaculo y sorpresa
+			this.panelMapa.dibujarVehiculo((Posicion) arg);
 	}
 	
 }

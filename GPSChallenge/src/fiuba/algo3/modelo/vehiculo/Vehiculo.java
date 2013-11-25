@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.vehiculo;
 
+import javax.swing.JOptionPane;
+
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
@@ -51,6 +53,7 @@ public abstract class Vehiculo {
 		Posicion posicionFutura = posicionActual.calcularPosicionSiguiente(unaDireccion);
 		
 		Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
+		
 		esquinaFutura.setearVehiculo(this);
 		esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
 		
@@ -58,6 +61,8 @@ public abstract class Vehiculo {
 //		unCambiador.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 
 		esquinaActual.borrarVehiculo();
+		//JOptionPane.showMessageDialog(null, this.esquinaActual.devolverPosicion().devolverPosicionFila() );
+		//JOptionPane.showMessageDialog(null, this.esquinaActual.devolverPosicion().devolverPosicionColumna() );
 	}
 
 	public Jugador devolverJugador() {

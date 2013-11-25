@@ -3,6 +3,7 @@ package fiuba.algo3.vista;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -16,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import javax.swing.JLabel;
 
 public class VentanaPpal extends JFrame {
 
@@ -100,6 +102,12 @@ public class VentanaPpal extends JFrame {
 			}
 		});
 		contentPane.add(btnSalir);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(VentanaPpal.class.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
+		lblNewLabel.setBounds(0, 0, 434, 261);
+		contentPane.add(lblNewLabel);
+		
 
 		addKeyListener(new KeyAdapter() {
 			@Override
@@ -120,5 +128,4 @@ public class VentanaPpal extends JFrame {
 			}
 		});
 	}
-
 }

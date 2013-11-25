@@ -2,17 +2,14 @@ package fiuba.algo3.vista;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.GridLayout;
+
+import fiuba.algo3.modelo.Posicion;
 
 public class PanelMapa extends JPanel /* implements KeyListener */{
 
@@ -26,7 +23,7 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		// addKeyListener(this);
 		// setFocusable(true);
 		// setFocusTraversalKeysEnabled(false);
-
+		
 		auto = new JLabel("");
 		auto.setIcon(new ImageIcon(PanelMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
@@ -44,7 +41,7 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		// g.drawImage(bgImage.getImage(), 0, 0, getWidth(), getHeight(), this);
 		// setOpaque(false);
 		super.paintComponent(g);
-		auto.setBounds(posX, posY, 32, 38);
+		//auto.setBounds(posX, posY, 32, 38);
 		// g.fillRect(posX, posY, 20, 20);
 	}
 
@@ -86,16 +83,18 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		}
 	}
 
-	/*
-	 * @Override public void keyPressed(KeyEvent arg0) {
-	 * 
-	 * }
-	 * 
-	 * @Override public void keyReleased(KeyEvent arg0) { switch
-	 * (arg0.getKeyCode()){ case KeyEvent.VK_RIGHT: moverDerecha(); } }
-	 * 
-	 * @Override public void keyTyped(KeyEvent arg0) {
-	 * 
-	 * }
-	 */
+	public void dibujarVehiculo(Posicion unaPosicion){
+		int fila = unaPosicion.devolverPosicionFila();
+		int columna = unaPosicion.devolverPosicionColumna();
+		
+		auto.setBounds( (columna-1)*(40+35), (fila-1)*(40+40), 32, 38);
+		repaint();
+	}
+	
+	//actualizarVista
+	//dibujar vehiculo
+	//actualizar puntuacion
+	//actualizar movimientos
+	//tengo que tener lista de obstaculos en panel mapa
+	
 }
