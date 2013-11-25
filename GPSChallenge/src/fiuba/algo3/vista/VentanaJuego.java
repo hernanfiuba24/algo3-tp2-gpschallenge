@@ -54,60 +54,6 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		contentPane.add(panelMapa);
 		panelMapa.setLayout(null);
 
-//
-//		JButton btnArriba = new JButton(new ImageIcon(
-//				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonArriba.png")));
-//		btnArriba.setBorder(BorderFactory.createEmptyBorder());
-//		btnArriba.setContentAreaFilled(false);
-//		btnArriba.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				panelMapa.moverArriba();
-//			}
-//		});
-//		btnArriba.setBounds(98, 512, 126, 52);
-//		contentPane.add(btnArriba);
-//		
-//		
-//		JButton btnIzquierda = new JButton(new ImageIcon(
-//				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonIzquierda.png")));
-//		btnIzquierda.setBorder(BorderFactory.createEmptyBorder());
-//		btnIzquierda.setContentAreaFilled(false);
-//		btnIzquierda.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				panelMapa.moverIzquierda();
-//			}
-//		});
-//		btnIzquierda.setBounds(30, 557, 126, 52);
-//		contentPane.add(btnIzquierda);
-//
-//		JButton btnDerecha = new JButton(new ImageIcon(
-//				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonDerecha.png")));
-//		btnDerecha.setBorder(BorderFactory.createEmptyBorder());
-//		btnDerecha.setContentAreaFilled(false);
-//		btnDerecha.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				panelMapa.moverDerecha();
-//			}
-//		});
-//		btnDerecha.setBounds(161, 555, 134, 57);
-//		contentPane.add(btnDerecha);
-//
-//		JButton btnAbajo = new JButton(new ImageIcon(
-//				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonAbajo.png")));
-//		btnAbajo.setBorder(BorderFactory.createEmptyBorder());
-//		btnAbajo.setContentAreaFilled(false);
-//		btnAbajo.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				panelMapa.moverAbajo();
-//			}
-//		});
-//		btnAbajo.setBounds(92, 602, 141, 52);
-//		contentPane.add(btnAbajo);
-
 		JButton btnSalirMapa = new JButton(new ImageIcon(
 				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonSalirMapa.png")));
 		btnSalirMapa.setBorder(BorderFactory.createEmptyBorder());
