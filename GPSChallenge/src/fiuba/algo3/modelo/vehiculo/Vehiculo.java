@@ -4,7 +4,7 @@ import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
-import fiuba.algo3.modelo.Radar;
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
@@ -16,8 +16,8 @@ public abstract class Vehiculo {
 
 	public Vehiculo(Mapa unMapa) throws ExcepcionEsquinaInvalida {
 		this.esquinaActual = unMapa.devolverUnaEsquina(new Posicion(3, 3));
-		Radar unRadar = new Radar(unMapa);
-		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
+		unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 	}
 
 	public Vehiculo(Esquina unaEsquina) {
@@ -42,17 +42,20 @@ public abstract class Vehiculo {
 
 	public void mover(Mapa unMapa, Direccion unaDireccion)
 			throws ExcepcionEsquinaInvalida {
-		Radar unRadar = new Radar(unMapa);
-		unRadar.apagarVisibilidadDosALaRedonda(this.esquinaActual);
+		
+		this.jugadorAlQuePertenece.apagarVisibilidadDosALaRedonda(unMapa);
+//		CambiadorDeVisibilidad unCambiador = new CambiadorDeVisibilidad(unMapa);
+//		unCambiador.apagarVisibilidadDosALaRedonda(this.esquinaActual);
 
 		Posicion posicionActual = this.devolverEsquina().devolverPosicion();
 		Posicion posicionFutura = posicionActual.calcularPosicionSiguiente(unaDireccion);
 		
 		Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
 		esquinaFutura.setearVehiculo(this);
-		esquinaFutura.chequearExtras(this.jugadorAlQuePertenece);
-
-		unRadar.encenderVisibilidadDosALaRedonda(this.esquinaActual);
+		esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
+		
+		this.jugadorAlQuePertenece.encenderVisibilidadDosALaRedonda(unMapa);
+//		unCambiador.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 
 		esquinaActual.borrarVehiculo();
 	}

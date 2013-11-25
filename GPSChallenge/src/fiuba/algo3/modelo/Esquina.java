@@ -35,7 +35,7 @@ public class Esquina {
 		return this.unaPosicion;
 	}
 
-	public void chequearExtras(Jugador unJugador) {
+	public void aplicarExtras(Jugador unJugador) {
 		if (this.unaSorpresa != null) {
 			this.unaSorpresa.aplicar(unJugador);
 		}

@@ -13,6 +13,5 @@ public class JuegoTest {
 		Juego unJuego = new Juego();
 		assertTrue(unJuego.devolverMapa() instanceof Mapa);
 		assertTrue(unJuego.devolverJugador() instanceof Jugador);
-		assertTrue(unJuego.devolverRadar() instanceof Radar);
 	}
 }

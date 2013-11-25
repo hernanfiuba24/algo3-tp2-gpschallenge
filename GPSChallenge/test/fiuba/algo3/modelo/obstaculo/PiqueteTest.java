@@ -8,7 +8,7 @@ import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
-import fiuba.algo3.modelo.Radar;
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
@@ -71,7 +71,7 @@ public class PiqueteTest {
 	public void testElAutoDeberiaTenerLaVisibilidadCorrectaAlVolverALaPosicionOriginal()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
-		Radar unRadar = new Radar(unMapa);
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
@@ -85,7 +85,7 @@ public class PiqueteTest {
 
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
-				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
+				boolean visibilidad = unEncendedor.devolverVisibilidad(unMapa
 						.devolverUnaEsquina(new Posicion(unAuto
 								.devolverEsquina().devolverPosicion()
 								.devolverPosicionFila()

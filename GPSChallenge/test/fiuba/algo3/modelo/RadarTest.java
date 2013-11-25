@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
@@ -12,21 +14,14 @@ import fiuba.algo3.modelo.vehiculo.Auto;
 public class RadarTest {
 
 	@Test
-	public void testDeberiaCambiarEstadoDeVisibilidadDeUnaEsquina() {
-		Esquina unaEsquina = new Esquina(new Posicion(3, 2));
-		Radar unRadar = new Radar();
-		unRadar.encenderVisibilidad(unaEsquina);
-	}
-
-	@Test
 	public void testDeberiaPrenderDosEsquinasALaRedondaAlCrearseElAuto()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(7, 7);
-		Radar unRadar = new Radar(unMapa);
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
-				boolean visibilidad = unRadar.devolverVisibilidad(unMapa
+				boolean visibilidad = unEncendedor.devolverVisibilidad(unMapa
 						.devolverUnaEsquina(new Posicion(unAuto
 								.devolverEsquina().devolverPosicion()
 								.devolverPosicionFila()
@@ -59,7 +54,7 @@ public class RadarTest {
 	public void testDeberianPrenderseLasEsquinas2ALaRedondaLuegoDelMovimientoDelAuto()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(3, 6);
-		Radar unRadar = new Radar(unMapa);
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		unJugador.cambiarDireccion(new Derecha());
@@ -74,7 +69,7 @@ public class RadarTest {
 						.devolverPosicionColumna()
 						+ j);
 				if (unMapa.existeEsquina(unaPosicion)) {
-					boolean visibilidad = unRadar.devolverVisibilidad(unMapa
+					boolean visibilidad = unEncendedor.devolverVisibilidad(unMapa
 							.devolverUnaEsquina(unaPosicion));
 					assertTrue(visibilidad == true);
 				}
@@ -106,7 +101,7 @@ public class RadarTest {
 	public void testDeberianApagarseEsquinasConDistanciaMayorQueDosALaRedonda()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(4, 4);
-		Radar unRadar = new Radar(unMapa);
+		ApagadorDeVisibilidad unApagador= new ApagadorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
 		Jugador unJugador = new Jugador(unAuto);
 		unJugador.cambiarDireccion(new Derecha());
@@ -119,7 +114,7 @@ public class RadarTest {
 						.devolverPosicionColumna()
 						+ j);
 				if (unMapa.existeEsquina(unaPosicion)) {
-					boolean visibilidad = unRadar.devolverVisibilidad(unMapa
+					boolean visibilidad = unApagador.devolverVisibilidad(unMapa
 							.devolverUnaEsquina(unaPosicion));
 					assertTrue(visibilidad == false);
 				}
@@ -161,10 +156,11 @@ public class RadarTest {
 	public void testApagarVisibilidadDeberiaApagarLaEsquina() {
 		Mapa unMapa = new Mapa(8, 8);
 		Esquina unaEsquina = new Esquina(new Posicion(5, 5));
-		Radar unRadar = new Radar(unMapa);
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
+		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
 
-		unRadar.encenderVisibilidad(unaEsquina);
-		unRadar.apagarVisibilidad(unaEsquina);
+		unEncendedor.encenderVisibilidad(unaEsquina);
+		unApagador.apagarVisibilidad(unaEsquina);
 
 		assertTrue(unaEsquina.devolverVisibilidad() == false);
 	}
@@ -173,9 +169,9 @@ public class RadarTest {
 	public void testEncenderVisibilidadDeberiaEncenderLaEsquina() {
 		Mapa unMapa = new Mapa(8, 8);
 		Esquina unaEsquina = new Esquina(new Posicion(5, 5));
-		Radar unRadar = new Radar(unMapa);
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 
-		unRadar.encenderVisibilidad(unaEsquina);
+		unEncendedor.encenderVisibilidad(unaEsquina);
 
 		assertTrue(unaEsquina.devolverVisibilidad() == true);
 	}
