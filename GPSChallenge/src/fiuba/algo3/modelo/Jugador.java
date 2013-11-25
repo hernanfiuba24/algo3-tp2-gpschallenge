@@ -20,7 +20,7 @@ public class Jugador {
 
 	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida {
 		this.movimientosHechos += 1;
-		unVehiculo.mover(unMapa, this.unaDireccion);
+		unVehiculo.mover(unMapa, this.unaDireccion);		
 	}
 
 	public int devolverMovimientosHechos() {
