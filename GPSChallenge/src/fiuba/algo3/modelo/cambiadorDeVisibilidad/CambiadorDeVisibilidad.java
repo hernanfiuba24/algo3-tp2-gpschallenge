@@ -24,7 +24,7 @@ public abstract class CambiadorDeVisibilidad {
 	private ArrayList<Posicion> devolverPosicionesARadioDeEsquina(int unRadio,
 			Esquina unaEsquina) {
 		ArrayList<Posicion> posicionesRadioUnRadio = unaEsquina
-				.devolverPosicionesADistanciaDeRadio(2);
+				.devolverPosicionesADistanciaDeRadio(unRadio);
 		return posicionesRadioUnRadio;
 	}
 	
