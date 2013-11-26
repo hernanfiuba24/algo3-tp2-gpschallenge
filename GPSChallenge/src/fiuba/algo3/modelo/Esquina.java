@@ -103,4 +103,14 @@ public class Esquina {
 		return false;
 	}
 
+	public boolean tieneExtras() {
+		if(this.unaSorpresa != null){
+			return true;
+		}
+		if(this.unObstaculo != null){
+			return true;
+		}
+		return false;
+	}
+
 }

@@ -87,7 +87,8 @@ public class ControladorJuego implements Observer {
 	public void update(Observable o, Object arg) {
 		//actualizarVista
 		//hacer observable a obstaculo y sorpresa
-			this.panelMapa.dibujarVehiculo((Posicion) arg);
+		this.panelMapa.dibujarExtras();
+		this.panelMapa.dibujarVehiculo((Posicion) arg);
 	}
-	
 }
+

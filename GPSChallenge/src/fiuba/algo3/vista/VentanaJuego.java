@@ -29,6 +29,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 
 	private JPanel contentPane;
 	private PanelMapa panelMapa;
+	private JPanel panelObstaculos;
 	private final Action action = new SwingAction();
 	private boolean seGuardoJuego = false;
     private ControladorJuego unControladorJuego;
@@ -51,10 +52,14 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		setFocusable(true);
 		this.unJuego = new Juego();
 		
-		panelMapa = new PanelMapa(this.unJuego.devolverMapaFila(), this.unJuego.devolverMapaColumna());
+		panelMapa = new PanelMapa(this.unJuego.devolverMapa());
 		panelMapa.setBounds(5, 5, 660, 730);    
 		contentPane.add(panelMapa);
 		panelMapa.setLayout(null);
+		
+		panelObstaculos = new JPanel();
+		panelObstaculos.setOpaque(false);
+		panelObstaculos.setBounds(5, 5, 660, 730);
 		
 		this.unControladorJuego = new ControladorJuego(this.unJuego, panelMapa);
 

@@ -9,28 +9,52 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.obstaculo.ControlPolicial;
+import fiuba.algo3.modelo.obstaculo.Obstaculo;
+import fiuba.algo3.modelo.obstaculo.Piquete;
+import fiuba.algo3.modelo.obstaculo.Pozo;
+import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
+import fiuba.algo3.modelo.sorpresa.Desfavorable;
+import fiuba.algo3.modelo.sorpresa.Favorable;
+import fiuba.algo3.modelo.sorpresa.Sorpresa;
 
 public class PanelMapa extends JPanel /* implements KeyListener */{
 
 	private JLabel auto;
-	// private ImageIcon bgImage;
-	private int posX = 0;
-	private int posY = 0;
+	private JPanel panelObstaculos;
+	private Mapa unMapa;
+	private int cantidadFilas;
+	private int cantidadColumnas;
 
-	public PanelMapa(int dimensionFila, int dimensionColumna){
+	public PanelMapa(Mapa unMapa){
+		this.unMapa = unMapa;
+		this.cantidadFilas = unMapa.devolverFilas();
+		this.cantidadColumnas = unMapa.devolverColumnas();
+		
+		//this.setBackground(new Color(4));
 		setLayout(new GridLayout(0, 1, 0, 0));
 		// addKeyListener(this);
 		// setFocusable(true);
 		// setFocusTraversalKeysEnabled(false);
 		
+
+		panelObstaculos = new JPanel();
+		panelObstaculos.setOpaque(false);
+		panelObstaculos.setBounds(0, 0, 660, 730);
+        panelObstaculos.setLayout(null);
+        //panelObstaculos.setComponentZOrder(panelObstaculos, 1);
+		this.add(panelObstaculos, new Integer(1));
+		
 		auto = new JLabel("");
 		auto.setIcon(new ImageIcon(PanelMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
 		auto.setBackground(new Color(0, 0, 139));
-		add(auto);
+		this.add(auto, new Integer(2));
 		
-		this.dibujarMapa(dimensionFila, dimensionColumna);
+		this.dibujarMapa(cantidadFilas, cantidadColumnas);
 
 	}
 
@@ -43,26 +67,6 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		super.paintComponent(g);
 		//auto.setBounds(posX, posY, 32, 38);
 		// g.fillRect(posX, posY, 20, 20);
-	}
-
-	public void moverArriba() {
-		posY -= 80;
-		repaint();
-	}
-
-	public void moverAbajo() {
-		posY += 80;
-		repaint();
-	}
-
-	public void moverDerecha() {
-		posX += 75;
-		repaint();
-	}
-
-	public void moverIzquierda() {
-		posX -= 75;
-		repaint();
 	}
 
 	public void dibujarMapa(int dimensionFila, int dimensionColumna) {
@@ -89,6 +93,70 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		
 		auto.setBounds( (columna-1)*(40+35), (fila-1)*(40+40), 32, 38);
 		repaint();
+	}
+	
+	public void dibujarExtras() {		
+		panelObstaculos.removeAll();              
+        for(int i = 1; i <= cantidadFilas; i++) {
+        	for(int j = 1; j <= cantidadColumnas; j++) {
+        		try {
+					if(unMapa.devolverUnaEsquina(new Posicion(i,j)).tieneExtras()){
+						Obstaculo unObstaculo = unMapa.devolverUnaEsquina(new Posicion(i,j)).devolverObstaculo();
+						if (unObstaculo instanceof Pozo){
+							JLabel iconoObstaculo = new JLabel();
+							iconoObstaculo.setIcon(new ImageIcon(PanelMapa.class
+									.getResource("/fiuba/algo3/vista/imagenes/pozo.png")));  
+							iconoObstaculo.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
+					        panelObstaculos.add(iconoObstaculo);
+						}else{
+							if (unObstaculo instanceof ControlPolicial){
+								JLabel iconoObstaculo = new JLabel();
+								iconoObstaculo.setIcon(new ImageIcon(PanelMapa.class
+										.getResource("/fiuba/algo3/vista/imagenes/policia.png")));  
+								iconoObstaculo.setBounds((j-1)*(40+35), (i-1)*(40+40), 35, 35);        
+						        panelObstaculos.add(iconoObstaculo);
+							}
+							else{
+								if (unObstaculo instanceof Piquete){
+									JLabel iconoObstaculo = new JLabel();
+									iconoObstaculo.setIcon(new ImageIcon(PanelMapa.class
+											.getResource("/fiuba/algo3/vista/imagenes/piquete.png")));  
+									iconoObstaculo.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
+								    panelObstaculos.add(iconoObstaculo);
+								}
+							}
+						}
+						Sorpresa unaSorpresa = unMapa.devolverUnaEsquina(new Posicion(i,j)).devolverSorpresa();
+						if (unaSorpresa instanceof Desfavorable){
+							JLabel iconoSorpresa = new JLabel();
+							iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
+									.getResource("/fiuba/algo3/vista/imagenes/desfavorable.png")));  
+							iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
+					        panelObstaculos.add(iconoSorpresa);
+						}else{
+							if (unaSorpresa instanceof Favorable){
+								JLabel iconoSorpresa = new JLabel();
+								iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
+										.getResource("/fiuba/algo3/vista/imagenes/favorable.png")));  
+								iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
+						        panelObstaculos.add(iconoSorpresa);
+							}
+							else{
+								if (unaSorpresa instanceof CambioDeVehiculo){
+									JLabel iconoSorpresa = new JLabel();
+									iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
+											.getResource("/fiuba/algo3/vista/imagenes/cambioVehiculo.png")));  
+									iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
+								    panelObstaculos.add(iconoSorpresa);
+								}
+							}
+						}
+					}
+				} catch (ExcepcionEsquinaInvalida e) {
+				}        	
+        	}
+        }
+        repaint();
 	}
 	
 	//actualizarVista
