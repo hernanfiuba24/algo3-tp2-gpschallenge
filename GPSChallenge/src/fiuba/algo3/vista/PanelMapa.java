@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
@@ -20,10 +21,14 @@ import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
 import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
+import fiuba.algo3.modelo.vehiculo.Auto;
+import fiuba.algo3.modelo.vehiculo.Camioneta;
+import fiuba.algo3.modelo.vehiculo.Moto;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class PanelMapa extends JPanel /* implements KeyListener */{
 
-	private JLabel auto;
+	private JLabel vehiculo;
 	private JPanel panelObstaculos;
 	private Mapa unMapa;
 	private int cantidadFilas;
@@ -48,11 +53,9 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
         //panelObstaculos.setComponentZOrder(panelObstaculos, 1);
 		this.add(panelObstaculos, new Integer(1));
 		
-		auto = new JLabel("");
-		auto.setIcon(new ImageIcon(PanelMapa.class
-				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
-		auto.setBackground(new Color(0, 0, 139));
-		this.add(auto, new Integer(2));
+		vehiculo = new JLabel("");
+		vehiculo.setBackground(new Color(0, 0, 139));
+		this.add(vehiculo);
 		
 		this.dibujarMapa(cantidadFilas, cantidadColumnas);
 
@@ -87,11 +90,30 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		}
 	}
 
-	public void dibujarVehiculo(Posicion unaPosicion){
-		int fila = unaPosicion.devolverPosicionFila();
-		int columna = unaPosicion.devolverPosicionColumna();
+	public void dibujarVehiculo(Jugador unJugador){
+		Vehiculo unVehiculo = unJugador.devolverVehiculo();
+		int fila = unJugador.devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila();
+		int columna = unJugador.devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna();
 		
-		auto.setBounds( (columna-1)*(40+35), (fila-1)*(40+40), 32, 38);
+		if (unVehiculo instanceof Auto){
+			vehiculo.setBounds( (columna-1)*(40+35), (fila-1)*(40+42), 40, 17);
+			vehiculo.setIcon(new ImageIcon(PanelMapa.class
+					.getResource("/fiuba/algo3/vista/imagenes/car.png")));
+		}else{
+			if (unVehiculo instanceof Moto){
+				vehiculo.setBounds( (columna-1)*(40+34), (fila-1)*(40+40), 40, 30);
+				vehiculo.setIcon(new ImageIcon(PanelMapa.class
+						.getResource("/fiuba/algo3/vista/imagenes/moto.png")));
+			}
+			else{
+				if (unVehiculo instanceof Camioneta){
+					vehiculo.setBounds( (columna-1)*(40+35), (fila-1)*(40+42), 40, 21);
+					vehiculo.setIcon(new ImageIcon(PanelMapa.class
+							.getResource("/fiuba/algo3/vista/imagenes/camioneta.png")));
+				}
+			}
+		}
+		add(vehiculo);
 		repaint();
 	}
 	

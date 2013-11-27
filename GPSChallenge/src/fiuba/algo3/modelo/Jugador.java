@@ -48,6 +48,10 @@ public class Jugador {
 		this.movimientosHechos = this.movimientosHechos + cantidad;
 
 	}
+	
+	public int devolverMovimientos(){
+		return this.movimientosHechos;
+	}
 
 	public Direccion devolverDireccion() {
 		return this.unaDireccion;

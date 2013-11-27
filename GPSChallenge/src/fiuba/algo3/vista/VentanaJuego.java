@@ -24,6 +24,10 @@ import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
 
 public class VentanaJuego extends JFrame implements KeyListener {
 
@@ -34,6 +38,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 	private boolean seGuardoJuego = false;
     private ControladorJuego unControladorJuego;
     private Juego unJuego;
+    private JTextField textField;
 
 	/**
 	 * Create the frame.
@@ -42,7 +47,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 	public VentanaJuego() throws ExcepcionEsquinaInvalida {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 768);
+		setBounds(100, 100, 881, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -61,7 +66,12 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		panelObstaculos.setOpaque(false);
 		panelObstaculos.setBounds(5, 5, 660, 730);
 		
-		this.unControladorJuego = new ControladorJuego(this.unJuego, panelMapa);
+		PanelInformacion panelInformacion = new PanelInformacion();
+		panelInformacion.setBounds(675, 5, 180, 713);
+		contentPane.add(panelInformacion);
+		panelInformacion.setLayout(null);
+		
+		this.unControladorJuego = new ControladorJuego(this.unJuego, panelMapa, panelInformacion);
 
 		JButton btnSalirMapa = new JButton(new ImageIcon(
 				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonSalirMapa.png")));
@@ -161,5 +171,4 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
