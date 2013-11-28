@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-public class AccionMenues  extends AbstractAction{ //Clase interna para los eventos de ratón en la barra de menúes.
+public class AccionMenues  extends AbstractAction{
 	
 	String cadena;
 	public AccionMenues(String cadena)
