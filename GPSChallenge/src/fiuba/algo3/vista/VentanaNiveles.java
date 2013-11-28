@@ -25,7 +25,7 @@ public class VentanaNiveles extends JFrame {
 	public VentanaNiveles() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 320);
 		getContentPane().setLayout(null);
 		
 		barraMenu = new Menu();
