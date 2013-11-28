@@ -74,7 +74,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		
 		this.unControladorJuego = new ControladorJuego(this.unJuego, panelMapa, panelInformacion);
 
-		JButton btnSalirMapa = new JButton(new ImageIcon(
+		/*JButton btnSalirMapa = new JButton(new ImageIcon(
 				VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/botonSalirMapa.png")));
 		btnSalirMapa.setBorder(BorderFactory.createEmptyBorder());
 		btnSalirMapa.setContentAreaFilled(false);
@@ -123,7 +123,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 			}
 		});
 		btnGuardarMapa.setBounds(456, 523, 141, 46);
-		contentPane.add(btnGuardarMapa);
+		contentPane.add(btnGuardarMapa);*/
 		
 
 		// panel_2.setBackgroundImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Samsung\\EclipseWorkspace\\GPSChallenge\\images\\bgImage.jpg"));

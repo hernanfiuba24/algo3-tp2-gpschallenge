@@ -4,9 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import fiuba.algo3.modelo.Juego;
@@ -27,10 +29,12 @@ import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
-public class PanelMapa extends JPanel /* implements KeyListener */{
+public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 
 	private JLabel vehiculo;
 	private JPanel panelObstaculos;
+	private JPanel panelBandera;
+	private JPanel panelVehiculo;
 	private Mapa unMapa;
 	private int cantidadFilas;
 	private int cantidadColumnas;
@@ -45,6 +49,7 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		
 		//this.setBackground(new Color(4));
 		setLayout(new GridLayout(0, 1, 0, 0));
+		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		// addKeyListener(this);
 		// setFocusable(true);
 		// setFocusTraversalKeysEnabled(false);
@@ -54,12 +59,23 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		panelObstaculos.setOpaque(false);
 		panelObstaculos.setBounds(0, 0, 660, 730);
         panelObstaculos.setLayout(null);
-        //panelObstaculos.setComponentZOrder(panelObstaculos, 1);
 		this.add(panelObstaculos, new Integer(1));
+		
+		panelBandera = new JPanel();
+		panelBandera.setOpaque(false);
+		panelBandera.setBounds(0, 0, 660, 730);
+		panelBandera.setLayout(null);
+		this.add(panelBandera, new Integer(3));
+		
+		panelVehiculo = new JPanel();
+		panelVehiculo.setOpaque(false);
+		panelVehiculo.setBounds(0, 0, 660, 730);
+		panelVehiculo.setLayout(null);
+		this.add(panelVehiculo, new Integer(4));
 		
 		vehiculo = new JLabel("");
 		vehiculo.setBackground(new Color(0, 0, 139));
-		this.add(vehiculo);
+		panelVehiculo.add(vehiculo);
 		
 		this.dibujarMapa(cantidadFilas, cantidadColumnas);
 		
@@ -92,7 +108,7 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 				btnEsquina.setBounds((tamanioEsquina*fila) + (anchoVehiculo*(fila+1)),
 						(tamanioEsquina*columna) + (altoVehiculo*(columna+1)), tamanioEsquina,
 						tamanioEsquina);
-				add(btnEsquina);
+				add(btnEsquina, new Integer(0));
 			}
 		}
 	}
@@ -120,7 +136,7 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 				}
 			}
 		}
-		add(vehiculo);
+		panelVehiculo.add(vehiculo);
 		repaint();
 	}
 	
@@ -132,9 +148,9 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
         			if (unMapa.devolverUnaEsquina(new Posicion(i,j)).tieneBandera()){
         				JLabel iconoBandera = new JLabel();
         				iconoBandera.setIcon(new ImageIcon(PanelMapa.class
-								.getResource("/fiuba/algo3/vista/imagenes/banderita.png")));  
-				        panelObstaculos.add(iconoBandera);
+								.getResource("/fiuba/algo3/vista/imagenes/bandera.png")));  
 				        iconoBandera.setBounds((j-1)*(40+35), (i-1)*(40+40), 45, 40);        
+				        panelBandera.add(iconoBandera);
         			}
 					if(unMapa.devolverUnaEsquina(new Posicion(i,j)).tieneExtras()){
 						Obstaculo unObstaculo = unMapa.devolverUnaEsquina(new Posicion(i,j)).devolverObstaculo();
@@ -143,14 +159,14 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 							iconoObstaculo.setIcon(new ImageIcon(PanelMapa.class
 									.getResource("/fiuba/algo3/vista/imagenes/pozo.png")));  
 							iconoObstaculo.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
-					        panelObstaculos.add(iconoObstaculo);
+					        panelObstaculos.add(iconoObstaculo, new Integer(1));
 						}else{
 							if (unObstaculo instanceof ControlPolicial){
 								JLabel iconoObstaculo = new JLabel();
 								iconoObstaculo.setIcon(new ImageIcon(PanelMapa.class
 										.getResource("/fiuba/algo3/vista/imagenes/policia.png")));  
 								iconoObstaculo.setBounds((j-1)*(40+35), (i-1)*(40+40), 35, 35);        
-						        panelObstaculos.add(iconoObstaculo);
+						        panelObstaculos.add(iconoObstaculo, new Integer(1));
 							}
 							else{
 								if (unObstaculo instanceof Piquete){
@@ -158,7 +174,7 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 									iconoObstaculo.setIcon(new ImageIcon(PanelMapa.class
 											.getResource("/fiuba/algo3/vista/imagenes/piquete.png")));  
 									iconoObstaculo.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
-								    panelObstaculos.add(iconoObstaculo);
+								    panelObstaculos.add(iconoObstaculo, new Integer(1));
 								}
 							}
 						}
@@ -168,14 +184,14 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 							iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
 									.getResource("/fiuba/algo3/vista/imagenes/desfavorable.png")));  
 							iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
-					        panelObstaculos.add(iconoSorpresa);
+					        panelObstaculos.add(iconoSorpresa, new Integer(1));
 						}else{
 							if (unaSorpresa instanceof Favorable){
 								JLabel iconoSorpresa = new JLabel();
 								iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
 										.getResource("/fiuba/algo3/vista/imagenes/favorable.png")));  
 								iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
-						        panelObstaculos.add(iconoSorpresa);
+						        panelObstaculos.add(iconoSorpresa, new Integer(1));
 							}
 							else{
 								if (unaSorpresa instanceof CambioDeVehiculo){
@@ -183,7 +199,7 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 									iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
 											.getResource("/fiuba/algo3/vista/imagenes/cambioVehiculo.png")));  
 									iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
-								    panelObstaculos.add(iconoSorpresa);
+								    panelObstaculos.add(iconoSorpresa, new Integer(1));
 								}
 							}
 						}
@@ -199,10 +215,10 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		this.remove(this.unaVistaVisibilidad);
 		//this.unaVistaVisibilidad.removeAll();
 		this.unaVistaVisibilidad = new VistaVisibilidad(x, y);
-		this.unaVistaVisibilidad.setOpaque(true);
+		this.unaVistaVisibilidad.setOpaque(false);
         this.unaVistaVisibilidad.setForeground(Color.gray);
-        this.unaVistaVisibilidad.setBounds(0, 0, 660, 730);
-		add(unaVistaVisibilidad);
+        this.unaVistaVisibilidad.setBounds(1, 1, 658, 728);
+		add(unaVistaVisibilidad, new Integer(2));
 		this.unaVistaVisibilidad.repaint();
 	}
 	
