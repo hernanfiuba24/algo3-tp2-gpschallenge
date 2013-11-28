@@ -23,7 +23,7 @@ public class DesfavorableTest {
 				4));
 		esquinaConSorpresa.setearSorpresa(unaSorpresaDesfavorable);
 		Jugador unJugador = new Jugador(new Auto(
-				unMapa.devolverUnaEsquina(new Posicion(11, 4))));
+				unMapa.devolverUnaEsquina(new Posicion(11, 4))), null);
 		unJugador.cambiarDireccion(new Arriba());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);

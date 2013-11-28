@@ -23,9 +23,9 @@ public class PiqueteTest {
 		Moto unaMoto = new Moto(unaEsquinaConMotoYPiquete);
 		@SuppressWarnings("unused")
 		// Jugador creado para que la moto tenga un jugador asignado
-		Jugador unJugador = new Jugador(unaMoto);
+		Jugador unJugador = new Jugador(unaMoto, null);
 
-		Piquete unPiquete = new Piquete(unaEsquinaConMotoYPiquete);
+		Piquete unPiquete = new Piquete();
 		unPiquete.aplicar(unaMoto);
 
 		assertTrue(unaMoto.devolverEsquina().equals(unaEsquinaConMotoYPiquete));
@@ -36,10 +36,10 @@ public class PiqueteTest {
 		Esquina unaEsquinaConMotoYPiquete = new Esquina(new Posicion(3, 3));
 
 		Moto unaMoto = new Moto(unaEsquinaConMotoYPiquete);
-		Jugador unJugador = new Jugador(unaMoto);
+		Jugador unJugador = new Jugador(unaMoto, null);
 		unJugador.cambiarDireccion(new Abajo());
 
-		Piquete unPiquete = new Piquete(unaEsquinaConMotoYPiquete);
+		Piquete unPiquete = new Piquete();
 		unPiquete.aplicar(unaMoto);
 
 		assertTrue(unJugador.devolverMovimientosHechos() == 2);
@@ -51,8 +51,8 @@ public class PiqueteTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
-		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
+		Jugador unJugador = new Jugador(unAuto, null);
+		Piquete unPiquete = new Piquete();
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,
 				3));
 		esquinaConObstaculo.setearObstaculo(unPiquete);
@@ -73,8 +73,8 @@ public class PiqueteTest {
 		Mapa unMapa = new Mapa(20, 20);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
-		Piquete unPiquete = new Piquete(unAuto.devolverEsquina());
+		Jugador unJugador = new Jugador(unAuto, null);
+		Piquete unPiquete = new Piquete();
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,
 				3));
 		esquinaConObstaculo.setearObstaculo(unPiquete);

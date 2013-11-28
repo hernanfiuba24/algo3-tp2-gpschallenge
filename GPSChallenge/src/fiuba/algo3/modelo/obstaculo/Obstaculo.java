@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo.obstaculo;
 
+import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
@@ -16,5 +17,7 @@ public abstract class Obstaculo {
 	public abstract void aplicar(Moto unaMoto);
 
 	public abstract void aplicar(Camioneta unaCamioneta);
+	
+	public abstract void setearEsquinaAnterior(Esquina esquinaAnterior);
 
 }

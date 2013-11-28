@@ -9,8 +9,12 @@ public class Piquete extends Obstaculo {
 	
 	private Esquina esquinaAnterior;
 	
-	public Piquete(Esquina unaEsquinaAnterior){
-		this.esquinaAnterior = unaEsquinaAnterior;
+	public Piquete(/*Esquina unaEsquinaAnterior*/){
+		//this.esquinaAnterior = unaEsquinaAnterior;
+	}
+	
+	public void setearEsquinaAnterior(Esquina esquinaAnterior){
+		this.esquinaAnterior = esquinaAnterior;
 	}
 	
 	public void aplicar(Auto unAuto) {

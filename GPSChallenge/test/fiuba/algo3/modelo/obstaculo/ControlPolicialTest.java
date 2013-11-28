@@ -28,7 +28,7 @@ public class ControlPolicialTest {
 		
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 
 		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(10, 11));
 		esquinaConControl.setearObstaculo(control);
@@ -51,7 +51,7 @@ public class ControlPolicialTest {
 				
 		Mapa unMapa = new Mapa(20, 20);
 		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
-		Jugador unJugador = new Jugador(unaMoto);
+		Jugador unJugador = new Jugador(unaMoto, null);
 
 		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(8,
 				10));
@@ -75,7 +75,7 @@ public class ControlPolicialTest {
 				
 		Mapa unMapa = new Mapa(20, 20);
 		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(10, 10)));
-		Jugador unJugador = new Jugador(unaMoto);
+		Jugador unJugador = new Jugador(unaMoto, null);
 
 		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(8,
 				10));
@@ -100,7 +100,7 @@ public class ControlPolicialTest {
 		Mapa unMapa = new Mapa(20, 20);
 		Camioneta unaCamioneta = new Camioneta(
 				unMapa.devolverUnaEsquina(new Posicion(10, 10)));
-		Jugador unJugador = new Jugador(unaCamioneta);
+		Jugador unJugador = new Jugador(unaCamioneta, null);
 
 		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(13,
 				10));
@@ -126,7 +126,7 @@ public class ControlPolicialTest {
 		Mapa unMapa = new Mapa(20, 20);
 		Camioneta unaCamioneta = new Camioneta(
 				unMapa.devolverUnaEsquina(new Posicion(10, 10)));
-		Jugador unJugador = new Jugador(unaCamioneta);
+		Jugador unJugador = new Jugador(unaCamioneta, null);
 
 		Esquina esquinaConControl = unMapa.devolverUnaEsquina(new Posicion(13,
 				10));

@@ -23,6 +23,13 @@ public class EsquinaTest {
 		assertTrue(unaEsquina.devolverPosicion().equals(
 				unAuto.devolverEsquina().devolverPosicion()));
 	}
+	
+	@Test
+	public void testDeberiaTenerBandera(){
+		Esquina unaEsquina = new Esquina(new Posicion(8, 8));
+		assertTrue(unaEsquina.devolverBandera() instanceof Bandera);
+		
+	}
 
 	@Test
 	public void testDeberiaNoSerVisibleAlCrearse() {

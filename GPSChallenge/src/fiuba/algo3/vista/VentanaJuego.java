@@ -1,5 +1,6 @@
 package fiuba.algo3.vista;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.controlador.ControladorJuego;
@@ -24,10 +26,6 @@ import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JTextField;
 
 public class VentanaJuego extends JFrame implements KeyListener {
 
@@ -39,6 +37,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
     private ControladorJuego unControladorJuego;
     private Juego unJuego;
     private JTextField textField;
+   // private VistaVisibilidad unaVistaVisibilidad;
 
 	/**
 	 * Create the frame.
@@ -57,7 +56,9 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		setFocusable(true);
 		this.unJuego = new Juego();
 		
-		panelMapa = new PanelMapa(this.unJuego.devolverMapa());
+		//this.unaVistaVisibilidad = new VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
+		
+		panelMapa = new PanelMapa(this.unJuego.devolverMapa(), this.unJuego);
 		panelMapa.setBounds(5, 5, 660, 730);    
 		contentPane.add(panelMapa);
 		panelMapa.setLayout(null);
@@ -123,6 +124,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		});
 		btnGuardarMapa.setBounds(456, 523, 141, 46);
 		contentPane.add(btnGuardarMapa);
+		
 
 		// panel_2.setBackgroundImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Samsung\\EclipseWorkspace\\GPSChallenge\\images\\bgImage.jpg"));
 	}

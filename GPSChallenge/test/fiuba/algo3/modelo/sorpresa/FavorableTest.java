@@ -26,7 +26,7 @@ public class FavorableTest {
 		Esquina esquinaInicialAuto = unMapa.devolverUnaEsquina(new Posicion(8,
 				4));
 		Auto unAuto = new Auto(esquinaInicialAuto);
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 
 		unJugador.cambiarDireccion(new Arriba());
 

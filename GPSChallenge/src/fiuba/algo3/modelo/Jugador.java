@@ -11,10 +11,12 @@ public class Jugador {
 	private Vehiculo unVehiculo;
 	private int movimientosHechos;
 	private Direccion unaDireccion;
+	private final String nombre;
 
-	public Jugador(Vehiculo vehiculo) {
+	public Jugador(Vehiculo vehiculo, String nombre) {
 		this.unVehiculo = vehiculo;
 		this.movimientosHechos = 0;
+		this.nombre = nombre;
 		vehiculo.setearJugadorAlQuePertenece(this);
 	}
 
@@ -73,6 +75,10 @@ public class Jugador {
 		EncendedorDeVisibilidad unEncendedor= new EncendedorDeVisibilidad(unMapa);
 		unEncendedor.encenderVisibilidadDosALaRedonda(this.unVehiculo
 				.devolverEsquina());
+	}
+
+	public String devolverNombre() {
+		return this.nombre;
 	}
 
 }

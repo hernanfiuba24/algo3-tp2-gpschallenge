@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
@@ -33,11 +34,14 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 	private Mapa unMapa;
 	private int cantidadFilas;
 	private int cantidadColumnas;
+	private VistaVisibilidad unaVistaVisibilidad;
 
-	public PanelMapa(Mapa unMapa){
+	public PanelMapa(Mapa unMapa,Juego unJuego){
 		this.unMapa = unMapa;
 		this.cantidadFilas = unMapa.devolverFilas();
 		this.cantidadColumnas = unMapa.devolverColumnas();
+		
+		this.unaVistaVisibilidad = new VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
 		
 		//this.setBackground(new Color(4));
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -58,7 +62,9 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		this.add(vehiculo);
 		
 		this.dibujarMapa(cantidadFilas, cantidadColumnas);
-
+		
+		//this.dibujarVisibilidad();
+        
 	}
 
 	public void paintComponent(Graphics g) {
@@ -77,11 +83,12 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
 		int anchoVehiculo = 35;
 		int altoVehiculo = 40;
 
-		for (int fila = 0; fila < dimensionFila; fila++) {
-			for (int columna = 0; columna < dimensionColumna; columna++) {
-				JButton btnEsquina = new JButton("");
+		for (int fila = 0; fila < dimensionFila -1; fila++) {
+			for (int columna = 0; columna < dimensionColumna -1 ; columna++) {
+				JLabel btnEsquina = new JLabel("");
+				btnEsquina.setOpaque(true);
 				btnEsquina.setBackground(new Color(50, 205, 50));
-				btnEsquina.setRolloverEnabled(false);
+				//btnEsquina.setRolloverEnabled(false);
 				btnEsquina.setBounds((tamanioEsquina*fila) + (anchoVehiculo*(fila+1)),
 						(tamanioEsquina*columna) + (altoVehiculo*(columna+1)), tamanioEsquina,
 						tamanioEsquina);
@@ -122,6 +129,13 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
         for(int i = 1; i <= cantidadFilas; i++) {
         	for(int j = 1; j <= cantidadColumnas; j++) {
         		try {
+        			if (unMapa.devolverUnaEsquina(new Posicion(i,j)).tieneBandera()){
+        				JLabel iconoBandera = new JLabel();
+        				iconoBandera.setIcon(new ImageIcon(PanelMapa.class
+								.getResource("/fiuba/algo3/vista/imagenes/banderita.png")));  
+				        panelObstaculos.add(iconoBandera);
+				        iconoBandera.setBounds((j-1)*(40+35), (i-1)*(40+40), 45, 40);        
+        			}
 					if(unMapa.devolverUnaEsquina(new Posicion(i,j)).tieneExtras()){
 						Obstaculo unObstaculo = unMapa.devolverUnaEsquina(new Posicion(i,j)).devolverObstaculo();
 						if (unObstaculo instanceof Pozo){
@@ -179,6 +193,17 @@ public class PanelMapa extends JPanel /* implements KeyListener */{
         	}
         }
         repaint();
+	}
+	
+	public void dibujarVisibilidad(int x, int y){
+		this.remove(this.unaVistaVisibilidad);
+		//this.unaVistaVisibilidad.removeAll();
+		this.unaVistaVisibilidad = new VistaVisibilidad(x, y);
+		this.unaVistaVisibilidad.setOpaque(true);
+        this.unaVistaVisibilidad.setForeground(Color.gray);
+        this.unaVistaVisibilidad.setBounds(0, 0, 660, 730);
+		add(unaVistaVisibilidad);
+		this.unaVistaVisibilidad.repaint();
 	}
 	
 	//actualizarVista

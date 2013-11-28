@@ -39,7 +39,7 @@ public class MotoTest {
 	public void testCambioDeVehiculoDeberiaCambiarMotoPorAuto() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(12, 12);
 		Moto unaMoto = new Moto(unMapa);
-		Jugador unJugador = new Jugador(unaMoto);
+		Jugador unJugador = new Jugador(unaMoto, null);
 		
 		unaMoto.cambioDeVehiculo();
 		

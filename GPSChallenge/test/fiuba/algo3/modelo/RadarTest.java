@@ -39,7 +39,7 @@ public class RadarTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
@@ -56,7 +56,7 @@ public class RadarTest {
 		Mapa unMapa = new Mapa(3, 6);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -84,7 +84,7 @@ public class RadarTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
 
@@ -103,7 +103,7 @@ public class RadarTest {
 		Mapa unMapa = new Mapa(4, 4);
 		ApagadorDeVisibilidad unApagador= new ApagadorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 		for (int i = 3; i <= 5; i++) {
@@ -127,7 +127,7 @@ public class RadarTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
 
@@ -141,7 +141,7 @@ public class RadarTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto);
+		Jugador unJugador = new Jugador(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
 

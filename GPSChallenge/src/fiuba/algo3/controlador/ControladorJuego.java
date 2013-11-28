@@ -27,50 +27,6 @@ public class ControladorJuego implements Observer {
 		GPSChallenge.setearPosicionInicial();
 	}
 	
-	/*private class EscuchaBotonDerecha implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.jugar(new Derecha());
-//			try {
-//				GPSChallenge.devolverJugador().jugar(GPSChallenge.devolverMapa());
-//			} catch (ExcepcionEsquinaInvalida e1) {
-//			}
-		}
-	}
-	
-	public ActionListener getListenerBotonDerecha() {
-		return new EscuchaBotonDerecha();
-	}
-	
-	private class EscuchaBotonArriba implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.jugar(new Arriba());
-		}
-	}
-	
-	public ActionListener getListenerBotonArriba() {
-		return new EscuchaBotonArriba();
-	}
-	
-	private class EscuchaBotonIzquierda implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.jugar(new Izquierda());
-		}
-	}
-	
-	public ActionListener getListenerBotonIzquierda() {
-		return new EscuchaBotonIzquierda();
-	}
-	
-	private class EscuchaBotonAbajo implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			GPSChallenge.jugar(new Abajo());
-		}
-	}
-	
-	public ActionListener getListenerBotonAbajo() {
-		return new EscuchaBotonAbajo();
-	}*/
-
 	public int devolverDimensionMapaFila() {
 		int dimensionFila = this.GPSChallenge.devolverMapaFila();
 		return dimensionFila;
@@ -88,6 +44,7 @@ public class ControladorJuego implements Observer {
 		this.panelMapa.dibujarExtras();
 		this.panelMapa.dibujarVehiculo(((Jugador)arg));
 		this.panelInformacion.actualizarMovimientos(((Jugador)arg).devolverMovimientos());
+		this.panelMapa.dibujarVisibilidad((this.GPSChallenge.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+35),((this.GPSChallenge.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+42)));
 	}
 }
 
