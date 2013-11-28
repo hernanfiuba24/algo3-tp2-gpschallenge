@@ -23,6 +23,7 @@ public class VentanaPpal extends JFrame {
 
 	private Image fondo;
 	private JPanel contentPane;
+	private Menu barraMenu;
 
 	/**
 	 * Launch the application.
@@ -51,6 +52,9 @@ public class VentanaPpal extends JFrame {
 		contentPane.setBackground(new Color(153, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		
+		barraMenu = new Menu();
+		setJMenuBar(barraMenu);
 
 		JButton btnJugar = new JButton(
 				new ImageIcon(
@@ -61,14 +65,16 @@ public class VentanaPpal extends JFrame {
 		btnJugar.setBounds(141, 38, 153, 55);
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaJuego unaVentanaJuego = null;
+				VentanaNiveles ventanaNivel = new VentanaNiveles();
+				ventanaNivel.setVisible(true);
+				/*VentanaJuego unaVentanaJuego = null;
 				try {
 					unaVentanaJuego = new VentanaJuego();
 				} catch (ExcepcionEsquinaInvalida e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				unaVentanaJuego.setVisible(true);
+				unaVentanaJuego.setVisible(true);*/
 				dispose();
 
 			}
