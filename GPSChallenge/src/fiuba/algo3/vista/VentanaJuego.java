@@ -45,7 +45,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 	 * 
 	 * @throws ExcepcionEsquinaInvalida
 	 */
-	public VentanaJuego() throws ExcepcionEsquinaInvalida {
+	public VentanaJuego(String unNombreDeJugador) throws ExcepcionEsquinaInvalida {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 881, 768);
@@ -56,7 +56,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 
 		addKeyListener(this);
 		setFocusable(true);
-		this.unJuego = new Juego();
+		this.unJuego = new Juego(unNombreDeJugador);
 
 		// this.unaVistaVisibilidad = new
 		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
@@ -72,6 +72,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 
 		PanelInformacion panelInformacion = new PanelInformacion();
 		panelInformacion.setBounds(675, 5, 180, 713);
+		panelInformacion.setNombreJugador(unNombreDeJugador);
 		contentPane.add(panelInformacion);
 		panelInformacion.setLayout(null);
 

@@ -50,7 +50,7 @@ public class AcercaDeFrame extends JFrame {
 		getContentPane().add(lblMartinStancanelli);
 
 		JLabel lblcontatenosSugerenciasgpschallengecom = new JLabel(
-				"-Contactenos: sugerencias@gpschallenge.com");
+				"-Contactenos: contacto@gpschallenge.com");
 		lblcontatenosSugerenciasgpschallengecom.setBounds(53, 118, 352, 19);
 		getContentPane().add(lblcontatenosSugerenciasgpschallengecom);
 
@@ -61,7 +61,7 @@ public class AcercaDeFrame extends JFrame {
 				dispose();
 			}
 		});
-		btnOk.setBounds(372, 143, 89, 23);
+		btnOk.setBounds(194, 148, 45, 23);
 		getContentPane().add(btnOk);
 	}
 }

@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.border.BevelBorder;
 
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
@@ -18,7 +19,7 @@ import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 public class VentanaNiveles extends JFrame {
 	
 	private Menu barraMenu;
-
+	private String nombreJugador;
 	/**
 	 * Create the panel.
 	 */
@@ -31,6 +32,8 @@ public class VentanaNiveles extends JFrame {
 		barraMenu = new Menu();
 		setJMenuBar(barraMenu);
 		
+		nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");
+		
 		JButton btnFacil = new JButton(new ImageIcon(
 				VentanaJuego.class
 				.getResource("/fiuba/algo3/vista/imagenes/botonFacil.png")));
@@ -39,7 +42,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego();
+					unaVentanaJuego = new VentanaJuego(nombreJugador);
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();
@@ -61,7 +64,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego();
+					unaVentanaJuego = new VentanaJuego(nombreJugador);
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();
@@ -83,7 +86,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego();
+					unaVentanaJuego = new VentanaJuego(nombreJugador);
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();

@@ -114,24 +114,5 @@ public class VentanaPpal extends JFrame {
 		lblNewLabel.setBounds(0, 0, 434, 261);
 		contentPane.add(lblNewLabel);
 		
-
-		addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				switch (e.getKeyCode()) {
-				case KeyEvent.VK_RIGHT:
-					VentanaJuego unaVentanaJuego = null;
-					try {
-						unaVentanaJuego = new VentanaJuego();
-					} catch (ExcepcionEsquinaInvalida e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					unaVentanaJuego.setVisible(true);
-					dispose();
-				}
-
-			}
-		});
 	}
 }

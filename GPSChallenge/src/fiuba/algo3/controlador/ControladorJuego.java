@@ -42,9 +42,10 @@ public class ControladorJuego implements Observer {
 		//actualizarVista
 		//hacer observable a obstaculo y sorpresa
 		this.panelMapa.dibujarExtras();
-		this.panelMapa.dibujarVehiculo(((Jugador)arg));
-		this.panelInformacion.actualizarMovimientos(((Jugador)arg).devolverMovimientos());
+		this.panelMapa.dibujarVehiculo(((Jugador)arg).devolverVehiculo());
 		this.panelMapa.dibujarVisibilidad((this.GPSChallenge.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+35),((this.GPSChallenge.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+42)));
+		this.panelInformacion.actualizarMovimientos(((Jugador)arg).devolverMovimientos());
+		this.panelInformacion.actualizarVehiculo(((Jugador)arg).devolverVehiculo());
 	}
 }
 

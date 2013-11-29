@@ -113,10 +113,9 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 		}
 	}
 
-	public void dibujarVehiculo(Jugador unJugador){
-		Vehiculo unVehiculo = unJugador.devolverVehiculo();
-		int fila = unJugador.devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila();
-		int columna = unJugador.devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna();
+	public void dibujarVehiculo(Vehiculo unVehiculo){
+		int fila = unVehiculo.devolverEsquina().devolverPosicion().devolverPosicionFila();
+		int columna = unVehiculo.devolverEsquina().devolverPosicion().devolverPosicionColumna();
 		
 		if (unVehiculo instanceof Auto){
 			vehiculo.setBounds( (columna-1)*(40+35), (fila-1)*(40+42), 40, 17);
@@ -182,14 +181,14 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 						if (unaSorpresa instanceof Desfavorable){
 							JLabel iconoSorpresa = new JLabel();
 							iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
-									.getResource("/fiuba/algo3/vista/imagenes/desfavorable.png")));  
+									.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png")));  
 							iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
 					        panelObstaculos.add(iconoSorpresa, new Integer(1));
 						}else{
 							if (unaSorpresa instanceof Favorable){
 								JLabel iconoSorpresa = new JLabel();
 								iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
-										.getResource("/fiuba/algo3/vista/imagenes/favorable.png")));  
+										.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png")));  
 								iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
 						        panelObstaculos.add(iconoSorpresa, new Integer(1));
 							}
@@ -197,7 +196,7 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 								if (unaSorpresa instanceof CambioDeVehiculo){
 									JLabel iconoSorpresa = new JLabel();
 									iconoSorpresa.setIcon(new ImageIcon(PanelMapa.class
-											.getResource("/fiuba/algo3/vista/imagenes/cambioVehiculo.png")));  
+											.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png")));  
 									iconoSorpresa.setBounds((j-1)*(40+36), (i-1)*(40+40), 35, 35);        
 								    panelObstaculos.add(iconoSorpresa, new Integer(1));
 								}

@@ -33,6 +33,17 @@ public class Juego extends Observado {
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
 	}
+	
+	public Juego(String nombreDeJugador) throws ExcepcionEsquinaInvalida {
+		this.unMapa = new Mapa(8, 8);
+		this.unJugador = new Jugador(new Auto(this.unMapa), nombreDeJugador);
+		this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(8, 8))
+				.devolverBandera();
+		this.completarMapaConExtras();
+		setChanged();
+		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
+				.devolverPosicion());
+	}
 
 	public void completarMapaConExtras() throws ExcepcionEsquinaInvalida {
 		RandomizadorImplementacion randomizador = new RandomizadorImplementacion();
