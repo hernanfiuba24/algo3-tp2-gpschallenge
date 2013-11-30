@@ -5,10 +5,10 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.vista.PanelInformacion;
 import fiuba.algo3.vista.PanelMapa;
 

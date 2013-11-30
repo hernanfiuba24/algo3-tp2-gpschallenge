@@ -11,11 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 import fiuba.algo3.modelo.obstaculo.Piquete;

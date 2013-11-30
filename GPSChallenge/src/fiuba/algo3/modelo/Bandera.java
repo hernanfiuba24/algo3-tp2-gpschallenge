@@ -6,7 +6,7 @@ public class Bandera {
 	private boolean gano;
 	
 	public Bandera(Posicion unaPosicion){
-		this.unaPosicion = unaPosicion;
+		this.setearPosicion(unaPosicion);
 		this.gano = false;
 	}
 
@@ -16,6 +16,14 @@ public class Bandera {
 
 	public boolean saberSiGano() {
 		return this.gano;
+	}
+
+	public Posicion devolverPosicion() {
+		return unaPosicion;
+	}
+
+	public void setearPosicion(Posicion unaPosicion) {
+		this.unaPosicion = unaPosicion;
 	}
 
 }

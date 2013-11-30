@@ -1,6 +1,5 @@
 package fiuba.algo3.vista;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,12 +19,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.controlador.ControladorJuego;
-import fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.JuegoDificil;
 
 public class VentanaJuego extends JFrame implements KeyListener {
 
@@ -56,7 +56,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 
 		addKeyListener(this);
 		setFocusable(true);
-		this.unJuego = new Juego(unNombreDeJugador);
+		this.unJuego = new JuegoDificil(unNombreDeJugador);
 
 		// this.unaVistaVisibilidad = new
 		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));

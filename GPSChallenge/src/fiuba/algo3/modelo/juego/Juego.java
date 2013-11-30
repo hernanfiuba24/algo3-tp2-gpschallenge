@@ -1,5 +1,11 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.juego;
 
+import fiuba.algo3.modelo.Bandera;
+import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Mapa;
+import fiuba.algo3.modelo.Observado;
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
@@ -11,17 +17,18 @@ import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
-public class Juego extends Observado {
-	private int cantidadDePiquetes = 5;
-	private int cantidadDeControlesPoliciales = 5;
-	private int cantidadDePozos = 5;
-	private int cantidadDeFavorables = 5;
-	private int cantidadDeDesfavorables = 5;
-	private int cantidadDeCambiosDeVehiculos = 3;
+public abstract class Juego extends Observado {
 
-	private Mapa unMapa;
-	private Jugador unJugador;
-	private Bandera unaBandera;
+	protected int cantidadDePiquetes;
+	protected int cantidadDeControlesPoliciales;
+	protected int cantidadDePozos;
+	protected int cantidadDeFavorables;
+	protected int cantidadDeDesfavorables;
+	protected int cantidadDeCambiosDeVehiculos;
+
+	protected Mapa unMapa;
+	protected Jugador unJugador;
+	protected Bandera unaBandera;
 
 	public Juego() throws ExcepcionEsquinaInvalida {
 		this.unMapa = new Mapa(8, 8);
@@ -33,7 +40,7 @@ public class Juego extends Observado {
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
 	}
-	
+
 	public Juego(String nombreDeJugador) throws ExcepcionEsquinaInvalida {
 		this.unMapa = new Mapa(8, 8);
 		this.unJugador = new Jugador(new Auto(this.unMapa), nombreDeJugador);
@@ -170,18 +177,44 @@ public class Juego extends Observado {
 		notifyObservers(this.unJugador);
 	}
 
-	public void jugar(Direccion unaDireccion) {
-		if (this.unaBandera.saberSiGano() == false) {
-			this.unJugador.cambiarDireccion(unaDireccion);
-			try {
-				this.unJugador.jugar(unMapa);
-				setChanged();
-				notifyObservers(this.unJugador);
-			} catch (ExcepcionEsquinaInvalida e1) {
-			}
-		} else {
-			// ACA HAY QUE LANZAR UNA VENTANA DICIENDO QUE GANO RAUL
-			System.out.println("Gananste Raulcito");
-		}
+	public int devolverCantidadDePiquetes() {
+		return cantidadDePiquetes;
 	}
+
+	public int devolverCantidadDeControlesPoliciales() {
+		return cantidadDeControlesPoliciales;
+	}
+
+	public int devolverCantidadDePozos() {
+		return cantidadDePozos;
+	}
+
+	public int devolverCantidadDeFavorables() {
+		return cantidadDeFavorables;
+	}
+
+	public int devolverCantidadDeDesfavorables() {
+		return cantidadDeDesfavorables;
+	}
+
+	public int devolverCantidadDeCambiosDeVehiculos() {
+		return cantidadDeCambiosDeVehiculos;
+	}
+
+	public void jugar(Direccion unaDireccion) {
+		// if (this.unaBandera.saberSiGano() == false) {
+		this.unJugador.cambiarDireccion(unaDireccion);
+		try {
+			this.unJugador.jugar(unMapa);
+			setChanged();
+			notifyObservers(this.unJugador);
+		} catch (ExcepcionEsquinaInvalida e1) {
+		}
+		// } else {
+		// // ACA HAY QUE LANZAR UNA VENTANA DICIENDO QUE GANO RAUL
+		// System.out.println("Gananste Raulcito");
+		// }
+	}
+
+	public abstract void setearCantidadSorprepasYObstaculos();
 }
