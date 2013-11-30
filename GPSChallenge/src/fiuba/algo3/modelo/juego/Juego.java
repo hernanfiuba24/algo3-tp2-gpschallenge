@@ -30,21 +30,22 @@ public abstract class Juego extends Observado {
 	protected Jugador unJugador;
 	protected Bandera unaBandera;
 
-	public Juego() throws ExcepcionEsquinaInvalida {
-		this.unMapa = new Mapa(8, 8);
-		this.unJugador = new Jugador(new Auto(this.unMapa), null);
-		this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(8, 8))
-				.devolverBandera();
-		this.completarMapaConExtras();
-		setChanged();
-		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-				.devolverPosicion());
-	}
+//	public Juego() throws ExcepcionEsquinaInvalida {		
+//		this.unMapa = new Mapa(8, 8);
+//		this.unJugador = new Jugador(new Auto(this.unMapa), null);
+//		this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(8, 8))
+//				.devolverBandera();
+//		this.completarMapaConExtras();
+//		setChanged();
+//		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
+//				.devolverPosicion());
+//	}
 
-	public Juego(String nombreDeJugador) throws ExcepcionEsquinaInvalida {
-		this.unMapa = new Mapa(8, 8);
+	public Juego(String nombreDeJugador, int tamanioMapa, Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
+		this.setearCantidadSorprepasYObstaculos();
+		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
 		this.unJugador = new Jugador(new Auto(this.unMapa), nombreDeJugador);
-		this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(8, 8))
+		this.unaBandera = this.unMapa.devolverUnaEsquina(posicionBandera)
 				.devolverBandera();
 		this.completarMapaConExtras();
 		setChanged();

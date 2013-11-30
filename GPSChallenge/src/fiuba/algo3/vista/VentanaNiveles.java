@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.*;
 
@@ -39,7 +40,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoFacil(nombreJugador));
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoFacil(nombreJugador, 3, new Posicion(3,3)));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();
@@ -61,7 +62,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoIntermedio(nombreJugador));
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoIntermedio(nombreJugador, 5, new Posicion(5,5)));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();
@@ -83,7 +84,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoDificil(nombreJugador));
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoDificil(nombreJugador, 8, new Posicion(8, 8)));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();

@@ -4,13 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 
 public class JuegoIntermedioTest {
 
 	@Test
 	public void testJuegoIntermedioDeberiaTener2DeCadaSorpresaYObstaculo() throws ExcepcionEsquinaInvalida {
-		JuegoIntermedio unJuegoIntermedio = new JuegoIntermedio();
+		JuegoIntermedio unJuegoIntermedio = new JuegoIntermedio("Ezequiel", 5, new Posicion(5, 5));
 		assertTrue(unJuegoIntermedio.devolverCantidadDeCambiosDeVehiculos() == 2);
 		assertTrue(unJuegoIntermedio.devolverCantidadDeControlesPoliciales() == 2);
 		assertTrue(unJuegoIntermedio.devolverCantidadDeDesfavorables() == 2);
