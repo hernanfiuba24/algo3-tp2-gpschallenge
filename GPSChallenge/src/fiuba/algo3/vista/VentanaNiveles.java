@@ -1,6 +1,5 @@
 package fiuba.algo3.vista;
 
-import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -9,12 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
-import javax.swing.border.BevelBorder;
 
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.juego.*;
 
 public class VentanaNiveles extends JFrame {
 	
@@ -42,7 +39,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador);
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoFacil(nombreJugador));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();
@@ -64,7 +61,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador);
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoIntermedio(nombreJugador));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();
@@ -86,7 +83,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador);
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoDificil(nombreJugador));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					// TODO Auto-generated catch block
 					exc.printStackTrace();
