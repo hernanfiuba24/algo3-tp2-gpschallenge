@@ -1,9 +1,13 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.cambiadorDeVisibilidad;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Mapa;
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Derecha;
@@ -11,7 +15,7 @@ import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
-public class RadarTest {
+public class CambiadorDeVisibilidadTest {
 
 	@Test
 	public void testDeberiaPrenderDosEsquinasALaRedondaAlCrearseElAuto()
