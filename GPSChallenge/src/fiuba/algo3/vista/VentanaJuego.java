@@ -6,37 +6,32 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Observable;
+import java.util.Observer;
 
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.controlador.ControladorJuego;
-import fiuba.algo3.modelo.direccion.Abajo;
-import fiuba.algo3.modelo.direccion.Arriba;
-import fiuba.algo3.modelo.direccion.Derecha;
-import fiuba.algo3.modelo.direccion.Izquierda;
+import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.JuegoDificil;
 
-public class VentanaJuego extends JFrame implements KeyListener {
+public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
 	private JPanel contentPane;
 	private PanelMapa panelMapa;
 	private JPanel panelObstaculos;
-	private final Action action = new SwingAction();
+	private PanelInformacion panelInformacion;
+	//private final Action action = new SwingAction();
 	private boolean seGuardoJuego = false;
 	private ControladorJuego unControladorJuego;
 	private Juego unJuego;
-	private JTextField textField;
 
 	// private VistaVisibilidad unaVistaVisibilidad;
 
@@ -55,10 +50,9 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		addKeyListener(this);
 		setFocusable(true);
 		this.unJuego = unJuego;
-
+		this.unJuego.addObserver(this);
 		// this.unaVistaVisibilidad = new
 		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
 
@@ -71,14 +65,14 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		panelObstaculos.setOpaque(false);
 		panelObstaculos.setBounds(5, 5, 660, 730);
 
-		PanelInformacion panelInformacion = new PanelInformacion();
+		panelInformacion = new PanelInformacion();
 		panelInformacion.setBounds(675, 5, 180, 713);
 		panelInformacion.setNombreJugador(unNombreDeJugador);
 		contentPane.add(panelInformacion);
 		panelInformacion.setLayout(null);
 
-		this.unControladorJuego = new ControladorJuego(this.unJuego, panelMapa,
-				panelInformacion);
+		this.unControladorJuego = new ControladorJuego(this.unJuego);		
+		this.addKeyListener(unControladorJuego.getKeyListener());
 
 		JButton btnMenuMapa = new JButton(
 				new ImageIcon(
@@ -139,7 +133,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 		panelInformacion.add(btnGuardarMapa);
 	}
 
-	private class SwingAction extends AbstractAction {
+	/*private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
@@ -147,40 +141,31 @@ public class VentanaJuego extends JFrame implements KeyListener {
 
 		public void actionPerformed(ActionEvent e) {
 		}
+	}*/
+
+	@Override
+	public void update(Observable o, Object arg) {
+		this.panelMapa.dibujarExtras();
+		this.panelMapa.dibujarVehiculo(((Jugador)arg).devolverVehiculo());
+		this.panelMapa.dibujarVisibilidad((((Jugador)arg).devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+35),((((Jugador)arg).devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+42)));
+		this.panelInformacion.actualizarMovimientos(((Jugador)arg).devolverMovimientosHechos());
+		this.panelInformacion.actualizarVehiculo(((Jugador)arg).devolverVehiculo());
+		
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_UP:
-			this.unJuego.jugar(new Arriba());
-			// panelMapa.moverArriba();
-			break;
-		case KeyEvent.VK_DOWN:
-			this.unJuego.jugar(new Abajo());
-			// panelMapa.moverAbajo();
-			break;
-		case KeyEvent.VK_RIGHT:
-			this.unJuego.jugar(new Derecha());
-			// panelMapa.moverDerecha();
-			break;
-		case KeyEvent.VK_LEFT:
-			this.unJuego.jugar(new Izquierda());
-			// panelMapa.moverIzquierda();
-			break;
-		}
-
+		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
+		
 	}
+
 }

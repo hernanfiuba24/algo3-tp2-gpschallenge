@@ -7,6 +7,8 @@ import javax.swing.JMenuBar;
 import javax.swing.border.BevelBorder;
 
 public class Menu extends JMenuBar {
+	
+	AccionMenues accionGuardar;
 
 	public Menu(){
 		JMenu opciones = this.crearMenuOpciones();
@@ -35,12 +37,16 @@ public class Menu extends JMenuBar {
 		opciones.setSize(new Dimension(50,20));
 		opciones.setBorder(new BevelBorder(BevelBorder.RAISED));
 		
-		AccionMenues accionGuardar = new AccionMenues("Guardar");
+		this.accionGuardar = new AccionMenues("Guardar");
 		AccionMenues accionSalir = new AccionMenues("Salir");
 		
 		opciones.add(accionGuardar);
 		opciones.add(accionSalir);
 		
 		return opciones;
+	}
+	
+	public void deshabilitarGuardar(){
+		this.accionGuardar.setEnabled(false);
 	}
 }

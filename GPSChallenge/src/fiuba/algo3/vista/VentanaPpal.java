@@ -54,6 +54,7 @@ public class VentanaPpal extends JFrame {
 		setContentPane(contentPane);
 		
 		barraMenu = new Menu();
+		barraMenu.deshabilitarGuardar();
 		setJMenuBar(barraMenu);
 
 		JButton btnJugar = new JButton(

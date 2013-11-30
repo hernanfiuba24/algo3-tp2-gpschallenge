@@ -12,7 +12,7 @@ public class VistaVisibilidad extends JPanel{
 
 	int posX, posY;
 	BasicStroke grosor = new BasicStroke(800);
-	int diametro = 1000;
+	int diametro = 1100;
 	int corrimiento = diametro / 2 - 10;
 
 	public VistaVisibilidad(int unaPosX, int unaPosY) {

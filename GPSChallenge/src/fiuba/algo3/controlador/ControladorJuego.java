@@ -1,29 +1,21 @@
 package fiuba.algo3.controlador;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import javax.swing.JPanel;
-
-import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.Posicion;
+import fiuba.algo3.modelo.direccion.Abajo;
+import fiuba.algo3.modelo.direccion.Arriba;
+import fiuba.algo3.modelo.direccion.Derecha;
+import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.vista.PanelInformacion;
-import fiuba.algo3.vista.PanelMapa;
 
-public class ControladorJuego implements Observer {
+public class ControladorJuego {
 	
 	private Juego GPSChallenge;
-	private PanelMapa panelMapa;
-	private PanelInformacion panelInformacion;
 	
-	public ControladorJuego(Juego unGPSChallenge, PanelMapa unPanelMapa, PanelInformacion panelInformacion) throws ExcepcionEsquinaInvalida{
-		this.GPSChallenge = unGPSChallenge;
-		this.panelMapa = unPanelMapa;
-		this.panelInformacion = panelInformacion;
-		this.GPSChallenge.addObserver(this);
-		
+	public ControladorJuego(Juego unGPSChallenge) throws ExcepcionEsquinaInvalida{
+		this.GPSChallenge = unGPSChallenge;		
 		GPSChallenge.setearPosicionInicial();
 	}
 	
@@ -36,16 +28,40 @@ public class ControladorJuego implements Observer {
 		int dimensionColumna = this.GPSChallenge.devolverMapaColumna();
 		return dimensionColumna;
 	}
+	
+	public KeyListener getKeyListener(){
+		
+		return new KeyListener() {
+			
+			@Override
+		    public void keyPressed(KeyEvent e) {  
+			    
+		    }
+		    
+		    @Override
+		    public void keyReleased(KeyEvent e) {
+		    	switch (e.getKeyCode()) {
+				case KeyEvent.VK_UP:
+					GPSChallenge.jugar(new Arriba());
+					break;
+				case KeyEvent.VK_DOWN:
+					GPSChallenge.jugar(new Abajo());
+					break;
+				case KeyEvent.VK_RIGHT:
+					GPSChallenge.jugar(new Derecha());
+					break;
+				case KeyEvent.VK_LEFT:
+					GPSChallenge.jugar(new Izquierda());
+					break;
+				}
+		
+			}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		//actualizarVista
-		//hacer observable a obstaculo y sorpresa
-		this.panelMapa.dibujarExtras();
-		this.panelMapa.dibujarVehiculo(((Jugador)arg).devolverVehiculo());
-		this.panelMapa.dibujarVisibilidad((this.GPSChallenge.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+35),((this.GPSChallenge.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+42)));
-		this.panelInformacion.actualizarMovimientos(((Jugador)arg).devolverMovimientosHechos());
-		this.panelInformacion.actualizarVehiculo(((Jugador)arg).devolverVehiculo());
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+		
+			}
+		};
 	}
 }
 
