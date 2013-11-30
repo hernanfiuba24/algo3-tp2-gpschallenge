@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.Esquina;
-import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Abajo;
@@ -20,7 +20,7 @@ public class PozoTest {
 	public void testDeberiaSumarleTresMovimientosAlAuto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
 				3));
 		unJugador.cambiarDireccion(new Abajo());
@@ -38,7 +38,7 @@ public class PozoTest {
 	public void testDeberiaSumarleTresMovimientosALaMoto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Moto unaMoto = new Moto(unMapa);
-		Jugador unJugador = new Jugador(unaMoto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, null);
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
 				3));
 		unJugador.cambiarDireccion(new Abajo());
@@ -56,7 +56,7 @@ public class PozoTest {
 	public void testNoDeberiaSumarleMovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Camioneta unaCamioneta = new Camioneta(unMapa);
-		Jugador unJugador = new Jugador(unaCamioneta, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaCamioneta, null);
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
 				3));
 		unJugador.cambiarDireccion(new Abajo());

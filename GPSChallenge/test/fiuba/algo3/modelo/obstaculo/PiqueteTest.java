@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.Esquina;
-import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
@@ -23,7 +23,7 @@ public class PiqueteTest {
 		Moto unaMoto = new Moto(unaEsquinaConMotoYPiquete);
 		@SuppressWarnings("unused")
 		// Jugador creado para que la moto tenga un jugador asignado
-		Jugador unJugador = new Jugador(unaMoto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, null);
 
 		Piquete unPiquete = new Piquete();
 		unPiquete.aplicar(unaMoto);
@@ -36,7 +36,7 @@ public class PiqueteTest {
 		Esquina unaEsquinaConMotoYPiquete = new Esquina(new Posicion(3, 3));
 
 		Moto unaMoto = new Moto(unaEsquinaConMotoYPiquete);
-		Jugador unJugador = new Jugador(unaMoto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, null);
 		unJugador.cambiarDireccion(new Abajo());
 
 		Piquete unPiquete = new Piquete();
@@ -51,7 +51,7 @@ public class PiqueteTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Piquete unPiquete = new Piquete();
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,
 				3));
@@ -73,7 +73,7 @@ public class PiqueteTest {
 		Mapa unMapa = new Mapa(20, 20);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Piquete unPiquete = new Piquete();
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,
 				3));

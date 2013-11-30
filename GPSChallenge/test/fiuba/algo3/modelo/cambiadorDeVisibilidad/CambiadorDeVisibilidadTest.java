@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fiuba.algo3.modelo.Esquina;
-import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
@@ -43,7 +43,7 @@ public class CambiadorDeVisibilidadTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 
 		unJugador.jugar(unMapa);
@@ -60,7 +60,7 @@ public class CambiadorDeVisibilidadTest {
 		Mapa unMapa = new Mapa(3, 6);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 		unJugador.jugar(unMapa);
@@ -88,7 +88,7 @@ public class CambiadorDeVisibilidadTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
 
@@ -107,7 +107,7 @@ public class CambiadorDeVisibilidadTest {
 		Mapa unMapa = new Mapa(4, 4);
 		ApagadorDeVisibilidad unApagador= new ApagadorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
 		for (int i = 3; i <= 5; i++) {
@@ -131,7 +131,7 @@ public class CambiadorDeVisibilidadTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
 
@@ -145,7 +145,7 @@ public class CambiadorDeVisibilidadTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
 

@@ -24,7 +24,7 @@ public class JugadorTest {
 	public void testJugadorDeberiaTenerNombre() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto,"Raul");	
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto,"Raul");	
 		
 		assertTrue(unJugador.devolverNombre() == "Raul");
 	}
@@ -34,7 +34,7 @@ public class JugadorTest {
 
 		Mapa unMapa = new Mapa(10, 10);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5, 5)));
-		Jugador unJugador = new Jugador(unAuto,"Raul" );
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto,"Raul" );
 		Posicion posicionFutura = new Posicion(4, 5);
 		unJugador.cambiarDireccion(new Arriba());
 
@@ -49,7 +49,7 @@ public class JugadorTest {
 
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		Posicion posicionFutura = new Posicion(4, 3);
 		unJugador.cambiarDireccion(new Abajo());
 
@@ -64,7 +64,7 @@ public class JugadorTest {
 
 		Mapa unMapa = new Mapa(10, 10);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5, 5)));
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		Posicion posicionFutura = new Posicion(5, 4);
 		unJugador.cambiarDireccion(new Izquierda());
 
@@ -79,7 +79,7 @@ public class JugadorTest {
 
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		Posicion posicionFutura = new Posicion(3, 4);
 		unJugador.cambiarDireccion(new Derecha());
 
@@ -94,7 +94,7 @@ public class JugadorTest {
 
 		Mapa unMapa = new Mapa(4, 3);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		unJugador.cambiarDireccion(new Abajo());
 
 		unJugador.jugar(unMapa);
@@ -111,7 +111,7 @@ public class JugadorTest {
 	public void testJugarDeberiaIncrementarEn1LosMovimientosHecho() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		unJugador.cambiarDireccion(new Arriba());
 		
 		unJugador.jugar(unMapa);
@@ -124,7 +124,7 @@ public class JugadorTest {
 	public void testCambiarDireccionDeberiaAsignarNuevaDireccionALaDireccionDelJugador() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		unJugador.cambiarDireccion(new Arriba());
 		
 		assertTrue(unJugador.devolverDireccion() instanceof Arriba);
@@ -134,7 +134,7 @@ public class JugadorTest {
 	public void testGuardarVehiculoDeberiaAsignarleElVehiculoAlJugador() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		
 		assertTrue(unJugador.devolverVehiculo() == unAuto);
 	}
@@ -143,7 +143,7 @@ public class JugadorTest {
 	public void testAumentarMovimientosHechosDeberiaSumarleLaCantidadPasadaALosMovimientosDelJugador() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		unJugador.aumentarMovimientoHechos(5);
 		
 		assertTrue(unJugador.devolverMovimientosHechos() == 5);
@@ -153,7 +153,7 @@ public class JugadorTest {
 	public void testCambiarDireccionContrariaDeberiaAsignarleLaDireccionOpuestaAlJugador() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		unJugador.cambiarDireccion(new Arriba());
 		
 		unJugador.cambiarDireccionContraria();
@@ -166,7 +166,7 @@ public class JugadorTest {
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa);
 		
-		Jugador unJugador = new Jugador(unAuto, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
 		
 		Pozo unPozo = new Pozo();
 		Favorable unaSorpresaFavorable = new Favorable();
@@ -188,7 +188,7 @@ public class JugadorTest {
 		Mapa unMapa = new Mapa(20, 20);
 		Camioneta unaCamioneta = new Camioneta(unMapa);
 		
-		Jugador unJugador = new Jugador(unaCamioneta, "Raul");
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaCamioneta, "Raul");
 		
 		Piquete unPiquete = new Piquete();
 		CambioDeVehiculo unCambioDeVehiculo = new CambioDeVehiculo();

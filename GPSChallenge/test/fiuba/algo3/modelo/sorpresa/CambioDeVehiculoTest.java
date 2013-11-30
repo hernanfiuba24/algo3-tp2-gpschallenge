@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Abajo;
@@ -20,7 +20,7 @@ public class CambioDeVehiculoTest {
 	public void testDeberiaCambiarDeAutoACamioneta() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa);
-		Jugador unJugador = new Jugador(unAuto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.devolverUnaEsquina(new Posicion(5, 3)).setearSorpresa(
 				unaSorpresaCambioDeVehiculo);
@@ -37,7 +37,7 @@ public class CambioDeVehiculoTest {
 	public void testDeberiaCambiarDeMotoAAuto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Moto unaMoto = new Moto(unMapa);
-		Jugador unJugador = new Jugador(unaMoto, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, null);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.devolverUnaEsquina(new Posicion(5, 3)).setearSorpresa(
 				unaSorpresaCambioDeVehiculo);
@@ -54,7 +54,7 @@ public class CambioDeVehiculoTest {
 	public void testDeberiaCambiarDeCamionetaAMoto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
 		Camioneta unaCamioneta = new Camioneta(unMapa);
-		Jugador unJugador = new Jugador(unaCamioneta, null);
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaCamioneta, null);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.devolverUnaEsquina(new Posicion(5, 3)).setearSorpresa(
 				unaSorpresaCambioDeVehiculo);

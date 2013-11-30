@@ -2,7 +2,7 @@ package fiuba.algo3.modelo.juego;
 
 import fiuba.algo3.modelo.Bandera;
 import fiuba.algo3.modelo.Esquina;
-import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Observado;
 import fiuba.algo3.modelo.Posicion;
@@ -27,7 +27,7 @@ public abstract class Juego extends Observado {
 	protected int cantidadDeCambiosDeVehiculos;
 
 	protected Mapa unMapa;
-	protected Jugador unJugador;
+	protected JugadorImplementacion unJugador;
 	protected Bandera unaBandera;
 
 	// public Juego() throws ExcepcionEsquinaInvalida {
@@ -45,7 +45,7 @@ public abstract class Juego extends Observado {
 			Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
 		this.setearCantidadSorprepasYObstaculos();
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
-		this.unJugador = new Jugador(new Auto(this.unMapa), nombreDeJugador);
+		this.unJugador = new JugadorImplementacion(new Auto(this.unMapa), nombreDeJugador);
 		this.unaBandera = this.unMapa.devolverUnaEsquina(posicionBandera)
 				.devolverBandera();
 		this.completarMapaConExtras();
@@ -217,7 +217,7 @@ public abstract class Juego extends Observado {
 		return this.unMapa;
 	}
 
-	public Jugador devolverJugador() {
+	public JugadorImplementacion devolverJugador() {
 		return this.unJugador;
 	}
 
