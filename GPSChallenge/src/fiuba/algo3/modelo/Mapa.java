@@ -48,7 +48,7 @@ public class Mapa {
 		}
 	}
 
-	public void agregarUnaEsquina(Esquina unaEsquina, Posicion unaPosicion) {
+	private void agregarUnaEsquina(Esquina unaEsquina, Posicion unaPosicion) {
 		tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion.devolverPosicionColumna() - 1] = unaEsquina;
 	}
 	

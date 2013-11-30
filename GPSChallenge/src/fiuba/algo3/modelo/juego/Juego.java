@@ -53,13 +53,16 @@ public abstract class Juego extends Observado {
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
 	}
-	
-	private void ubicarExtra(int min, int maxFilas, int maxColumnas,
-			RandomizadorImplementacion randomizador) {
-		// TODO Auto-generated method stub
-		
-	}
 
+	private Esquina devolverEsquinaConExtra(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
+
+		Esquina esquinaConExtra = this.unMapa.devolverUnaEsquina(new Posicion(
+				randomizador.obtenerNumeroEntre(min, maxFilas), randomizador
+						.obtenerNumeroEntre(min, maxColumnas)));
+		return esquinaConExtra;
+	}
 
 	private void completarMapaConDesfavorables(int min, int maxFilas,
 			int maxColumnas, RandomizadorImplementacion randomizador)
@@ -68,11 +71,8 @@ public abstract class Juego extends Observado {
 		for (int i = 1; i <= cantidadDeDesfavorables; i++) {
 			boolean ubicado = false;
 			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
+				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
+						maxFilas, maxColumnas, randomizador);
 				if (esquinaConExtra.tieneSorpresa() == false) {
 					esquinaConExtra.setearSorpresa(new Desfavorable());
 					ubicado = true;
@@ -89,11 +89,8 @@ public abstract class Juego extends Observado {
 		for (int i = 1; i <= cantidadDeFavorables; i++) {
 			boolean ubicado = false;
 			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
+				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
+						maxFilas, maxColumnas, randomizador);
 				if (esquinaConExtra.tieneSorpresa() == false) {
 					esquinaConExtra.setearSorpresa(new Favorable());
 					ubicado = true;
@@ -110,11 +107,8 @@ public abstract class Juego extends Observado {
 		for (int i = 1; i <= cantidadDeCambiosDeVehiculos; i++) {
 			boolean ubicado = false;
 			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
+				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
+						maxFilas, maxColumnas, randomizador);
 				if (esquinaConExtra.tieneSorpresa() == false) {
 					esquinaConExtra.setearSorpresa(new CambioDeVehiculo());
 					ubicado = true;
@@ -144,11 +138,8 @@ public abstract class Juego extends Observado {
 		for (int i = 1; i <= cantidadDeControlesPoliciales; i++) {
 			boolean ubicado = false;
 			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
+				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
+						maxFilas, maxColumnas, randomizador);
 				if (esquinaConExtra.tieneObstaculo() == false) {
 					esquinaConExtra.setearObstaculo(new ControlPolicial(
 							new RandomizadorImplementacion()));
@@ -166,11 +157,8 @@ public abstract class Juego extends Observado {
 		for (int i = 1; i <= cantidadDePiquetes; i++) {
 			boolean ubicado = false;
 			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
+				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
+						maxFilas, maxColumnas, randomizador);
 				if (esquinaConExtra.tieneObstaculo() == false) {
 					esquinaConExtra.setearObstaculo(new Piquete());
 					ubicado = true;
@@ -185,14 +173,10 @@ public abstract class Juego extends Observado {
 			throws ExcepcionEsquinaInvalida {
 
 		for (int i = 1; i <= cantidadDePozos; i++) {
-			this.ubicarExtra(min, maxFilas, maxColumnas, randomizador);
 			boolean ubicado = false;
 			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
+				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
+						maxFilas, maxColumnas, randomizador);
 				if (esquinaConExtra.tieneObstaculo() == false) {
 					esquinaConExtra.setearObstaculo(new Pozo());
 					ubicado = true;
@@ -201,7 +185,7 @@ public abstract class Juego extends Observado {
 		}
 
 	}
-	
+
 	private void completarMapaConObstaculos(int min, int maxFilas,
 			int maxColumnas, RandomizadorImplementacion randomizador)
 			throws ExcepcionEsquinaInvalida {
@@ -226,7 +210,7 @@ public abstract class Juego extends Observado {
 		this.completarMapaConObstaculos(min, maxFilas, maxColumnas,
 				randomizador);
 	}
-	
+
 	/*-------------------------------------------------------------------------------------------------------------*/
 
 	public Mapa devolverMapa() {
