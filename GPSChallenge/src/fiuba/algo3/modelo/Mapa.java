@@ -12,8 +12,8 @@ public class Mapa {
 		columnas = columna;
 
 		tablero = new Esquina[fila][columna];
-		for (int i = 1; i <= devolverFilas(); i++) {
-			for (int j = 1; j <= devolverColumnas(); j++) {
+		for (int i = 1; i <= this.devolverAlto(); i++) {
+			for (int j = 1; j <= this.devolverAncho(); j++) {
 				Posicion posicion = new Posicion(i, j);
 				Esquina esquina = new Esquina(posicion);
 				agregarUnaEsquina(esquina, posicion);
@@ -21,11 +21,11 @@ public class Mapa {
 		}
 	}
 
-	public int devolverFilas() {
+	public int devolverAlto() {
 		return this.filas;
 	}
 
-	public int devolverColumnas() {
+	public int devolverAncho() {
 		return this.columnas;
 	}
 

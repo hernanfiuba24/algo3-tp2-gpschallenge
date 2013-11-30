@@ -13,10 +13,10 @@ public class MapaTest {
 	@Test
 	public void testDeberiaCrearMapa() throws ExcepcionEsquinaInvalida {
 		Mapa mapa = new Mapa(2, 1);
-		Assert.assertEquals(2, mapa.devolverFilas());
-		Assert.assertEquals(1, mapa.devolverColumnas());
-		for (int i = 1; i <= mapa.devolverFilas(); i++) {
-			for (int j = 1; j <= mapa.devolverColumnas(); j++) {
+		Assert.assertEquals(2, mapa.devolverAlto());
+		Assert.assertEquals(1, mapa.devolverAncho());
+		for (int i = 1; i <= mapa.devolverAlto(); i++) {
+			for (int j = 1; j <= mapa.devolverAncho(); j++) {
 				Assert.assertNotNull(mapa
 						.devolverUnaEsquina(new Posicion(i, j)));
 			}

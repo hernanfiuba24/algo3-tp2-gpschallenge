@@ -42,8 +42,8 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 
 	public PanelMapa(Mapa unMapa,Juego unJuego){
 		this.unMapa = unMapa;
-		this.cantidadFilas = unMapa.devolverFilas();
-		this.cantidadColumnas = unMapa.devolverColumnas();
+		this.cantidadFilas = unMapa.devolverAlto();
+		this.cantidadColumnas = unMapa.devolverAncho();
 		
 		this.unaVistaVisibilidad = new VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
 		

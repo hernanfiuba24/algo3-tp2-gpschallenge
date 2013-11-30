@@ -54,6 +54,7 @@ public abstract class Juego extends Observado {
 				.devolverPosicion());
 	}
 
+
 	private Esquina devolverEsquinaConExtra(int min, int maxFilas,
 			int maxColumnas, RandomizadorImplementacion randomizador)
 			throws ExcepcionEsquinaInvalida {
@@ -199,6 +200,7 @@ public abstract class Juego extends Observado {
 	/*-------------------------------------------------------------------------------------------------------------*/
 
 	public void completarMapaConExtras() throws ExcepcionEsquinaInvalida {
+		
 		RandomizadorImplementacion randomizador = new RandomizadorImplementacion();
 
 		int min = 1;
@@ -222,11 +224,11 @@ public abstract class Juego extends Observado {
 	}
 
 	public int devolverMapaFila() {
-		return this.unMapa.devolverFilas();
+		return this.unMapa.devolverAlto();
 	}
 
 	public int devolverMapaColumna() {
-		return this.unMapa.devolverColumnas();
+		return this.unMapa.devolverAncho();
 	}
 
 	public void moverJugadorEnDireccion(Direccion unaDireccion) {
