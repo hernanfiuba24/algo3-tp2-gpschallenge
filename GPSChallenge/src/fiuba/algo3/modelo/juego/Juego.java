@@ -30,18 +30,19 @@ public abstract class Juego extends Observado {
 	protected Jugador unJugador;
 	protected Bandera unaBandera;
 
-//	public Juego() throws ExcepcionEsquinaInvalida {		
-//		this.unMapa = new Mapa(8, 8);
-//		this.unJugador = new Jugador(new Auto(this.unMapa), null);
-//		this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(8, 8))
-//				.devolverBandera();
-//		this.completarMapaConExtras();
-//		setChanged();
-//		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-//				.devolverPosicion());
-//	}
+	// public Juego() throws ExcepcionEsquinaInvalida {
+	// this.unMapa = new Mapa(8, 8);
+	// this.unJugador = new Jugador(new Auto(this.unMapa), null);
+	// this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(8, 8))
+	// .devolverBandera();
+	// this.completarMapaConExtras();
+	// setChanged();
+	// notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
+	// .devolverPosicion());
+	// }
 
-	public Juego(String nombreDeJugador, int tamanioMapa, Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
+	public Juego(String nombreDeJugador, int tamanioMapa,
+			Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
 		this.setearCantidadSorprepasYObstaculos();
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
 		this.unJugador = new Jugador(new Auto(this.unMapa), nombreDeJugador);
@@ -52,27 +53,17 @@ public abstract class Juego extends Observado {
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
 	}
+	
+	private void ubicarExtra(int min, int maxFilas, int maxColumnas,
+			RandomizadorImplementacion randomizador) {
+		// TODO Auto-generated method stub
+		
+	}
 
-	public void completarMapaConExtras() throws ExcepcionEsquinaInvalida {
-		RandomizadorImplementacion randomizador = new RandomizadorImplementacion();
-		int min = 1;
-		int maxFilas = this.unMapa.devolverFilas();
-		int maxColumnas = this.unMapa.devolverColumnas();
 
-		for (int i = 1; i <= cantidadDeCambiosDeVehiculos; i++) {
-			boolean ubicado = false;
-			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
-				if (esquinaConExtra.tieneSorpresa() == false) {
-					esquinaConExtra.setearSorpresa(new CambioDeVehiculo());
-					ubicado = true;
-				}
-			}
-		}
+	private void completarMapaConDesfavorables(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
 
 		for (int i = 1; i <= cantidadDeDesfavorables; i++) {
 			boolean ubicado = false;
@@ -89,6 +80,12 @@ public abstract class Juego extends Observado {
 			}
 		}
 
+	}
+
+	private void completarMapaConFavorables(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
+
 		for (int i = 1; i <= cantidadDeFavorables; i++) {
 			boolean ubicado = false;
 			while (ubicado == false) {
@@ -104,22 +101,13 @@ public abstract class Juego extends Observado {
 			}
 		}
 
-		for (int i = 1; i <= cantidadDePiquetes; i++) {
-			boolean ubicado = false;
-			while (ubicado == false) {
-				Esquina esquinaConExtra = this.unMapa
-						.devolverUnaEsquina(new Posicion(randomizador
-								.obtenerNumeroEntre(min, maxFilas),
-								randomizador.obtenerNumeroEntre(min,
-										maxColumnas)));
-				if (esquinaConExtra.tieneObstaculo() == false) {
-					esquinaConExtra.setearObstaculo(new Piquete());
-					ubicado = true;
-				}
-			}
-		}
+	}
 
-		for (int i = 1; i <= cantidadDePozos; i++) {
+	private void completarMapaConCambiosDeVehiculo(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
+
+		for (int i = 1; i <= cantidadDeCambiosDeVehiculos; i++) {
 			boolean ubicado = false;
 			while (ubicado == false) {
 				Esquina esquinaConExtra = this.unMapa
@@ -127,12 +115,31 @@ public abstract class Juego extends Observado {
 								.obtenerNumeroEntre(min, maxFilas),
 								randomizador.obtenerNumeroEntre(min,
 										maxColumnas)));
-				if (esquinaConExtra.tieneObstaculo() == false) {
-					esquinaConExtra.setearObstaculo(new Pozo());
+				if (esquinaConExtra.tieneSorpresa() == false) {
+					esquinaConExtra.setearSorpresa(new CambioDeVehiculo());
 					ubicado = true;
 				}
 			}
 		}
+	}
+
+	private void completarMapaConSorpresas(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
+
+		this.completarMapaConCambiosDeVehiculo(min, maxFilas, maxColumnas,
+				randomizador);
+		this.completarMapaConDesfavorables(min, maxFilas, maxColumnas,
+				randomizador);
+		this.completarMapaConFavorables(min, maxFilas, maxColumnas,
+				randomizador);
+	}
+
+	/*-------------------------------------------------------------------------------------------------------------*/
+
+	private void completarMapaConControlesPoliciales(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
 
 		for (int i = 1; i <= cantidadDeControlesPoliciales; i++) {
 			boolean ubicado = false;
@@ -149,7 +156,78 @@ public abstract class Juego extends Observado {
 				}
 			}
 		}
+
 	}
+
+	private void completarMapaConPiquetes(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
+
+		for (int i = 1; i <= cantidadDePiquetes; i++) {
+			boolean ubicado = false;
+			while (ubicado == false) {
+				Esquina esquinaConExtra = this.unMapa
+						.devolverUnaEsquina(new Posicion(randomizador
+								.obtenerNumeroEntre(min, maxFilas),
+								randomizador.obtenerNumeroEntre(min,
+										maxColumnas)));
+				if (esquinaConExtra.tieneObstaculo() == false) {
+					esquinaConExtra.setearObstaculo(new Piquete());
+					ubicado = true;
+				}
+			}
+		}
+
+	}
+
+	private void completarMapaConPozos(int min, int maxFilas, int maxColumnas,
+			RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
+
+		for (int i = 1; i <= cantidadDePozos; i++) {
+			this.ubicarExtra(min, maxFilas, maxColumnas, randomizador);
+			boolean ubicado = false;
+			while (ubicado == false) {
+				Esquina esquinaConExtra = this.unMapa
+						.devolverUnaEsquina(new Posicion(randomizador
+								.obtenerNumeroEntre(min, maxFilas),
+								randomizador.obtenerNumeroEntre(min,
+										maxColumnas)));
+				if (esquinaConExtra.tieneObstaculo() == false) {
+					esquinaConExtra.setearObstaculo(new Pozo());
+					ubicado = true;
+				}
+			}
+		}
+
+	}
+	
+	private void completarMapaConObstaculos(int min, int maxFilas,
+			int maxColumnas, RandomizadorImplementacion randomizador)
+			throws ExcepcionEsquinaInvalida {
+
+		this.completarMapaConPozos(min, maxFilas, maxColumnas, randomizador);
+		this.completarMapaConPiquetes(min, maxFilas, maxColumnas, randomizador);
+		this.completarMapaConControlesPoliciales(min, maxFilas, maxColumnas,
+				randomizador);
+	}
+
+	/*-------------------------------------------------------------------------------------------------------------*/
+
+	public void completarMapaConExtras() throws ExcepcionEsquinaInvalida {
+		RandomizadorImplementacion randomizador = new RandomizadorImplementacion();
+
+		int min = 1;
+		int maxFilas = this.devolverMapaFila();
+		int maxColumnas = this.devolverMapaColumna();
+
+		this.completarMapaConSorpresas(min, maxFilas, maxColumnas, randomizador);
+
+		this.completarMapaConObstaculos(min, maxFilas, maxColumnas,
+				randomizador);
+	}
+	
+	/*-------------------------------------------------------------------------------------------------------------*/
 
 	public Mapa devolverMapa() {
 		return this.unMapa;
@@ -213,7 +291,7 @@ public abstract class Juego extends Observado {
 		}
 		// } else {
 		// // ACA HAY QUE LANZAR UNA VENTANA DICIENDO QUE GANO RAUL
-		// System.out.println("Gananste Raulcito");
+		// System.out.println("Gananste Raulito");
 		// }
 	}
 
