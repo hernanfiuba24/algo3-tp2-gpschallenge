@@ -48,6 +48,7 @@ public class VentanaJuego extends JFrame implements KeyListener {
 	public VentanaJuego(String unNombreDeJugador, Juego unJuego) throws ExcepcionEsquinaInvalida {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("GPS Challenge");
 		setBounds(100, 100, 881, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
