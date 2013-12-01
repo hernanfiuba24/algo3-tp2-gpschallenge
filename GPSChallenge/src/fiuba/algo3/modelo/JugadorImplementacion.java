@@ -81,4 +81,12 @@ public class JugadorImplementacion implements Jugador{
 		return this.nombre;
 	}
 
+	public int obtenerPosicionXVehiculo() {
+		return unVehiculo.obtenerPosicionX();
+	}
+
+	public int obtenerPosicionYVehiculo() {
+		return unVehiculo.obtenerPosicionY();
+	}
+
 }

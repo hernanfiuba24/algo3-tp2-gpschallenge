@@ -157,4 +157,12 @@ public class Esquina {
 		return true;
 	}
 
+	public int obtenerPosicionX() {
+		return unaPosicion.devolverPosicionFila();
+	}
+
+	public int obtenerPosicionY() {
+		return unaPosicion.devolverPosicionColumna();
+	}
+
 }

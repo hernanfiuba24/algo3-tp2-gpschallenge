@@ -29,7 +29,7 @@ import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
-public class PanelMapa extends JLayeredPane /* implements KeyListener */{
+public class PanelMapa extends JLayeredPane {
 
 	private JLabel vehiculo;
 	private JPanel panelObstaculos;
@@ -45,15 +45,12 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 		this.cantidadFilas = unMapa.devolverAlto();
 		this.cantidadColumnas = unMapa.devolverAncho();
 		
-		this.unaVistaVisibilidad = new VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
+		int posicionXVisibilidad = unJuego.obtenerPosicionXVehiculo();
+		int posicionYVisibilidad = unJuego.obtenerPosicionYVehiculo();
+		this.unaVistaVisibilidad = new VistaVisibilidad(posicionXVisibilidad,posicionYVisibilidad);
 		
-		//this.setBackground(new Color(4));
 		setLayout(new GridLayout(0, 1, 0, 0));
-		setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		// addKeyListener(this);
-		// setFocusable(true);
-		// setFocusTraversalKeysEnabled(false);
-		
+		setBorder(BorderFactory.createLineBorder(Color.BLACK));		
 
 		panelObstaculos = new JPanel();
 		panelObstaculos.setOpaque(false);
@@ -78,20 +75,12 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 		panelVehiculo.add(vehiculo);
 		
 		this.dibujarMapa(cantidadFilas, cantidadColumnas);
-		
-		//this.dibujarVisibilidad();
         
 	}
 
 	public void paintComponent(Graphics g) {
-		// Dimension tamanio = getSize();
-		// this.bgImage = new
-		// ImageIcon(getClass().getResource("/Images/mapa.jpg"));
-		// g.drawImage(bgImage.getImage(), 0, 0, getWidth(), getHeight(), this);
-		// setOpaque(false);
 		super.paintComponent(g);
-		//auto.setBounds(posX, posY, 32, 38);
-		// g.fillRect(posX, posY, 20, 20);
+
 	}
 
 	public void dibujarMapa(int dimensionFila, int dimensionColumna) {
@@ -104,7 +93,6 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 				JLabel btnEsquina = new JLabel("");
 				btnEsquina.setOpaque(true);
 				btnEsquina.setBackground(new Color(50, 205, 50));
-				//btnEsquina.setRolloverEnabled(false);
 				btnEsquina.setBounds((tamanioEsquina*fila) + (anchoVehiculo*(fila+1)),
 						(tamanioEsquina*columna) + (altoVehiculo*(columna+1)), tamanioEsquina,
 						tamanioEsquina);
@@ -212,7 +200,6 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 	
 	public void dibujarVisibilidad(int x, int y){
 		this.remove(this.unaVistaVisibilidad);
-		//this.unaVistaVisibilidad.removeAll();
 		this.unaVistaVisibilidad = new VistaVisibilidad(x, y);
 		this.unaVistaVisibilidad.setOpaque(false);
         this.unaVistaVisibilidad.setForeground(Color.gray);
@@ -220,11 +207,5 @@ public class PanelMapa extends JLayeredPane /* implements KeyListener */{
 		add(unaVistaVisibilidad, new Integer(2));
 		this.unaVistaVisibilidad.repaint();
 	}
-	
-	//actualizarVista
-	//dibujar vehiculo
-	//actualizar puntuacion
-	//actualizar movimientos
-	//tengo que tener lista de obstaculos en panel mapa
 	
 }

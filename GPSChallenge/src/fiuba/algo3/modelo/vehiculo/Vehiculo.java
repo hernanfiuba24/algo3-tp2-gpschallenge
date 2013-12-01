@@ -75,4 +75,12 @@ public abstract class Vehiculo {
 
 	public abstract void interactuarCon(Obstaculo obstaculo);
 
+	public int obtenerPosicionX() {
+		return esquinaActual.obtenerPosicionX();
+	}
+
+	public int obtenerPosicionY() {
+		return esquinaActual.obtenerPosicionY();
+	}
+
 }

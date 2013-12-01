@@ -282,4 +282,14 @@ public abstract class Juego extends Observado {
 	}
 
 	public abstract void setearCantidadSorprepasYObstaculos();
+
+
+	public int obtenerPosicionXVehiculo() {
+		return unJugador.obtenerPosicionXVehiculo();
+	}
+
+
+	public int obtenerPosicionYVehiculo() {
+		return unJugador.obtenerPosicionYVehiculo();
+	}
 }
