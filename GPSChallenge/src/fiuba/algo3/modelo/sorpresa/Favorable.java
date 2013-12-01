@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo.sorpresa;
 
 
-public class Favorable extends Extra implements Sorpresa {
+public class Favorable extends Extra {
 
 	public Favorable() {
 		this.porcentaje = 20;

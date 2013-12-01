@@ -27,18 +27,8 @@ public abstract class CambiadorDeVisibilidad {
 				.devolverPosicionesADistanciaDeRadio(unRadio);
 		return posicionesRadioUnRadio;
 	}
-	
-	public void encenderVisibilidadDosALaRedonda(Esquina esquinaActual)
-			throws ExcepcionEsquinaInvalida {
-		this.recorrerPosiciones(esquinaActual);
-	}
 
-	public void apagarVisibilidadDosALaRedonda(Esquina esquinaActual)
-			throws ExcepcionEsquinaInvalida {		
-		this.recorrerPosiciones(esquinaActual);
-	}
-
-	private void recorrerPosiciones(Esquina esquinaActual)
+	protected void recorrerPosiciones(Esquina esquinaActual)
 			throws ExcepcionEsquinaInvalida {
 
 		ArrayList<Posicion> posicionesRadioDos = this

@@ -16,8 +16,6 @@ public interface Jugador {
 		 public void aumentarMovimientoHechos(int cantidad);
 		 public Direccion devolverDireccion();
 		 public void cambiarDireccionContraria();
-		 public void apagarVisibilidadDosALaRedonda(Mapa unMapa) throws ExcepcionEsquinaInvalida;
-		 public void encenderVisibilidadDosALaRedonda(Mapa unMapa)throws ExcepcionEsquinaInvalida;
 		 public String devolverNombre();
 		 
 }

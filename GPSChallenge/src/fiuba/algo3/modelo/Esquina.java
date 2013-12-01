@@ -2,6 +2,9 @@ package fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
@@ -18,13 +21,13 @@ public class Esquina {
 		this.unaPosicion = posicion;
 		this.visibilidad = false;
 		this.setearBandera();
-			
+
 	}
 
 	private void setearBandera() {
-		if(this.devolverPosicion().equals(new Posicion(8,8))){
+		if (this.devolverPosicion().equals(new Posicion(8, 8))) {
 			this.unaBandera = new Bandera(this.unaPosicion);
-		}		
+		}
 	}
 
 	public void setearVehiculo(Vehiculo vehiculo) {
@@ -51,12 +54,12 @@ public class Esquina {
 		}
 		if (this.unObstaculo != null) {
 			this.unObstaculo.aplicar(unJugador);
-			//unJugador.devolverVehiculo().interactuarCon(unObstaculo);
+			// unJugador.devolverVehiculo().interactuarCon(unObstaculo);
 		}
 	}
-	
-	public void chequearBandera(){
-		if(this.tieneBandera() && (this.unVehiculo != null)) {
+
+	public void chequearBandera() {
+		if (this.tieneBandera() && (this.unVehiculo != null)) {
 			this.devolverBandera().ganar();
 		}
 	}
@@ -116,38 +119,42 @@ public class Esquina {
 		this.unaSorpresa = null;
 
 	}
-	
-	public boolean equals(Esquina unaEsquina){
-		if((this.unaPosicion == unaEsquina.devolverPosicion()) && (this.unaSorpresa == unaEsquina.devolverSorpresa()) && (this.unObstaculo == unaEsquina.devolverObstaculo()) && (this.unVehiculo == unaEsquina.devolverVehiculo()) && (this.visibilidad == unaEsquina.devolverVisibilidad()))
+
+	public boolean equals(Esquina unaEsquina) {
+		if ((this.unaPosicion == unaEsquina.devolverPosicion())
+				&& (this.unaSorpresa == unaEsquina.devolverSorpresa())
+				&& (this.unObstaculo == unaEsquina.devolverObstaculo())
+				&& (this.unVehiculo == unaEsquina.devolverVehiculo())
+				&& (this.visibilidad == unaEsquina.devolverVisibilidad()))
 			return true;
 		return false;
 	}
 
 	public boolean tieneExtras() {
-		if(this.unaSorpresa != null){
+		if (this.unaSorpresa != null) {
 			return true;
 		}
-		if(this.unObstaculo != null){
+		if (this.unObstaculo != null) {
 			return true;
 		}
 		return false;
 	}
 
 	public boolean tieneSorpresa() {
-		if(this.unaSorpresa != null){
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean tieneObstaculo(){
-		if(this.unObstaculo != null){
+		if (this.unaSorpresa != null) {
 			return true;
 		}
 		return false;
 	}
 
-	public Bandera devolverBandera() {		
+	public boolean tieneObstaculo() {
+		if (this.unObstaculo != null) {
+			return true;
+		}
+		return false;
+	}
+
+	public Bandera devolverBandera() {
 		return this.unaBandera;
 	}
 
@@ -163,6 +170,19 @@ public class Esquina {
 
 	public int obtenerPosicionY() {
 		return unaPosicion.devolverPosicionColumna();
+	}
+
+	public void apagarVisibilidadDosALaRedonda(Mapa unMapa)
+			throws ExcepcionEsquinaInvalida {
+		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
+		unApagador.apagarVisibilidadDosALaRedonda(this);
+	}
+
+	public void encenderVisibilidadDosALaRedonda(Mapa unMapa)
+			throws ExcepcionEsquinaInvalida {
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(
+				unMapa);
+		unEncendedor.encenderVisibilidadDosALaRedonda(this);
 	}
 
 }

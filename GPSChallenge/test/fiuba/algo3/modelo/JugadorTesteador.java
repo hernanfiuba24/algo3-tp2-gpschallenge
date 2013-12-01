@@ -65,20 +65,6 @@ public class JugadorTesteador implements Jugador{
 	}
 
 	@Override
-	public void apagarVisibilidadDosALaRedonda(Mapa unMapa)
-			throws ExcepcionEsquinaInvalida {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void encenderVisibilidadDosALaRedonda(Mapa unMapa)
-			throws ExcepcionEsquinaInvalida {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public String devolverNombre() {
 		// TODO Auto-generated method stub
 		return null;

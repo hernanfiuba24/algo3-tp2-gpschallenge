@@ -1,7 +1,5 @@
 package fiuba.algo3.modelo;
 
-import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
-import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
@@ -22,9 +20,10 @@ public class JugadorImplementacion implements Jugador{
 
 	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida {
 		//this.movimientosHechos += 1;
-		Esquina esquinaActual = unVehiculo.devolverEsquina();
-		unVehiculo.mover(unMapa, this.unaDireccion);		
-		if (esquinaActual.devolverPosicion().equals(unVehiculo.devolverEsquina().devolverPosicion()) == false){
+		Posicion posicionActual = this.unVehiculo.devolverPosicionActual();
+//		Esquina esquinaActual = unVehiculo.devolverEsquina();
+		unVehiculo.mover(unMapa, this.unaDireccion);
+		if (posicionActual.equals(unVehiculo.devolverPosicionActual()) == false){
 			this.movimientosHechos += 1;
 		}
 	}
@@ -61,20 +60,6 @@ public class JugadorImplementacion implements Jugador{
 
 	public void cambiarDireccionContraria() {
 		this.unaDireccion = this.unaDireccion.cambiarDireccionContraria();
-	}
-
-	public void apagarVisibilidadDosALaRedonda(Mapa unMapa)
-			throws ExcepcionEsquinaInvalida {
-		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
-		unApagador.apagarVisibilidadDosALaRedonda(this.unVehiculo
-				.devolverEsquina());
-	}
-
-	public void encenderVisibilidadDosALaRedonda(Mapa unMapa)
-			throws ExcepcionEsquinaInvalida {
-		EncendedorDeVisibilidad unEncendedor= new EncendedorDeVisibilidad(unMapa);
-		unEncendedor.encenderVisibilidadDosALaRedonda(this.unVehiculo
-				.devolverEsquina());
 	}
 
 	public String devolverNombre() {

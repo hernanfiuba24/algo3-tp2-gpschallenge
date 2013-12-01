@@ -42,7 +42,7 @@ public abstract class Vehiculo {
 	public void mover(Mapa unMapa, Direccion unaDireccion)
 			throws ExcepcionEsquinaInvalida {
 		
-		this.jugadorAlQuePertenece.apagarVisibilidadDosALaRedonda(unMapa);
+		this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
 //		CambiadorDeVisibilidad unCambiador = new CambiadorDeVisibilidad(unMapa);
 //		unCambiador.apagarVisibilidadDosALaRedonda(this.esquinaActual);
 
@@ -58,17 +58,16 @@ public abstract class Vehiculo {
 			esquinaFutura.setearVehiculo(this);
 			esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
 		}	
-		this.jugadorAlQuePertenece.encenderVisibilidadDosALaRedonda(unMapa);
+		this.esquinaActual.encenderVisibilidadDosALaRedonda(unMapa);
 			
 //		unCambiador.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 
-		esquinaActual.borrarVehiculo();
+		this.esquinaActual.borrarVehiculo();
 		
 	}
 
 	public Jugador devolverJugador() {
 		return this.jugadorAlQuePertenece;
-
 	}
 
 	public abstract void cambioDeVehiculo();
@@ -76,11 +75,15 @@ public abstract class Vehiculo {
 	public abstract void interactuarCon(Obstaculo obstaculo);
 
 	public int obtenerPosicionX() {
-		return esquinaActual.obtenerPosicionX();
+		return this.esquinaActual.obtenerPosicionX();
 	}
 
 	public int obtenerPosicionY() {
-		return esquinaActual.obtenerPosicionY();
+		return this.esquinaActual.obtenerPosicionY();
+	}
+
+	public Posicion devolverPosicionActual() {
+		return this.esquinaActual.devolverPosicion();
 	}
 
 }
