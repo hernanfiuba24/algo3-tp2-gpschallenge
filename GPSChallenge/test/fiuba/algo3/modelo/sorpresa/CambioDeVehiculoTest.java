@@ -19,7 +19,7 @@ public class CambioDeVehiculoTest {
 	@Test
 	public void testDeberiaCambiarDeAutoACamioneta() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.devolverUnaEsquina(new Posicion(5, 3)).setearSorpresa(
@@ -36,7 +36,7 @@ public class CambioDeVehiculoTest {
 	@Test
 	public void testDeberiaCambiarDeMotoAAuto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Moto unaMoto = new Moto(unMapa);
+		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, null);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.devolverUnaEsquina(new Posicion(5, 3)).setearSorpresa(
@@ -53,7 +53,7 @@ public class CambioDeVehiculoTest {
 	@Test
 	public void testDeberiaCambiarDeCamionetaAMoto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Camioneta unaCamioneta = new Camioneta(unMapa);
+		Camioneta unaCamioneta = new Camioneta(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unaCamioneta, null);
 		CambioDeVehiculo unaSorpresaCambioDeVehiculo = new CambioDeVehiculo();
 		unMapa.devolverUnaEsquina(new Posicion(5, 3)).setearSorpresa(

@@ -4,7 +4,6 @@ import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
-import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
@@ -14,11 +13,11 @@ public abstract class Vehiculo {
 	protected Esquina esquinaActual;
 	protected Jugador jugadorAlQuePertenece;
 
-	public Vehiculo(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-		this.esquinaActual = unMapa.devolverUnaEsquina(new Posicion(3, 3));
-		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
-		unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
-	}
+//	public Vehiculo(Mapa unMapa) throws ExcepcionEsquinaInvalida {
+//		this.esquinaActual = unMapa.devolverUnaEsquina(new Posicion(3, 3));
+//		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
+//		unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
+//	}
 
 	public Vehiculo(Esquina unaEsquina) {
 		this.esquinaActual = unaEsquina;

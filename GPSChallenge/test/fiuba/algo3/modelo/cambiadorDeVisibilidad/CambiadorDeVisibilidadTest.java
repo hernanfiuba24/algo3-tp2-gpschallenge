@@ -21,8 +21,9 @@ public class CambiadorDeVisibilidadTest {
 	public void testDeberiaPrenderDosEsquinasALaRedondaAlCrearseElAuto()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(7, 7);
-		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));		
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);		
+		unEncendedor.encenderVisibilidadDosALaRedonda(unAuto.devolverEsquina());
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
 				boolean visibilidad = unEncendedor.devolverVisibilidad(unMapa
@@ -42,7 +43,7 @@ public class CambiadorDeVisibilidadTest {
 	public void testDeberianEstarPrendidaEsquinaAlJugar()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 
@@ -59,7 +60,7 @@ public class CambiadorDeVisibilidadTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(3, 6);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
@@ -87,7 +88,7 @@ public class CambiadorDeVisibilidadTest {
 	public void testDeberiaApagarseLaEsquinaDondeEstabaElAutoAntesDeMoverseHaciaOtraEsquina()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
@@ -106,7 +107,7 @@ public class CambiadorDeVisibilidadTest {
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(4, 4);
 		ApagadorDeVisibilidad unApagador= new ApagadorDeVisibilidad(unMapa);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		unJugador.cambiarDireccion(new Derecha());
 		unJugador.jugar(unMapa);
@@ -130,7 +131,7 @@ public class CambiadorDeVisibilidadTest {
 	public void testSiEsquinaDondeEstabaElAutoEstaDentroDelRadio2DeLaNuevaEsquinaDeberiaEstarPrendida()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());
@@ -144,7 +145,7 @@ public class CambiadorDeVisibilidadTest {
 	public void testSiAutoVaYVieneDeEsquinaLaActualDeberiaEstarPrendida()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaPrevia = unAuto.devolverEsquina();
 		unJugador.cambiarDireccion(new Derecha());

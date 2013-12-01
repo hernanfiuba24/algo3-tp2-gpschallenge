@@ -45,7 +45,7 @@ public abstract class Juego extends Observado {
 			Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
 		this.setearCantidadSorprepasYObstaculos();
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
-		this.unJugador = new JugadorImplementacion(new Auto(this.unMapa), nombreDeJugador);
+		this.unJugador = new JugadorImplementacion(new Auto(this.unMapa.devolverUnaEsquina(new Posicion(3, 3))), nombreDeJugador);
 		this.unaBandera = this.unMapa.devolverUnaEsquina(posicionBandera)
 				.devolverBandera();
 		this.completarMapaConExtras();

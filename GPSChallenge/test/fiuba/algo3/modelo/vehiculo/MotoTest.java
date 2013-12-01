@@ -15,7 +15,7 @@ public class MotoTest {
 	@Test
 	public void testDeberiaCrearseLaMotoConUnaEsquinaCuandoLoCreo() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(8, 8);
-		Moto unaMoto = new Moto(unMapa);
+		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 
 		assertTrue(unaMoto.devolverEsquina().devolverPosicion()
 				.equals(new Posicion(3, 3)));
@@ -24,7 +24,7 @@ public class MotoTest {
 	@Test
 	public void testDeberiaModificarseEsquinaCuandoActualizoPosicion() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(8, 8);
-		Moto unaMoto = new Moto(unMapa);
+		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 
 		Posicion posicionFinal = new Posicion(3, 3);
 		Esquina esquinaFinal = new Esquina(posicionFinal);
@@ -38,8 +38,8 @@ public class MotoTest {
 	@Test
 	public void testCambioDeVehiculoDeberiaCambiarMotoPorAuto() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(12, 12);
-		Moto unaMoto = new Moto(unMapa);
-		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, null);
+		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, "Ezequiel");
 		
 		unaMoto.cambioDeVehiculo();
 		

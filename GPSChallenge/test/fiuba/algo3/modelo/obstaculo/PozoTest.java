@@ -19,7 +19,7 @@ public class PozoTest {
 	@Test
 	public void testDeberiaSumarleTresMovimientosAlAuto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
 				3));
@@ -37,7 +37,7 @@ public class PozoTest {
 	@Test
 	public void testDeberiaSumarleTresMovimientosALaMoto() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Moto unaMoto = new Moto(unMapa);
+		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, null);
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
 				3));
@@ -55,7 +55,7 @@ public class PozoTest {
 	@Test
 	public void testNoDeberiaSumarleMovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(12, 12);
-		Camioneta unaCamioneta = new Camioneta(unMapa);
+		Camioneta unaCamioneta = new Camioneta(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unaCamioneta, null);
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(5,
 				3));

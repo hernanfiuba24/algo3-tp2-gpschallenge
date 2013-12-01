@@ -45,12 +45,11 @@ public class PiqueteTest {
 		assertTrue(unJugador.devolverMovimientosHechos() == 2);
 	}
 
-	// TEST DE PiqueteTest MOVIDO ACA
 	@Test
 	public void testElAutoDeberiaVolverALaPosicionOriginal()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Piquete unPiquete = new Piquete();
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,
@@ -66,13 +65,12 @@ public class PiqueteTest {
 				.devolverPosicion()));
 	}
 
-	// TEST DE PiqueteTest MOVIDO ACA
 	@Test
 	public void testElAutoDeberiaTenerLaVisibilidadCorrectaAlVolverALaPosicionOriginal()
 			throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(20, 20);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
 		Piquete unPiquete = new Piquete();
 		Esquina esquinaConObstaculo = unMapa.devolverUnaEsquina(new Posicion(4,

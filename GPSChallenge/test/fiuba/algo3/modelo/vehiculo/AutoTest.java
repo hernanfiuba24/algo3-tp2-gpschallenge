@@ -15,7 +15,7 @@ public class AutoTest {
 	@Test
 	public void testDeberiaCrearseElAutoConUnaEsquinaCuandoLoCreo() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 
 		assertTrue(unAuto.devolverEsquina().devolverPosicion()
 				.equals(new Posicion(3, 3)));
@@ -24,7 +24,7 @@ public class AutoTest {
 	@Test
 	public void testDeberiaModificarseEsquinaCuandoActualizoPosicion() throws ExcepcionEsquinaInvalida {
 		Mapa unMapa = new Mapa(8, 8);
-		Auto unAuto = new Auto(unMapa);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 
 		Posicion posicionFinal = new Posicion(3, 3);
 		Esquina esquinaFinal = new Esquina(posicionFinal);
@@ -39,8 +39,8 @@ public class AutoTest {
 	@Test
 	public void testCambioDeVehiculoDeberiaCambiarAutoPorCamioneta() throws ExcepcionEsquinaInvalida{
 		Mapa unMapa = new Mapa(12, 12);
-		Auto unAuto = new Auto(unMapa);
-		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
+		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
+		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Ezequiel");
 		
 		unAuto.cambioDeVehiculo();
 		
