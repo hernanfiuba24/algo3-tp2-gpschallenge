@@ -21,8 +21,12 @@ public class JugadorImplementacion implements Jugador{
 	}
 
 	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-		this.movimientosHechos += 1;
+		//this.movimientosHechos += 1;
+		Esquina esquinaActual = unVehiculo.devolverEsquina();
 		unVehiculo.mover(unMapa, this.unaDireccion);		
+		if (esquinaActual.devolverPosicion().equals(unVehiculo.devolverEsquina().devolverPosicion()) == false){
+			this.movimientosHechos += 1;
+		}
 	}
 
 	public int devolverMovimientosHechos() {

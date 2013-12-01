@@ -49,15 +49,17 @@ public abstract class Vehiculo {
 		Posicion posicionActual = this.devolverEsquina().devolverPosicion();
 		Posicion posicionFutura = posicionActual.calcularPosicionSiguiente(unaDireccion);
 		
-		Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
+		if (unMapa.existeEsquina(posicionFutura)){
+			Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
 		
-		if (esquinaFutura.tieneObstaculo())
-			esquinaFutura.devolverObstaculo().setearEsquinaAnterior(this.esquinaActual);
-		
-		esquinaFutura.setearVehiculo(this);
-		esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
-		
+			if (esquinaFutura.tieneObstaculo())
+				esquinaFutura.devolverObstaculo().setearEsquinaAnterior(this.esquinaActual);			
+			
+			esquinaFutura.setearVehiculo(this);
+			esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
+		}	
 		this.jugadorAlQuePertenece.encenderVisibilidadDosALaRedonda(unMapa);
+			
 //		unCambiador.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 
 		esquinaActual.borrarVehiculo();
