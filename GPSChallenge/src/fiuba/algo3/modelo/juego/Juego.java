@@ -1,13 +1,14 @@
 package fiuba.algo3.modelo.juego;
 
-import fiuba.algo3.modelo.Bandera;
+import java.util.Observable;
+
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
-import fiuba.algo3.modelo.Observado;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJuegoTerminado;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Piquete;
 import fiuba.algo3.modelo.obstaculo.Pozo;
@@ -17,7 +18,7 @@ import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
-public abstract class Juego extends Observado {
+public abstract class Juego extends Observable {
 
 	protected int cantidadDePiquetes;
 	protected int cantidadDeControlesPoliciales;
@@ -28,7 +29,6 @@ public abstract class Juego extends Observado {
 
 	protected Mapa unMapa;
 	protected JugadorImplementacion unJugador;
-	protected Bandera unaBandera;
 
 	// public Juego() throws ExcepcionEsquinaInvalida {
 	// this.unMapa = new Mapa(8, 8);
@@ -46,9 +46,7 @@ public abstract class Juego extends Observado {
 		this.setearCantidadSorprepasYObstaculos();
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
 		this.unJugador = new JugadorImplementacion(new Auto(this.unMapa.devolverUnaEsquina(new Posicion(3, 3))), nombreDeJugador);
-		this.unaBandera = this.unMapa.devolverUnaEsquina(posicionBandera)
-				.devolverBandera();
-		this.completarMapaConExtras();
+		this.completarMapaConExtras(posicionBandera);
 		setChanged();
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
@@ -196,10 +194,14 @@ public abstract class Juego extends Observado {
 		this.completarMapaConControlesPoliciales(min, maxFilas, maxColumnas,
 				randomizador);
 	}
+	
+	private void completarMapaConBandera(Posicion posicionBandera) throws ExcepcionEsquinaInvalida{
+		this.unMapa.setearBandera(posicionBandera);
+	}
 
 	/*-------------------------------------------------------------------------------------------------------------*/
 
-	public void completarMapaConExtras() throws ExcepcionEsquinaInvalida {
+	public void completarMapaConExtras(Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
 		
 		RandomizadorImplementacion randomizador = new RandomizadorImplementacion();
 
@@ -211,6 +213,8 @@ public abstract class Juego extends Observado {
 
 		this.completarMapaConObstaculos(min, maxFilas, maxColumnas,
 				randomizador);
+		
+		this.completarMapaConBandera(posicionBandera);
 	}
 
 	/*-------------------------------------------------------------------------------------------------------------*/
@@ -274,7 +278,9 @@ public abstract class Juego extends Observado {
 			setChanged();
 			notifyObservers(this.unJugador);
 		} catch (ExcepcionEsquinaInvalida e1) {
+		} catch (ExcepcionJuegoTerminado e2) {
 		}
+		
 		// } else {
 		// // ACA HAY QUE LANZAR UNA VENTANA DICIENDO QUE GANO RAUL
 		// System.out.println("Gananste Raulito");

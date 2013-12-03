@@ -12,7 +12,9 @@ import javax.swing.JOptionPane;
 
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
-import fiuba.algo3.modelo.juego.*;
+import fiuba.algo3.modelo.juego.JuegoDificil;
+import fiuba.algo3.modelo.juego.JuegoFacil;
+import fiuba.algo3.modelo.juego.JuegoIntermedio;
 
 public class VentanaNiveles extends JFrame {
 	

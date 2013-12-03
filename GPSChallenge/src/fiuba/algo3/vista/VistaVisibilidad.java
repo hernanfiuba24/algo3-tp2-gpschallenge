@@ -3,8 +3,6 @@ package fiuba.algo3.vista;
 import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JPanel;
 

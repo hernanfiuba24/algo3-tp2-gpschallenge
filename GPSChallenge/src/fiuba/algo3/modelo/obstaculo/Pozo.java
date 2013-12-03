@@ -20,7 +20,6 @@ public class Pozo extends Obstaculo {
 	}
 
 	@Override
-	public void setearEsquinaAnterior(Esquina esquinaAnterior) {
-		
+	public void setearEsquinaAnterior(Esquina esquinaAnterior) {		
 	}
 }

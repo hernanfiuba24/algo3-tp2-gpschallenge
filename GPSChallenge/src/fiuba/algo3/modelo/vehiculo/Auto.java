@@ -11,6 +11,8 @@ public class Auto extends Vehiculo {
 
 	public Auto(Esquina unaEsquina) {
 		super(unaEsquina);
+		setChanged();
+		notifyObservers(this);
 	}
 
 	public void cambioDeVehiculo() {

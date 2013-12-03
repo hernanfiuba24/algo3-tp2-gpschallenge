@@ -8,7 +8,6 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
-import fiuba.algo3.modelo.juego.Juego;
 
 public class JuegoTest {
 

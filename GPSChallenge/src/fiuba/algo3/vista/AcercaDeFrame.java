@@ -1,26 +1,12 @@
 package fiuba.algo3.vista;
 
-import java.awt.Color;
-import java.awt.Frame;
-
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import java.awt.BorderLayout;
-
-import javax.swing.SwingConstants;
-
 import java.awt.Font;
-
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class AcercaDeFrame extends JFrame {
 

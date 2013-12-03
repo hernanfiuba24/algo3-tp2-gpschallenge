@@ -1,11 +1,11 @@
 package fiuba.algo3.modelo.sorpresa;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
 import fiuba.algo3.modelo.JugadorTesteador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
-import fiuba.algo3.modelo.sorpresa.Favorable;
 
 public class FavorableTest {
 

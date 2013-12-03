@@ -15,19 +15,10 @@ public class Esquina {
 	private Vehiculo unVehiculo;
 	private Sorpresa unaSorpresa;
 	private Obstaculo unObstaculo;
-	private Bandera unaBandera;
 
 	public Esquina(Posicion posicion) {
 		this.unaPosicion = posicion;
 		this.visibilidad = false;
-		this.setearBandera();
-
-	}
-
-	private void setearBandera() {
-		if (this.devolverPosicion().equals(new Posicion(8, 8))) {
-			this.unaBandera = new Bandera(this.unaPosicion);
-		}
 	}
 
 	public void setearVehiculo(Vehiculo vehiculo) {
@@ -55,12 +46,6 @@ public class Esquina {
 		if (this.unObstaculo != null) {
 			this.unObstaculo.aplicar(unJugador);
 			// unJugador.devolverVehiculo().interactuarCon(unObstaculo);
-		}
-	}
-
-	public void chequearBandera() {
-		if (this.tieneBandera() && (this.unVehiculo != null)) {
-			this.devolverBandera().ganar();
 		}
 	}
 
@@ -152,16 +137,6 @@ public class Esquina {
 			return true;
 		}
 		return false;
-	}
-
-	public Bandera devolverBandera() {
-		return this.unaBandera;
-	}
-
-	public boolean tieneBandera() {
-		if (this.unaBandera == null)
-			return false;
-		return true;
 	}
 
 	public int obtenerPosicionX() {

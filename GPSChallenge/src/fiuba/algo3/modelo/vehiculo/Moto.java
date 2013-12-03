@@ -11,6 +11,8 @@ public class Moto extends Vehiculo {
 
 	public Moto(Esquina unaEsquina) {
 		super(unaEsquina);
+		setChanged();
+		notifyObservers(this);
 	}
 
 	public void cambioDeVehiculo() {

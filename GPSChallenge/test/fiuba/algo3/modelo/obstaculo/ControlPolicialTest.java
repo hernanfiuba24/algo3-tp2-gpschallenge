@@ -12,6 +12,7 @@ import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJuegoTerminado;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
@@ -19,7 +20,7 @@ import fiuba.algo3.modelo.vehiculo.Moto;
 public class ControlPolicialTest {
 
 	@Test
-	public void testControlPolicialDeberiaSumarle3MovimientosAlAuto() throws ExcepcionEsquinaInvalida {
+	public void testControlPolicialDeberiaSumarle3MovimientosAlAuto() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		
 		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.5);
@@ -42,7 +43,7 @@ public class ControlPolicialTest {
 	}
 
 	@Test
-	public void testControlPolicialDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida {
+	public void testControlPolicialDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		
 		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.8);
@@ -66,7 +67,7 @@ public class ControlPolicialTest {
 	}
 	
 	@Test
-	public void testControlPolicialNoDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida {
+	public void testControlPolicialNoDeberiaSumarle3MovimientosALaMoto() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		
 		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.9);
@@ -90,7 +91,7 @@ public class ControlPolicialTest {
 	}
 
 	@Test
-	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {		
+	public void testControlPolicialDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {		
 		
 		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.3);
@@ -116,7 +117,7 @@ public class ControlPolicialTest {
 	}
 	
 	@Test
-	public void testControlPolicialNoDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida {		
+	public void testControlPolicialNoDeberiaSumarle3MovimientosALaCamioneta() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {		
 		
 		RandomizadorTesteador unRandomizadorTest = new RandomizadorTesteador();
 		unRandomizadorTest.numeroRandomADevolver(0.7);

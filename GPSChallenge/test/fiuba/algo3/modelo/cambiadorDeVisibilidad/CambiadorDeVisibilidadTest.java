@@ -8,11 +8,10 @@ import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
-import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
-import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJuegoTerminado;
 import fiuba.algo3.modelo.vehiculo.Auto;
 
 public class CambiadorDeVisibilidadTest {
@@ -41,7 +40,7 @@ public class CambiadorDeVisibilidadTest {
 
 	@Test
 	public void testDeberianEstarPrendidaEsquinaAlJugar()
-			throws ExcepcionEsquinaInvalida {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
@@ -57,7 +56,7 @@ public class CambiadorDeVisibilidadTest {
 
 	@Test
 	public void testDeberianPrenderseLasEsquinas2ALaRedondaLuegoDelMovimientoDelAuto()
-			throws ExcepcionEsquinaInvalida {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		Mapa unMapa = new Mapa(3, 6);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
@@ -86,7 +85,7 @@ public class CambiadorDeVisibilidadTest {
 
 	@Test
 	public void testDeberiaApagarseLaEsquinaDondeEstabaElAutoAntesDeMoverseHaciaOtraEsquina()
-			throws ExcepcionEsquinaInvalida {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
@@ -104,7 +103,7 @@ public class CambiadorDeVisibilidadTest {
 
 	@Test
 	public void testDeberianApagarseEsquinasConDistanciaMayorQueDosALaRedonda()
-			throws ExcepcionEsquinaInvalida {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		Mapa unMapa = new Mapa(4, 4);
 		ApagadorDeVisibilidad unApagador= new ApagadorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
@@ -129,7 +128,7 @@ public class CambiadorDeVisibilidadTest {
 
 	@Test
 	public void testSiEsquinaDondeEstabaElAutoEstaDentroDelRadio2DeLaNuevaEsquinaDeberiaEstarPrendida()
-			throws ExcepcionEsquinaInvalida {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
@@ -143,7 +142,7 @@ public class CambiadorDeVisibilidadTest {
 
 	@Test
 	public void testSiAutoVaYVieneDeEsquinaLaActualDeberiaEstarPrendida()
-			throws ExcepcionEsquinaInvalida {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 		Mapa unMapa = new Mapa(12, 12);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);

@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo;
 
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.obstaculo.Bandera;
 
 public class Mapa {
 	private int filas;
@@ -29,27 +30,38 @@ public class Mapa {
 		return this.columnas;
 	}
 
-	public boolean existeEsquina(Posicion unaPosicion){
-		if ((unaPosicion.devolverPosicionFila() > this.filas) || (unaPosicion.devolverPosicionFila() <= 0)){
+	public boolean existeEsquina(Posicion unaPosicion) {
+		if ((unaPosicion.devolverPosicionFila() > this.filas)
+				|| (unaPosicion.devolverPosicionFila() <= 0)) {
 			return false;
 		}
-		if ((unaPosicion.devolverPosicionColumna() > this.columnas) || (unaPosicion.devolverPosicionColumna() <= 0)){
+		if ((unaPosicion.devolverPosicionColumna() > this.columnas)
+				|| (unaPosicion.devolverPosicionColumna() <= 0)) {
 			return false;
 		}
 		return true;
 	}
-	public Esquina devolverUnaEsquina(Posicion unaPosicion)throws ExcepcionEsquinaInvalida {
-		if (this.existeEsquina(unaPosicion)){
+
+	public Esquina devolverUnaEsquina(Posicion unaPosicion)
+			throws ExcepcionEsquinaInvalida {
+		if (this.existeEsquina(unaPosicion)) {
 			return tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
-				.devolverPosicionColumna() - 1];
-		}
-		else{
-			throw new ExcepcionEsquinaInvalida();		
+					.devolverPosicionColumna() - 1];
+		} else {
+			throw new ExcepcionEsquinaInvalida();
 		}
 	}
 
 	private void agregarUnaEsquina(Esquina unaEsquina, Posicion unaPosicion) {
-		tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion.devolverPosicionColumna() - 1] = unaEsquina;
+		tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
+				.devolverPosicionColumna() - 1] = unaEsquina;
 	}
-	
+
+	public void setearBandera(Posicion posicionBandera)
+			throws ExcepcionEsquinaInvalida {
+		if (this.existeEsquina(posicionBandera)) {
+			this.devolverUnaEsquina(posicionBandera).setearObstaculo(new Bandera());
+		}
+	}
+
 }

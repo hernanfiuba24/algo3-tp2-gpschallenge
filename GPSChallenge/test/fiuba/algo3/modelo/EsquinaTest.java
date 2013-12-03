@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.obstaculo.Bandera;
 import fiuba.algo3.modelo.obstaculo.Pozo;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
@@ -26,8 +27,9 @@ public class EsquinaTest {
 	
 	@Test
 	public void testDeberiaTenerBandera(){
-		Esquina unaEsquina = new Esquina(new Posicion(8, 8));
-		assertTrue(unaEsquina.devolverBandera() instanceof Bandera);
+		Esquina esquinaConBandera = new Esquina(new Posicion(8, 8));
+		esquinaConBandera.setearObstaculo(new Bandera());
+		assertTrue(esquinaConBandera.devolverObstaculo() instanceof Bandera);
 		
 	}
 

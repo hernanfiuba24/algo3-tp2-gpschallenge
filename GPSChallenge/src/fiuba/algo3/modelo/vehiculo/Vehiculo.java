@@ -1,14 +1,18 @@
 package fiuba.algo3.modelo.vehiculo;
 
+import java.util.Observable;
+
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
+import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo extends Observable {
 	final int movimientosPermitidos = 1;
 	protected Esquina esquinaActual;
 	protected Jugador jugadorAlQuePertenece;
@@ -25,6 +29,8 @@ public abstract class Vehiculo {
 
 	public void setearEsquina(Esquina nuevaEsquina) {
 		this.esquinaActual = nuevaEsquina;
+		setChanged();
+		notifyObservers(this);
 	}
 
 	public Esquina devolverEsquina() {
@@ -43,8 +49,8 @@ public abstract class Vehiculo {
 			throws ExcepcionEsquinaInvalida {
 		
 		this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
-//		CambiadorDeVisibilidad unCambiador = new CambiadorDeVisibilidad(unMapa);
-//		unCambiador.apagarVisibilidadDosALaRedonda(this.esquinaActual);
+		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
+		unApagador.apagarVisibilidadDosALaRedonda(this.esquinaActual);
 
 		Posicion posicionActual = this.devolverEsquina().devolverPosicion();
 		Posicion posicionFutura = posicionActual.calcularPosicionSiguiente(unaDireccion);
@@ -59,8 +65,8 @@ public abstract class Vehiculo {
 			esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
 		}	
 		this.esquinaActual.encenderVisibilidadDosALaRedonda(unMapa);
-			
-//		unCambiador.encenderVisibilidadDosALaRedonda(this.esquinaActual);
+		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);			
+		unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
 
 		this.esquinaActual.borrarVehiculo();
 		

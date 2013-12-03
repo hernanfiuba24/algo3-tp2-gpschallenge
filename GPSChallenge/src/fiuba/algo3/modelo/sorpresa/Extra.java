@@ -1,8 +1,10 @@
 package fiuba.algo3.modelo.sorpresa;
 
+import java.util.Observable;
+
 import fiuba.algo3.modelo.Jugador;
 
-public abstract class Extra implements Sorpresa {
+public abstract class Extra extends Observable implements Sorpresa {
 
 	protected int porcentaje;
 
@@ -12,6 +14,8 @@ public abstract class Extra implements Sorpresa {
 		unJugador.descontarMovimientos((unJugador.devolverMovimientosHechos()
 				* porcentaje / 100)
 				* this.signo());
+		System.out.println(unJugador.devolverMovimientosHechos()
+				* porcentaje / 100);
 	}
 
 	public int devolverPorcentaje() {

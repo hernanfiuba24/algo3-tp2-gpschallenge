@@ -1,11 +1,8 @@
 package fiuba.algo3.modelo.direccion;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import fiuba.algo3.modelo.direccion.Arriba;
-import fiuba.algo3.modelo.direccion.Direccion;
 
 public class DireccionTest {
 

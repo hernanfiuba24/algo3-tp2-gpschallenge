@@ -6,15 +6,16 @@ import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class JugadorTesteador implements Jugador{
     
+	public int movimientosDescontados;
 	public int movimientosHechos;
 
     public JugadorTesteador(){
+    	this.movimientosDescontados = 0;
     	this.movimientosHechos = 0;
     }
     
 	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -68,6 +69,12 @@ public class JugadorTesteador implements Jugador{
 	public String devolverNombre() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void ganar() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

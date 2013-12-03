@@ -1,12 +1,14 @@
 package fiuba.algo3.modelo.obstaculo;
 
+import java.util.Observable;
+
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 
-public abstract class Obstaculo {
+public abstract class Obstaculo extends Observable {
 
 	public void aplicar(Jugador unJugador) {
 		unJugador.devolverVehiculo().interactuarCon(this);

@@ -9,6 +9,7 @@ import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJuegoTerminado;
 import fiuba.algo3.modelo.obstaculo.Piquete;
 import fiuba.algo3.modelo.obstaculo.Pozo;
 import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
@@ -30,7 +31,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testJugadorDeberiaPoderJugarArriba() throws ExcepcionEsquinaInvalida {
+	public void testJugadorDeberiaPoderJugarArriba() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 
 		Mapa unMapa = new Mapa(10, 10);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5, 5)));
@@ -45,7 +46,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testJugadorDeberiaPoderJugarAbajo() throws ExcepcionEsquinaInvalida {
+	public void testJugadorDeberiaPoderJugarAbajo() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
@@ -60,7 +61,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testJugadorDeberiaPoderJugarIzquierda() throws ExcepcionEsquinaInvalida {
+	public void testJugadorDeberiaPoderJugarIzquierda() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 
 		Mapa unMapa = new Mapa(10, 10);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(5, 5)));
@@ -75,7 +76,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void testJugadorDeberiaPoderJugarDerecha() throws ExcepcionEsquinaInvalida {
+	public void testJugadorDeberiaPoderJugarDerecha() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
@@ -90,7 +91,7 @@ public class JugadorTest {
 	}
 	
 	@Test//(expected = ExcepcionEsquinaInvalida.class) 
-	public void testJugadorDeberiaLanzarExcepcionAlJugarFueraDeLosLimites() throws ExcepcionEsquinaInvalida {
+	public void testJugadorDeberiaLanzarExcepcionAlJugarFueraDeLosLimites() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
 
 		Mapa unMapa = new Mapa(4, 3);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
@@ -108,7 +109,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testJugarDeberiaIncrementarEn1LosMovimientosHecho() throws ExcepcionEsquinaInvalida{
+	public void testJugarDeberiaIncrementarEn1LosMovimientosHecho() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado{
 		Mapa unMapa = new Mapa(8, 8);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, "Raul");
@@ -162,7 +163,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testUnAutoDeberiaEncontrarseConUnaSorpresaFavorableYUnPozo() throws ExcepcionEsquinaInvalida{
+	public void testUnAutoDeberiaEncontrarseConUnaSorpresaFavorableYUnPozo() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado{
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		
@@ -184,7 +185,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testUnaCamionetaDeberiaEncontrarseConUnaSorpresaCambioDeVehiculoYAlCambiarAMotoDebeSumarleMovimientosUnPiquete() throws ExcepcionEsquinaInvalida{
+	public void testUnaCamionetaDeberiaEncontrarseConUnaSorpresaCambioDeVehiculoYAlCambiarAMotoDebeSumarleMovimientosUnPiquete() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado{
 		Mapa unMapa = new Mapa(20, 20);
 		Camioneta unaCamioneta = new Camioneta(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		
