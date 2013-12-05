@@ -10,11 +10,11 @@ public class Auto extends Vehiculo {
 	// super(unMapa);
 	// }
 
-	// Si un constructor no invoca explícitamente un constructor de superclase,
-	// el compilador de Java inserta automáticamente una llamada al constructor
+	// Si un constructor no invoca explicitamente un constructor de superclase,
+	// el compilador de Java inserta automaticamente una llamada al constructor
 	// sin argumentos de la superclase. Si la superclase no tiene un constructor
-	// sin argumentos, obtendrá un error en tiempo de compilación. Object tiene
-	// tal constructor, así que si Object es la única superclase, no hay
+	// sin argumentos, obtendra un error en tiempo de compilacion. Object tiene
+	// tal constructor, asi que si Object es la unica superclase, no hay
 	// problema.
 	public Auto(Esquina unaEsquina) {
 		super(unaEsquina);
