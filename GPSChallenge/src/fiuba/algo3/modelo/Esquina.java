@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
@@ -38,7 +39,7 @@ public class Esquina {
 		return this.unaPosicion;
 	}
 
-	public void aplicarExtras(Jugador unJugador) {
+	public void aplicarExtras(Jugador unJugador) throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		if (this.unaSorpresa != null) {
 			this.unaSorpresa.aplicar(unJugador);
 			this.elimnarSorpresa();

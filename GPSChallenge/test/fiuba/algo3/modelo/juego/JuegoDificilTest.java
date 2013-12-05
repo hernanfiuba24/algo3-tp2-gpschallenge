@@ -6,11 +6,12 @@ import org.junit.Test;
 
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 
 public class JuegoDificilTest {
 
 	@Test
-	public void testJuegoDificilDeberiaTener6DeCadaSorpresaYObstaculoY3CambioDeVehiculo() throws ExcepcionEsquinaInvalida {
+	public void testJuegoDificilDeberiaTener6DeCadaSorpresaYObstaculoY3CambioDeVehiculo() throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
 		JuegoDificil unJuegoDificil = new JuegoDificil("Ezequiel", 8, new Posicion(8, 8));
 		assertTrue(unJuegoDificil.devolverCantidadDeCambiosDeVehiculos() == 3);
 		assertTrue(unJuegoDificil.devolverCantidadDeControlesPoliciales() == 5);

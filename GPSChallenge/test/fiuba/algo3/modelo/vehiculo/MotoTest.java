@@ -9,6 +9,7 @@ import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 
 public class MotoTest {
 
@@ -36,7 +37,7 @@ public class MotoTest {
 	}
 	
 	@Test
-	public void testCambioDeVehiculoDeberiaCambiarMotoPorAuto() throws ExcepcionEsquinaInvalida{
+	public void testCambioDeVehiculoDeberiaCambiarMotoPorAuto() throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo{
 		Mapa unMapa = new Mapa(12, 12);
 		Moto unaMoto = new Moto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unaMoto, "Ezequiel");

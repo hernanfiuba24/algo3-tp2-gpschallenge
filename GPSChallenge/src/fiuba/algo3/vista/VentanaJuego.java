@@ -55,11 +55,14 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		this.unJuego.addObserver(this);
 		// this.unaVistaVisibilidad = new
 		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
-
+		
 		panelMapa = new PanelMapa(this.unJuego.devolverMapa(), this.unJuego);
 		panelMapa.setBounds(5, 5, 660, 730);
 		contentPane.add(panelMapa);
 		panelMapa.setLayout(null);
+		
+//		ObservadorDeVehiculos observadorDeVehiculos = new ObservadorDeVehiculos(this.panelMapa);
+//		this.unJuego.devolverJugador().devolverVehiculo().agregarObservador(observadorDeVehiculos);
 
 		panelObstaculos = new JPanel();
 		panelObstaculos.setOpaque(false);

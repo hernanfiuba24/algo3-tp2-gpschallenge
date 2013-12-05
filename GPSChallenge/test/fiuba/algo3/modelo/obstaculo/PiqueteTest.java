@@ -12,13 +12,14 @@ import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Abajo;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJuegoTerminado;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Moto;
 
 public class PiqueteTest {
 
 	@Test
-	public void testDeberiaPermitirMovimientoALaMoto() {
+	public void testDeberiaPermitirMovimientoALaMoto() throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		Esquina unaEsquinaConMotoYPiquete = new Esquina(new Posicion(3, 3));
 
 		Moto unaMoto = new Moto(unaEsquinaConMotoYPiquete);
@@ -33,7 +34,7 @@ public class PiqueteTest {
 	}
 
 	@Test
-	public void testDeberiaAumentarleLosMovimientosALaMoto() {
+	public void testDeberiaAumentarleLosMovimientosALaMoto() throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		Esquina unaEsquinaConMotoYPiquete = new Esquina(new Posicion(3, 3));
 
 		Moto unaMoto = new Moto(unaEsquinaConMotoYPiquete);
@@ -48,7 +49,7 @@ public class PiqueteTest {
 
 	@Test
 	public void testElAutoDeberiaVolverALaPosicionOriginal()
-			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado, ExcepcionJugadorYaAsignadoAlVehiculo {
 		Mapa unMapa = new Mapa(20, 20);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		JugadorImplementacion unJugador = new JugadorImplementacion(unAuto, null);
@@ -68,7 +69,7 @@ public class PiqueteTest {
 
 	@Test
 	public void testElAutoDeberiaTenerLaVisibilidadCorrectaAlVolverALaPosicionOriginal()
-			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado {
+			throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado, ExcepcionJugadorYaAsignadoAlVehiculo {
 		Mapa unMapa = new Mapa(20, 20);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(unMapa);
 		Auto unAuto = new Auto(unMapa.devolverUnaEsquina(new Posicion(3, 3)));

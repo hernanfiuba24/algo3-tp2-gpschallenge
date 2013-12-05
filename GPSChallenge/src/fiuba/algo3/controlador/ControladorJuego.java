@@ -8,6 +8,7 @@ import fiuba.algo3.modelo.direccion.Arriba;
 import fiuba.algo3.modelo.direccion.Derecha;
 import fiuba.algo3.modelo.direccion.Izquierda;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.juego.Juego;
 
 public class ControladorJuego {
@@ -42,16 +43,32 @@ public class ControladorJuego {
 		    public void keyReleased(KeyEvent e) {
 		    	switch (e.getKeyCode()) {
 				case KeyEvent.VK_UP:
-					GPSChallenge.jugar(new Arriba());
+					try {
+						GPSChallenge.jugar(new Arriba());
+					} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+						e1.printStackTrace();
+					}
 					break;
 				case KeyEvent.VK_DOWN:
-					GPSChallenge.jugar(new Abajo());
+					try {
+						GPSChallenge.jugar(new Abajo());
+					} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+						e1.printStackTrace();
+					}
 					break;
 				case KeyEvent.VK_RIGHT:
-					GPSChallenge.jugar(new Derecha());
+					try {
+						GPSChallenge.jugar(new Derecha());
+					} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+						e1.printStackTrace();
+					}
 					break;
 				case KeyEvent.VK_LEFT:
-					GPSChallenge.jugar(new Izquierda());
+					try {
+						GPSChallenge.jugar(new Izquierda());
+					} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+						e1.printStackTrace();
+					}
 					break;
 				}
 		

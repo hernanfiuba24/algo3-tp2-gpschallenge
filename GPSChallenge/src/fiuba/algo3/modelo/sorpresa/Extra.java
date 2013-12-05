@@ -14,8 +14,6 @@ public abstract class Extra extends Observable implements Sorpresa {
 		unJugador.descontarMovimientos((unJugador.devolverMovimientosHechos()
 				* porcentaje / 100)
 				* this.signo());
-		System.out.println(unJugador.devolverMovimientosHechos()
-				* porcentaje / 100);
 	}
 
 	public int devolverPorcentaje() {

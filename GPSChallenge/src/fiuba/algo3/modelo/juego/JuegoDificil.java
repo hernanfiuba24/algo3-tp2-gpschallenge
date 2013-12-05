@@ -2,23 +2,26 @@ package fiuba.algo3.modelo.juego;
 
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 
 public class JuegoDificil extends Juego {
 
-//	public JuegoDificil() throws ExcepcionEsquinaInvalida {
-//		this.setearCantidadSorprepasYObstaculos();
-//		this.unMapa = new Mapa(8, 8);
-//		this.unJugador = new Jugador(new Auto(this.unMapa), null);
-//		this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(3, 3))
-//				.devolverBandera();
-//		this.completarMapaConExtras();
-//		setChanged();
-//		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-//				.devolverPosicion());
-//	}
+	// public JuegoDificil() throws ExcepcionEsquinaInvalida {
+	// this.setearCantidadSorprepasYObstaculos();
+	// this.unMapa = new Mapa(8, 8);
+	// this.unJugador = new Jugador(new Auto(this.unMapa), null);
+	// this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(3, 3))
+	// .devolverBandera();
+	// this.completarMapaConExtras();
+	// setChanged();
+	// notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
+	// .devolverPosicion());
+	// }
 
-	public JuegoDificil(String nombreDeJugador, int tamanioMapa, Posicion posicionBandera) throws ExcepcionEsquinaInvalida{
-		super(nombreDeJugador,tamanioMapa,posicionBandera);
+	public JuegoDificil(String nombreDeJugador, int tamanioMapa,
+			Posicion posicionBandera) throws ExcepcionEsquinaInvalida,
+			ExcepcionJugadorYaAsignadoAlVehiculo {
+		super(nombreDeJugador, tamanioMapa, posicionBandera);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.vehiculo;
 
 import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 
 public class Camioneta extends Vehiculo {
@@ -11,11 +12,21 @@ public class Camioneta extends Vehiculo {
 
 	public Camioneta(Esquina unaEsquina) {
 		super(unaEsquina);
+		seCambio();
+		notificarObservadores(this);
+	}
+	
+	public void setearEsquina(Esquina nuevaEsquina){
+		super.setearEsquina(nuevaEsquina);
+		seCambio();
+		notificarObservadores(this);
 	}
 
-	public void cambioDeVehiculo() {
+	public void cambioDeVehiculo() throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.jugadorAlQuePertenece
 				.setearVehiculo(new Moto(this.esquinaActual));
+//		seCambio();
+//		notificarObservadores(this);
 	}
 
 	public void interactuarCon(Obstaculo obstaculo) {

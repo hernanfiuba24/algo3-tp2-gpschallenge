@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.juego.JuegoDificil;
 import fiuba.algo3.modelo.juego.JuegoFacil;
 import fiuba.algo3.modelo.juego.JuegoIntermedio;
@@ -44,8 +45,9 @@ public class VentanaNiveles extends JFrame {
 				try {
 					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoFacil(nombreJugador, 3, new Posicion(3,3)));
 				} catch (ExcepcionEsquinaInvalida exc) {
-					// TODO Auto-generated catch block
 					exc.printStackTrace();
+				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+					e1.printStackTrace();
 				}
 				unaVentanaJuego.setVisible(true);
 				dispose();
@@ -66,8 +68,9 @@ public class VentanaNiveles extends JFrame {
 				try {
 					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoIntermedio(nombreJugador, 5, new Posicion(5,5)));
 				} catch (ExcepcionEsquinaInvalida exc) {
-					// TODO Auto-generated catch block
 					exc.printStackTrace();
+				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+					e1.printStackTrace();
 				}
 				unaVentanaJuego.setVisible(true);
 				dispose();
@@ -88,8 +91,9 @@ public class VentanaNiveles extends JFrame {
 				try {
 					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoDificil(nombreJugador, 8, new Posicion(8, 8)));
 				} catch (ExcepcionEsquinaInvalida exc) {
-					// TODO Auto-generated catch block
 					exc.printStackTrace();
+				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+					e1.printStackTrace();
 				}
 				unaVentanaJuego.setVisible(true);
 				dispose();

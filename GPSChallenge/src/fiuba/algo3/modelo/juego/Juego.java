@@ -9,6 +9,7 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJuegoTerminado;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Piquete;
 import fiuba.algo3.modelo.obstaculo.Pozo;
@@ -16,7 +17,7 @@ import fiuba.algo3.modelo.obstaculo.RandomizadorImplementacion;
 import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
 import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
-import fiuba.algo3.modelo.vehiculo.Auto;
+import fiuba.algo3.modelo.vehiculo.Camioneta;
 
 public abstract class Juego extends Observable {
 
@@ -42,14 +43,16 @@ public abstract class Juego extends Observable {
 	// }
 
 	public Juego(String nombreDeJugador, int tamanioMapa,
-			Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
+			Posicion posicionBandera) throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.setearCantidadSorprepasYObstaculos();
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
-		this.unJugador = new JugadorImplementacion(new Auto(this.unMapa.devolverUnaEsquina(new Posicion(3, 3))), nombreDeJugador);
+		Camioneta unaCamioneta = new Camioneta(this.unMapa.devolverUnaEsquina(new Posicion(3, 3)));
+		this.unJugador = new JugadorImplementacion(unaCamioneta, nombreDeJugador);
 		this.completarMapaConExtras(posicionBandera);
 		setChanged();
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
+		notifyObservers(unaCamioneta);
 	}
 
 
@@ -270,7 +273,7 @@ public abstract class Juego extends Observable {
 		return cantidadDeCambiosDeVehiculos;
 	}
 
-	public void jugar(Direccion unaDireccion) {
+	public void jugar(Direccion unaDireccion) throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		// if (this.unaBandera.saberSiGano() == false) {
 		this.unJugador.cambiarDireccion(unaDireccion);
 		try {
