@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Bandera extends Obstaculo {
 
@@ -24,5 +25,10 @@ public class Bandera extends Obstaculo {
 
 	@Override
 	public void setearEsquinaAnterior(Esquina esquinaAnterior) {		
+	}
+
+	@Override
+	public boolean puedeAvanzar(Vehiculo vehiculo) {
+		return true;
 	}
 }

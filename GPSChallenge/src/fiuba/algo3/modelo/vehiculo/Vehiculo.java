@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.notificadores.ObjetoObservable;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
+import fiuba.algo3.modelo.obstaculo.Piquete;
 
 public abstract class Vehiculo extends ObjetoObservable {
 	final int movimientosPermitidos = 1;
@@ -30,7 +31,7 @@ public abstract class Vehiculo extends ObjetoObservable {
 
 	public void setearEsquina(Esquina nuevaEsquina) {
 		this.esquinaActual = nuevaEsquina;
-			
+
 	}
 
 	public Esquina devolverEsquina() {
@@ -51,7 +52,8 @@ public abstract class Vehiculo extends ObjetoObservable {
 	}
 
 	public void mover(Mapa unMapa, Direccion unaDireccion)
-			throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
+			throws ExcepcionEsquinaInvalida,
+			ExcepcionJugadorYaAsignadoAlVehiculo {
 
 		this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
 		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
@@ -66,12 +68,10 @@ public abstract class Vehiculo extends ObjetoObservable {
 
 			// SETEA AL PIQUETE LA ESQUINA ANTERIOR PARA DESPUES EVITAR QUE
 			// SE MUEVA EL VEHICULO
-			if (esquinaFutura.tieneObstaculo())
-				esquinaFutura.devolverObstaculo().setearEsquinaAnterior(
-						this.esquinaActual);
-
-			esquinaFutura.setearVehiculo(this);
-			esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
+			if (esquinaFutura.puedeAvanzar(this)) {
+				esquinaFutura.setearVehiculo(this);
+				esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
+			}
 		}
 		this.esquinaActual.encenderVisibilidadDosALaRedonda(unMapa);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(
@@ -102,5 +102,7 @@ public abstract class Vehiculo extends ObjetoObservable {
 	public Posicion devolverPosicionActual() {
 		return this.esquinaActual.devolverPosicion();
 	}
+
+	public abstract boolean puedeAvanzar(Piquete piquete);
 
 }

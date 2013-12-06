@@ -176,7 +176,7 @@ public class PanelMapa extends JLayeredPane {
 														PanelMapa.class
 																.getResource("/fiuba/algo3/vista/imagenes/bandera.png")));
 										iconoObstaculo.setBounds((j - 1)
-												* (40 + 36), (i - 1)
+												* (40 + 35), (i - 1)
 												* (40 + 40), 35, 35);
 										panelBandera.add(iconoObstaculo);
 									}
@@ -245,7 +245,7 @@ public class PanelMapa extends JLayeredPane {
 				* (40 + 42), 40, 17);
 		vehiculo.setIcon(new ImageIcon(PanelMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
-		panelVehiculo.add(vehiculo);
+//		panelVehiculo.add(vehiculo);
 
 	}
 

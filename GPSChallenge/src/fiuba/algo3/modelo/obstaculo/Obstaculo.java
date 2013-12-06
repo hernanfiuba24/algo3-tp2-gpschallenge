@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public abstract class Obstaculo extends Observable {
 
@@ -21,5 +22,7 @@ public abstract class Obstaculo extends Observable {
 	public abstract void aplicar(Camioneta unaCamioneta);
 	
 	public abstract void setearEsquinaAnterior(Esquina esquinaAnterior);
+
+	public abstract boolean puedeAvanzar(Vehiculo vehiculo);
 
 }

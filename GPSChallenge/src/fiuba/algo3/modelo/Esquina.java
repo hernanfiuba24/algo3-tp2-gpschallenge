@@ -161,4 +161,11 @@ public class Esquina {
 		unEncendedor.encenderVisibilidadDosALaRedonda(this);
 	}
 
+	public boolean puedeAvanzar(Vehiculo vehiculo) {
+		if (this.tieneObstaculo()){
+			return this.devolverObstaculo().puedeAvanzar(vehiculo);
+		}
+		return true;
+	}
+
 }

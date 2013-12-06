@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class Piquete extends Obstaculo {
 	
@@ -29,6 +30,13 @@ public class Piquete extends Obstaculo {
 	public void aplicar(Camioneta unaCamioneta) {
 //		unaCamioneta.devolverJugador().cambiarDireccionContraria();
 		unaCamioneta.setearEsquina(this.esquinaAnterior);
+	}
+
+	@Override
+	public boolean puedeAvanzar(Vehiculo vehiculo) {
+		return vehiculo.puedeAvanzar(this);
+		
+		
 	}
 
 }

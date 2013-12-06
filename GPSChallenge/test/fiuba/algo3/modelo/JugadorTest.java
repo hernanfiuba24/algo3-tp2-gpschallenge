@@ -186,7 +186,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void testUnaCamionetaDeberiaEncontrarseConUnaSorpresaCambioDeVehiculoYAlCambiarAMotoDebeSumarleMovimientosUnPiquete() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado, ExcepcionJugadorYaAsignadoAlVehiculo{
+	public void testUnaCamionetaDeberiaEncontrarseConUnaSorpresaCambioDeVehiculoYUnPiqueteYNoCambiarElVehiculo() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado, ExcepcionJugadorYaAsignadoAlVehiculo{
 		Mapa unMapa = new Mapa(20, 20);
 		Camioneta unaCamioneta = new Camioneta(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
 		
@@ -203,7 +203,27 @@ public class JugadorTest {
 		
 		unJugador.jugar(unMapa);
 		
-		assertTrue(unJugador.devolverMovimientosHechos() == 3);
-		assertTrue(unJugador.devolverVehiculo() instanceof Moto);
+		assertTrue(unJugador.devolverVehiculo() instanceof Camioneta);
+	}
+		
+	@Test
+	public void testUnaCamionetaDeberiaEncontrarseConUnPiqueteYNoSumarMovimientos() throws ExcepcionEsquinaInvalida, ExcepcionJuegoTerminado, ExcepcionJugadorYaAsignadoAlVehiculo{
+		Mapa unMapa = new Mapa(20, 20);
+		Camioneta unaCamioneta = new Camioneta(unMapa.devolverUnaEsquina(new Posicion(3, 3)));
+			
+		JugadorImplementacion unJugador = new JugadorImplementacion(unaCamioneta, "Raul");
+		
+		Piquete unPiquete = new Piquete();
+		CambioDeVehiculo unCambioDeVehiculo = new CambioDeVehiculo();
+		
+		Esquina unaEsquinaConSorpresaYObstaculo = unMapa.devolverUnaEsquina(new Posicion(2,3));
+		unaEsquinaConSorpresaYObstaculo.setearObstaculo(unPiquete);
+		unaEsquinaConSorpresaYObstaculo.setearSorpresa(unCambioDeVehiculo);
+			
+		unJugador.cambiarDireccion(new Arriba());
+			
+		unJugador.jugar(unMapa);
+			
+		assertTrue(unJugador.devolverMovimientosHechos() == 0);
 	}
 }

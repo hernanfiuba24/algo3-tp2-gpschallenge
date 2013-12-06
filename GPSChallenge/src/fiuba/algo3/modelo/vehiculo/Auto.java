@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.vehiculo;
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
+import fiuba.algo3.modelo.obstaculo.Piquete;
 
 public class Auto extends Vehiculo {
 
@@ -35,6 +36,11 @@ public class Auto extends Vehiculo {
 
 	public void interactuarCon(Obstaculo obstaculo) {
 		obstaculo.aplicar(this);
+	}
+
+	@Override
+	public boolean puedeAvanzar(Piquete piquete) {
+		return false;
 	}
 
 }
