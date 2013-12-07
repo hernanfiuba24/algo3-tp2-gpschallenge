@@ -2,6 +2,9 @@ package fiuba.algo3.modelo.obstaculo;
 
 import java.util.Observable;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.vehiculo.Auto;
@@ -24,5 +27,7 @@ public abstract class Obstaculo extends Observable {
 	public abstract void setearEsquinaAnterior(Esquina esquinaAnterior);
 
 	public abstract boolean puedeAvanzar(Vehiculo vehiculo);
+
+	public abstract Node toXml(Document doc) ;
 
 }

@@ -43,7 +43,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoFacil(nombreJugador, 3, new Posicion(3,3)));
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoFacil(nombreJugador, 3, new Posicion(3,3), new Posicion(3,3)));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
 				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
@@ -66,7 +66,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoIntermedio(nombreJugador, 5, new Posicion(5,5)));
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoIntermedio(nombreJugador, 5, new Posicion(5,5), new Posicion(3,3)));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
 				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
@@ -89,7 +89,7 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoDificil(nombreJugador, 8, new Posicion(8, 8)));
+					unaVentanaJuego = new VentanaJuego(nombreJugador, new JuegoDificil(nombreJugador, 8, new Posicion(8, 8), new Posicion(3,3)));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
 				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {

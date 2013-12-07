@@ -1,6 +1,11 @@
 package fiuba.algo3.modelo.obstaculo;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
@@ -30,5 +35,11 @@ public class Bandera extends Obstaculo {
 	@Override
 	public boolean puedeAvanzar(Vehiculo vehiculo) {
 		return true;
+	}
+
+	@Override
+	public Node toXml(Document doc) {
+		Element xmlElement = doc.createElement("Bandera");
+		return xmlElement;
 	}
 }

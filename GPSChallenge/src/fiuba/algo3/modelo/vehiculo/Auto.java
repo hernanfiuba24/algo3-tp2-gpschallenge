@@ -43,4 +43,9 @@ public class Auto extends Vehiculo {
 		return false;
 	}
 
+	@Override
+	public void actualizar() {
+		seCambio();
+		notificarObservadores(this);
+	}
 }

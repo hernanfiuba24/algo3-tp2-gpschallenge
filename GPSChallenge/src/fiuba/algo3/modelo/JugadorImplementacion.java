@@ -2,6 +2,10 @@ package fiuba.algo3.modelo;
 
 import java.util.Observable;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJuegoTerminado;
@@ -106,6 +110,17 @@ public class JugadorImplementacion extends Observable implements Jugador {
 	@Override
 	public void ganar() {
 		this.gano = true;
+	}
+
+	public Node toXml(Document doc) {
+		Element xmlElement = doc.createElement("Jugador");
+		xmlElement.setAttribute("Nombre", this.nombre);
+		xmlElement.setAttribute("Gano", String.valueOf(this.gano));
+		xmlElement.setAttribute("Movimientos_Hechos", String.valueOf(this.movimientosHechos));
+		
+//		xmlElement.appendChild(this.unaDireccion.toXml(doc));
+		xmlElement.appendChild(this.unVehiculo.toXml(doc));
+		return xmlElement;
 	}
 
 }

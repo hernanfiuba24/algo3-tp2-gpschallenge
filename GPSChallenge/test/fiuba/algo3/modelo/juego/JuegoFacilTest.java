@@ -12,7 +12,7 @@ public class JuegoFacilTest {
 
 	@Test
 	public void testJuegoFacilDeberiaTener1DeCadaSorpresaYObstaculo() throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
-		JuegoFacil unJuegoFacil = new JuegoFacil("Ezequiel", 3, new Posicion(3, 3));
+		JuegoFacil unJuegoFacil = new JuegoFacil("Ezequiel", 3, new Posicion(3, 3), new Posicion(1, 1));
 		assertTrue(unJuegoFacil.devolverCantidadDeCambiosDeVehiculos() == 1);
 		assertTrue(unJuegoFacil.devolverCantidadDeControlesPoliciales() == 1);
 		assertTrue(unJuegoFacil.devolverCantidadDeDesfavorables() == 1);

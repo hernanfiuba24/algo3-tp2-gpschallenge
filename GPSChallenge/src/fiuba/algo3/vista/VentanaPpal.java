@@ -5,14 +5,19 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaPpal extends JFrame {
 
@@ -34,6 +39,7 @@ public class VentanaPpal extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	/**
@@ -63,14 +69,6 @@ public class VentanaPpal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaNiveles ventanaNivel = new VentanaNiveles();
 				ventanaNivel.setVisible(true);
-				/*VentanaJuego unaVentanaJuego = null;
-				try {
-					unaVentanaJuego = new VentanaJuego();
-				} catch (ExcepcionEsquinaInvalida e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				unaVentanaJuego.setVisible(true);*/
 				dispose();
 
 			}
@@ -87,9 +85,24 @@ public class VentanaPpal extends JFrame {
 		btnContinuarPartidaGuarda.setBounds(141, 104, 153, 55);
 		btnContinuarPartidaGuarda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");
+				String ruta = "c:\\" + nombreJugador + ".xml";
+				VentanaJuego unaVentanaJuego = null;
+				try {
+					unaVentanaJuego = new VentanaJuego(nombreJugador,JuegoPersistencia.cargarGpsChallenge(ruta));
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (ExcepcionEsquinaInvalida e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				unaVentanaJuego.setVisible(true);
+				dispose();
 			}
 		});
 		contentPane.add(btnContinuarPartidaGuarda);
+		
 
 		JButton btnSalir = new JButton(
 				new ImageIcon(

@@ -1,6 +1,11 @@
 package fiuba.algo3.modelo.obstaculo;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
@@ -37,6 +42,12 @@ public class Piquete extends Obstaculo {
 		return vehiculo.puedeAvanzar(this);
 		
 		
+	}
+
+	@Override
+	public Node toXml(Document doc) {
+		Element xmlElement = doc.createElement("Piquete");
+		return xmlElement;
 	}
 
 }

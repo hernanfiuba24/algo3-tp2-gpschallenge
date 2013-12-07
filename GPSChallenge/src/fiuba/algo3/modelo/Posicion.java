@@ -1,5 +1,9 @@
 package fiuba.algo3.modelo;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.direccion.Direccion;
 
 public class Posicion {
@@ -29,6 +33,15 @@ public class Posicion {
 	public Posicion calcularPosicionSiguiente(Direccion unaDireccion) {
 		Posicion unaPosicion = new Posicion(this.devolverPosicionFila() - unaDireccion.devolverX(), this.devolverPosicionColumna() - unaDireccion.devolverY());
 		return unaPosicion;
+	}
+
+	public Node toXml(Document doc) {
+		Element xmlElement = doc.createElement("Posicion");
+		xmlElement.setAttribute("PosicionX", String.valueOf(this.fila));
+		xmlElement.setAttribute("PosicionY", String.valueOf(this.columna));
+
+		
+		return xmlElement;
 	}
 
 }

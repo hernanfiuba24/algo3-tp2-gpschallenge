@@ -14,7 +14,7 @@ public class JuegoTest {
 
 	@Test
 	public void testJuegoDeberiaCrearseConMapaJugadorYRadar() throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
-		Juego unJuego = new JuegoFacil("Ezequiel", 3, new Posicion(3, 3));
+		Juego unJuego = new JuegoFacil("Ezequiel", 3, new Posicion(3, 3), new Posicion(1, 1));
 		assertTrue(unJuego.devolverMapa() instanceof Mapa);
 		assertTrue(unJuego.devolverJugador() instanceof Jugador);
 	}

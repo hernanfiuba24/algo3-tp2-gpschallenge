@@ -2,6 +2,10 @@ package fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
 import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
@@ -166,6 +170,21 @@ public class Esquina {
 			return this.devolverObstaculo().puedeAvanzar(vehiculo);
 		}
 		return true;
+	}
+
+	public Node toXml(Document doc) {
+		Element xmlElement = doc.createElement("Esquina");
+		xmlElement.setAttribute("Visibilidad", String.valueOf(this.visibilidad));
+
+		xmlElement.appendChild(this.unaPosicion.toXml(doc));
+		if (this.unObstaculo != null){
+			xmlElement.appendChild(this.unObstaculo.toXml(doc));
+		}
+		if (this.unaSorpresa != null){
+			xmlElement.appendChild(this.unaSorpresa.toXml(doc));
+		}
+		
+		return xmlElement;
 	}
 
 }

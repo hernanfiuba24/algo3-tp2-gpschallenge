@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,11 +17,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.DOMException;
 
 import fiuba.algo3.controlador.ControladorJuego;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
@@ -40,7 +45,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 	 * 
 	 * @throws ExcepcionEsquinaInvalida
 	 */
-	public VentanaJuego(String unNombreDeJugador, Juego unJuego) throws ExcepcionEsquinaInvalida {
+	public VentanaJuego(String unNombreDeJugador, Juego juego) throws ExcepcionEsquinaInvalida {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
@@ -51,7 +56,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		contentPane.setLayout(null);
 
 		setFocusable(true);
-		this.unJuego = unJuego;
+		this.unJuego = juego;
 		this.unJuego.addObserver(this);
 		// this.unaVistaVisibilidad = new
 		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
@@ -124,10 +129,23 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 								.getResource("/fiuba/algo3/vista/imagenes/botonGuardarMapa.png")));
 		btnGuardarMapa.setBorder(BorderFactory.createEmptyBorder());
 		btnGuardarMapa.setContentAreaFilled(false);
+		final String tipoJuego = "c:\\" + juego.devolverJugador().devolverNombre() + ".xml";
+		
 		btnGuardarMapa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// EN ESTA PARTE SE LLAMARIA AL METODO QUE SE ENCARGA DE LA
-				// PERSISITENCIA
+				
+				try {
+					JuegoPersistencia.guardarGpsChallenge(tipoJuego,unJuego);
+				} catch (DOMException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ParserConfigurationException e) {
+					e.printStackTrace();
+				} catch (ExcepcionEsquinaInvalida e) {
+					e.printStackTrace();
+				}
+				
 				seGuardoJuego = true;
 				JOptionPane.showMessageDialog(null, "Guardando partida...");
 			}

@@ -12,7 +12,7 @@ public class JuegoIntermedioTest {
 
 	@Test
 	public void testJuegoIntermedioDeberiaTener2DeCadaSorpresaYObstaculo() throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
-		JuegoIntermedio unJuegoIntermedio = new JuegoIntermedio("Ezequiel", 5, new Posicion(5, 5));
+		JuegoIntermedio unJuegoIntermedio = new JuegoIntermedio("Ezequiel", 5, new Posicion(5, 5), new Posicion(3, 3));
 		assertTrue(unJuegoIntermedio.devolverCantidadDeCambiosDeVehiculos() == 2);
 		assertTrue(unJuegoIntermedio.devolverCantidadDeControlesPoliciales() == 2);
 		assertTrue(unJuegoIntermedio.devolverCantidadDeDesfavorables() == 2);

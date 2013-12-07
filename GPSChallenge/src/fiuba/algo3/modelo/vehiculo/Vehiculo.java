@@ -1,5 +1,9 @@
 package fiuba.algo3.modelo.vehiculo;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
@@ -54,7 +58,7 @@ public abstract class Vehiculo extends ObjetoObservable {
 	public void mover(Mapa unMapa, Direccion unaDireccion)
 			throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
-
+		
 		this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
 		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
 		unApagador.apagarVisibilidadDosALaRedonda(this.esquinaActual);
@@ -77,7 +81,6 @@ public abstract class Vehiculo extends ObjetoObservable {
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(
 				unMapa);
 		unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
-
 		this.esquinaActual.borrarVehiculo();
 
 	}
@@ -104,5 +107,16 @@ public abstract class Vehiculo extends ObjetoObservable {
 	}
 
 	public abstract boolean puedeAvanzar(Piquete piquete);
+
+	public Node toXml(Document doc) {
+		Element xmlElement = doc.createElement("Vehiculo");
+		Posicion unaPosicion = this.esquinaActual.devolverPosicion();
+		
+		xmlElement.setAttribute("Movimientos_permitidos", String.valueOf(this.movimientosPermitidos));
+		xmlElement.appendChild(unaPosicion.toXml(doc));
+		return xmlElement;
+	}
+
+	public abstract void actualizar();
 
 }

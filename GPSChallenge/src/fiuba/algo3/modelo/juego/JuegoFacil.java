@@ -1,5 +1,10 @@
 package fiuba.algo3.modelo.juego;
 
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
@@ -20,9 +25,9 @@ public class JuegoFacil extends Juego {
 	// }
 
 	public JuegoFacil(String nombreDeJugador, int tamanioMapa,
-			Posicion posicionBandera) throws ExcepcionEsquinaInvalida,
+			Posicion posicionBandera, Posicion posicionVehiculo) throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
-		super(nombreDeJugador, tamanioMapa, posicionBandera);
+		super(nombreDeJugador, tamanioMapa, posicionBandera, posicionVehiculo);
 	}
 
 	// this.setearCantidadSorprepasYObstaculos();
@@ -42,6 +47,14 @@ public class JuegoFacil extends Juego {
 		this.cantidadDeFavorables = 1;
 		this.cantidadDeDesfavorables = 1;
 		this.cantidadDeCambiosDeVehiculos = 1;
+	}
+	
+	public Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida{
+		Element xmlElement = doc.createElement("GpsChallengeFacil");
+		xmlElement.appendChild(this.unMapa.toXml(doc));
+		xmlElement.appendChild(this.unJugador.toXml(doc));
+		xmlElement.appendChild(this.posicionBandera.toXml(doc));
+		return xmlElement;
 	}
 
 }

@@ -2,6 +2,11 @@ package fiuba.algo3.modelo.juego;
 
 import java.util.Observable;
 
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.JugadorImplementacion;
 import fiuba.algo3.modelo.Mapa;
@@ -27,9 +32,10 @@ public abstract class Juego extends Observable {
 	protected int cantidadDeFavorables;
 	protected int cantidadDeDesfavorables;
 	protected int cantidadDeCambiosDeVehiculos;
-
+	protected Posicion posicionBandera;
 	protected Mapa unMapa;
 	protected JugadorImplementacion unJugador;
+	private Posicion posicionInicialVehiculo;
 
 	// public Juego() throws ExcepcionEsquinaInvalida {
 	// this.unMapa = new Mapa(8, 8);
@@ -43,10 +49,12 @@ public abstract class Juego extends Observable {
 	// }
 
 	public Juego(String nombreDeJugador, int tamanioMapa,
-			Posicion posicionBandera) throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
+			Posicion posicionBandera, Posicion posicionVehiculo) throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.setearCantidadSorprepasYObstaculos();
+		this.posicionBandera = posicionBandera;
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
-		Camioneta unaCamioneta = new Camioneta(this.unMapa.devolverUnaEsquina(new Posicion(3, 3)));
+		Camioneta unaCamioneta = new Camioneta(this.unMapa.devolverUnaEsquina(posicionVehiculo));
+		this.posicionInicialVehiculo = posicionInicialVehiculo;
 		this.unJugador = new JugadorImplementacion(unaCamioneta, nombreDeJugador);
 		this.completarMapaConExtras(posicionBandera);
 		setChanged();
@@ -242,9 +250,9 @@ public abstract class Juego extends Observable {
 		this.unJugador.cambiarDireccion(unaDireccion);
 	}
 
-	public void setearPosicionInicial() throws ExcepcionEsquinaInvalida {
+	public void setearPosicionInicial(Posicion unaPosicion) throws ExcepcionEsquinaInvalida {
 		this.unJugador.devolverVehiculo().setearEsquina(
-				unMapa.devolverUnaEsquina(new Posicion(3, 3)));
+				unMapa.devolverUnaEsquina(unaPosicion));
 		setChanged();
 		notifyObservers(this.unJugador);
 	}
@@ -301,4 +309,25 @@ public abstract class Juego extends Observable {
 	public int obtenerPosicionYVehiculo() {
 		return unJugador.obtenerPosicionYVehiculo();
 	}
+
+
+	public abstract Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida;
+//		Element xmlElement = doc.createElement("GPSChallenge");
+//		xmlElement.appendChild(this.unMapa.toXml(doc));
+//		xmlElement.appendChild(this.unJugador.toXml(doc));
+//		return xmlElement;
+
+
+	public Posicion devolverPosicionInicial() {
+		return this.posicionInicialVehiculo;
+	}
+
+
+	public void actualizar() {
+		setChanged();
+		notifyObservers(this.unJugador);
+		this.unJugador.devolverVehiculo().actualizar();
+		
+	}
+		
 }

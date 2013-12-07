@@ -39,4 +39,10 @@ public class Camioneta extends Vehiculo {
 		return false;
 	}
 
+	@Override
+	public void actualizar() {
+		seCambio();
+		notificarObservadores(this);
+	}
+
 }

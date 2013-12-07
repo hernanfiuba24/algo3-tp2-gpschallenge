@@ -23,6 +23,12 @@ public class Moto extends Vehiculo {
 		notificarObservadores(this);
 	}
 	
+	@Override
+	public void actualizar() {
+		seCambio();
+		notificarObservadores(this);
+	}
+	
 	public void cambioDeVehiculo() throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.jugadorAlQuePertenece
 				.setearVehiculo(new Auto(this.esquinaActual));
