@@ -51,31 +51,41 @@ public class PanelMapa extends JLayeredPane {
 		
 		ObservadorDeVehiculos observadorDeVehiculos = new ObservadorDeVehiculos(this);
 		unJuego.devolverJugador().devolverVehiculo().agregarObservador(observadorDeVehiculos);
-
-		panelObstaculos = new JPanel();
-		panelObstaculos.setOpaque(false);
-		panelObstaculos.setBounds(0, 0, 660, 730);
-		panelObstaculos.setLayout(null);
-		this.add(panelObstaculos, new Integer(1));
-
-		panelBandera = new JPanel();
-		panelBandera.setOpaque(false);
-		panelBandera.setBounds(0, 0, 660, 730);
-		panelBandera.setLayout(null);
-		this.add(panelBandera, new Integer(3));
-
-		panelVehiculo = new JPanel();
-		panelVehiculo.setOpaque(false);
-		panelVehiculo.setBounds(0, 0, 660, 730);
-		panelVehiculo.setLayout(null);
-		this.add(panelVehiculo, new Integer(4));
-
-		vehiculo = new JLabel("");
-		vehiculo.setBackground(new Color(0, 0, 139));
-		panelVehiculo.add(vehiculo);
+		
+		this.crearPanelObstaculos();
+		this.crearPanelBandera();
+		this.crearPanelVehiculo();		
 
 		this.dibujarMapa(cantidadFilas, cantidadColumnas);
 
+	}
+	
+//	CREO Y SETEO LOS PANELES
+//	--------------------------------------------------------------------------------------- //
+	
+	private void setearPanel(JPanel unPanel, int posicionDelPanel){		
+		unPanel.setOpaque(false);
+		unPanel.setBounds(0, 0, 660, 730);
+		unPanel.setLayout(null);
+		this.add(unPanel, new Integer(posicionDelPanel));
+	}
+	
+	private void crearPanelObstaculos(){
+		panelObstaculos = new JPanel();
+		this.setearPanel(panelObstaculos, 1);
+	}
+	
+	private void crearPanelBandera(){
+		panelBandera = new JPanel();
+		this.setearPanel(panelBandera, 3);	
+	}
+	
+	private void crearPanelVehiculo(){
+		panelVehiculo = new JPanel();
+		this.setearPanel(panelVehiculo, 4);	
+		vehiculo = new JLabel("");
+		vehiculo.setBackground(new Color(0, 0, 139));
+		panelVehiculo.add(vehiculo);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -83,6 +93,8 @@ public class PanelMapa extends JLayeredPane {
 
 	}
 
+//	--------------------------------------------------------------------------------------- //	
+	
 	public void dibujarMapa(int dimensionFila, int dimensionColumna) {
 		int tamanioEsquina = 40;
 		int anchoVehiculo = 35;
