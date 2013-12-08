@@ -52,6 +52,7 @@ public class JuegoPersistencia {
 
 	public static Juego cargarGpsChallenge(String nombreArchivo)
 			throws IOException, ClassNotFoundException {
+		
 		DOMParser parser = new DOMParser();
 
 		try {
@@ -66,94 +67,28 @@ public class JuegoPersistencia {
 		Document docXml = parser.getDocument();
 
 		String nombreJugador = "";
-		String tamanioMapaString = "";
-		ArrayList<String> posicionVehiculoString = new ArrayList<String>();
+		
 		// Obtenemos la etiqueta raiz
 		Element elementRaiz = docXml.getDocumentElement();
 
 		String nombreRaiz = elementRaiz.getNodeName();
 
-		// -------------------------------------------------------------------------------
-
-		// Iteramos sobre sus hijos
-		NodeList hijosJuego = elementRaiz.getElementsByTagName("Jugador");
-
-		for (int i = 0; i < hijosJuego.getLength(); i++) {
-			Node nodo = hijosJuego.item(i);
-			NamedNodeMap atributosJugador = nodo.getAttributes();
-			Node nodoNombreJugador = atributosJugador.getNamedItem("Nombre");
-			nombreJugador = nodoNombreJugador.getNodeValue();
-		}
-		String altoMapa = "";
-
-		hijosJuego = elementRaiz.getElementsByTagName("Mapa");
-		for (int i = 0; i < hijosJuego.getLength(); i++) {
-			Node nodo = hijosJuego.item(i);
-			NamedNodeMap atributosMapa = nodo.getAttributes();
-			Node nodoAltoMapa = atributosMapa.getNamedItem("Alto");
-			altoMapa = nodoAltoMapa.getNodeValue();
-		}
-		int tamanioMapa = Integer.parseInt(altoMapa);
-
-		// -------------------------------------------------------------------------------
-
-		int posicionBanderaX;
-		int posicionBanderaY;
-		String posicionBanderaXtexto = "";
-		String posicionBanderaYtexto = "";
-
-		hijosJuego = elementRaiz.getElementsByTagName("Posicion");
-		for (int i = 0; i < hijosJuego.getLength(); i++) {
-			Node nodo = hijosJuego.item(i);
-			NamedNodeMap atributosBandera = nodo.getAttributes();
-			Node nodoPosicionBanderaX = atributosBandera
-					.getNamedItem("PosicionX");
-			Node nodoPosicionBanderaY = atributosBandera
-					.getNamedItem("PosicionY");
-			posicionBanderaXtexto = nodoPosicionBanderaX.getNodeValue();
-			posicionBanderaYtexto = nodoPosicionBanderaY.getNodeValue();
-
-		}
-		posicionBanderaX = Integer.parseInt(posicionBanderaXtexto);
-		posicionBanderaY = Integer.parseInt(posicionBanderaYtexto);
-
-		// Creo la posicion de la bandera para pasarsela al constructor del
-		// juego
-
-		Posicion posicionBandera = new Posicion(posicionBanderaX,
-				posicionBanderaY);
+		nombreJugador = cargarNombreJugador(elementRaiz);
 		
-//		------------------------------------------------------------------------------
+		int tamanioMapa = cargarTamanioMapa(elementRaiz);
 
-		hijosJuego = elementRaiz.getElementsByTagName("Jugador");
-		int posicionVehiculoX;
-		int posicionVehiculoY;
+		Posicion posicionBandera = cargarPosicionBandera(elementRaiz);
 		
-		Node nodoJugador = hijosJuego.item(0);
+		Posicion posicionVehiculo = cargarPosicionVehiculo(elementRaiz);	
 		
-		
-		NodeList hijosJugador = nodoJugador.getChildNodes();
-		Node nodoVehiculo = hijosJugador.item(1);
-		
-		NodeList hijosVehiculo = nodoVehiculo.getChildNodes();
-		
-		Node nodoPosicionVehiculo = hijosVehiculo.item(1);
-		
-		NamedNodeMap atributosVehiculoPosicion = nodoPosicionVehiculo.getAttributes();
+		return crearJuegoConDatosCargados(nombreJugador, nombreRaiz,
+				tamanioMapa, posicionBandera, posicionVehiculo);
 
-		Node nodoVehiculoPosicionX = atributosVehiculoPosicion.getNamedItem("PosicionX");
-		Node nodoVehiculoPosicionY = atributosVehiculoPosicion.getNamedItem("PosicionY");
+	}
 
-		posicionVehiculoString.add(nodoVehiculoPosicionX.getNodeValue());
-		posicionVehiculoString.add(nodoVehiculoPosicionY.getNodeValue());
-
-		posicionVehiculoX = Integer.parseInt(posicionVehiculoString.get(0));
-		posicionVehiculoY = Integer.parseInt(posicionVehiculoString.get(1));
-		
-		Posicion posicionVehiculo = new Posicion(posicionVehiculoX, posicionVehiculoY);	
-		
-//		----------------------------------------------------------------------------------
-
+	private static Juego crearJuegoConDatosCargados(String nombreJugador,
+			String nombreRaiz, int tamanioMapa, Posicion posicionBandera,
+			Posicion posicionVehiculo) {
 		Juego unJuego = null;
 		
 		if (nombreRaiz.equalsIgnoreCase("GpsChallengeDificil")){
@@ -190,6 +125,100 @@ public class JuegoPersistencia {
 		}
 
 		return unJuego;
+	}
 
+	private static Posicion cargarPosicionVehiculo(Element elementRaiz) {
+
+		ArrayList<String> posicionVehiculoString = new ArrayList<String>();
+		
+		NodeList hijosJuego;
+		hijosJuego = elementRaiz.getElementsByTagName("Jugador");
+		int posicionVehiculoX;
+		int posicionVehiculoY;
+		
+		Node nodoJugador = hijosJuego.item(0);
+		
+		
+		NodeList hijosJugador = nodoJugador.getChildNodes();
+		Node nodoVehiculo = hijosJugador.item(1);
+		
+		NodeList hijosVehiculo = nodoVehiculo.getChildNodes();
+		
+		Node nodoPosicionVehiculo = hijosVehiculo.item(1);
+		
+		NamedNodeMap atributosVehiculoPosicion = nodoPosicionVehiculo.getAttributes();
+
+		Node nodoVehiculoPosicionX = atributosVehiculoPosicion.getNamedItem("PosicionX");
+		Node nodoVehiculoPosicionY = atributosVehiculoPosicion.getNamedItem("PosicionY");
+
+		posicionVehiculoString.add(nodoVehiculoPosicionX.getNodeValue());
+		posicionVehiculoString.add(nodoVehiculoPosicionY.getNodeValue());
+
+		posicionVehiculoX = Integer.parseInt(posicionVehiculoString.get(0));
+		posicionVehiculoY = Integer.parseInt(posicionVehiculoString.get(1));
+		
+		Posicion posicionVehiculo = new Posicion(posicionVehiculoX, posicionVehiculoY);
+		
+		return posicionVehiculo;
+	}
+
+	private static Posicion cargarPosicionBandera(Element elementRaiz) {
+		int posicionBanderaX;
+		int posicionBanderaY;
+		String posicionBanderaXtexto = "";
+		String posicionBanderaYtexto = "";
+
+		NodeList hijosJuego = elementRaiz.getElementsByTagName("Posicion");
+		for (int i = 0; i < hijosJuego.getLength(); i++) {
+			Node nodo = hijosJuego.item(i);
+			NamedNodeMap atributosBandera = nodo.getAttributes();
+			Node nodoPosicionBanderaX = atributosBandera
+					.getNamedItem("PosicionX");
+			Node nodoPosicionBanderaY = atributosBandera
+					.getNamedItem("PosicionY");
+			posicionBanderaXtexto = nodoPosicionBanderaX.getNodeValue();
+			posicionBanderaYtexto = nodoPosicionBanderaY.getNodeValue();
+
+		}
+		posicionBanderaX = Integer.parseInt(posicionBanderaXtexto);
+		posicionBanderaY = Integer.parseInt(posicionBanderaYtexto);
+
+		// Creo la posicion de la bandera para pasarsela al constructor del
+		// juego
+
+		Posicion posicionBandera = new Posicion(posicionBanderaX,
+				posicionBanderaY);
+		
+		return posicionBandera;
+	}
+
+	private static int cargarTamanioMapa(Element elementRaiz) {
+		String altoMapa = "";
+
+		NodeList hijosJuego = elementRaiz.getElementsByTagName("Mapa");
+		for (int i = 0; i < hijosJuego.getLength(); i++) {
+			Node nodo = hijosJuego.item(i);
+			NamedNodeMap atributosMapa = nodo.getAttributes();
+			Node nodoAltoMapa = atributosMapa.getNamedItem("Alto");
+			altoMapa = nodoAltoMapa.getNodeValue();
+		}
+		int tamanioMapa = Integer.parseInt(altoMapa);
+		return tamanioMapa;
+	}
+
+	private static String cargarNombreJugador(Element elementRaiz) {
+		
+		NodeList hijosJuego = elementRaiz.getElementsByTagName("Jugador");
+		
+		String nombreJugador = null;
+		
+		for (int i = 0; i < hijosJuego.getLength(); i++) {
+			Node nodo = hijosJuego.item(i);
+			NamedNodeMap atributosJugador = nodo.getAttributes();
+			Node nodoNombreJugador = atributosJugador.getNamedItem("Nombre");
+			nombreJugador = nodoNombreJugador.getNodeValue();
+		}
+		
+		return nombreJugador;		
 	}
 }
