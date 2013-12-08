@@ -24,6 +24,8 @@ import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
+import fiuba.algo3.vista.observadorDeObjetos.ObervadorDeSorpresas;
+import fiuba.algo3.vista.observadorDeObjetos.ObservadorDeVehiculos;
 
 public class PanelMapa extends JLayeredPane {
 
@@ -49,9 +51,19 @@ public class PanelMapa extends JLayeredPane {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
+		
+//		CORREGIR ESTAS LLAMADAS PARA NO ROMPER ENCAPSULAMIENTO		
+//--------------------------------------------------------------------------------------------------------		
+		
 		ObservadorDeVehiculos observadorDeVehiculos = new ObservadorDeVehiculos(this);
 		unJuego.devolverJugador().devolverVehiculo().agregarObservador(observadorDeVehiculos);
 		
+//		ObervadorDeSorpresas observadorDeSorpresas = new ObservadorDeSorpresas(this);
+//		unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverSorpresa().agregarObservador(observadorDeSorpresas);
+		
+// --------------------------------------------------------------------------------------------------------			
+			
+			
 		this.crearPanelObstaculos();
 		this.crearPanelBandera();
 		this.crearPanelVehiculo();		

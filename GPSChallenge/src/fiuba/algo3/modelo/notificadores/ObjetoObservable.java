@@ -20,7 +20,6 @@ public class ObjetoObservable {
 
 	public ObjetoObservable() {
 		observadores = ObjetoObservable.devolverEstado();
-		// this.observadores = new ArrayList<ObjetoObservador>();
 	}
 
 	public void seCambio() {
