@@ -54,7 +54,6 @@ public abstract class Juego extends Observable {
 		this.posicionBandera = posicionBandera;
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
 		Camioneta unaCamioneta = new Camioneta(this.unMapa.devolverUnaEsquina(posicionVehiculo));
-		this.posicionInicialVehiculo = posicionInicialVehiculo;
 		this.unJugador = new JugadorImplementacion(unaCamioneta, nombreDeJugador);
 		this.completarMapaConExtras(posicionBandera);
 		setChanged();

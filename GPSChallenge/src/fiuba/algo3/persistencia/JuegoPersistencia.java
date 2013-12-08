@@ -67,7 +67,6 @@ public class JuegoPersistencia {
 
 		String nombreJugador = "";
 		String tamanioMapaString = "";
-		ArrayList<String> posicionBanderaString = new ArrayList<String>();
 		ArrayList<String> posicionVehiculoString = new ArrayList<String>();
 		// Obtenemos la etiqueta raiz
 		Element elementRaiz = docXml.getDocumentElement();
@@ -100,6 +99,8 @@ public class JuegoPersistencia {
 
 		int posicionBanderaX;
 		int posicionBanderaY;
+		String posicionBanderaXtexto = "";
+		String posicionBanderaYtexto = "";
 
 		hijosJuego = elementRaiz.getElementsByTagName("Posicion");
 		for (int i = 0; i < hijosJuego.getLength(); i++) {
@@ -109,16 +110,16 @@ public class JuegoPersistencia {
 					.getNamedItem("PosicionX");
 			Node nodoPosicionBanderaY = atributosBandera
 					.getNamedItem("PosicionY");
-
-			posicionBanderaString.add(nodoPosicionBanderaX.getNodeValue());
-			posicionBanderaString.add(nodoPosicionBanderaY.getNodeValue());
+			posicionBanderaXtexto = nodoPosicionBanderaX.getNodeValue();
+			posicionBanderaYtexto = nodoPosicionBanderaY.getNodeValue();
 
 		}
-		posicionBanderaX = Integer.parseInt(posicionBanderaString.get(0));
-		posicionBanderaY = Integer.parseInt(posicionBanderaString.get(1));
+		posicionBanderaX = Integer.parseInt(posicionBanderaXtexto);
+		posicionBanderaY = Integer.parseInt(posicionBanderaYtexto);
 
 		// Creo la posicion de la bandera para pasarsela al constructor del
 		// juego
+
 		Posicion posicionBandera = new Posicion(posicionBanderaX,
 				posicionBanderaY);
 		
