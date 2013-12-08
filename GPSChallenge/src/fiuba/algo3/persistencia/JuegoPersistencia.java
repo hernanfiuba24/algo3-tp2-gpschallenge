@@ -154,9 +154,8 @@ public class JuegoPersistencia {
 //		----------------------------------------------------------------------------------
 
 		Juego unJuego = null;
-
-		switch (nombreRaiz) {
-		case "GpsChallengeDificil":
+		
+		if (nombreRaiz.equalsIgnoreCase("GpsChallengeDificil")){
 			try {
 				unJuego = new JuegoDificil(nombreJugador, tamanioMapa,
 						posicionBandera, posicionVehiculo);
@@ -165,37 +164,29 @@ public class JuegoPersistencia {
 			} catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
 				e.printStackTrace();
 			}
-			break;
-		case "GpsChallengeIntermedio":
-			try {
-				unJuego = new JuegoIntermedio(nombreJugador, tamanioMapa,
-						posicionBandera, posicionVehiculo);
-			} catch (ExcepcionEsquinaInvalida e) {
-				e.printStackTrace();
-			} catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
-				e.printStackTrace();
+		}else{
+			if (nombreRaiz.equalsIgnoreCase("GpsChallengeIntermedio")){
+				try {
+					unJuego = new JuegoIntermedio(nombreJugador, tamanioMapa,
+							posicionBandera, posicionVehiculo);
+				} catch (ExcepcionEsquinaInvalida e) {
+					e.printStackTrace();
+				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
+					e.printStackTrace();
+				}
+			}else{
+				if (nombreRaiz.equalsIgnoreCase("GpsChallengeFacil")){
+					try {
+						unJuego = new JuegoFacil(nombreJugador, tamanioMapa,
+								posicionBandera, posicionVehiculo);
+					} catch (ExcepcionEsquinaInvalida e) {
+						e.printStackTrace();
+					} catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
+						e.printStackTrace();
+					}
+				}
 			}
-			break;
-		case "GpsChallengeFacil":
-			try {
-				unJuego = new JuegoFacil(nombreJugador, tamanioMapa,
-						posicionBandera, posicionVehiculo);
-			} catch (ExcepcionEsquinaInvalida e) {
-				e.printStackTrace();
-			} catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
-				e.printStackTrace();
-			}
-			break;
 		}
-
-		/*try {
-			unJuego.devolverJugador().devolverVehiculo().setearEsquina(
-							unJuego.devolverMapa().devolverUnaEsquina(
-									new Posicion(posicionVehiculoX,
-											posicionVehiculoY)));
-		} catch (ExcepcionEsquinaInvalida e) {
-			e.printStackTrace();
-		}*/
 
 		return unJuego;
 

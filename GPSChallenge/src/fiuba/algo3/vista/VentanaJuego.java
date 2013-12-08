@@ -129,7 +129,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 								.getResource("/fiuba/algo3/vista/imagenes/botonGuardarMapa.png")));
 		btnGuardarMapa.setBorder(BorderFactory.createEmptyBorder());
 		btnGuardarMapa.setContentAreaFilled(false);
-		final String tipoJuego = "c:\\" + juego.devolverJugador().devolverNombre() + ".xml";
+		final String tipoJuego = "C:\\" + juego.devolverJugador().devolverNombre() + ".xml";
 		
 		btnGuardarMapa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
