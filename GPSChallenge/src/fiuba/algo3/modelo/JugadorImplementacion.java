@@ -112,6 +112,10 @@ public class JugadorImplementacion extends Observable implements Jugador {
 		this.gano = true;
 	}
 
+	public boolean gano() {
+		return this.gano;
+	}
+
 	public Node toXml(Document doc) {
 		Element xmlElement = doc.createElement("Jugador");
 		xmlElement.setAttribute("Nombre", this.nombre);
@@ -122,5 +126,6 @@ public class JugadorImplementacion extends Observable implements Jugador {
 		xmlElement.appendChild(this.unVehiculo.toXml(doc));
 		return xmlElement;
 	}
+
 
 }

@@ -313,12 +313,8 @@ public abstract class Juego extends Observable {
 		return unJugador.obtenerPosicionYVehiculo();
 	}
 
-
-	public Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida{
-		Element xmlElement = doc.createElement("GPSChallenge");
-		xmlElement.appendChild(this.unMapa.toXml(doc));
-		xmlElement.appendChild(this.unJugador.toXml(doc));
-		return xmlElement;
+	public boolean seTermino(){
+		return this.unJugador.gano();
 	}
 
 
@@ -332,6 +328,13 @@ public abstract class Juego extends Observable {
 		notifyObservers(this.unJugador);
 		this.unJugador.devolverVehiculo().actualizar();
 		
+	}
+	
+	public Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida{
+		Element xmlElement = doc.createElement("GPSChallenge");
+		xmlElement.appendChild(this.unMapa.toXml(doc));
+		xmlElement.appendChild(this.unJugador.toXml(doc));
+		return xmlElement;
 	}
 		
 }

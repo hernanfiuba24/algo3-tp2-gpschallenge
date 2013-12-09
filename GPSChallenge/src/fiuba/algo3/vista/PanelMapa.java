@@ -218,6 +218,10 @@ public class PanelMapa extends JLayeredPane {
 		add(unaVistaVisibilidad, new Integer(2));
 		this.unaVistaVisibilidad.repaint();
 	}
+	
+	public void visualizarMapaEntero(){
+		this.remove(this.unaVistaVisibilidad);
+	}
 
 	public void dibujarAuto(Posicion unaPosicion) {
 				
