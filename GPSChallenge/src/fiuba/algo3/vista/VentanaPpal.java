@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
+import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaPpal extends JFrame {
@@ -40,7 +41,7 @@ public class VentanaPpal extends JFrame {
 				}
 			}
 		});
-		
+
 	}
 
 	/**
@@ -54,7 +55,7 @@ public class VentanaPpal extends JFrame {
 		contentPane.setBackground(new Color(153, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+
 		barraMenu = new Menu();
 		barraMenu.deshabilitarGuardar();
 		setJMenuBar(barraMenu);
@@ -86,29 +87,35 @@ public class VentanaPpal extends JFrame {
 		btnContinuarPartidaGuarda.setBounds(141, 104, 153, 55);
 		btnContinuarPartidaGuarda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");
+				String nombreJugador = JOptionPane
+						.showInputDialog("Ingrese su nombre:");
 				String ruta = "c:\\" + nombreJugador + ".xml";
 				VentanaJuego unaVentanaJuego = null;
+				Juego unJuego = null;
 				try {
+					unJuego = JuegoPersistencia.cargarGpsChallenge(ruta);
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (ExcepcionEsquinaInvalida e1) {
+					e1.printStackTrace();
+				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
+					e1.printStackTrace();
+				}
+				if (unJuego != null) {
 					try {
-						unaVentanaJuego = new VentanaJuego(nombreJugador,JuegoPersistencia.cargarGpsChallenge(ruta));
-					} catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
-						// TODO Auto-generated catch block
+						unaVentanaJuego = new VentanaJuego(nombreJugador,
+								unJuego);
+					} catch (ExcepcionEsquinaInvalida e) {
 						e.printStackTrace();
 					}
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (ExcepcionEsquinaInvalida e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+					unaVentanaJuego.setVisible(true);
+					dispose();
 				}
-				unaVentanaJuego.setVisible(true);
-				dispose();
 			}
 		});
 		contentPane.add(btnContinuarPartidaGuarda);
-		
 
 		JButton btnSalir = new JButton(
 				new ImageIcon(
@@ -123,11 +130,12 @@ public class VentanaPpal extends JFrame {
 			}
 		});
 		contentPane.add(btnSalir);
-		
+
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(VentanaPpal.class.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(VentanaPpal.class
+				.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
 		lblNewLabel.setBounds(0, 0, 434, 261);
 		contentPane.add(lblNewLabel);
-		
+
 	}
 }

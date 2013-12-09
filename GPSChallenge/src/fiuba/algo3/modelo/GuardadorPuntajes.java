@@ -1,18 +1,11 @@
 package fiuba.algo3.modelo;
 
-import java.io.Console;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class GuardadorPuntajes {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private TreeMap<Integer, String> diccionario = new TreeMap<Integer, String>(Collections.reverseOrder());
 

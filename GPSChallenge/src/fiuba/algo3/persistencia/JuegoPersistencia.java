@@ -2,6 +2,7 @@ package fiuba.algo3.persistencia;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -73,7 +74,9 @@ public class JuegoPersistencia {
 		} catch (SAXException se) {
 			se.printStackTrace();
 		} catch (IOException ioe) {
-			ioe.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error: Usuario Invalido", "GpsChallenge", 2);
+			return null;
+//			ioe.printStackTrace();
 		}
 
 		Document docXml = parser.getDocument();

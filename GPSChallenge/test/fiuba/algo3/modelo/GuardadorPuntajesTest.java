@@ -2,8 +2,6 @@ package fiuba.algo3.modelo;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
-
 import org.junit.Test;
 
 public class GuardadorPuntajesTest {
@@ -13,9 +11,6 @@ public class GuardadorPuntajesTest {
 		
 		GuardadorPuntajes guardador = new GuardadorPuntajes();
 		guardador.guardarPuntaje("Pepe", 1000);
-		
-		System.out.println(guardador.obtenerPuntaje(0).getNombre());
-		System.out.println(guardador.obtenerPuntaje(0).getValor());
 		
 		assertTrue(guardador.obtenerPuntaje(0).equals(new Puntaje("Pepe", 1000)));
 	}
