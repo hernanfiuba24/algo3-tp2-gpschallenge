@@ -189,7 +189,8 @@ public class PanelMapa extends JLayeredPane {
 							JLabel iconoObstaculo = new JLabel(ListaDeImagenes.get(clave));
 							iconoObstaculo.setBounds((j - 1) * (40 + 35),
 									(i - 1) * (40 + 40), 35, 35);
-							panelObstaculos.add(iconoObstaculo, new Integer(1));
+							if (clave.contains("Bandera")) panelBandera.add(iconoObstaculo);
+							else panelObstaculos.add(iconoObstaculo);
 						}
 					}
 					if (unaEsquina.tieneSorpresa()){
@@ -199,7 +200,7 @@ public class PanelMapa extends JLayeredPane {
 							JLabel iconoSorpresa = new JLabel(ListaDeImagenes.get(clave));
 							iconoSorpresa.setBounds((j - 1) * (40 + 35),
 									(i - 1) * (40 + 40), 35, 35);
-							panelObstaculos.add(iconoSorpresa, new Integer(1));
+							panelObstaculos.add(iconoSorpresa);
 						}
 					}
 				}
@@ -225,7 +226,6 @@ public class PanelMapa extends JLayeredPane {
 				* (40 + 42), 40, 17);
 		vehiculo.setIcon(new ImageIcon(PanelMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
-//		panelVehiculo.add(vehiculo);
 
 	}
 
