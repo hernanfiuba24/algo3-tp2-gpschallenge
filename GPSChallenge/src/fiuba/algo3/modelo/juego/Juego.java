@@ -62,6 +62,10 @@ public abstract class Juego extends Observable {
 		notifyObservers(unaCamioneta);
 	}
 
+	public Juego(JugadorImplementacion unJugador, Mapa unMapa){
+		this.unJugador = unJugador;
+		this.unMapa = unMapa;
+	}
 
 	private Esquina devolverEsquinaConExtra(int min, int maxFilas,
 			int maxColumnas, RandomizadorImplementacion randomizador)
@@ -310,11 +314,12 @@ public abstract class Juego extends Observable {
 	}
 
 
-	public abstract Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida;
-//		Element xmlElement = doc.createElement("GPSChallenge");
-//		xmlElement.appendChild(this.unMapa.toXml(doc));
-//		xmlElement.appendChild(this.unJugador.toXml(doc));
-//		return xmlElement;
+	public Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida{
+		Element xmlElement = doc.createElement("GPSChallenge");
+		xmlElement.appendChild(this.unMapa.toXml(doc));
+		xmlElement.appendChild(this.unJugador.toXml(doc));
+		return xmlElement;
+	}
 
 
 	public Posicion devolverPosicionInicial() {

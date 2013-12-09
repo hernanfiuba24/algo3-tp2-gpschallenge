@@ -19,7 +19,7 @@ public class Favorable extends Extra {
 
 	@Override
 	public Node toXml(Document doc) {
-		Element xmlElement = doc.createElement("Favorables");
+		Element xmlElement = doc.createElement("Favorable");
 		return xmlElement;
 	}
 

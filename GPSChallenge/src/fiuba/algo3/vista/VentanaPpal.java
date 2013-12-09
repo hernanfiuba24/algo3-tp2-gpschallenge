@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaPpal extends JFrame {
@@ -89,7 +90,12 @@ public class VentanaPpal extends JFrame {
 				String ruta = "c:\\" + nombreJugador + ".xml";
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					unaVentanaJuego = new VentanaJuego(nombreJugador,JuegoPersistencia.cargarGpsChallenge(ruta));
+					try {
+						unaVentanaJuego = new VentanaJuego(nombreJugador,JuegoPersistencia.cargarGpsChallenge(ruta));
+					} catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (ExcepcionEsquinaInvalida e) {

@@ -1,6 +1,11 @@
 package fiuba.algo3.modelo.vehiculo;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import fiuba.algo3.modelo.Esquina;
+import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 import fiuba.algo3.modelo.obstaculo.Piquete;
@@ -43,6 +48,15 @@ public class Moto extends Vehiculo {
 	@Override
 	public boolean puedeAvanzar(Piquete piquete) {
 		return true;
+	}
+	
+	public Node toXml(Document doc) {
+		Element xmlElement = doc.createElement("Moto");
+		Posicion unaPosicion = this.esquinaActual.devolverPosicion();
+		
+		xmlElement.setAttribute("Movimientos_permitidos", String.valueOf(this.movimientosPermitidos));
+		xmlElement.appendChild(unaPosicion.toXml(doc));
+		return xmlElement;
 	}
 
 }
