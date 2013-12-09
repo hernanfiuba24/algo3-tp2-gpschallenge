@@ -5,7 +5,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import fiuba.algo3.modelo.Esquina;
-import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
@@ -38,6 +37,11 @@ public class Pozo extends Obstaculo {
 	public Node toXml(Document doc) {
 		Element xmlElement = doc.createElement("Pozo");
 		return xmlElement;
+	}
+
+	@Override
+	public boolean tieneBandera() {
+		return false;
 	}
 	
 }

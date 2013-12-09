@@ -30,4 +30,6 @@ public abstract class Obstaculo extends Observable {
 
 	public abstract Node toXml(Document doc) ;
 
+	public abstract boolean tieneBandera();
+
 }

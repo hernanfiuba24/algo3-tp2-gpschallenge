@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo.obstaculo;
+package fiuba.algo3.modelo.randomizador;
 
 import java.util.Random;
 

@@ -16,20 +16,14 @@ import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.obstaculo.Bandera;
-import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
-import fiuba.algo3.modelo.obstaculo.Piquete;
-import fiuba.algo3.modelo.obstaculo.Pozo;
-import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
-import fiuba.algo3.modelo.sorpresa.Desfavorable;
-import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
-import fiuba.algo3.modelo.vehiculo.Vehiculo;
 import fiuba.algo3.vista.observadorDeObjetos.ObservadorDeVehiculos;
 
 public class PanelMapa extends JLayeredPane {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JLabel vehiculo;
 	private JPanel panelObstaculos;
 	private JPanel panelBandera;
@@ -69,7 +63,7 @@ public class PanelMapa extends JLayeredPane {
 //--------------------------------------------------------------------------------------------------------		
 		
 		ObservadorDeVehiculos observadorDeVehiculos = new ObservadorDeVehiculos(this);
-		unJuego.devolverJugador().devolverVehiculo().agregarObservador(observadorDeVehiculos);
+		unJuego.devolverVehiculo().agregarObservador(observadorDeVehiculos);
 		
 //		ObervadorDeSorpresas observadorDeSorpresas = new ObservadorDeSorpresas(this);
 //		unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverSorpresa().agregarObservador(observadorDeSorpresas);
@@ -152,36 +146,13 @@ public class PanelMapa extends JLayeredPane {
 		}
 	}
 
-	public void dibujarVehiculo(Vehiculo unVehiculo) {
-		/*
-		 * int fila =
-		 * unVehiculo.devolverEsquina().devolverPosicion().devolverPosicionFila
-		 * (); int columna =
-		 * unVehiculo.devolverEsquina().devolverPosicion().devolverPosicionColumna
-		 * ();
-		 * 
-		 * if (unVehiculo instanceof Auto){ vehiculo.setBounds(
-		 * (columna-1)*(40+35), (fila-1)*(40+42), 40, 17); vehiculo.setIcon(new
-		 * ImageIcon(PanelMapa.class
-		 * .getResource("/fiuba/algo3/vista/imagenes/car.png"))); }else{ if
-		 * (unVehiculo instanceof Moto){ vehiculo.setBounds(
-		 * (columna-1)*(40+34), (fila-1)*(40+40), 40, 30); vehiculo.setIcon(new
-		 * ImageIcon(PanelMapa.class
-		 * .getResource("/fiuba/algo3/vista/imagenes/moto.png"))); } else{ if
-		 * (unVehiculo instanceof Camioneta){ vehiculo.setBounds(
-		 * (columna-1)*(40+35), (fila-1)*(40+42), 40, 21); vehiculo.setIcon(new
-		 * ImageIcon(PanelMapa.class
-		 * .getResource("/fiuba/algo3/vista/imagenes/camioneta.png"))); } } }
-		 * panelVehiculo.add(vehiculo); repaint();
-		 */
-	}
-
 	public void dibujarExtras() throws ExcepcionEsquinaInvalida {
 		panelObstaculos.removeAll();
 		for (int i = 1; i <= cantidadFilas; i++) {
 			for (int j = 1; j <= cantidadColumnas; j++) {
 				if (unMapa.existeEsquina(new Posicion(i, j))){
 					Esquina unaEsquina = this.unMapa.devolverUnaEsquina(new Posicion(i, j));
+					
 					if (unaEsquina.tieneObstaculo()){
 						Obstaculo unObstaculo = unaEsquina.devolverObstaculo();
 						String clave = unObstaculo.getClass().getName();
@@ -189,8 +160,10 @@ public class PanelMapa extends JLayeredPane {
 							JLabel iconoObstaculo = new JLabel(ListaDeImagenes.get(clave));
 							iconoObstaculo.setBounds((j - 1) * (40 + 35),
 									(i - 1) * (40 + 40), 35, 35);
-							if (clave.contains("Bandera")) panelBandera.add(iconoObstaculo);
-							else panelObstaculos.add(iconoObstaculo);
+							if (clave.contains("Bandera")) 
+								panelBandera.add(iconoObstaculo);
+							else 
+								panelObstaculos.add(iconoObstaculo);
 						}
 					}
 					if (unaEsquina.tieneSorpresa()){

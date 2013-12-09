@@ -29,6 +29,8 @@ import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private PanelMapa panelMapa;
 	private JPanel panelObstaculos;
@@ -177,7 +179,8 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		this.panelInformacion.actualizarVehiculo(((Jugador)arg).devolverVehiculo());
 		if(this.unJuego.seTermino()) {
         	this.panelMapa.visualizarMapaEntero();
-        	JOptionPane.showMessageDialog(null, "Ganaste");
+        	JOptionPane.showMessageDialog(null, "Ganaste", "GpsChallenge", 1);
+        	dispose();
         }
 		
 	}

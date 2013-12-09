@@ -18,11 +18,12 @@ import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Piquete;
 import fiuba.algo3.modelo.obstaculo.Pozo;
-import fiuba.algo3.modelo.obstaculo.RandomizadorImplementacion;
+import fiuba.algo3.modelo.randomizador.RandomizadorImplementacion;
 import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
 import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public abstract class Juego extends Observable {
 
@@ -37,32 +38,29 @@ public abstract class Juego extends Observable {
 	protected JugadorImplementacion unJugador;
 	private Posicion posicionInicialVehiculo;
 
-	// public Juego() throws ExcepcionEsquinaInvalida {
-	// this.unMapa = new Mapa(8, 8);
-	// this.unJugador = new Jugador(new Auto(this.unMapa), null);
-	// this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(8, 8))
-	// .devolverBandera();
-	// this.completarMapaConExtras();
-	// setChanged();
-	// notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-	// .devolverPosicion());
-	// }
-
 	public Juego(String nombreDeJugador, int tamanioMapa,
-			Posicion posicionBandera, Posicion posicionVehiculo) throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
+			Posicion posicionBandera, Posicion posicionVehiculo)
+			throws ExcepcionEsquinaInvalida,
+			ExcepcionJugadorYaAsignadoAlVehiculo {
+
 		this.setearCantidadSorprepasYObstaculos();
 		this.posicionBandera = posicionBandera;
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
-		Camioneta unaCamioneta = new Camioneta(this.unMapa.devolverUnaEsquina(posicionVehiculo));
-		this.unJugador = new JugadorImplementacion(unaCamioneta, nombreDeJugador);
+
+		Camioneta unaCamioneta = new Camioneta(
+				this.unMapa.devolverUnaEsquina(posicionVehiculo));
+		this.unJugador = new JugadorImplementacion(unaCamioneta,
+				nombreDeJugador);
+
 		this.completarMapaConExtras(posicionBandera);
+
 		setChanged();
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
 		notifyObservers(unaCamioneta);
 	}
 
-	public Juego(JugadorImplementacion unJugador, Mapa unMapa){
+	public Juego(JugadorImplementacion unJugador, Mapa unMapa) {
 		this.unJugador = unJugador;
 		this.unMapa = unMapa;
 	}
@@ -86,9 +84,11 @@ public abstract class Juego extends Observable {
 			while (ubicado == false) {
 				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
 						maxFilas, maxColumnas, randomizador);
-				if (esquinaConExtra.tieneSorpresa() == false) {
-					esquinaConExtra.setearSorpresa(new Desfavorable());
-					ubicado = true;
+				if (esquinaConExtra.tieneBandera() == false) {
+					if (esquinaConExtra.tieneSorpresa() == false) {
+						esquinaConExtra.setearSorpresa(new Desfavorable());
+						ubicado = true;
+					}
 				}
 			}
 		}
@@ -104,9 +104,11 @@ public abstract class Juego extends Observable {
 			while (ubicado == false) {
 				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
 						maxFilas, maxColumnas, randomizador);
-				if (esquinaConExtra.tieneSorpresa() == false) {
-					esquinaConExtra.setearSorpresa(new Favorable());
-					ubicado = true;
+				if (esquinaConExtra.tieneBandera() == false) {
+					if (esquinaConExtra.tieneSorpresa() == false) {
+						esquinaConExtra.setearSorpresa(new Favorable());
+						ubicado = true;
+					}
 				}
 			}
 		}
@@ -122,9 +124,11 @@ public abstract class Juego extends Observable {
 			while (ubicado == false) {
 				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
 						maxFilas, maxColumnas, randomizador);
-				if (esquinaConExtra.tieneSorpresa() == false) {
-					esquinaConExtra.setearSorpresa(new CambioDeVehiculo());
-					ubicado = true;
+				if (esquinaConExtra.tieneBandera() == false) {
+					if (esquinaConExtra.tieneSorpresa() == false) {
+						esquinaConExtra.setearSorpresa(new CambioDeVehiculo());
+						ubicado = true;
+					}
 				}
 			}
 		}
@@ -153,10 +157,12 @@ public abstract class Juego extends Observable {
 			while (ubicado == false) {
 				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
 						maxFilas, maxColumnas, randomizador);
-				if (esquinaConExtra.tieneObstaculo() == false) {
-					esquinaConExtra.setearObstaculo(new ControlPolicial(
-							new RandomizadorImplementacion()));
-					ubicado = true;
+				if (esquinaConExtra.tieneBandera() == false) {
+					if (esquinaConExtra.tieneObstaculo() == false) {
+						esquinaConExtra.setearObstaculo(new ControlPolicial(
+								new RandomizadorImplementacion()));
+						ubicado = true;
+					}
 				}
 			}
 		}
@@ -172,9 +178,11 @@ public abstract class Juego extends Observable {
 			while (ubicado == false) {
 				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
 						maxFilas, maxColumnas, randomizador);
-				if (esquinaConExtra.tieneObstaculo() == false) {
-					esquinaConExtra.setearObstaculo(new Piquete());
-					ubicado = true;
+				if (esquinaConExtra.tieneBandera() == false) {
+					if (esquinaConExtra.tieneObstaculo() == false) {
+						esquinaConExtra.setearObstaculo(new Piquete());
+						ubicado = true;
+					}
 				}
 			}
 		}
@@ -190,9 +198,11 @@ public abstract class Juego extends Observable {
 			while (ubicado == false) {
 				Esquina esquinaConExtra = this.devolverEsquinaConExtra(min,
 						maxFilas, maxColumnas, randomizador);
-				if (esquinaConExtra.tieneObstaculo() == false) {
-					esquinaConExtra.setearObstaculo(new Pozo());
-					ubicado = true;
+				if (esquinaConExtra.tieneBandera() == false) {
+					if (esquinaConExtra.tieneObstaculo() == false) {
+						esquinaConExtra.setearObstaculo(new Pozo());
+						ubicado = true;
+					}
 				}
 			}
 		}
@@ -208,27 +218,29 @@ public abstract class Juego extends Observable {
 		this.completarMapaConControlesPoliciales(min, maxFilas, maxColumnas,
 				randomizador);
 	}
-	
-	private void completarMapaConBandera(Posicion posicionBandera) throws ExcepcionEsquinaInvalida{
+
+	private void completarMapaConBandera(Posicion posicionBandera)
+			throws ExcepcionEsquinaInvalida {
 		this.unMapa.setearBandera(posicionBandera);
 	}
 
 	/*-------------------------------------------------------------------------------------------------------------*/
 
-	public void completarMapaConExtras(Posicion posicionBandera) throws ExcepcionEsquinaInvalida {
-		
+	public void completarMapaConExtras(Posicion posicionBandera)
+			throws ExcepcionEsquinaInvalida {
+
 		RandomizadorImplementacion randomizador = new RandomizadorImplementacion();
 
 		int min = 1;
 		int maxFilas = this.devolverMapaFila();
 		int maxColumnas = this.devolverMapaColumna();
+		
+		this.completarMapaConBandera(posicionBandera);
 
 		this.completarMapaConSorpresas(min, maxFilas, maxColumnas, randomizador);
 
 		this.completarMapaConObstaculos(min, maxFilas, maxColumnas,
-				randomizador);
-		
-		this.completarMapaConBandera(posicionBandera);
+				randomizador);		
 	}
 
 	/*-------------------------------------------------------------------------------------------------------------*/
@@ -253,7 +265,8 @@ public abstract class Juego extends Observable {
 		this.unJugador.cambiarDireccion(unaDireccion);
 	}
 
-	public void setearPosicionInicial(Posicion unaPosicion) throws ExcepcionEsquinaInvalida {
+	public void setearPosicionInicial(Posicion unaPosicion)
+			throws ExcepcionEsquinaInvalida {
 		this.unJugador.devolverVehiculo().setearEsquina(
 				unMapa.devolverUnaEsquina(unaPosicion));
 		setChanged();
@@ -284,7 +297,8 @@ public abstract class Juego extends Observable {
 		return cantidadDeCambiosDeVehiculos;
 	}
 
-	public void jugar(Direccion unaDireccion) throws ExcepcionJugadorYaAsignadoAlVehiculo {
+	public void jugar(Direccion unaDireccion)
+			throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		// if (this.unaBandera.saberSiGano() == false) {
 		this.unJugador.cambiarDireccion(unaDireccion);
 		try {
@@ -294,7 +308,7 @@ public abstract class Juego extends Observable {
 		} catch (ExcepcionEsquinaInvalida e1) {
 		} catch (ExcepcionJuegoTerminado e2) {
 		}
-		
+
 		// } else {
 		// // ACA HAY QUE LANZAR UNA VENTANA DICIENDO QUE GANO RAUL
 		// System.out.println("Gananste Raulito");
@@ -303,38 +317,39 @@ public abstract class Juego extends Observable {
 
 	public abstract void setearCantidadSorprepasYObstaculos();
 
-
 	public int obtenerPosicionXVehiculo() {
 		return unJugador.obtenerPosicionXVehiculo();
 	}
-
 
 	public int obtenerPosicionYVehiculo() {
 		return unJugador.obtenerPosicionYVehiculo();
 	}
 
-	public boolean seTermino(){
+	public boolean seTermino() {
 		return this.unJugador.gano();
 	}
-
 
 	public Posicion devolverPosicionInicial() {
 		return this.posicionInicialVehiculo;
 	}
 
-
 	public void actualizar() {
 		setChanged();
 		notifyObservers(this.unJugador);
 		this.unJugador.devolverVehiculo().actualizar();
-		
+
 	}
-	
-	public Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida{
+
+	public Node toXml(Document doc) throws DOMException,
+			ExcepcionEsquinaInvalida {
 		Element xmlElement = doc.createElement("GPSChallenge");
 		xmlElement.appendChild(this.unMapa.toXml(doc));
 		xmlElement.appendChild(this.unJugador.toXml(doc));
 		return xmlElement;
 	}
-		
+
+	public Vehiculo devolverVehiculo() {
+		return this.unJugador.devolverVehiculo();
+	}
+
 }

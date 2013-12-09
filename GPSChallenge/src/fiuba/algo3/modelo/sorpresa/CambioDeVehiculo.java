@@ -5,7 +5,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 
 public class CambioDeVehiculo implements Sorpresa {

@@ -1,7 +1,6 @@
 package fiuba.algo3.persistencia;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -24,15 +23,12 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.JuegoDificil;
-import fiuba.algo3.modelo.juego.JuegoFacil;
-import fiuba.algo3.modelo.juego.JuegoIntermedio;
 import fiuba.algo3.modelo.obstaculo.Bandera;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
 import fiuba.algo3.modelo.obstaculo.Piquete;
 import fiuba.algo3.modelo.obstaculo.Pozo;
-import fiuba.algo3.modelo.obstaculo.RandomizadorImplementacion;
+import fiuba.algo3.modelo.randomizador.RandomizadorImplementacion;
 import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
 import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
@@ -304,10 +300,13 @@ public class JuegoPersistencia {
 	private static JugadorImplementacion cargarJugador(Element elementRaiz, Mapa unMapa) throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo{
 	
 		NodeList hijosJuego = elementRaiz.getElementsByTagName("Jugador");
+		
 		Node nodo = hijosJuego.item(0);
 		NamedNodeMap atributosJugador = nodo.getAttributes();
 		Node nodoNombreJugador = atributosJugador.getNamedItem("Nombre");
+		
 		Node nodoMovimientosJugador = atributosJugador.getNamedItem("Movimientos_Hechos");
+		
 		int movimientosHechos = Integer.parseInt(nodoMovimientosJugador.getNodeValue());
 		String nombreJugador = nodoNombreJugador.getNodeValue();
 		NodeList hijosJugador = nodo.getChildNodes();
@@ -315,16 +314,22 @@ public class JuegoPersistencia {
 		NodeList hijosVehiculo = nodoVehiculo.getChildNodes();
 		Node nodoPosicion = hijosVehiculo.item(1);
 		NamedNodeMap atributosPosicion = nodoPosicion.getAttributes();
+		
 		int posicionX = Integer.parseInt(atributosPosicion.item(0).getNodeValue());
 		int posicionY = Integer.parseInt(atributosPosicion.item(1).getNodeValue());
+		
 		String tipoDeVehiculo = nodoVehiculo.getNodeName();
 		Vehiculo unVehiculo = crearVehiculo(tipoDeVehiculo, unMapa, new Posicion(posicionX, posicionY));
+		
 		JugadorImplementacion unJugador = new JugadorImplementacion(unVehiculo, nombreJugador);
 		unJugador.aumentarMovimientoHechos(movimientosHechos);
+		
 		return unJugador;
 	}
 	
-	private static Vehiculo crearVehiculo(String tipoDeVehiculo, Mapa unMapa, Posicion unaPosicion) throws ExcepcionEsquinaInvalida{
+	private static Vehiculo crearVehiculo(String tipoDeVehiculo, Mapa unMapa, Posicion unaPosicion)
+			throws ExcepcionEsquinaInvalida{
+		
 		if (tipoDeVehiculo.equalsIgnoreCase("Auto")){
 			if (unMapa.existeEsquina(unaPosicion)){
 				return new Auto(unMapa.devolverUnaEsquina(unaPosicion));

@@ -17,7 +17,6 @@ import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
-import fiuba.algo3.modelo.vehiculo.Moto;
 
 public class JugadorTest {
 

@@ -1,5 +1,7 @@
 package fiuba.algo3.modelo.obstaculo;
 
+import fiuba.algo3.modelo.randomizador.RandomizadorImplementacion;
+
 
 public class RandomizadorTesteador extends RandomizadorImplementacion{
 	

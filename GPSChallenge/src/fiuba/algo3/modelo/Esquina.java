@@ -187,4 +187,10 @@ public class Esquina {
 		return xmlElement;
 	}
 
+	public boolean tieneBandera() {
+		if (this.unObstaculo != null)
+			return this.unObstaculo.tieneBandera();
+		return false;
+	}
+
 }
