@@ -3,6 +3,7 @@ package fiuba.algo3.vista;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -10,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
@@ -24,7 +26,6 @@ import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
-import fiuba.algo3.vista.observadorDeObjetos.ObervadorDeSorpresas;
 import fiuba.algo3.vista.observadorDeObjetos.ObservadorDeVehiculos;
 
 public class PanelMapa extends JLayeredPane {
@@ -37,7 +38,18 @@ public class PanelMapa extends JLayeredPane {
 	private int cantidadFilas;
 	private int cantidadColumnas;
 	private VistaVisibilidad unaVistaVisibilidad;
-
+	
+	private HashMap<String, ImageIcon> ListaDeImagenes;
+	
+	ImageIcon imagenPozo = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/pozo.png"));
+	ImageIcon imagenPiquete = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/piquete.png"));
+	ImageIcon imagenControlPolicial = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/policia.png"));
+	ImageIcon imagenBandera = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/bandera.png"));
+	ImageIcon imagenCambioDeVehiculo = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
+	ImageIcon imagenDesfavorable = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
+	ImageIcon imagenFavorable = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
+	
+	
 	public PanelMapa(Mapa unMapa, Juego unJuego) {
 		this.unMapa = unMapa;
 		this.cantidadFilas = unMapa.devolverAlto();
@@ -51,6 +63,7 @@ public class PanelMapa extends JLayeredPane {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
+		this.cargarListaDeImagenes();
 		
 //		CORREGIR ESTAS LLAMADAS PARA NO ROMPER ENCAPSULAMIENTO		
 //--------------------------------------------------------------------------------------------------------		
@@ -104,6 +117,18 @@ public class PanelMapa extends JLayeredPane {
 		super.paintComponent(g);
 
 	}
+	
+	public void cargarListaDeImagenes(){
+		ListaDeImagenes = new HashMap<String,ImageIcon>();
+		ListaDeImagenes.put("fiuba.algo3.modelo.obstaculo.Pozo", imagenPozo);
+		ListaDeImagenes.put("fiuba.algo3.modelo.obstaculo.Piquete", imagenPiquete);
+		ListaDeImagenes.put("fiuba.algo3.modelo.obstaculo.ControlPolicial", imagenControlPolicial);
+		ListaDeImagenes.put("fiuba.algo3.modelo.obstaculo.Bandera", imagenBandera);
+		ListaDeImagenes.put("fiuba.algo3.modelo.sorpresa.Favorable", imagenFavorable);
+		ListaDeImagenes.put("fiuba.algo3.modelo.sorpresa.Desfavorable", imagenDesfavorable);
+		ListaDeImagenes.put("fiuba.algo3.modelo.sorpresa.CambioDeVehiculo", imagenCambioDeVehiculo);
+		
+	}
 
 //	--------------------------------------------------------------------------------------- //	
 	
@@ -151,11 +176,35 @@ public class PanelMapa extends JLayeredPane {
 		 */
 	}
 
-	public void dibujarExtras() {
+	public void dibujarExtras() throws ExcepcionEsquinaInvalida {
 		panelObstaculos.removeAll();
 		for (int i = 1; i <= cantidadFilas; i++) {
 			for (int j = 1; j <= cantidadColumnas; j++) {
-				try {
+				if (unMapa.existeEsquina(new Posicion(i, j))){
+					Esquina unaEsquina = this.unMapa.devolverUnaEsquina(new Posicion(i, j));
+					if (unaEsquina.tieneObstaculo()){
+						Obstaculo unObstaculo = unaEsquina.devolverObstaculo();
+						String clave = unObstaculo.getClass().getName();
+						if (ListaDeImagenes.containsKey(clave)){
+							JLabel iconoObstaculo = new JLabel(ListaDeImagenes.get(clave));
+							iconoObstaculo.setBounds((j - 1) * (40 + 35),
+									(i - 1) * (40 + 40), 35, 35);
+							panelObstaculos.add(iconoObstaculo, new Integer(1));
+						}
+					}
+					if (unaEsquina.tieneSorpresa()){
+						Sorpresa unaSorpresa = unaEsquina.devolverSorpresa();
+						String clave = unaSorpresa.getClass().getName();
+						if (ListaDeImagenes.containsKey(clave)){
+							JLabel iconoSorpresa = new JLabel(ListaDeImagenes.get(clave));
+							iconoSorpresa.setBounds((j - 1) * (40 + 35),
+									(i - 1) * (40 + 40), 35, 35);
+							panelObstaculos.add(iconoSorpresa, new Integer(1));
+						}
+					}
+				}
+				
+				/*try {
 					if (unMapa.devolverUnaEsquina(new Posicion(i, j))
 							.tieneExtras()) {
 						Obstaculo unObstaculo = unMapa.devolverUnaEsquina(
@@ -246,7 +295,7 @@ public class PanelMapa extends JLayeredPane {
 						}
 					}
 				} catch (ExcepcionEsquinaInvalida e) {
-				}
+				}*/
 			}
 		}
 		repaint();

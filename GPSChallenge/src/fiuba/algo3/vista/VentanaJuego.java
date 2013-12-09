@@ -166,7 +166,11 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		this.panelMapa.dibujarExtras();
+		try {
+			this.panelMapa.dibujarExtras();
+		} catch (ExcepcionEsquinaInvalida e) {
+			e.printStackTrace();
+		}
 		//this.panelMapa.dibujarVehiculo(((Jugador)arg).devolverVehiculo());
 		this.panelMapa.dibujarVisibilidad((((Jugador)arg).devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+35),((((Jugador)arg).devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+42)));
 		this.panelInformacion.actualizarMovimientos(((Jugador)arg).devolverMovimientosHechos());
