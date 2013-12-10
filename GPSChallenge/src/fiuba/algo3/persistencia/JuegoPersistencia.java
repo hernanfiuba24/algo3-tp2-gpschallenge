@@ -24,6 +24,7 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.juego.Juego;
+import fiuba.algo3.modelo.juego.JuegoCargado;
 import fiuba.algo3.modelo.obstaculo.Bandera;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
@@ -123,13 +124,7 @@ public class JuegoPersistencia {
 
 	private static Juego cargarJuego(JugadorImplementacion unJugador,
 			Mapa unMapa) {
-		Juego unJuego = new Juego(unJugador, unMapa) {
-
-			@Override
-			public void setearCantidadSorprepasYObstaculos() {
-
-			}
-		};
+		JuegoCargado unJuego = new JuegoCargado(unJugador, unMapa); 
 		return unJuego;
 	}
 
