@@ -149,7 +149,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 				}
 				
 				seGuardoJuego = true;
-				JOptionPane.showMessageDialog(null, "Guardando partida...");
+				JOptionPane.showMessageDialog(null, "Partida Guardada");
 			}
 		});
 		btnGuardarMapa.setBounds(19, 583, 151, 50);
@@ -179,7 +179,9 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		this.panelInformacion.actualizarVehiculo(((Jugador)arg).devolverVehiculo());
 		if(this.unJuego.seTermino()) {
         	this.panelMapa.visualizarMapaEntero();
-        	JOptionPane.showMessageDialog(null, "Ganaste", "GpsChallenge", 1);
+        	VentanaGano ventanaGano = new VentanaGano();
+        	ventanaGano.setVisible(true);
+//        	JOptionPane.showMessageDialog(null, "Ganaste", "GpsChallenge", 1);
         	dispose();
         }
 		

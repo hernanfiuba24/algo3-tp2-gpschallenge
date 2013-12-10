@@ -23,12 +23,15 @@ import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaPpal extends JFrame {
 
+
+	private static final long serialVersionUID = 1L;
+	
 	private Image fondo;
 	private JPanel contentPane;
 	private Menu barraMenu;
 
 	/**
-	 * Launch the application.
+	 * Lanza la aplicacion.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,9 +47,8 @@ public class VentanaPpal extends JFrame {
 
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
+	
 	public VentanaPpal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
