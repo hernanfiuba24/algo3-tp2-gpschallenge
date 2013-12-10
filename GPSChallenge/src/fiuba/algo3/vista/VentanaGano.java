@@ -36,7 +36,7 @@ public class VentanaGano extends JFrame {
 		getContentPane().add(BanderaGif);
 
 		JButton btnMenuPrincipal = new JButton("Menu");
-		btnMenuPrincipal.setLocation(324, 196);
+		btnMenuPrincipal.setLocation(324, 152);
 		btnMenuPrincipal.setSize(100, 32);
 //		btnMenuPrincipal.setBorder(BorderFactory.createEmptyBorder());
 //		btnMenuPrincipal.setContentAreaFilled(false);
@@ -61,6 +61,17 @@ public class VentanaGano extends JFrame {
 			};
 		});
 		getContentPane().add(btnSalir);
+		
+		JButton btnRanking = new JButton("Ranking");
+		btnRanking.setBounds(324, 195, 100, 32);
+		btnRanking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				VentanaRanking unaVentanaRanking = new VentanaRanking();
+				unaVentanaRanking.setVisible(true);
+			}
+		});
+		getContentPane().add(btnRanking);
 
 	}
 }

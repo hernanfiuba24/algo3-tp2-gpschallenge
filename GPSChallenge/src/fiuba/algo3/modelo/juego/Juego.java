@@ -37,6 +37,7 @@ public abstract class Juego extends Observable {
 	protected Mapa unMapa;
 	protected JugadorImplementacion unJugador;
 	private Posicion posicionInicialVehiculo;
+	protected int movimientosMaximo;
 
 	public Juego(String nombreDeJugador, int tamanioMapa,
 			Posicion posicionBandera, Posicion posicionVehiculo)
@@ -350,6 +351,14 @@ public abstract class Juego extends Observable {
 
 	public Vehiculo devolverVehiculo() {
 		return this.unJugador.devolverVehiculo();
+	}
+
+	public String devolverNombreJugador() {
+		return this.unJugador.devolverNombre();
+	}
+
+	public int calcularPuntajeFinal(){
+		return 0;
 	}
 
 }

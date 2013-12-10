@@ -10,6 +10,8 @@ import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 
 public class JuegoIntermedio extends Juego {
+	
+	final int MULTIPLICADOR_DIFICULTAD = 2;
 
 	// public JuegoIntermedio() throws ExcepcionEsquinaInvalida {
 	// this.setearCantidadSorprepasYObstaculos();
@@ -27,6 +29,7 @@ public class JuegoIntermedio extends Juego {
 			Posicion posicionBandera, Posicion posicionVehiculo) throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
 		super(nombreDeJugador, tamanioMapa, posicionBandera, posicionVehiculo);
+		this.movimientosMaximo = 15;
 	}
 
 	// this.setearCantidadSorprepasYObstaculos();
@@ -54,6 +57,11 @@ public class JuegoIntermedio extends Juego {
 		xmlElement.appendChild(this.unJugador.toXml(doc));
 		xmlElement.appendChild(this.posicionBandera.toXml(doc));
 		return xmlElement;
+	}
+	
+	@Override
+	public int calcularPuntajeFinal() {
+		return (this.movimientosMaximo - this.unJugador.devolverMovimientosHechos()) * MULTIPLICADOR_DIFICULTAD;		
 	}
 
 }
