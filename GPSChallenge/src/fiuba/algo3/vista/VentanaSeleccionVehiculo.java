@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Posicion;
@@ -17,8 +18,6 @@ import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
-import java.awt.Font;
-import javax.swing.JTextField;
 
 public class VentanaSeleccionVehiculo extends JFrame {
 

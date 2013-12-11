@@ -1,14 +1,12 @@
 package fiuba.algo3.vista;
 
+import java.awt.Font;
 import java.awt.HeadlessException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.awt.Font;
-
 import javax.swing.SwingConstants;
 
 public class VentanaInstrucciones extends JFrame {

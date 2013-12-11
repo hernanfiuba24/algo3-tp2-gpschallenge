@@ -4,15 +4,21 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
+import fiuba.algo3.modelo.vehiculo.Camioneta;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class JuegoDificilTest {
 
 	@Test
-	public void testJuegoDificilDeberiaTener6DeCadaSorpresaYObstaculoY3CambioDeVehiculo() throws ExcepcionEsquinaInvalida, ExcepcionJugadorYaAsignadoAlVehiculo {
-		JuegoDificil unJuegoDificil = new JuegoDificil("Ezequiel", 8, new Posicion(8, 8),new Posicion(3, 3));
+	public void testJuegoDificilDeberiaTener6DeCadaSorpresaYObstaculoY3CambioDeVehiculo()
+			throws ExcepcionEsquinaInvalida,
+			ExcepcionJugadorYaAsignadoAlVehiculo {
+		JuegoDificil unJuegoDificil = new JuegoDificil("Ezequiel", 8,
+				new Posicion(8, 8), new Camioneta(new Esquina(new Posicion(3, 3))));
 		assertTrue(unJuegoDificil.devolverCantidadDeCambiosDeVehiculos() == 3);
 		assertTrue(unJuegoDificil.devolverCantidadDeControlesPoliciales() == 5);
 		assertTrue(unJuegoDificil.devolverCantidadDeDesfavorables() == 5);

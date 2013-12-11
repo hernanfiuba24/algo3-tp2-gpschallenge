@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 
 import fiuba.algo3.modelo.puntaje.Puntaje;
 import fiuba.algo3.persistencia.JuegoPersistencia;
-import javax.swing.SwingConstants;
 
 public class VentanaGano extends JFrame {
 	

@@ -8,8 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
+import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
@@ -52,11 +52,14 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
+					int posicionInicialVehiculo = unRandomizador
+							.obtenerNumeroEntre(1, 3);
 					int posicionInicialBandera = unRandomizador
 							.obtenerNumeroEntre(1, 3);
+					unVehiculo.setearEsquina(new Esquina(new Posicion(posicionInicialVehiculo, 1)));
 					unaVentanaJuego = new VentanaJuego(nombreDeJugador,
 							new JuegoFacil(nombreDeJugador, 3, new Posicion(
-									posicionInicialBandera, 1), unVehiculo.devolverPosicionActual()));
+									posicionInicialBandera, 1), unVehiculo));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
 				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
@@ -84,9 +87,9 @@ public class VentanaNiveles extends JFrame {
 							.obtenerNumeroEntre(1, 5);
 					int posicionInicialBandera = unRandomizador
 							.obtenerNumeroEntre(1, 5);
+					unVehiculo.setearEsquina(new Esquina(new Posicion(posicionInicialVehiculo, 1)));
 					unaVentanaJuego = new VentanaJuego(nombreDeJugador,
-							new JuegoIntermedio(nombreDeJugador, 5, new Posicion(posicionInicialBandera, 5),
-												new Posicion(posicionInicialVehiculo, 1)));
+							new JuegoIntermedio(nombreDeJugador, 5, new Posicion(posicionInicialBandera, 5), unVehiculo));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
 				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {
@@ -114,10 +117,10 @@ public class VentanaNiveles extends JFrame {
 							.obtenerNumeroEntre(1, 8);
 					int posicionInicialBandera = unRandomizador
 							.obtenerNumeroEntre(1, 8);
+					unVehiculo.setearEsquina(new Esquina(new Posicion(posicionInicialVehiculo, 1)));
 					unaVentanaJuego = new VentanaJuego(nombreDeJugador,
 							new JuegoDificil(nombreDeJugador, 8, new Posicion(
-									posicionInicialBandera, 8), new Posicion(
-									posicionInicialVehiculo, 1)));
+									posicionInicialBandera, 8), unVehiculo));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
 				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {

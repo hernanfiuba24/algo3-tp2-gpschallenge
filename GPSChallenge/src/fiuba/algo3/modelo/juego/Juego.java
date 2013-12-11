@@ -22,7 +22,6 @@ import fiuba.algo3.modelo.randomizador.RandomizadorImplementacion;
 import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
 import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
-import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public abstract class Juego extends Observable {
@@ -40,17 +39,14 @@ public abstract class Juego extends Observable {
 	protected int movimientosMaximo;
 
 	public Juego(String nombreDeJugador, int tamanioMapa,
-			Posicion posicionBandera, Posicion posicionVehiculo)
+			Posicion posicionBandera, Vehiculo unVehiculo)
 			throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
 
 		this.setearCantidadSorprepasYObstaculos();
 		this.posicionBandera = posicionBandera;
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
-
-		Camioneta unaCamioneta = new Camioneta(
-				this.unMapa.devolverUnaEsquina(posicionVehiculo));
-		this.unJugador = new JugadorImplementacion(unaCamioneta,
+		this.unJugador = new JugadorImplementacion(unVehiculo,
 				nombreDeJugador);
 
 		this.completarMapaConExtras(posicionBandera);
@@ -58,7 +54,7 @@ public abstract class Juego extends Observable {
 		setChanged();
 		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
 				.devolverPosicion());
-		notifyObservers(unaCamioneta);
+		notifyObservers(unVehiculo);
 	}
 
 	public Juego(JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera) {

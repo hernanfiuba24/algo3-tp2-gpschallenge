@@ -15,8 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import fiuba.algo3.modelo.puntaje.Puntaje;
-import javax.swing.border.LineBorder;
-import javax.swing.border.BevelBorder;
 
 public class VentanaRanking extends JFrame {
 	

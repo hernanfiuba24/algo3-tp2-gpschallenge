@@ -10,6 +10,7 @@ import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class JuegoFacil extends Juego {
 	
@@ -29,9 +30,9 @@ public class JuegoFacil extends Juego {
 	// }
 
 	public JuegoFacil(String nombreDeJugador, int tamanioMapa,
-			Posicion posicionBandera, Posicion posicionVehiculo) throws ExcepcionEsquinaInvalida,
+			Posicion posicionBandera, Vehiculo unVehiculo) throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
-		super(nombreDeJugador, tamanioMapa, posicionBandera, posicionVehiculo);
+		super(nombreDeJugador, tamanioMapa, posicionBandera, unVehiculo);
 		this.movimientosMaximo = 5;
 	}
 	
