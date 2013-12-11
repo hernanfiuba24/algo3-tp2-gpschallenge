@@ -135,44 +135,6 @@ public class JuegoPersistencia {
 		return unJuego;
 	}
 
-	// private static Posicion cargarPosicionVehiculo(Element elementRaiz) {
-	//
-	// ArrayList<String> posicionVehiculoString = new ArrayList<String>();
-	//
-	// NodeList hijosJuego;
-	// hijosJuego = elementRaiz.getElementsByTagName("Jugador");
-	// int posicionVehiculoX;
-	// int posicionVehiculoY;
-	//
-	// Node nodoJugador = hijosJuego.item(0);
-	//
-	// NodeList hijosJugador = nodoJugador.getChildNodes();
-	// Node nodoVehiculo = hijosJugador.item(1);
-	//
-	// NodeList hijosVehiculo = nodoVehiculo.getChildNodes();
-	//
-	// Node nodoPosicionVehiculo = hijosVehiculo.item(1);
-	//
-	// NamedNodeMap atributosVehiculoPosicion = nodoPosicionVehiculo
-	// .getAttributes();
-	//
-	// Node nodoVehiculoPosicionX = atributosVehiculoPosicion
-	// .getNamedItem("PosicionX");
-	// Node nodoVehiculoPosicionY = atributosVehiculoPosicion
-	// .getNamedItem("PosicionY");
-	//
-	// posicionVehiculoString.add(nodoVehiculoPosicionX.getNodeValue());
-	// posicionVehiculoString.add(nodoVehiculoPosicionY.getNodeValue());
-	//
-	// posicionVehiculoX = Integer.parseInt(posicionVehiculoString.get(0));
-	// posicionVehiculoY = Integer.parseInt(posicionVehiculoString.get(1));
-	//
-	// Posicion posicionVehiculo = new Posicion(posicionVehiculoX,
-	// posicionVehiculoY);
-	//
-	// return posicionVehiculo;
-	// }
-
 	private static Posicion cargarPosicionBandera(Element elementRaiz) {
 		int posicionBanderaX;
 		int posicionBanderaY;

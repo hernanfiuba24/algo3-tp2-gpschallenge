@@ -17,6 +17,7 @@ import fiuba.algo3.modelo.juego.JuegoDificil;
 import fiuba.algo3.modelo.juego.JuegoFacil;
 import fiuba.algo3.modelo.juego.JuegoIntermedio;
 import fiuba.algo3.modelo.randomizador.RandomizadorImplementacion;
+import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class VentanaNiveles extends JFrame {
 
@@ -26,7 +27,7 @@ public class VentanaNiveles extends JFrame {
 	private String nombreJugador;
 
 
-	public VentanaNiveles() {
+	public VentanaNiveles(final Vehiculo unVehiculo) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
 		setBounds(100, 100, 450, 320);
@@ -51,14 +52,11 @@ public class VentanaNiveles extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				VentanaJuego unaVentanaJuego = null;
 				try {
-					int posicionInicialVehiculo = unRandomizador
-							.obtenerNumeroEntre(1, 3);
 					int posicionInicialBandera = unRandomizador
 							.obtenerNumeroEntre(1, 3);
 					unaVentanaJuego = new VentanaJuego(nombreJugador,
 							new JuegoFacil(nombreJugador, 3, new Posicion(
-									posicionInicialBandera, 1), new Posicion(
-									posicionInicialVehiculo, 3)));
+									posicionInicialBandera, 1), unVehiculo.devolverPosicionActual()));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
 				} catch (ExcepcionJugadorYaAsignadoAlVehiculo e1) {

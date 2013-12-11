@@ -71,8 +71,8 @@ public class VentanaPrincipal extends JFrame {
 		btnJugar.setBounds(141, 38, 153, 55);
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaNiveles ventanaNivel = new VentanaNiveles();
-				ventanaNivel.setVisible(true);
+				VentanaSeleccionVehiculo ventanaSeleccionVehiculo = new VentanaSeleccionVehiculo();
+				ventanaSeleccionVehiculo.setVisible(true);
 				dispose();
 
 			}
