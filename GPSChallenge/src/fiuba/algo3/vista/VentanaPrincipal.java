@@ -71,7 +71,8 @@ public class VentanaPrincipal extends JFrame {
 		btnJugar.setBounds(141, 38, 153, 55);
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaSeleccionVehiculo ventanaSeleccionVehiculo = new VentanaSeleccionVehiculo();
+				String nombreJugador = ingresoDeNombreJugador();
+				VentanaSeleccionVehiculo ventanaSeleccionVehiculo = new VentanaSeleccionVehiculo(nombreJugador);
 				ventanaSeleccionVehiculo.setVisible(true);
 				dispose();
 
@@ -139,5 +140,13 @@ public class VentanaPrincipal extends JFrame {
 		lblNewLabel.setBounds(0, 0, 434, 261);
 		contentPane.add(lblNewLabel);
 
+	}
+	
+	public String ingresoDeNombreJugador(){
+		String nombreJugador = "";
+		while (nombreJugador.equalsIgnoreCase("")) {
+			nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");
+		}
+		return nombreJugador;
 	}
 }
