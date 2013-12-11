@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import fiuba.algo3.modelo.puntaje.Puntaje;
+import javax.swing.border.LineBorder;
+import javax.swing.border.BevelBorder;
 
 public class VentanaRanking extends JFrame {
 	
@@ -29,8 +32,12 @@ public class VentanaRanking extends JFrame {
 		setBounds(100, 100, 490, 350);
 		getContentPane().setLayout(null);
 		
-		JButton btnMenu = new JButton("Menu");
-		btnMenu.setBounds(357, 204, 89, 23);
+		JButton btnMenu = new JButton(new ImageIcon(
+				VentanaGano.class
+				.getResource("/fiuba/algo3/vista/imagenes/botonMenuRanking.png")));
+		btnMenu.setBounds(329, 152, 145, 53);
+		btnMenu.setBorder(BorderFactory.createEmptyBorder());
+		btnMenu.setContentAreaFilled(false);
 		getContentPane().add(btnMenu);
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -40,8 +47,12 @@ public class VentanaRanking extends JFrame {
 			}
 		});
 		
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(357, 238, 89, 23);
+		JButton btnSalir = new JButton(new ImageIcon(
+				VentanaGano.class
+				.getResource("/fiuba/algo3/vista/imagenes/botonSalirRanking.png")));
+		btnSalir.setBounds(329, 205, 145, 53);
+		btnSalir.setBorder(BorderFactory.createEmptyBorder());
+		btnSalir.setContentAreaFilled(false);
 		getContentPane().add(btnSalir);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -50,7 +61,7 @@ public class VentanaRanking extends JFrame {
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 22, 320, 258);
+		scrollPane.setBounds(10, 43, 320, 226);
 		getContentPane().add(scrollPane);
 		scrollPane.setViewportView(table);
 		

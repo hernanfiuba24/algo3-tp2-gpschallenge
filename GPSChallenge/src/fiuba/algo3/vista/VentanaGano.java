@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.TreeMap;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 
 import fiuba.algo3.modelo.puntaje.Puntaje;
 import fiuba.algo3.persistencia.JuegoPersistencia;
+import javax.swing.SwingConstants;
 
 public class VentanaGano extends JFrame {
 
@@ -31,20 +33,22 @@ public class VentanaGano extends JFrame {
 		JLabel Ganaste = new JLabel(
 				new ImageIcon(VentanaGano.class
 						.getResource("/fiuba/algo3/vista/imagenes/ganaste.png")));
-		Ganaste.setBounds(65, 11, 359, 108);
+		Ganaste.setBounds(103, 0, 279, 108);
 		getContentPane().add(Ganaste);
 
 		JLabel BanderaGif = new JLabel(new ImageIcon(
 				VentanaGano.class
 						.getResource("/fiuba/algo3/vista/imagenes/flags.gif")));
-		BanderaGif.setBounds(10, 130, 269, 157);
+		BanderaGif.setBounds(10, 102, 289, 185);
 		getContentPane().add(BanderaGif);
 
-		JButton btnMenuPrincipal = new JButton("Menu");
-		btnMenuPrincipal.setLocation(324, 152);
-		btnMenuPrincipal.setSize(100, 32);
-//		btnMenuPrincipal.setBorder(BorderFactory.createEmptyBorder());
-//		btnMenuPrincipal.setContentAreaFilled(false);
+		JButton btnMenuPrincipal = new JButton(new ImageIcon(
+				VentanaGano.class
+				.getResource("/fiuba/algo3/vista/imagenes/botonMenu.png")));
+		btnMenuPrincipal.setLocation(309, 121);
+		btnMenuPrincipal.setSize(155, 60);
+		btnMenuPrincipal.setBorder(BorderFactory.createEmptyBorder());
+		btnMenuPrincipal.setContentAreaFilled(false);
 		btnMenuPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -54,11 +58,17 @@ public class VentanaGano extends JFrame {
 		});
 		getContentPane().add(btnMenuPrincipal);
 
-		JButton btnSalir = new JButton("Salir");
-		btnSalir.setLocation(324, 239);
-		btnSalir.setSize(100, 32);
-//		btnSalir.setBorder(BorderFactory.createEmptyBorder());
-//		btnSalir.setContentAreaFilled(false);
+		JButton btnSalir = new JButton(new ImageIcon(
+				VentanaGano.class
+				.getResource("/fiuba/algo3/vista/imagenes/botonSalir.png")));
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnSalir.setLocation(309, 222);
+		btnSalir.setSize(155, 60);
+		btnSalir.setBorder(BorderFactory.createEmptyBorder());
+		btnSalir.setContentAreaFilled(false);
 		btnSalir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -67,8 +77,10 @@ public class VentanaGano extends JFrame {
 		});
 		getContentPane().add(btnSalir);
 		
-		JButton btnRanking = new JButton("Ranking");
-		btnRanking.setBounds(324, 195, 100, 32);
+		JButton btnRanking = new JButton(new ImageIcon(VentanaGano.class.getResource("/fiuba/algo3/vista/imagenes/botonRanking.png")));
+		btnRanking.setBounds(304, 171, 165, 60);
+		btnRanking.setBorder(BorderFactory.createEmptyBorder());
+		btnRanking.setContentAreaFilled(false);
 		btnRanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
