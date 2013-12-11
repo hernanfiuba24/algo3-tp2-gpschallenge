@@ -20,7 +20,7 @@ import fiuba.algo3.modelo.obstaculo.Obstaculo;
 import fiuba.algo3.modelo.sorpresa.Sorpresa;
 import fiuba.algo3.vista.observadorDeObjetos.ObservadorDeVehiculos;
 
-public class PanelMapa extends JLayeredPane {
+public class VentanaMapa extends JLayeredPane {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -35,16 +35,16 @@ public class PanelMapa extends JLayeredPane {
 	
 	private HashMap<String, ImageIcon> ListaDeImagenes;
 	
-	ImageIcon imagenPozo = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/pozo.png"));
-	ImageIcon imagenPiquete = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/piquete.png"));
-	ImageIcon imagenControlPolicial = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/policia.png"));
-	ImageIcon imagenBandera = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/bandera.png"));
-	ImageIcon imagenCambioDeVehiculo = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
-	ImageIcon imagenDesfavorable = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
-	ImageIcon imagenFavorable = new ImageIcon(PanelMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
+	ImageIcon imagenPozo = new ImageIcon(VentanaMapa.class.getResource("/fiuba/algo3/vista/imagenes/pozo.png"));
+	ImageIcon imagenPiquete = new ImageIcon(VentanaMapa.class.getResource("/fiuba/algo3/vista/imagenes/piquete.png"));
+	ImageIcon imagenControlPolicial = new ImageIcon(VentanaMapa.class.getResource("/fiuba/algo3/vista/imagenes/policia.png"));
+	ImageIcon imagenBandera = new ImageIcon(VentanaMapa.class.getResource("/fiuba/algo3/vista/imagenes/bandera.png"));
+	ImageIcon imagenCambioDeVehiculo = new ImageIcon(VentanaMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
+	ImageIcon imagenDesfavorable = new ImageIcon(VentanaMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
+	ImageIcon imagenFavorable = new ImageIcon(VentanaMapa.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png"));
 	
 	
-	public PanelMapa(Mapa unMapa, Juego unJuego) {
+	public VentanaMapa(Mapa unMapa, Juego unJuego) {
 		this.unMapa = unMapa;
 		this.cantidadFilas = unMapa.devolverAlto();
 		this.cantidadColumnas = unMapa.devolverAncho();
@@ -201,7 +201,7 @@ public class PanelMapa extends JLayeredPane {
 		vehiculo.setBounds((unaPosicion.devolverPosicionColumna() - 1)
 				* (40 + 35), (unaPosicion.devolverPosicionFila() - 1)
 				* (40 + 42), 40, 17);
-		vehiculo.setIcon(new ImageIcon(PanelMapa.class
+		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
 
 	}
@@ -211,7 +211,7 @@ public class PanelMapa extends JLayeredPane {
 		vehiculo.setBounds((unaPosicion.devolverPosicionColumna() - 1)
 				* (40 + 34), (unaPosicion.devolverPosicionFila() - 1)
 				* (40 + 40), 40, 30);
-		vehiculo.setIcon(new ImageIcon(PanelMapa.class
+		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/moto.png")));
 	}
 
@@ -220,7 +220,7 @@ public class PanelMapa extends JLayeredPane {
 		vehiculo.setBounds((unaPosicion.devolverPosicionColumna() - 1)
 				* (40 + 34), (unaPosicion.devolverPosicionFila() - 1)
 				* (40 + 40), 40, 30);
-		vehiculo.setIcon(new ImageIcon(PanelMapa.class
+		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/camioneta.png")));
 	}
 }

@@ -21,7 +21,7 @@ import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.persistencia.JuegoPersistencia;
 
-public class VentanaPpal extends JFrame {
+public class VentanaPrincipal extends JFrame {
 
 
 	private static final long serialVersionUID = 1L;
@@ -37,7 +37,7 @@ public class VentanaPpal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPpal frame = new VentanaPpal();
+					VentanaPrincipal frame = new VentanaPrincipal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class VentanaPpal extends JFrame {
 
 	
 	
-	public VentanaPpal() {
+	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
 		setBounds(100, 100, 450, 300);
@@ -134,7 +134,7 @@ public class VentanaPpal extends JFrame {
 		contentPane.add(btnSalir);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(VentanaPpal.class
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class
 				.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
 		lblNewLabel.setBounds(0, 0, 434, 261);
 		contentPane.add(lblNewLabel);

@@ -71,16 +71,16 @@ public class PanelInformacion extends JPanel {
 	
 	public void actualizarVehiculo(Vehiculo unVehiculo){
 		if (unVehiculo instanceof Auto){
-			imagenVehiculo.setIcon(new ImageIcon(PanelMapa.class
+			imagenVehiculo.setIcon(new ImageIcon(VentanaMapa.class
 					.getResource("/fiuba/algo3/vista/imagenes/autoGrande.png")));
 		}else{
 			if (unVehiculo instanceof Moto){
-				imagenVehiculo.setIcon(new ImageIcon(PanelMapa.class
+				imagenVehiculo.setIcon(new ImageIcon(VentanaMapa.class
 						.getResource("/fiuba/algo3/vista/imagenes/motoGrande.png")));
 			}
 			else{
 				if (unVehiculo instanceof Camioneta){
-					imagenVehiculo.setIcon(new ImageIcon(PanelMapa.class
+					imagenVehiculo.setIcon(new ImageIcon(VentanaMapa.class
 							.getResource("/fiuba/algo3/vista/imagenes/camionetaGrande.png")));
 				}
 			}

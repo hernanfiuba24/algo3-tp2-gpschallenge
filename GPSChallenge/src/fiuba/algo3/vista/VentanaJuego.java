@@ -33,7 +33,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
-	private PanelMapa panelMapa;
+	private VentanaMapa ventanaMapa;
 	private JPanel panelObstaculos;
 	private PanelInformacion panelInformacion;
 	// private final Action action = new SwingAction();
@@ -65,10 +65,10 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		// this.unaVistaVisibilidad = new
 		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
 
-		panelMapa = new PanelMapa(this.unJuego.devolverMapa(), this.unJuego);
-		panelMapa.setBounds(5, 5, 660, 730);
-		contentPane.add(panelMapa);
-		panelMapa.setLayout(null);
+		ventanaMapa = new VentanaMapa(this.unJuego.devolverMapa(), this.unJuego);
+		ventanaMapa.setBounds(5, 5, 660, 730);
+		contentPane.add(ventanaMapa);
+		ventanaMapa.setLayout(null);
 
 		// ObservadorDeVehiculos observadorDeVehiculos = new
 		// ObservadorDeVehiculos(this.panelMapa);
@@ -96,7 +96,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		btnMenuMapa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaPpal unaVentanaPpal = new VentanaPpal();
+				VentanaPrincipal unaVentanaPpal = new VentanaPrincipal();
 				unaVentanaPpal.setVisible(true);
 			}
 		});
@@ -171,12 +171,12 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		try {
-			this.panelMapa.dibujarExtras();
+			this.ventanaMapa.dibujarExtras();
 		} catch (ExcepcionEsquinaInvalida e) {
 			e.printStackTrace();
 		}
 		// this.panelMapa.dibujarVehiculo(((Jugador)arg).devolverVehiculo());
-		this.panelMapa.dibujarVisibilidad(
+		this.ventanaMapa.dibujarVisibilidad(
 				(((Jugador) arg).devolverVehiculo().devolverEsquina()
 						.devolverPosicion().devolverPosicionColumna() - 1)
 						* (40 + 35), ((((Jugador) arg).devolverVehiculo()
@@ -187,7 +187,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		this.panelInformacion.actualizarVehiculo(((Jugador) arg)
 				.devolverVehiculo());
 		if (this.unJuego.seTermino()) {
-			this.panelMapa.visualizarMapaEntero();
+			this.ventanaMapa.visualizarMapaEntero();
 			JuegoPersistencia.cargarPuntajes("C:\\Ranking.xml");
 			JuegoPersistencia.guardarPuntajes(this.unJuego);
 			

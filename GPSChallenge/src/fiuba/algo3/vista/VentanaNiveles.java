@@ -141,7 +141,7 @@ public class VentanaNiveles extends JFrame {
 		btnVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				VentanaPpal ventanaJuego = new VentanaPpal();
+				VentanaPrincipal ventanaJuego = new VentanaPrincipal();
 				ventanaJuego.setVisible(true);
 				dispose();
 			}
@@ -152,7 +152,7 @@ public class VentanaNiveles extends JFrame {
 		getContentPane().add(btnVolver);
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(VentanaPpal.class
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class
 				.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
 		lblNewLabel.setBounds(0, 0, 434, 261);
 		getContentPane().add(lblNewLabel);

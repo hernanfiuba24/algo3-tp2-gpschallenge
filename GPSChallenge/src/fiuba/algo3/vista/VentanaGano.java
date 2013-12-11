@@ -48,7 +48,7 @@ public class VentanaGano extends JFrame {
 		btnMenuPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaPpal unaVentanaPpal = new VentanaPpal();
+				VentanaPrincipal unaVentanaPpal = new VentanaPrincipal();
 				unaVentanaPpal.setVisible(true);
 			}
 		});

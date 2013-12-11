@@ -6,8 +6,10 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -28,18 +30,18 @@ public class VentanaRanking extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JButton btnMenu = new JButton("Menu");
-		btnMenu.setBounds(375, 230, 89, 23);
+		btnMenu.setBounds(357, 204, 89, 23);
 		getContentPane().add(btnMenu);
 		btnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaPpal unaVentanaPpal = new VentanaPpal();
+				VentanaPrincipal unaVentanaPpal = new VentanaPrincipal();
 				unaVentanaPpal.setVisible(true);
 			}
 		});
 		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(375, 264, 89, 23);
+		btnSalir.setBounds(357, 238, 89, 23);
 		getContentPane().add(btnSalir);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -48,7 +50,7 @@ public class VentanaRanking extends JFrame {
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(21, 29, 320, 258);
+		scrollPane.setBounds(10, 22, 320, 258);
 		getContentPane().add(scrollPane);
 		scrollPane.setViewportView(table);
 		
@@ -60,5 +62,14 @@ public class VentanaRanking extends JFrame {
 		table = new JTable(tabla);
 		scrollPane.setViewportView(table);
 		
+		JLabel imagenAnimada = new JLabel("");
+		imagenAnimada.setIcon(new ImageIcon(VentanaRanking.class.getResource("/fiuba/algo3/vista/imagenes/imagenParaRanking1.gif")));
+		imagenAnimada.setBounds(340, 77, 124, 59);
+		getContentPane().add(imagenAnimada);
+		
+		JLabel imagenFondo = new JLabel("New label");
+		imagenFondo.setIcon(new ImageIcon(VentanaRanking.class.getResource("/fiuba/algo3/vista/imagenes/background_flag_color.jpg")));
+		imagenFondo.setBounds(0, 0, 474, 312);
+		getContentPane().add(imagenFondo);		
 	}
 }
