@@ -47,14 +47,4 @@ public class GuardadorPuntajes {
 		}
 		return xmlElement;
 	}
-
-	public void eliminarPuntaje(Puntaje puntajeApertura) {
-		for(int i =0; i<puntajesTotales.size();i++){
-			Puntaje puntajeObtenido = devolverPuntaje(i);
-			if(puntajeObtenido.equals(puntajeApertura)){
-				puntajesTotales.remove(i);
-			}
-		}
-		
-	}
 }

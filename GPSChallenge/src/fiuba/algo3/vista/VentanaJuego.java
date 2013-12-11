@@ -245,8 +245,6 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
 			VentanaGano ventanaGano = new VentanaGano(puntajesTotales);
 			ventanaGano.setVisible(true);
-			// JOptionPane.showMessageDialog(null, "Ganaste", "GpsChallenge",
-			// 1);
 			dispose();
 		}
 

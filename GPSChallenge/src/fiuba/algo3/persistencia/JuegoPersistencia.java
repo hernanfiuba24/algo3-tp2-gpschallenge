@@ -1,5 +1,6 @@
 package fiuba.algo3.persistencia;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,12 @@ import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.DOMException;
@@ -50,29 +57,6 @@ import fiuba.algo3.modelo.vehiculo.Vehiculo;
 public class JuegoPersistencia {
 
 	private static GuardadorPuntajes guardadorPuntajes;
-
-	public static void guardarPuntajes(String nombreArchivo,
-			GuardadorPuntajes puntajesTotales)
-			throws ParserConfigurationException, IOException {
-
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder loader = factory.newDocumentBuilder();
-		Document doc = loader.newDocument();
-
-		doc.appendChild(puntajesTotales.toXml(doc));
-
-		XMLSerializer serializer = new XMLSerializer();
-
-		com.sun.org.apache.xml.internal.serialize.OutputFormat outFormat = new com.sun.org.apache.xml.internal.serialize.OutputFormat();
-
-		outFormat.setVersion("1.0");
-		outFormat.setIndenting(true);
-		outFormat.setIndent(4);
-
-		serializer.setOutputFormat(outFormat);
-		serializer.setOutputCharStream(new java.io.FileWriter(nombreArchivo));
-		serializer.serialize(doc);
-	}
 
 	public static void guardarGpsChallenge(String nombreArchivo, Juego unJuego)
 			throws IOException, ParserConfigurationException, DOMException,
@@ -116,28 +100,31 @@ public class JuegoPersistencia {
 
 		Document docXml = parser.getDocument();
 
-        String nombreJugador = "";
-        
-        // Obtenemos la etiqueta raiz
-        Element elementRaiz = docXml.getDocumentElement();
+		String nombreJugador = "";
 
-        String nombreRaiz = elementRaiz.getNodeName();
-        
-        Posicion posicionBandera = cargarPosicionBandera(elementRaiz);
-        
-        Mapa unMapa = cargarMapa(elementRaiz);
-        JugadorImplementacion unJugador = cargarJugador(elementRaiz, unMapa);
-        return cargarJuego(nombreRaiz, unJugador, unMapa, posicionBandera);
+		// Obtenemos la etiqueta raiz
+		Element elementRaiz = docXml.getDocumentElement();
+
+		String nombreRaiz = elementRaiz.getNodeName();
+
+		Posicion posicionBandera = cargarPosicionBandera(elementRaiz);
+
+		Mapa unMapa = cargarMapa(elementRaiz);
+		JugadorImplementacion unJugador = cargarJugador(elementRaiz, unMapa);
+		return cargarJuego(nombreRaiz, unJugador, unMapa, posicionBandera);
 	}
 
-	private static Juego cargarJuego(String nombreRaiz, JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera) {
+	private static Juego cargarJuego(String nombreRaiz,
+			JugadorImplementacion unJugador, Mapa unMapa,
+			Posicion posicionBandera) {
 		Juego unJuego = null;
 
 		if (nombreRaiz.equalsIgnoreCase("GpsChallengeDificil")) {
 			unJuego = new JuegoDificil(unJugador, unMapa, posicionBandera);
 		} else {
 			if (nombreRaiz.equalsIgnoreCase("GpsChallengeIntermedio")) {
-				unJuego = new JuegoIntermedio(unJugador, unMapa, posicionBandera);
+				unJuego = new JuegoIntermedio(unJugador, unMapa,
+						posicionBandera);
 			} else {
 				if (nombreRaiz.equalsIgnoreCase("GpsChallengeFacil")) {
 					unJuego = new JuegoFacil(unJugador, unMapa, posicionBandera);
@@ -147,6 +134,44 @@ public class JuegoPersistencia {
 
 		return unJuego;
 	}
+
+	// private static Posicion cargarPosicionVehiculo(Element elementRaiz) {
+	//
+	// ArrayList<String> posicionVehiculoString = new ArrayList<String>();
+	//
+	// NodeList hijosJuego;
+	// hijosJuego = elementRaiz.getElementsByTagName("Jugador");
+	// int posicionVehiculoX;
+	// int posicionVehiculoY;
+	//
+	// Node nodoJugador = hijosJuego.item(0);
+	//
+	// NodeList hijosJugador = nodoJugador.getChildNodes();
+	// Node nodoVehiculo = hijosJugador.item(1);
+	//
+	// NodeList hijosVehiculo = nodoVehiculo.getChildNodes();
+	//
+	// Node nodoPosicionVehiculo = hijosVehiculo.item(1);
+	//
+	// NamedNodeMap atributosVehiculoPosicion = nodoPosicionVehiculo
+	// .getAttributes();
+	//
+	// Node nodoVehiculoPosicionX = atributosVehiculoPosicion
+	// .getNamedItem("PosicionX");
+	// Node nodoVehiculoPosicionY = atributosVehiculoPosicion
+	// .getNamedItem("PosicionY");
+	//
+	// posicionVehiculoString.add(nodoVehiculoPosicionX.getNodeValue());
+	// posicionVehiculoString.add(nodoVehiculoPosicionY.getNodeValue());
+	//
+	// posicionVehiculoX = Integer.parseInt(posicionVehiculoString.get(0));
+	// posicionVehiculoY = Integer.parseInt(posicionVehiculoString.get(1));
+	//
+	// Posicion posicionVehiculo = new Posicion(posicionVehiculoX,
+	// posicionVehiculoY);
+	//
+	// return posicionVehiculo;
+	// }
 
 	private static Posicion cargarPosicionBandera(Element elementRaiz) {
 		int posicionBanderaX;
@@ -351,13 +376,35 @@ public class JuegoPersistencia {
 		guardadorPuntajes.guardarPuntaje(unPuntaje);
 
 		try {
-			JuegoPersistencia.guardarPuntajes("C:\\Ranking.xml",
-					guardadorPuntajes);
+			guardarPuntajes("C:\\Ranking.xml", guardadorPuntajes);
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static void guardarPuntajes(String nombreArchivo,
+			GuardadorPuntajes puntajesTotales)
+			throws ParserConfigurationException, IOException {
+
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder loader = factory.newDocumentBuilder();
+		Document doc = loader.newDocument();
+
+		doc.appendChild(puntajesTotales.toXml(doc));
+
+		XMLSerializer serializer = new XMLSerializer();
+
+		com.sun.org.apache.xml.internal.serialize.OutputFormat outFormat = new com.sun.org.apache.xml.internal.serialize.OutputFormat();
+
+		outFormat.setVersion("1.0");
+		outFormat.setIndenting(true);
+		outFormat.setIndent(4);
+
+		serializer.setOutputFormat(outFormat);
+		serializer.setOutputCharStream(new java.io.FileWriter(nombreArchivo));
+		serializer.serialize(doc);
 	}
 
 	public static TreeMap<Integer, String> devolverRankingPuntajes() {
@@ -384,37 +431,37 @@ public class JuegoPersistencia {
 			parser.parse(nombreArchivo);
 
 		} catch (SAXException se) {
-			Puntaje puntajeApertura = new Puntaje("", 0);
-			guardadorPuntajes.guardarPuntaje(puntajeApertura);
+			se.printStackTrace();
+		} catch (IOException ioe) {
 			try {
-				guardarPuntajes("C:\\Ranking.xml", guardadorPuntajes);
+				guardarPuntajes(nombreArchivo, guardadorPuntajes);
 			} catch (ParserConfigurationException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			guardadorPuntajes.eliminarPuntaje(puntajeApertura);
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
 		}
 
 		Document docXml = parser.getDocument();
 
-		// Obtenemos la etiqueta raiz
-		Element elementRaiz = docXml.getDocumentElement();
-		NodeList hijosPuntajesTotales = elementRaiz.getChildNodes();
-		if (hijosPuntajesTotales != null) {
-			int i = 1;
-			while (hijosPuntajesTotales.item(i) != null) {
-				Node nodoPuntaje = hijosPuntajesTotales.item(i);
-				NamedNodeMap atributosPuntaje = nodoPuntaje.getAttributes();
-				String nombre = atributosPuntaje.item(0).getNodeValue();
-				int valor = Integer.parseInt(atributosPuntaje.item(1)
-						.getNodeValue());
-				Puntaje puntaje = new Puntaje(nombre, valor);
-				guardadorPuntajes.guardarPuntaje(puntaje);
-				i += 2;
-				// Se incrementa de a 2 por detalles de implementacion de DOM
+		if (docXml != null) {
+			// Obtenemos la etiqueta raiz
+			Element elementRaiz = docXml.getDocumentElement();
+			NodeList hijosPuntajesTotales = elementRaiz.getChildNodes();
+			if (hijosPuntajesTotales != null) {
+				int i = 1;
+				while (hijosPuntajesTotales.item(i) != null) {
+					Node nodoPuntaje = hijosPuntajesTotales.item(i);
+					NamedNodeMap atributosPuntaje = nodoPuntaje.getAttributes();
+					String nombre = atributosPuntaje.item(0).getNodeValue();
+					int valor = Integer.parseInt(atributosPuntaje.item(1)
+							.getNodeValue());
+					Puntaje puntaje = new Puntaje(nombre, valor);
+					guardadorPuntajes.guardarPuntaje(puntaje);
+					i += 2;
+					// Se incrementa de a 2 por detalles de implementacion de
+					// DOM
+				}
 			}
 		}
 	}
