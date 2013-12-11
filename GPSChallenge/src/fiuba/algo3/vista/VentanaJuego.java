@@ -243,9 +243,8 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 			
 			TreeMap<Integer, String> puntajesTotales = JuegoPersistencia.devolverRankingPuntajes();
 
-			VentanaGano ventanaGano = new VentanaGano(puntajesTotales);
+			VentanaGano ventanaGano = new VentanaGano(puntajesTotales, this);
 			ventanaGano.setVisible(true);
-			dispose();
 		}
 
 	}

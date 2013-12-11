@@ -24,10 +24,10 @@ public class VentanaNiveles extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private Menu barraMenu;
-	private String nombreJugador;
+	private String nombreDeJugador;
 
 
-	public VentanaNiveles(final Vehiculo unVehiculo) {
+	public VentanaNiveles(final Vehiculo unVehiculo, String nombreJugador) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
 		setBounds(100, 100, 450, 320);
@@ -38,10 +38,10 @@ public class VentanaNiveles extends JFrame {
 		barraMenu = new Menu();
 		setJMenuBar(barraMenu);
 
-		nombreJugador = "";
-		while (nombreJugador.equalsIgnoreCase("")) {
-			nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");
-		}
+		this.nombreDeJugador = nombreJugador;
+//		while (nombreJugador.equalsIgnoreCase("")) {
+//			nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");
+//		}
 
 		JButton btnFacil = new JButton(
 				new ImageIcon(
@@ -54,8 +54,8 @@ public class VentanaNiveles extends JFrame {
 				try {
 					int posicionInicialBandera = unRandomizador
 							.obtenerNumeroEntre(1, 3);
-					unaVentanaJuego = new VentanaJuego(nombreJugador,
-							new JuegoFacil(nombreJugador, 3, new Posicion(
+					unaVentanaJuego = new VentanaJuego(nombreDeJugador,
+							new JuegoFacil(nombreDeJugador, 3, new Posicion(
 									posicionInicialBandera, 1), unVehiculo.devolverPosicionActual()));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
@@ -84,8 +84,8 @@ public class VentanaNiveles extends JFrame {
 							.obtenerNumeroEntre(1, 5);
 					int posicionInicialBandera = unRandomizador
 							.obtenerNumeroEntre(1, 5);
-					unaVentanaJuego = new VentanaJuego(nombreJugador,
-							new JuegoIntermedio(nombreJugador, 5, new Posicion(posicionInicialBandera, 5),
+					unaVentanaJuego = new VentanaJuego(nombreDeJugador,
+							new JuegoIntermedio(nombreDeJugador, 5, new Posicion(posicionInicialBandera, 5),
 												new Posicion(posicionInicialVehiculo, 1)));
 				} catch (ExcepcionEsquinaInvalida exc) {
 					exc.printStackTrace();
@@ -114,8 +114,8 @@ public class VentanaNiveles extends JFrame {
 							.obtenerNumeroEntre(1, 8);
 					int posicionInicialBandera = unRandomizador
 							.obtenerNumeroEntre(1, 8);
-					unaVentanaJuego = new VentanaJuego(nombreJugador,
-							new JuegoDificil(nombreJugador, 8, new Posicion(
+					unaVentanaJuego = new VentanaJuego(nombreDeJugador,
+							new JuegoDificil(nombreDeJugador, 8, new Posicion(
 									posicionInicialBandera, 8), new Posicion(
 									posicionInicialVehiculo, 1)));
 				} catch (ExcepcionEsquinaInvalida exc) {

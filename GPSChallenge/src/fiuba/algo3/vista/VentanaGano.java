@@ -19,10 +19,13 @@ import fiuba.algo3.persistencia.JuegoPersistencia;
 import javax.swing.SwingConstants;
 
 public class VentanaGano extends JFrame {
+	
+	private JFrame ventanaACerrar;
 
 	private static final long serialVersionUID = 1L;
 
-	public VentanaGano(TreeMap<Integer, String> puntajesTotales) {
+	public VentanaGano(TreeMap<Integer, String> puntajesTotales, final JFrame ventanaACerrar) {
+		this.ventanaACerrar = ventanaACerrar;
 		setBackground(Color.WHITE);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,6 +54,7 @@ public class VentanaGano extends JFrame {
 		btnMenuPrincipal.setContentAreaFilled(false);
 		btnMenuPrincipal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventanaACerrar.dispose();
 				dispose();
 				VentanaPrincipal unaVentanaPpal = new VentanaPrincipal();
 				unaVentanaPpal.setVisible(true);
@@ -83,6 +87,7 @@ public class VentanaGano extends JFrame {
 		btnRanking.setContentAreaFilled(false);
 		btnRanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventanaACerrar.dispose();
 				dispose();
 				List<Puntaje> puntajes = JuegoPersistencia.devolverPuntajes();
 				VentanaRanking unaVentanaRanking = new VentanaRanking(puntajes);

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,14 +17,19 @@ import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
 import fiuba.algo3.modelo.vehiculo.Moto;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
+import java.awt.Font;
+import javax.swing.JTextField;
 
 public class VentanaSeleccionVehiculo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private Menu barraMenu;
+	private String nombreJugador;
+	private JTextField txtSelccioneElVehiculo;
 
-	public VentanaSeleccionVehiculo(){
+	public VentanaSeleccionVehiculo(String nombre){
+		this.nombreJugador = nombre;
 		setBackground(Color.WHITE);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,62 +43,56 @@ public class VentanaSeleccionVehiculo extends JFrame {
 		barraMenu.deshabilitarGuardar();
 		setJMenuBar(barraMenu);
 		
-		JLabel lblAuto = new JLabel("");
+		JButton lblAuto = new JButton();
 		lblAuto.setIcon(new ImageIcon(VentanaSeleccionVehiculo.class.getResource("/fiuba/algo3/vista/imagenes/autoGrande.png")));
 		lblAuto.setBounds(10, 89, 169, 102);
-		getContentPane().add(lblAuto);
-		
-		JLabel lblMoto = new JLabel("");
-		lblMoto.setIcon(new ImageIcon(VentanaSeleccionVehiculo.class.getResource("/fiuba/algo3/vista/imagenes/motoGrande.png")));
-		lblMoto.setBounds(189, 89, 101, 102);
-		getContentPane().add(lblMoto);
-		
-		JLabel lblCamioneta = new JLabel("");
-		lblCamioneta.setIcon(new ImageIcon(VentanaSeleccionVehiculo.class.getResource("/fiuba/algo3/vista/imagenes/camionetaGrande.png")));
-		lblCamioneta.setBounds(300, 89, 153, 102);
-		getContentPane().add(lblCamioneta);
-		
-		JButton btnAuto = new JButton("Auto");
-		btnAuto.addActionListener(new ActionListener() {
+		lblAuto.setBorder(BorderFactory.createEmptyBorder());
+		lblAuto.setContentAreaFilled(false);
+		lblAuto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				int posicionInicialVehiculo = unRandomizador
 						.obtenerNumeroEntre(1, 3);
 				Auto unAuto = new Auto(new Esquina(new Posicion(
 						posicionInicialVehiculo, 3)));
-				iniciarVentanaNiveles(unAuto);
+				iniciarVentanaNiveles(unAuto, nombreJugador);
 			}
 		});
-		btnAuto.setBounds(45, 202, 89, 23);
-		getContentPane().add(btnAuto);
+		getContentPane().add(lblAuto);
 		
-		JButton btnMoto = new JButton("Moto");
-		btnMoto.addActionListener(new ActionListener() {
+		JButton lblMoto = new JButton();
+		lblMoto.setIcon(new ImageIcon(VentanaSeleccionVehiculo.class.getResource("/fiuba/algo3/vista/imagenes/motoGrande.png")));
+		lblMoto.setBounds(189, 89, 101, 102);
+		lblMoto.setBorder(BorderFactory.createEmptyBorder());
+		lblMoto.setContentAreaFilled(false);
+		lblMoto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				int posicionInicialVehiculo = unRandomizador
 						.obtenerNumeroEntre(1, 3);
 				Moto unaMoto = new Moto(new Esquina(new Posicion(
 						posicionInicialVehiculo, 3)));
-				iniciarVentanaNiveles(unaMoto);
+				iniciarVentanaNiveles(unaMoto, nombreJugador);
 			}
 		});
-		btnMoto.setBounds(199, 202, 89, 23);
-		getContentPane().add(btnMoto);
+		getContentPane().add(lblMoto);
 		
-		JButton btnCamioneta = new JButton("Camioneta");
-		btnAuto.addActionListener(new ActionListener() {
+		JButton lblCamioneta = new JButton();
+		lblCamioneta.setIcon(new ImageIcon(VentanaSeleccionVehiculo.class.getResource("/fiuba/algo3/vista/imagenes/camionetaGrande.png")));
+		lblCamioneta.setBounds(300, 89, 153, 102);
+		lblCamioneta.setBorder(BorderFactory.createEmptyBorder());
+		lblCamioneta.setContentAreaFilled(false);
+		lblCamioneta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				int posicionInicialVehiculo = unRandomizador
 						.obtenerNumeroEntre(1, 3);
 				Camioneta unaCamioneta = new Camioneta(new Esquina(new Posicion(
 						posicionInicialVehiculo, 3)));
-				iniciarVentanaNiveles(unaCamioneta);
+				iniciarVentanaNiveles(unaCamioneta, nombreJugador);
 			}
 		});
-		btnCamioneta.setBounds(335, 202, 89, 23);
-		getContentPane().add(btnCamioneta);
+		getContentPane().add(lblCamioneta);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(VentanaSeleccionVehiculo.class.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
@@ -100,8 +100,8 @@ public class VentanaSeleccionVehiculo extends JFrame {
 		getContentPane().add(label);
 	}
 
-	public void iniciarVentanaNiveles(Vehiculo unVehiculo) {
-		VentanaNiveles ventanaNivel = new VentanaNiveles(unVehiculo);
+	public void iniciarVentanaNiveles(Vehiculo unVehiculo, String nombreJugador) {
+		VentanaNiveles ventanaNivel = new VentanaNiveles(unVehiculo, nombreJugador);
 		ventanaNivel.setVisible(true);
 		dispose();
 	}
