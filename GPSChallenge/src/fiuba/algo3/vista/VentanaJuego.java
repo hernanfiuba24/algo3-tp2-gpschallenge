@@ -27,6 +27,12 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.persistencia.JuegoPersistencia;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
+import java.awt.Rectangle;
+import java.awt.Dimension;
 
 public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
@@ -125,7 +131,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		});
 		btnSalirMapa.setBounds(19, 644, 151, 58);
 		panelInformacion.add(btnSalirMapa);
-		btnMenuMapa.setBounds(19, 510, 151, 62);
+		btnMenuMapa.setBounds(19, 571, 151, 62);
 		panelInformacion.add(btnMenuMapa);
 
 		JButton btnGuardarMapa = new JButton(
@@ -156,8 +162,52 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 				JOptionPane.showMessageDialog(null, "Partida Guardada");
 			}
 		});
-		btnGuardarMapa.setBounds(19, 450, 151, 50);
+		btnGuardarMapa.setBounds(19, 510, 151, 50);
 		panelInformacion.add(btnGuardarMapa);
+		
+		JLabel etiquetaLeyenda = new JLabel("Leyenda");
+		etiquetaLeyenda.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		etiquetaLeyenda.setBounds(10, 278, 71, 14);
+		panelInformacion.add(etiquetaLeyenda);
+		
+		JPanel panel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEFT);
+		panel.setBounds(10, 303, 120, 143);
+		panelInformacion.add(panel);
+		
+		JLabel leyendaSorpresa = new JLabel("Sorpresa");
+		leyendaSorpresa.setPreferredSize(new Dimension(100, 30));
+		leyendaSorpresa.setBounds(new Rectangle(6, 0, 0, 0));
+		leyendaSorpresa.setHorizontalAlignment(SwingConstants.LEFT);
+		leyendaSorpresa.setVerticalAlignment(SwingConstants.BOTTOM);
+		leyendaSorpresa.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		leyendaSorpresa.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png")));
+		panel.add(leyendaSorpresa);
+		
+		JLabel leyendaPiquete = new JLabel("Piquete");
+		leyendaPiquete.setPreferredSize(new Dimension(100, 30));
+		leyendaPiquete.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/piquete.png")));
+		leyendaPiquete.setVerticalAlignment(SwingConstants.BOTTOM);
+		leyendaPiquete.setHorizontalAlignment(SwingConstants.LEFT);
+		leyendaPiquete.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		panel.add(leyendaPiquete);
+		
+		JLabel leyendaPolicia = new JLabel("Policia");
+		leyendaPolicia.setPreferredSize(new Dimension(100, 30));
+		leyendaPolicia.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/policia.png")));
+		leyendaPolicia.setVerticalAlignment(SwingConstants.BOTTOM);
+		leyendaPolicia.setHorizontalAlignment(SwingConstants.LEFT);
+		leyendaPolicia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		panel.add(leyendaPolicia);
+		
+		JLabel leyendaPozo = new JLabel("Pozo");
+		leyendaPozo.setPreferredSize(new Dimension(100, 30));
+		leyendaPozo.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/pozo.png")));
+		leyendaPozo.setVerticalAlignment(SwingConstants.BOTTOM);
+		leyendaPozo.setHorizontalAlignment(SwingConstants.LEFT);
+		leyendaPozo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		panel.add(leyendaPozo);
 	}
 
 	/*
@@ -216,5 +266,4 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 	public void keyTyped(KeyEvent e) {
 
 	}
-
 }
