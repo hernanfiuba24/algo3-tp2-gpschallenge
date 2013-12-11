@@ -52,7 +52,7 @@ public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 490, 350);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 153, 153));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,7 +68,7 @@ public class VentanaPrincipal extends JFrame {
 								.getResource("/fiuba/algo3/vista/imagenes/botonJugar.png")));
 		btnJugar.setBorder(BorderFactory.createEmptyBorder());
 		btnJugar.setContentAreaFilled(false);
-		btnJugar.setBounds(141, 38, 153, 55);
+		btnJugar.setBounds(165, 47, 153, 55);
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nombreJugador = ingresoDeNombreJugador();
@@ -87,7 +87,7 @@ public class VentanaPrincipal extends JFrame {
 								.getResource("/fiuba/algo3/vista/imagenes/botonContinuarPartida.png")));
 		btnContinuarPartidaGuarda.setBorder(BorderFactory.createEmptyBorder());
 		btnContinuarPartidaGuarda.setContentAreaFilled(false);
-		btnContinuarPartidaGuarda.setBounds(141, 104, 153, 55);
+		btnContinuarPartidaGuarda.setBounds(165, 113, 153, 55);
 		btnContinuarPartidaGuarda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nombreJugador = JOptionPane
@@ -126,7 +126,7 @@ public class VentanaPrincipal extends JFrame {
 								.getResource("/fiuba/algo3/vista/imagenes/botonSalir.png")));
 		btnSalir.setBorder(BorderFactory.createEmptyBorder());
 		btnSalir.setContentAreaFilled(false);
-		btnSalir.setBounds(141, 170, 153, 55);
+		btnSalir.setBounds(165, 179, 153, 55);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -137,7 +137,7 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class
 				.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
-		lblNewLabel.setBounds(0, 0, 434, 261);
+		lblNewLabel.setBounds(0, 0, 474, 289);
 		contentPane.add(lblNewLabel);
 
 	}

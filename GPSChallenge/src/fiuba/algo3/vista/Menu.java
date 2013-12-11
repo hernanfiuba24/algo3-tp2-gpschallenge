@@ -8,7 +8,9 @@ import javax.swing.border.BevelBorder;
 
 public class Menu extends JMenuBar {
 	
-	AccionMenues accionGuardar;
+	private AccionMenues accionGuardar;
+	private VentanaJuego ventanaPerteneciente;
+	
 
 	public Menu(){
 		JMenu opciones = this.crearMenuOpciones();
@@ -18,6 +20,15 @@ public class Menu extends JMenuBar {
 		add(ayuda);
 	}
 	
+	public Menu(VentanaJuego ventanaConFunciones) {
+		this.ventanaPerteneciente = ventanaConFunciones;
+		JMenu opciones = this.crearMenuOpciones();
+		add(opciones);
+		
+		JMenu ayuda = this.crearMenuAyuda(); 
+		add(ayuda);
+	}
+
 	private JMenu crearMenuAyuda() {
 		JMenu ayuda = new JMenu("Ayuda");
 		ayuda.setSize(new Dimension(50,20));
@@ -38,6 +49,7 @@ public class Menu extends JMenuBar {
 		opciones.setBorder(new BevelBorder(BevelBorder.RAISED));
 		
 		this.accionGuardar = new AccionMenues("Guardar");
+		this.accionGuardar.setearVentanaPerteneciente(this.ventanaPerteneciente);
 		AccionMenues accionSalir = new AccionMenues("Salir");
 		
 		opciones.add(accionGuardar);
@@ -49,4 +61,5 @@ public class Menu extends JMenuBar {
 	public void deshabilitarGuardar(){
 		this.accionGuardar.setEnabled(false);
 	}
+	
 }

@@ -7,11 +7,18 @@ import javax.swing.AbstractAction;
 public class AccionMenues  extends AbstractAction{
 	
 	String cadena;
+	private VentanaJuego ventanaPerteneciente;
+	
 	public AccionMenues(String cadena)
 	{
 		super (cadena);
 		this.cadena=cadena;
 	}
+		
+	public void setearVentanaPerteneciente(VentanaJuego unaVentana){
+		this.ventanaPerteneciente = unaVentana;
+	}
+	
 	public void actionPerformed(ActionEvent e)
 	{
 		String accion=new String(e.getActionCommand());
@@ -22,7 +29,7 @@ public class AccionMenues  extends AbstractAction{
 		}
 		else if (accion.equals("Guardar"))
 		{
-			
+			ventanaPerteneciente.guardarJuego();
 		}
 		else if (accion.equals("Acerca De")){
 			AcercaDeFrame acercaDe = new AcercaDeFrame();

@@ -33,12 +33,12 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.persistencia.JuegoPersistencia;
-
 public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
+	private Menu barraMenu;
 	private VentanaMapa ventanaMapa;
 	private JPanel panelObstaculos;
 	private PanelInformacion panelInformacion;
@@ -63,16 +63,16 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		setFocusable(true);
 		this.unJuego = juego;
 		this.unJuego.addObserver(this);
+		contentPane.setLayout(null);
 		// this.unaVistaVisibilidad = new
 		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
-
+		
 		ventanaMapa = new VentanaMapa(this.unJuego.devolverMapa(), this.unJuego);
-		ventanaMapa.setBounds(5, 5, 660, 730);
+		ventanaMapa.setBounds(10, 5, 660, 695);
 		contentPane.add(ventanaMapa);
 		ventanaMapa.setLayout(null);
 
@@ -129,9 +129,9 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
 			}
 		});
-		btnSalirMapa.setBounds(19, 644, 151, 58);
+		btnSalirMapa.setBounds(19, 632, 151, 58);
 		panelInformacion.add(btnSalirMapa);
-		btnMenuMapa.setBounds(19, 571, 151, 62);
+		btnMenuMapa.setBounds(19, 569, 151, 62);
 		panelInformacion.add(btnMenuMapa);
 
 		JButton btnGuardarMapa = new JButton(
@@ -208,6 +208,11 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		leyendaPozo.setHorizontalAlignment(SwingConstants.LEFT);
 		leyendaPozo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		panel.add(leyendaPozo);
+	
+		barraMenu = new Menu(this);
+		//barraMenu.deshabilitarGuardar();
+		setJMenuBar(barraMenu);
+		
 	}
 
 	/*
@@ -247,6 +252,25 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 			ventanaGano.setVisible(true);
 		}
 
+	}
+	
+	public void guardarJuego(){
+		final String tipoJuego = "C:\\"
+				+ this.unJuego.devolverJugador().devolverNombre() + ".xml";
+
+		try {
+			JuegoPersistencia.guardarGpsChallenge(tipoJuego, unJuego);
+		} catch (DOMException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (ExcepcionEsquinaInvalida e) {
+			e.printStackTrace();
+		}
+		seGuardoJuego = true;
+		JOptionPane.showMessageDialog(null, "Partida Guardada");
 	}
 
 	@Override

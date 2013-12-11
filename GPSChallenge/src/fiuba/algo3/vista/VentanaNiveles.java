@@ -30,12 +30,13 @@ public class VentanaNiveles extends JFrame {
 	public VentanaNiveles(final Vehiculo unVehiculo, String nombreJugador) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
-		setBounds(100, 100, 450, 320);
+		setBounds(100, 100, 490, 350);
 		getContentPane().setLayout(null);
 
 		final RandomizadorImplementacion unRandomizador = new RandomizadorImplementacion();
 
 		barraMenu = new Menu();
+		barraMenu.deshabilitarGuardar();
 		setJMenuBar(barraMenu);
 
 		this.nombreDeJugador = nombreJugador;
@@ -71,7 +72,7 @@ public class VentanaNiveles extends JFrame {
 		});
 		btnFacil.setBorder(BorderFactory.createEmptyBorder());
 		btnFacil.setContentAreaFilled(false);
-		btnFacil.setBounds(141, 38, 153, 55);
+		btnFacil.setBounds(165, 47, 153, 55);
 		getContentPane().add(btnFacil);
 
 		JButton btnIntermedio = new JButton(
@@ -101,7 +102,7 @@ public class VentanaNiveles extends JFrame {
 		});
 		btnIntermedio.setBorder(BorderFactory.createEmptyBorder());
 		btnIntermedio.setContentAreaFilled(false);
-		btnIntermedio.setBounds(141, 104, 153, 55);
+		btnIntermedio.setBounds(165, 113, 153, 55);
 		getContentPane().add(btnIntermedio);
 
 		JButton btnDificil = new JButton(
@@ -132,7 +133,7 @@ public class VentanaNiveles extends JFrame {
 		});
 		btnDificil.setBorder(BorderFactory.createEmptyBorder());
 		btnDificil.setContentAreaFilled(false);
-		btnDificil.setBounds(141, 170, 153, 55);
+		btnDificil.setBounds(165, 179, 153, 55);
 		getContentPane().add(btnDificil);
 
 		JButton btnVolver = new JButton(
@@ -149,13 +150,13 @@ public class VentanaNiveles extends JFrame {
 		});
 		btnVolver.setBorder(BorderFactory.createEmptyBorder());
 		btnVolver.setContentAreaFilled(false);
-		btnVolver.setBounds(379, 211, 55, 50);
+		btnVolver.setBounds(409, 228, 55, 50);
 		getContentPane().add(btnVolver);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class
 				.getResource("/fiuba/algo3/vista/imagenes/FondoBandera.jpg")));
-		lblNewLabel.setBounds(0, 0, 434, 261);
+		lblNewLabel.setBounds(0, 0, 474, 289);
 		getContentPane().add(lblNewLabel);
 
 	}
