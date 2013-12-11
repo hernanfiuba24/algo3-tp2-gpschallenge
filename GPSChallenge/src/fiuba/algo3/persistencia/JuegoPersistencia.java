@@ -1,6 +1,9 @@
 package fiuba.algo3.persistencia;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
 
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
@@ -24,7 +27,9 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.juego.JuegoCargado;
+import fiuba.algo3.modelo.juego.JuegoDificil;
+import fiuba.algo3.modelo.juego.JuegoFacil;
+import fiuba.algo3.modelo.juego.JuegoIntermedio;
 import fiuba.algo3.modelo.obstaculo.Bandera;
 import fiuba.algo3.modelo.obstaculo.ControlPolicial;
 import fiuba.algo3.modelo.obstaculo.Obstaculo;
@@ -43,6 +48,8 @@ import fiuba.algo3.modelo.vehiculo.Moto;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class JuegoPersistencia {
+
+	private static GuardadorPuntajes guardadorPuntajes;
 
 	public static void guardarPuntajes(String nombreArchivo,
 			GuardadorPuntajes puntajesTotales)
@@ -109,132 +116,106 @@ public class JuegoPersistencia {
 
 		Document docXml = parser.getDocument();
 
-		// String nombreJugador = "";
+        String nombreJugador = "";
+        
+        // Obtenemos la etiqueta raiz
+        Element elementRaiz = docXml.getDocumentElement();
 
-		// Obtenemos la etiqueta raiz
-		Element elementRaiz = docXml.getDocumentElement();
-
-		// String nombreRaiz = elementRaiz.getNodeName();
-
-		Mapa unMapa = cargarMapa(elementRaiz);
-		JugadorImplementacion unJugador = cargarJugador(elementRaiz, unMapa);
-		return cargarJuego(unJugador, unMapa);
-
+        String nombreRaiz = elementRaiz.getNodeName();
+        
+        Posicion posicionBandera = cargarPosicionBandera(elementRaiz);
+        
+        Mapa unMapa = cargarMapa(elementRaiz);
+        JugadorImplementacion unJugador = cargarJugador(elementRaiz, unMapa);
+        return cargarJuego(nombreRaiz, unJugador, unMapa, posicionBandera);
 	}
 
-	private static Juego cargarJuego(JugadorImplementacion unJugador,
-			Mapa unMapa) {
-		JuegoCargado unJuego = new JuegoCargado(unJugador, unMapa); 
+	private static Juego cargarJuego(String nombreRaiz, JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera) {
+		Juego unJuego = null;
+
+		if (nombreRaiz.equalsIgnoreCase("GpsChallengeDificil")) {
+			unJuego = new JuegoDificil(unJugador, unMapa, posicionBandera);
+		} else {
+			if (nombreRaiz.equalsIgnoreCase("GpsChallengeIntermedio")) {
+				unJuego = new JuegoIntermedio(unJugador, unMapa, posicionBandera);
+			} else {
+				if (nombreRaiz.equalsIgnoreCase("GpsChallengeFacil")) {
+					unJuego = new JuegoFacil(unJugador, unMapa, posicionBandera);
+				}
+			}
+		}
+
 		return unJuego;
 	}
 
-	/*
-	 * 
-	 * private static Juego crearJuegoConDatosCargados(String nombreJugador,
-	 * String nombreRaiz, int tamanioMapa, Posicion posicionBandera, Posicion
-	 * posicionVehiculo) { Juego unJuego = null;
-	 * 
-	 * if (nombreRaiz.equalsIgnoreCase("GpsChallengeDificil")){ try { unJuego =
-	 * new JuegoDificil(nombreJugador, tamanioMapa, posicionBandera,
-	 * posicionVehiculo); } catch (ExcepcionEsquinaInvalida e) {
-	 * e.printStackTrace(); } catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
-	 * e.printStackTrace(); } }else{ if
-	 * (nombreRaiz.equalsIgnoreCase("GpsChallengeIntermedio")){ try { unJuego =
-	 * new JuegoIntermedio(nombreJugador, tamanioMapa, posicionBandera,
-	 * posicionVehiculo); } catch (ExcepcionEsquinaInvalida e) {
-	 * e.printStackTrace(); } catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
-	 * e.printStackTrace(); } }else{ if
-	 * (nombreRaiz.equalsIgnoreCase("GpsChallengeFacil")){ try { unJuego = new
-	 * JuegoFacil(nombreJugador, tamanioMapa, posicionBandera,
-	 * posicionVehiculo); } catch (ExcepcionEsquinaInvalida e) {
-	 * e.printStackTrace(); } catch (ExcepcionJugadorYaAsignadoAlVehiculo e) {
-	 * e.printStackTrace(); } } } }
-	 * 
-	 * return unJuego; }
-	 * 
-	 * private static Posicion cargarPosicionVehiculo(Element elementRaiz) {
-	 * 
-	 * ArrayList<String> posicionVehiculoString = new ArrayList<String>();
-	 * 
-	 * NodeList hijosJuego; hijosJuego =
-	 * elementRaiz.getElementsByTagName("Jugador"); int posicionVehiculoX; int
-	 * posicionVehiculoY;
-	 * 
-	 * Node nodoJugador = hijosJuego.item(0);
-	 * 
-	 * 
-	 * NodeList hijosJugador = nodoJugador.getChildNodes(); Node nodoVehiculo =
-	 * hijosJugador.item(1);
-	 * 
-	 * NodeList hijosVehiculo = nodoVehiculo.getChildNodes();
-	 * 
-	 * Node nodoPosicionVehiculo = hijosVehiculo.item(1);
-	 * 
-	 * NamedNodeMap atributosVehiculoPosicion =
-	 * nodoPosicionVehiculo.getAttributes();
-	 * 
-	 * Node nodoVehiculoPosicionX =
-	 * atributosVehiculoPosicion.getNamedItem("PosicionX"); Node
-	 * nodoVehiculoPosicionY =
-	 * atributosVehiculoPosicion.getNamedItem("PosicionY");
-	 * 
-	 * posicionVehiculoString.add(nodoVehiculoPosicionX.getNodeValue());
-	 * posicionVehiculoString.add(nodoVehiculoPosicionY.getNodeValue());
-	 * 
-	 * posicionVehiculoX = Integer.parseInt(posicionVehiculoString.get(0));
-	 * posicionVehiculoY = Integer.parseInt(posicionVehiculoString.get(1));
-	 * 
-	 * Posicion posicionVehiculo = new Posicion(posicionVehiculoX,
-	 * posicionVehiculoY);
-	 * 
-	 * return posicionVehiculo; }
-	 * 
-	 * private static Posicion cargarPosicionBandera(Element elementRaiz) { int
-	 * posicionBanderaX; int posicionBanderaY; String posicionBanderaXtexto =
-	 * ""; String posicionBanderaYtexto = "";
-	 * 
-	 * NodeList hijosJuego = elementRaiz.getElementsByTagName("Posicion"); for
-	 * (int i = 0; i < hijosJuego.getLength(); i++) { Node nodo =
-	 * hijosJuego.item(i); NamedNodeMap atributosBandera = nodo.getAttributes();
-	 * Node nodoPosicionBanderaX = atributosBandera .getNamedItem("PosicionX");
-	 * Node nodoPosicionBanderaY = atributosBandera .getNamedItem("PosicionY");
-	 * posicionBanderaXtexto = nodoPosicionBanderaX.getNodeValue();
-	 * posicionBanderaYtexto = nodoPosicionBanderaY.getNodeValue();
-	 * 
-	 * } posicionBanderaX = Integer.parseInt(posicionBanderaXtexto);
-	 * posicionBanderaY = Integer.parseInt(posicionBanderaYtexto);
-	 * 
-	 * // Creo la posicion de la bandera para pasarsela al constructor del //
-	 * juego
-	 * 
-	 * Posicion posicionBandera = new Posicion(posicionBanderaX,
-	 * posicionBanderaY);
-	 * 
-	 * return posicionBandera; }
-	 * 
-	 * private static int cargarTamanioMapa(Element elementRaiz) { String
-	 * altoMapa = "";
-	 * 
-	 * NodeList hijosJuego = elementRaiz.getElementsByTagName("Mapa"); for (int
-	 * i = 0; i < hijosJuego.getLength(); i++) { Node nodo = hijosJuego.item(i);
-	 * NamedNodeMap atributosMapa = nodo.getAttributes(); Node nodoAltoMapa =
-	 * atributosMapa.getNamedItem("Alto"); altoMapa =
-	 * nodoAltoMapa.getNodeValue(); } int tamanioMapa =
-	 * Integer.parseInt(altoMapa); return tamanioMapa; }
-	 * 
-	 * private static String cargarNombreJugador(Element elementRaiz) {
-	 * 
-	 * NodeList hijosJuego = elementRaiz.getElementsByTagName("Jugador");
-	 * 
-	 * String nombreJugador = null;
-	 * 
-	 * for (int i = 0; i < hijosJuego.getLength(); i++) { Node nodo =
-	 * hijosJuego.item(i); NamedNodeMap atributosJugador = nodo.getAttributes();
-	 * Node nodoNombreJugador = atributosJugador.getNamedItem("Nombre");
-	 * nombreJugador = nodoNombreJugador.getNodeValue(); }
-	 * 
-	 * return nombreJugador; }
-	 */
+//	private static Posicion cargarPosicionVehiculo(Element elementRaiz) {
+//
+//		ArrayList<String> posicionVehiculoString = new ArrayList<String>();
+//
+//		NodeList hijosJuego;
+//		hijosJuego = elementRaiz.getElementsByTagName("Jugador");
+//		int posicionVehiculoX;
+//		int posicionVehiculoY;
+//
+//		Node nodoJugador = hijosJuego.item(0);
+//
+//		NodeList hijosJugador = nodoJugador.getChildNodes();
+//		Node nodoVehiculo = hijosJugador.item(1);
+//
+//		NodeList hijosVehiculo = nodoVehiculo.getChildNodes();
+//
+//		Node nodoPosicionVehiculo = hijosVehiculo.item(1);
+//
+//		NamedNodeMap atributosVehiculoPosicion = nodoPosicionVehiculo
+//				.getAttributes();
+//
+//		Node nodoVehiculoPosicionX = atributosVehiculoPosicion
+//				.getNamedItem("PosicionX");
+//		Node nodoVehiculoPosicionY = atributosVehiculoPosicion
+//				.getNamedItem("PosicionY");
+//
+//		posicionVehiculoString.add(nodoVehiculoPosicionX.getNodeValue());
+//		posicionVehiculoString.add(nodoVehiculoPosicionY.getNodeValue());
+//
+//		posicionVehiculoX = Integer.parseInt(posicionVehiculoString.get(0));
+//		posicionVehiculoY = Integer.parseInt(posicionVehiculoString.get(1));
+//
+//		Posicion posicionVehiculo = new Posicion(posicionVehiculoX,
+//				posicionVehiculoY);
+//
+//		return posicionVehiculo;
+//	}
+
+	private static Posicion cargarPosicionBandera(Element elementRaiz) {
+		int posicionBanderaX;
+		int posicionBanderaY;
+		String posicionBanderaXtexto = "";
+		String posicionBanderaYtexto = "";
+
+		NodeList hijosJuego = elementRaiz.getElementsByTagName("Posicion");
+		for (int i = 0; i < hijosJuego.getLength(); i++) {
+			Node nodo = hijosJuego.item(i);
+			NamedNodeMap atributosBandera = nodo.getAttributes();
+			Node nodoPosicionBanderaX = atributosBandera
+					.getNamedItem("PosicionX");
+			Node nodoPosicionBanderaY = atributosBandera
+					.getNamedItem("PosicionY");
+			posicionBanderaXtexto = nodoPosicionBanderaX.getNodeValue();
+			posicionBanderaYtexto = nodoPosicionBanderaY.getNodeValue();
+
+		}
+		posicionBanderaX = Integer.parseInt(posicionBanderaXtexto);
+		posicionBanderaY = Integer.parseInt(posicionBanderaYtexto);
+
+		// Creo la posicion de la bandera para pasarsela al constructor del
+		// juego
+
+		Posicion posicionBandera = new Posicion(posicionBanderaX,
+				posicionBanderaY);
+
+		return posicionBandera;
+	}
+
 	private static Mapa cargarMapa(Element elementRaiz)
 			throws ExcepcionEsquinaInvalida {
 		NodeList hijosJuego = elementRaiz.getChildNodes();
@@ -405,16 +386,65 @@ public class JuegoPersistencia {
 		Puntaje unPuntaje = new Puntaje(unJuego.devolverNombreJugador(),
 				puntajeFinal);
 
-		GuardadorPuntajes unGuardadorPuntaje = new GuardadorPuntajes();
-		unGuardadorPuntaje.guardarPuntaje(unPuntaje);
+		guardadorPuntajes.guardarPuntaje(unPuntaje);
 
 		try {
 			JuegoPersistencia.guardarPuntajes("C:\\Ranking.xml",
-					unGuardadorPuntaje);
+					guardadorPuntajes);
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public static TreeMap<Integer, String> devolverRankingPuntajes() {
+		return guardadorPuntajes.devolverPuntajesTotales();
+	}
+
+	public static List<Puntaje> devolverPuntajes() {
+		List<Puntaje> auxiliar = new ArrayList<Puntaje>();
+		for (int i = 0; i < guardadorPuntajes.devolverPuntajesTotales().size(); i++) {
+			Puntaje unPuntaje = guardadorPuntajes.devolverPuntaje(i);
+			auxiliar.add(unPuntaje);
+		}
+		return auxiliar;
+
+	}
+
+	public static void cargarPuntajes(String nombreArchivo) {
+
+		guardadorPuntajes = new GuardadorPuntajes();
+
+		DOMParser parser = new DOMParser();
+
+		try {
+			parser.parse(nombreArchivo);
+
+		} catch (SAXException se) {
+			se.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+
+		Document docXml = parser.getDocument();
+
+		// Obtenemos la etiqueta raiz
+		Element elementRaiz = docXml.getDocumentElement();
+		NodeList hijosPuntajesTotales = elementRaiz.getChildNodes();
+		if (hijosPuntajesTotales != null) {
+			int i = 1;
+			while (hijosPuntajesTotales.item(i) != null) {
+				Node nodoPuntaje = hijosPuntajesTotales.item(i);
+				NamedNodeMap atributosPuntaje = nodoPuntaje.getAttributes();
+				String nombre = atributosPuntaje.item(0).getNodeValue();
+				int valor = Integer.parseInt(atributosPuntaje.item(1)
+						.getNodeValue());
+				Puntaje puntaje = new Puntaje(nombre, valor);
+				guardadorPuntajes.guardarPuntaje(puntaje);
+				i += 2;
+				// Se incrementa de a 2 por detalles de implementacion de DOM
+			}
 		}
 	}
 }

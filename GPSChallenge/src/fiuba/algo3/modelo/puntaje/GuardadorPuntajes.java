@@ -22,7 +22,7 @@ public class GuardadorPuntajes {
 		this.puntajesTotales.put(unPuntaje.devolverValor(), unPuntaje.devolverNombre());
 	}
 
-	public Puntaje obtenerPuntaje(int posicion) {
+	public Puntaje devolverPuntaje(int posicion) {
 		//lista de entradas del diccionario
 		ArrayList<Map.Entry<Integer, String>> list = new ArrayList<Map.Entry<Integer, String>>(this.puntajesTotales.entrySet());
 		//pido la entrada en la posicion pedida
@@ -36,14 +36,14 @@ public class GuardadorPuntajes {
 
 	}
 	
-	public void ordenarPorValor(){
-		
+	public TreeMap<Integer, String> devolverPuntajesTotales(){
+		return this.puntajesTotales;
 	}
 	
 	public Node toXml(Document doc) throws DOMException{
 		Element xmlElement = doc.createElement("PuntajesTotales");
 		for (int i=0; i < this.puntajesTotales.size();i++){		
-		xmlElement.appendChild(this.obtenerPuntaje(i).toXml(doc));
+		xmlElement.appendChild(this.devolverPuntaje(i).toXml(doc));
 		}
 		return xmlElement;
 	}

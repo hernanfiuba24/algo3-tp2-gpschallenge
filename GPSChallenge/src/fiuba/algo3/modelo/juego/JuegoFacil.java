@@ -5,6 +5,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
+import fiuba.algo3.modelo.JugadorImplementacion;
+import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
@@ -31,6 +33,10 @@ public class JuegoFacil extends Juego {
 			ExcepcionJugadorYaAsignadoAlVehiculo {
 		super(nombreDeJugador, tamanioMapa, posicionBandera, posicionVehiculo);
 		this.movimientosMaximo = 5;
+	}
+	
+	public JuegoFacil(JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera){
+		super(unJugador, unMapa, posicionBandera);
 	}
 
 	// this.setearCantidadSorprepasYObstaculos();

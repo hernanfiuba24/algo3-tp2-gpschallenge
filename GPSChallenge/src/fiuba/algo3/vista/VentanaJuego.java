@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.TreeMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -25,8 +26,6 @@ import fiuba.algo3.controlador.ControladorJuego;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
-import fiuba.algo3.modelo.puntaje.GuardadorPuntajes;
-import fiuba.algo3.modelo.puntaje.Puntaje;
 import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaJuego extends JFrame implements KeyListener, Observer {
@@ -157,7 +156,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 				JOptionPane.showMessageDialog(null, "Partida Guardada");
 			}
 		});
-		btnGuardarMapa.setBounds(19, 583, 151, 50);
+		btnGuardarMapa.setBounds(19, 450, 151, 50);
 		panelInformacion.add(btnGuardarMapa);
 	}
 
@@ -189,10 +188,12 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 				.devolverVehiculo());
 		if (this.unJuego.seTermino()) {
 			this.panelMapa.visualizarMapaEntero();
-
+			JuegoPersistencia.cargarPuntajes("C:\\Ranking.xml");
 			JuegoPersistencia.guardarPuntajes(this.unJuego);
+			
+			TreeMap<Integer, String> puntajesTotales = JuegoPersistencia.devolverRankingPuntajes();
 
-			VentanaGano ventanaGano = new VentanaGano();
+			VentanaGano ventanaGano = new VentanaGano(puntajesTotales);
 			ventanaGano.setVisible(true);
 			// JOptionPane.showMessageDialog(null, "Ganaste", "GpsChallenge",
 			// 1);

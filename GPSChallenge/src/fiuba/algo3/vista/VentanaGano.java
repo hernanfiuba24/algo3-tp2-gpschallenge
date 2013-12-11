@@ -5,17 +5,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.TreeMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import fiuba.algo3.modelo.puntaje.Puntaje;
+import fiuba.algo3.persistencia.JuegoPersistencia;
+
 public class VentanaGano extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public VentanaGano() {
+	public VentanaGano(TreeMap<Integer, String> puntajesTotales) {
 		setBackground(Color.WHITE);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,7 +72,8 @@ public class VentanaGano extends JFrame {
 		btnRanking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				VentanaRanking unaVentanaRanking = new VentanaRanking();
+				List<Puntaje> puntajes = JuegoPersistencia.devolverPuntajes();
+				VentanaRanking unaVentanaRanking = new VentanaRanking(puntajes);
 				unaVentanaRanking.setVisible(true);
 			}
 		});

@@ -61,9 +61,11 @@ public abstract class Juego extends Observable {
 		notifyObservers(unaCamioneta);
 	}
 
-	public Juego(JugadorImplementacion unJugador, Mapa unMapa) {
+	public Juego(JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera) {
 		this.unJugador = unJugador;
 		this.unMapa = unMapa;
+		this.posicionBandera = posicionBandera;
+		this.posicionInicialVehiculo = this.unJugador.devolverVehiculo().devolverPosicionActual();
 	}
 
 	private Esquina devolverEsquinaConExtra(int min, int maxFilas,
@@ -357,8 +359,6 @@ public abstract class Juego extends Observable {
 		return this.unJugador.devolverNombre();
 	}
 
-	public int calcularPuntajeFinal(){
-		return 0;
-	}
+	public abstract int calcularPuntajeFinal();
 
 }

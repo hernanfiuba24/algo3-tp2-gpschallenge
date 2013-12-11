@@ -16,7 +16,7 @@ public class GuardadorPuntajesTest {
 		Puntaje unPuntaje = new Puntaje("Pepe", 1000);
 		guardador.guardarPuntaje(unPuntaje);
 		
-		assertTrue(guardador.obtenerPuntaje(0).equals(new Puntaje("Pepe", 1000)));
+		assertTrue(guardador.devolverPuntaje(0).equals(new Puntaje("Pepe", 1000)));
 	}
 	
 	@Test
@@ -26,7 +26,7 @@ public class GuardadorPuntajesTest {
 		Puntaje puntaje = new Puntaje("Alfio", 200);
 		guardador.guardarPuntaje(puntaje);
 		
-		assertTrue(guardador.obtenerPuntaje(0).equals(puntaje));
+		assertTrue(guardador.devolverPuntaje(0).equals(puntaje));
 	}
 	
 	@Test
@@ -41,9 +41,9 @@ public class GuardadorPuntajesTest {
 		guardador.guardarPuntaje(puntaje2);
 		guardador.guardarPuntaje(puntaje3);		
 		
-		assertTrue(guardador.obtenerPuntaje(0).equals(puntaje2));
-		assertTrue(guardador.obtenerPuntaje(1).equals(puntaje3));
-		assertTrue(guardador.obtenerPuntaje(2).equals(puntaje));
+		assertTrue(guardador.devolverPuntaje(0).equals(puntaje2));
+		assertTrue(guardador.devolverPuntaje(1).equals(puntaje3));
+		assertTrue(guardador.devolverPuntaje(2).equals(puntaje));
 	}
 
 }
