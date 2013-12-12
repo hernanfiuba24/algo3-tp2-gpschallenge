@@ -8,7 +8,7 @@ import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 
 public interface Sorpresa {
 
-	public void aplicar(Jugador unJugador)
+	public abstract void aplicar(Jugador unJugador)
 			throws ExcepcionJugadorYaAsignadoAlVehiculo;
 
 	public abstract Node toXml(Document doc);

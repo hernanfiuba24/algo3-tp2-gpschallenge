@@ -26,11 +26,7 @@ public class Bandera extends Obstaculo {
 	public void aplicar(Camioneta unaCamioneta) {
 		unaCamioneta.jugadorGano();		
 	}
-
-	@Override
-	public void setearEsquinaAnterior(Esquina esquinaAnterior) {		
-	}
-
+	
 	@Override
 	public boolean puedeAvanzar(Vehiculo vehiculo) {
 		return true;

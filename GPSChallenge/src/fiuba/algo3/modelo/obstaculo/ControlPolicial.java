@@ -3,8 +3,6 @@ package fiuba.algo3.modelo.obstaculo;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-
-import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.randomizador.RandomizadorImplementacion;
 import fiuba.algo3.modelo.vehiculo.Auto;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
@@ -32,11 +30,6 @@ public class ControlPolicial extends Obstaculo {
 	public void aplicar(Camioneta unaCamioneta) {
 		if (this.randomizador.obtenerNumeroRandom() <= 0.3)
 			unaCamioneta.aumentarMovimientosDelJugador(3);
-	}
-
-	@Override
-	public void setearEsquinaAnterior(Esquina esquinaAnterior) {
-		
 	}
 
 	@Override

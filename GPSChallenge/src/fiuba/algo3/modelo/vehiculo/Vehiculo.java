@@ -1,7 +1,7 @@
 package fiuba.algo3.modelo.vehiculo;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+
 import org.w3c.dom.Node;
 
 import fiuba.algo3.modelo.Esquina;
@@ -101,14 +101,7 @@ public abstract class Vehiculo extends ObjetoObservable {
 
 	public abstract boolean puedeAvanzar(Piquete piquete);
 
-	public Node toXml(Document doc) {
-		Element xmlElement = doc.createElement("Vehiculo");
-		Posicion unaPosicion = this.esquinaActual.devolverPosicion();
-		
-		xmlElement.setAttribute("Movimientos_permitidos", String.valueOf(this.movimientosPermitidos));
-		xmlElement.appendChild(unaPosicion.toXml(doc));
-		return xmlElement;
-	}
+	public abstract Node toXml(Document doc);
 
 	public abstract void actualizar();
 

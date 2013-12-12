@@ -46,15 +46,11 @@ public class Esquina {
 	public void aplicarExtras(Jugador unJugador) throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		if (this.unaSorpresa != null) {
 			this.unaSorpresa.aplicar(unJugador);
-			this.elimnarSorpresa();
+			this.borrarSorpresa();
 		}
 		if (this.unObstaculo != null) {
 			this.unObstaculo.aplicar(unJugador);
 		}
-	}
-
-	private void elimnarSorpresa() {
-		this.unaSorpresa = null;
 	}
 
 	public void setearSorpresa(Sorpresa sorpresa) {
