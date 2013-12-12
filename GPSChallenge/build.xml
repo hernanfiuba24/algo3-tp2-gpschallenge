@@ -130,8 +130,14 @@
 
 	<target name="empaquetar" depends="compilar.paquete">
 		<copydir src="src/fiuba/algo3/vista/imagenes"
-				dest="${build}/classes/Vista" 
+				dest="${build}/classes/fiuba/algo3/vista/imagenes" 
 				includes="**/*.png"/>
+		<copydir src="src/fiuba/algo3/vista/imagenes"
+						dest="${build}/classes/fiuba/algo3/vista/imagenes" 
+						includes="**/*.gif"/>
+		<copydir src="src/fiuba/algo3/vista/imagenes"
+						dest="${build}/classes/fiuba/algo3/vista/imagenes" 
+						includes="**/*.jpg"/>
 		<jar destfile="${build}/dist/gpsChallenge.jar" basedir="${build}/classes"/>
 	</target>
 	
