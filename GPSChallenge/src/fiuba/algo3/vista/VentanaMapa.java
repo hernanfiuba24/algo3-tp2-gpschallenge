@@ -58,6 +58,8 @@ public class VentanaMapa extends JLayeredPane {
 
 		setLayout(new GridLayout(0, 1, 0, 0));
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		setOpaque(true);
+		setBackground(Color.DARK_GRAY);
 		
 		this.cargarListaDeImagenes();
 
@@ -90,6 +92,7 @@ public class VentanaMapa extends JLayeredPane {
 	
 	private void crearPanelObstaculos(){
 		panelObstaculos = new JPanel();
+		panelObstaculos.setBackground(Color.DARK_GRAY);
 		this.setearPanel(panelObstaculos, 1);
 	}
 	
