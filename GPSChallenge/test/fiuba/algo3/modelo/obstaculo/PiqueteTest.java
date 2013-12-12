@@ -88,9 +88,9 @@ public class PiqueteTest {
 				boolean visibilidad = unEncendedor.devolverVisibilidad(unMapa
 						.devolverUnaEsquina(new Posicion(unAuto
 								.devolverEsquina().devolverPosicion()
-								.devolverPosicionFila()
+								.devolverPosicionAlto()
 								+ i, unAuto.devolverEsquina()
-								.devolverPosicion().devolverPosicionColumna()
+								.devolverPosicion().devolverPosicionAncho()
 								+ j)));
 
 				assertTrue(visibilidad);

@@ -12,10 +12,6 @@ import fiuba.algo3.modelo.obstaculo.Piquete;
 
 public class Camioneta extends Vehiculo {
 
-//	public Camioneta(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-//		super(unMapa);
-//	}
-
 	public Camioneta(Esquina unaEsquina) {
 		super(unaEsquina);
 		seCambio();
@@ -31,8 +27,6 @@ public class Camioneta extends Vehiculo {
 	public void cambioDeVehiculo() throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.jugadorAlQuePertenece
 				.setearVehiculo(new Moto(this.esquinaActual));
-//		seCambio();
-//		notificarObservadores(this);
 	}
 
 	public void interactuarCon(Obstaculo obstaculo) {

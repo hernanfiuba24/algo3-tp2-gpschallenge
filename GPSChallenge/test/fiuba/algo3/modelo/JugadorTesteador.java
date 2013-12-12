@@ -2,6 +2,7 @@ package fiuba.algo3.modelo;
 
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
+import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class JugadorTesteador implements Jugador{
@@ -73,6 +74,13 @@ public class JugadorTesteador implements Jugador{
 
 	@Override
 	public void ganar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aplicarCambioDeVehiculo()
+			throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		// TODO Auto-generated method stub
 		
 	}

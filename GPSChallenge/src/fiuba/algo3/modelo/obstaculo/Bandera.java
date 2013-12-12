@@ -14,17 +14,17 @@ public class Bandera extends Obstaculo {
 
 	@Override
 	public void aplicar(Auto unAuto) {
-		unAuto.devolverJugador().ganar();		
+		unAuto.jugadorGano();
 	}
 
 	@Override
 	public void aplicar(Moto unaMoto) {
-		unaMoto.devolverJugador().ganar();	
+		unaMoto.jugadorGano();	
 	}
 
 	@Override
 	public void aplicar(Camioneta unaCamioneta) {
-		unaCamioneta.devolverJugador().ganar();		
+		unaCamioneta.jugadorGano();		
 	}
 
 	@Override

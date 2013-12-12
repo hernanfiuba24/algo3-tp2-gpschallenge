@@ -23,9 +23,8 @@ import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaPrincipal extends JFrame {
 
-
 	private static final long serialVersionUID = 1L;
-	
+
 	private Image fondo;
 	private JPanel contentPane;
 	private Menu barraMenu;
@@ -47,8 +46,6 @@ public class VentanaPrincipal extends JFrame {
 
 	}
 
-	
-	
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
@@ -72,10 +69,12 @@ public class VentanaPrincipal extends JFrame {
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String nombreJugador = ingresoDeNombreJugador();
-				VentanaSeleccionVehiculo ventanaSeleccionVehiculo = new VentanaSeleccionVehiculo(nombreJugador);
-				ventanaSeleccionVehiculo.setVisible(true);
-				dispose();
-
+				if (nombreJugador != null) {
+					VentanaSeleccionVehiculo ventanaSeleccionVehiculo = new VentanaSeleccionVehiculo(
+							nombreJugador);
+					ventanaSeleccionVehiculo.setVisible(true);
+					dispose();
+				}
 			}
 		});
 		contentPane.setLayout(null);
@@ -141,8 +140,8 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel);
 
 	}
-	
-	public String ingresoDeNombreJugador(){
+
+	public String ingresoDeNombreJugador() {
 		String nombreJugador = "";
 		while (nombreJugador.equalsIgnoreCase("")) {
 			nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");

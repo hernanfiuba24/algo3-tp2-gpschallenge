@@ -198,8 +198,8 @@ public class VentanaMapa extends JLayeredPane {
 
 	public void dibujarAuto(Posicion unaPosicion) {
 				
-		vehiculo.setBounds((unaPosicion.devolverPosicionColumna() - 1)
-				* (40 + 35), (unaPosicion.devolverPosicionFila() - 1)
+		vehiculo.setBounds((unaPosicion.devolverPosicionAncho() - 1)
+				* (40 + 35), (unaPosicion.devolverPosicionAlto() - 1)
 				* (40 + 42), 40, 17);
 		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
@@ -208,8 +208,8 @@ public class VentanaMapa extends JLayeredPane {
 
 	public void dibujarMoto(Posicion unaPosicion) {
 		
-		vehiculo.setBounds((unaPosicion.devolverPosicionColumna() - 1)
-				* (40 + 34), (unaPosicion.devolverPosicionFila() - 1)
+		vehiculo.setBounds((unaPosicion.devolverPosicionAncho() - 1)
+				* (40 + 34), (unaPosicion.devolverPosicionAlto() - 1)
 				* (40 + 40), 40, 30);
 		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/moto.png")));
@@ -217,8 +217,8 @@ public class VentanaMapa extends JLayeredPane {
 
 	public void dibujarCamioneta(Posicion unaPosicion) {
 				
-		vehiculo.setBounds((unaPosicion.devolverPosicionColumna() - 1)
-				* (40 + 34), (unaPosicion.devolverPosicionFila() - 1)
+		vehiculo.setBounds((unaPosicion.devolverPosicionAncho() - 1)
+				* (40 + 34), (unaPosicion.devolverPosicionAlto() - 1)
 				* (40 + 40), 40, 30);
 		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/camioneta.png")));

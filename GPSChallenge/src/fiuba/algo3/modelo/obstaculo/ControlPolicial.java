@@ -21,17 +21,17 @@ public class ControlPolicial extends Obstaculo {
 
 	public void aplicar(Auto unAuto) {
 		if (this.randomizador.obtenerNumeroRandom() <= 0.5)
-			unAuto.devolverJugador().aumentarMovimientoHechos(3);
+			unAuto.aumentarMovimientosDelJugador(3);
 	}
 
 	public void aplicar(Moto unaMoto) {
 		if (this.randomizador.obtenerNumeroRandom() <= 0.8)
-			unaMoto.devolverJugador().aumentarMovimientoHechos(3);
+			unaMoto.aumentarMovimientosDelJugador(3);
 	}
 
 	public void aplicar(Camioneta unaCamioneta) {
 		if (this.randomizador.obtenerNumeroRandom() <= 0.3)
-			unaCamioneta.devolverJugador().aumentarMovimientoHechos(3);
+			unaCamioneta.aumentarMovimientosDelJugador(3);
 	}
 
 	@Override

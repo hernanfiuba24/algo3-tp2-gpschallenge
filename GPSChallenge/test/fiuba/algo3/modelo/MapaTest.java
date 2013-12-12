@@ -32,8 +32,8 @@ public class MapaTest {
 		int x = 1;
 		int y = 1;
 
-		assertTrue(esquina.devolverPosicion().devolverPosicionFila() == x);
-		assertTrue(esquina.devolverPosicion().devolverPosicionColumna() == y);
+		assertTrue(esquina.devolverPosicion().devolverPosicionAlto() == x);
+		assertTrue(esquina.devolverPosicion().devolverPosicionAncho() == y);
 
 	}
 

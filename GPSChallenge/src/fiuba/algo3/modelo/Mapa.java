@@ -36,12 +36,12 @@ public class Mapa {
 	}
 
 	public boolean existeEsquina(Posicion unaPosicion) {
-		if ((unaPosicion.devolverPosicionFila() > this.filas)
-				|| (unaPosicion.devolverPosicionFila() <= 0)) {
+		if ((unaPosicion.devolverPosicionAlto() > this.filas)
+				|| (unaPosicion.devolverPosicionAlto() <= 0)) {
 			return false;
 		}
-		if ((unaPosicion.devolverPosicionColumna() > this.columnas)
-				|| (unaPosicion.devolverPosicionColumna() <= 0)) {
+		if ((unaPosicion.devolverPosicionAncho() > this.columnas)
+				|| (unaPosicion.devolverPosicionAncho() <= 0)) {
 			return false;
 		}
 		return true;
@@ -50,16 +50,16 @@ public class Mapa {
 	public Esquina devolverUnaEsquina(Posicion unaPosicion)
 			throws ExcepcionEsquinaInvalida {
 		if (this.existeEsquina(unaPosicion)) {
-			return tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
-					.devolverPosicionColumna() - 1];
+			return tablero[unaPosicion.devolverPosicionAlto() - 1][unaPosicion
+					.devolverPosicionAncho() - 1];
 		} else {
 			throw new ExcepcionEsquinaInvalida();
 		}
 	}
 
 	private void agregarUnaEsquina(Esquina unaEsquina, Posicion unaPosicion) {
-		tablero[unaPosicion.devolverPosicionFila() - 1][unaPosicion
-				.devolverPosicionColumna() - 1] = unaEsquina;
+		tablero[unaPosicion.devolverPosicionAlto() - 1][unaPosicion
+				.devolverPosicionAncho() - 1] = unaEsquina;
 	}
 
 	public void setearBandera(Posicion posicionBandera)

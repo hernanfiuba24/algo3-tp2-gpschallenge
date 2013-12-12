@@ -88,12 +88,9 @@ public class JuegoPersistencia {
 			JOptionPane.showMessageDialog(null, "Error: Usuario Invalido",
 					"GpsChallenge", 2);
 			return null;
-			// ioe.printStackTrace();
 		}
 
 		Document docXml = parser.getDocument();
-
-		String nombreJugador = "";
 
 		// Obtenemos la etiqueta raiz
 		Element elementRaiz = docXml.getDocumentElement();

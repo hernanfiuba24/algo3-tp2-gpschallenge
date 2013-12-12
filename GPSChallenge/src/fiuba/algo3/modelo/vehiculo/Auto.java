@@ -12,16 +12,6 @@ import fiuba.algo3.modelo.obstaculo.Piquete;
 
 public class Auto extends Vehiculo {
 
-	// public Auto(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-	// super(unMapa);
-	// }
-
-	// Si un constructor no invoca explicitamente un constructor de superclase,
-	// el compilador de Java inserta automaticamente una llamada al constructor
-	// sin argumentos de la superclase. Si la superclase no tiene un constructor
-	// sin argumentos, obtendra un error en tiempo de compilacion. Object tiene
-	// tal constructor, asi que si Object es la unica superclase, no hay
-	// problema.
 	public Auto(Esquina unaEsquina) {
 		super(unaEsquina);
 		seCambio();
@@ -62,4 +52,5 @@ public class Auto extends Vehiculo {
 		xmlElement.appendChild(unaPosicion.toXml(doc));
 		return xmlElement;
 	}
+	
 }

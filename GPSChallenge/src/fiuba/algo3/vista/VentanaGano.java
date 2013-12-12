@@ -19,12 +19,9 @@ import fiuba.algo3.persistencia.JuegoPersistencia;
 
 public class VentanaGano extends JFrame {
 	
-	private JFrame ventanaACerrar;
-
 	private static final long serialVersionUID = 1L;
 
 	public VentanaGano(TreeMap<Integer, String> puntajesTotales, final JFrame ventanaACerrar) {
-		this.ventanaACerrar = ventanaACerrar;
 		setBackground(Color.WHITE);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

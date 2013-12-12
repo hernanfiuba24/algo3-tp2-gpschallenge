@@ -17,18 +17,6 @@ public class JuegoDificil extends Juego {
 	
 	final int MULTIPLICADOR_DIFICULTAD = 3;
 
-	// public JuegoDificil() throws ExcepcionEsquinaInvalida {
-	// this.setearCantidadSorprepasYObstaculos();
-	// this.unMapa = new Mapa(8, 8);
-	// this.unJugador = new Jugador(new Auto(this.unMapa), null);
-	// this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(3, 3))
-	// .devolverBandera();
-	// this.completarMapaConExtras();
-	// setChanged();
-	// notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-	// .devolverPosicion());
-	// }
-
 	public JuegoDificil(String nombreDeJugador, int tamanioMapa,
 			Posicion posicionBandera, Vehiculo unVehiculo) throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
@@ -41,7 +29,7 @@ public class JuegoDificil extends Juego {
 	}
 
 	@Override
-	public void setearCantidadSorprepasYObstaculos() {
+	protected void setearCantidadSorprepasYObstaculos() {
 		this.cantidadDePiquetes = 5;
 		this.cantidadDeControlesPoliciales = 5;
 		this.cantidadDePozos = 5;

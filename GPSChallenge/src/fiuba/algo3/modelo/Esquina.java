@@ -50,7 +50,6 @@ public class Esquina {
 		}
 		if (this.unObstaculo != null) {
 			this.unObstaculo.aplicar(unJugador);
-			// unJugador.devolverVehiculo().interactuarCon(unObstaculo);
 		}
 	}
 
@@ -88,8 +87,8 @@ public class Esquina {
 		for (int i = -2; i <= radio; i++) {
 			for (int j = -2; j <= radio; j++) {
 				Posicion unaPosicionAdyacente = new Posicion(
-						this.unaPosicion.devolverPosicionFila() + i,
-						this.unaPosicion.devolverPosicionColumna() + j);
+						this.unaPosicion.devolverPosicionAlto() + i,
+						this.unaPosicion.devolverPosicionAncho() + j);
 				PosicionesAdyacentes.add(unaPosicionAdyacente);
 			}
 		}
@@ -145,11 +144,11 @@ public class Esquina {
 	}
 
 	public int obtenerPosicionX() {
-		return unaPosicion.devolverPosicionFila();
+		return unaPosicion.devolverPosicionAlto();
 	}
 
 	public int obtenerPosicionY() {
-		return unaPosicion.devolverPosicionColumna();
+		return unaPosicion.devolverPosicionAncho();
 	}
 
 	public void apagarVisibilidadDosALaRedonda(Mapa unMapa)

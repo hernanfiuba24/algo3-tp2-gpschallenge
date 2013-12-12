@@ -103,8 +103,8 @@ public class EsquinaTest {
 			for (int j = -2; j <= 2; j++) {
 				assertTrue(unaListaDePosiciones.get(indice).equals(
 						new Posicion(unaEsquina.devolverPosicion()
-								.devolverPosicionFila() + i, unaEsquina
-								.devolverPosicion().devolverPosicionColumna()
+								.devolverPosicionAlto() + i, unaEsquina
+								.devolverPosicion().devolverPosicionAncho()
 								+ j)));
 				indice++;
 			}

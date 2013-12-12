@@ -22,13 +22,6 @@ public abstract class Vehiculo extends ObjetoObservable {
 	protected Esquina esquinaActual;
 	protected Jugador jugadorAlQuePertenece;
 
-	// public Vehiculo(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-	// this.esquinaActual = unMapa.devolverUnaEsquina(new Posicion(3, 3));
-	// EncendedorDeVisibilidad unEncendedor = new
-	// EncendedorDeVisibilidad(unMapa);
-	// unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
-	// }
-
 	public Vehiculo(Esquina unaEsquina) {
 		this.esquinaActual = unaEsquina;
 	}
@@ -118,5 +111,13 @@ public abstract class Vehiculo extends ObjetoObservable {
 	}
 
 	public abstract void actualizar();
+
+	public void jugadorGano() {
+		this.jugadorAlQuePertenece.ganar();
+	}
+	
+	public void aumentarMovimientosDelJugador(int movimientosAAumentar) {
+		this.jugadorAlQuePertenece.aumentarMovimientoHechos(movimientosAAumentar);		
+	}
 
 }

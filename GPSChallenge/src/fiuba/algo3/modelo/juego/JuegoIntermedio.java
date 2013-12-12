@@ -16,18 +16,6 @@ public class JuegoIntermedio extends Juego {
 	
 	final int MULTIPLICADOR_DIFICULTAD = 2;
 
-	// public JuegoIntermedio() throws ExcepcionEsquinaInvalida {
-	// this.setearCantidadSorprepasYObstaculos();
-	// this.unMapa = new Mapa(5, 5);
-	// this.unJugador = new Jugador(new Auto(this.unMapa), null);
-	// this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(3, 3))
-	// .devolverBandera();
-	// this.completarMapaConExtras();
-	// setChanged();
-	// notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-	// .devolverPosicion());
-	// }
-
 	public JuegoIntermedio(String nombreDeJugador, int tamanioMapa,
 			Posicion posicionBandera, Vehiculo unVehiculo) throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
@@ -39,17 +27,7 @@ public class JuegoIntermedio extends Juego {
 		super(unJugador, unMapa, posicionBandera);
 	}
 
-	// this.setearCantidadSorprepasYObstaculos();
-	// this.unMapa = new Mapa(5, 5);
-	// this.unJugador = new Jugador(new Auto(this.unMapa), nombreDeJugador);
-	// this.unaBandera = this.unMapa.devolverUnaEsquina(new Posicion(3, 3))
-	// .devolverBandera();
-	// this.completarMapaConExtras();
-	// setChanged();
-	// notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-	// .devolverPosicion());
-
-	public void setearCantidadSorprepasYObstaculos() {
+	protected void setearCantidadSorprepasYObstaculos() {
 		this.cantidadDePiquetes = 2;
 		this.cantidadDeControlesPoliciales = 2;
 		this.cantidadDePozos = 2;

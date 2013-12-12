@@ -20,7 +20,8 @@ public class JugadorImplementacion extends Observable implements Jugador {
 	private final String nombre;
 	private boolean gano;
 
-	public JugadorImplementacion(Vehiculo vehiculo, String nombre) throws ExcepcionJugadorYaAsignadoAlVehiculo {
+	public JugadorImplementacion(Vehiculo vehiculo, String nombre)
+			throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.unVehiculo = vehiculo;
 		this.movimientosHechos = 0;
 		this.nombre = nombre;
@@ -30,12 +31,12 @@ public class JugadorImplementacion extends Observable implements Jugador {
 
 	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida,
 			ExcepcionJuegoTerminado, ExcepcionJugadorYaAsignadoAlVehiculo {
-		
+
 		if (gano == false) {
 			Posicion posicionActual = this.unVehiculo.devolverPosicionActual();
 			unVehiculo.mover(unMapa, this.unaDireccion);
 			if (posicionActual.equals(unVehiculo.devolverPosicionActual()) == false) {
-				this.movimientosHechos += 1;				
+				this.movimientosHechos += 1;
 			}
 		}
 	}
@@ -55,36 +56,15 @@ public class JugadorImplementacion extends Observable implements Jugador {
 	public void descontarMovimientos(int movimientosARestar) {
 		this.movimientosHechos = this.movimientosHechos - movimientosARestar;
 	}
-	
-	
 
 	public void setearVehiculo(Vehiculo unVehiculo)
 			throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.unVehiculo = unVehiculo;
 		unVehiculo.setearJugadorAlQuePertenece(this);
-//		setChanged();
-//		notifyObservers(this.devolverVehiculo());
 	}
-//	
-//	public void setearVehiculo(Moto unaMoto)
-//			throws ExcepcionJugadorYaAsignadoAlVehiculo {
-//		this.unVehiculo = unaMoto;
-//		unaMoto.setearJugadorAlQuePertenece(this);
-//		setChanged();
-//		notifyObservers(this.devolverVehiculo());
-//	}
-//	
-//	public void setearVehiculo(Camioneta unaCamioneta)
-//			throws ExcepcionJugadorYaAsignadoAlVehiculo {
-//		this.unVehiculo = unaCamioneta;
-//		unaCamioneta.setearJugadorAlQuePertenece(this);
-//		setChanged();
-//		notifyObservers(this.devolverVehiculo());
-//	}
 
 	public void aumentarMovimientoHechos(int cantidad) {
 		this.movimientosHechos = this.movimientosHechos + cantidad;
-
 	}
 
 	public Direccion devolverDireccion() {
@@ -120,12 +100,28 @@ public class JugadorImplementacion extends Observable implements Jugador {
 		Element xmlElement = doc.createElement("Jugador");
 		xmlElement.setAttribute("Nombre", this.nombre);
 		xmlElement.setAttribute("Gano", String.valueOf(this.gano));
-		xmlElement.setAttribute("Movimientos_Hechos", String.valueOf(this.movimientosHechos));
-		
-//		xmlElement.appendChild(this.unaDireccion.toXml(doc));
+		xmlElement.setAttribute("Movimientos_Hechos",
+				String.valueOf(this.movimientosHechos));
 		xmlElement.appendChild(this.unVehiculo.toXml(doc));
 		return xmlElement;
 	}
 
+	public Posicion devolverPosicionDelVehiculo() {
+		return this.unVehiculo.devolverPosicionActual();
+	}
+
+	public void setearEsquinaDelVehiculo(Esquina unaEsquina) {
+		this.unVehiculo.setearEsquina(unaEsquina);
+	}
+
+	public void actualizarVehiculo() {
+		this.unVehiculo.actualizar();
+	}
+
+	@Override
+	public void aplicarCambioDeVehiculo()
+			throws ExcepcionJugadorYaAsignadoAlVehiculo {
+		this.unVehiculo.cambioDeVehiculo();
+	}
 
 }

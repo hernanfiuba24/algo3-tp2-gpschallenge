@@ -15,23 +15,25 @@ public class Posicion {
 		this.columna = unaColumna;
 	}
 
-	public int devolverPosicionFila() {
+	public int devolverPosicionAlto() {
 		return this.fila;
 	}
 
-	public int devolverPosicionColumna() {
+	public int devolverPosicionAncho() {
 		return this.columna;
 	}
 	
 	public boolean equals(Posicion unaPosicion){
-		if ((this.devolverPosicionFila() == unaPosicion.devolverPosicionFila()) &&
-		(this.devolverPosicionColumna() == unaPosicion.devolverPosicionColumna()))
+		if ((this.devolverPosicionAlto() == unaPosicion.devolverPosicionAlto()) &&
+		(this.devolverPosicionAncho() == unaPosicion.devolverPosicionAncho()))
 			return true;
 		return false;
 	}
 
 	public Posicion calcularPosicionSiguiente(Direccion unaDireccion) {
-		Posicion unaPosicion = new Posicion(this.devolverPosicionFila() - unaDireccion.devolverX(), this.devolverPosicionColumna() - unaDireccion.devolverY());
+		int siguientePosicionAlto = this.devolverPosicionAlto() - unaDireccion.devolverX();
+		int siguientePosicionAncho = this.devolverPosicionAncho() - unaDireccion.devolverY();
+		Posicion unaPosicion = new Posicion(siguientePosicionAlto, siguientePosicionAncho);
 		return unaPosicion;
 	}
 

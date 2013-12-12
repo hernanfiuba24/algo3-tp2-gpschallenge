@@ -10,7 +10,7 @@ import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 public class CambioDeVehiculo implements Sorpresa {
 	
 	public void aplicar(Jugador unJugador) throws ExcepcionJugadorYaAsignadoAlVehiculo{
-		unJugador.devolverVehiculo().cambioDeVehiculo();
+		unJugador.aplicarCambioDeVehiculo();
 	}
 
 	@Override

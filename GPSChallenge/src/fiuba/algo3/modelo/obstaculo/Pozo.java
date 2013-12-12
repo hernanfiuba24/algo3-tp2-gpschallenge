@@ -13,15 +13,15 @@ import fiuba.algo3.modelo.vehiculo.Vehiculo;
 public class Pozo extends Obstaculo {
 
 	public void aplicar(Auto unAuto){
-		unAuto.devolverJugador().aumentarMovimientoHechos(3);
+		unAuto.aumentarMovimientosDelJugador(3);
 	}
 	
 	public void aplicar (Moto unaMoto){
-		unaMoto.devolverJugador().aumentarMovimientoHechos(3);
+		unaMoto.aumentarMovimientosDelJugador(3);
 	}
 	
 	public void aplicar (Camioneta unaCamioneta){
-		unaCamioneta.devolverJugador().aumentarMovimientoHechos(0);
+		unaCamioneta.aumentarMovimientosDelJugador(0);
 	}
 
 	@Override

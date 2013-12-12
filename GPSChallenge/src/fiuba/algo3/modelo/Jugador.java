@@ -32,4 +32,6 @@ public interface Jugador {
 
 	public void ganar();
 
+	void aplicarCambioDeVehiculo() throws ExcepcionJugadorYaAsignadoAlVehiculo;
+
 }

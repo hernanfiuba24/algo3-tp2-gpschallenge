@@ -233,10 +233,10 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		// this.panelMapa.dibujarVehiculo(((Jugador)arg).devolverVehiculo());
 		this.ventanaMapa.dibujarVisibilidad(
 				(((Jugador) arg).devolverVehiculo().devolverEsquina()
-						.devolverPosicion().devolverPosicionColumna() - 1)
+						.devolverPosicion().devolverPosicionAncho() - 1)
 						* (40 + 35), ((((Jugador) arg).devolverVehiculo()
 						.devolverEsquina().devolverPosicion()
-						.devolverPosicionFila() - 1) * (40 + 42)));
+						.devolverPosicionAlto() - 1) * (40 + 42)));
 		this.panelInformacion.actualizarMovimientos(((Jugador) arg)
 				.devolverMovimientosHechos());
 		this.panelInformacion.actualizarVehiculo(((Jugador) arg)

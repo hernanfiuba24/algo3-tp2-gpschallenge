@@ -46,31 +46,30 @@ public abstract class Juego extends Observable {
 		this.setearCantidadSorprepasYObstaculos();
 		this.posicionBandera = posicionBandera;
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
-		this.unJugador = new JugadorImplementacion(unVehiculo,
-				nombreDeJugador);
+		this.unJugador = new JugadorImplementacion(unVehiculo, nombreDeJugador);
 
 		this.completarMapaConExtras(posicionBandera);
 
 		setChanged();
-		notifyObservers(this.unJugador.devolverVehiculo().devolverEsquina()
-				.devolverPosicion());
+		notifyObservers(this.unJugador.devolverPosicionDelVehiculo());
 		notifyObservers(unVehiculo);
 	}
 
-	public Juego(JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera) {
+	public Juego(JugadorImplementacion unJugador, Mapa unMapa,
+			Posicion posicionBandera) {
 		this.unJugador = unJugador;
 		this.unMapa = unMapa;
 		this.posicionBandera = posicionBandera;
-		this.posicionInicialVehiculo = this.unJugador.devolverVehiculo().devolverPosicionActual();
+		this.posicionInicialVehiculo = this.unJugador.devolverPosicionDelVehiculo();
 	}
 
 	private Esquina devolverEsquinaConExtra(int min, int maxFilas,
 			int maxColumnas, RandomizadorImplementacion randomizador)
 			throws ExcepcionEsquinaInvalida {
-
-		Esquina esquinaConExtra = this.unMapa.devolverUnaEsquina(new Posicion(
-				randomizador.obtenerNumeroEntre(min, maxFilas), randomizador
-						.obtenerNumeroEntre(min, maxColumnas)));
+		
+		int unNumeroRandom = randomizador.obtenerNumeroEntre(min, maxFilas);
+		int otroNumeroRandom = randomizador.obtenerNumeroEntre(min, maxColumnas);
+		Esquina esquinaConExtra = this.unMapa.devolverUnaEsquina(new Posicion(unNumeroRandom, otroNumeroRandom));
 		return esquinaConExtra;
 	}
 
@@ -233,13 +232,13 @@ public abstract class Juego extends Observable {
 		int min = 1;
 		int maxFilas = this.devolverMapaFila();
 		int maxColumnas = this.devolverMapaColumna();
-		
+
 		this.completarMapaConBandera(posicionBandera);
 
 		this.completarMapaConSorpresas(min, maxFilas, maxColumnas, randomizador);
 
 		this.completarMapaConObstaculos(min, maxFilas, maxColumnas,
-				randomizador);		
+				randomizador);
 	}
 
 	/*-------------------------------------------------------------------------------------------------------------*/
@@ -266,8 +265,7 @@ public abstract class Juego extends Observable {
 
 	public void setearPosicionInicial(Posicion unaPosicion)
 			throws ExcepcionEsquinaInvalida {
-		this.unJugador.devolverVehiculo().setearEsquina(
-				unMapa.devolverUnaEsquina(unaPosicion));
+		this.unJugador.setearEsquinaDelVehiculo(unMapa.devolverUnaEsquina(unaPosicion));
 		setChanged();
 		notifyObservers(this.unJugador);
 	}
@@ -314,7 +312,7 @@ public abstract class Juego extends Observable {
 		// }
 	}
 
-	public abstract void setearCantidadSorprepasYObstaculos();
+	protected abstract void setearCantidadSorprepasYObstaculos();
 
 	public int obtenerPosicionXVehiculo() {
 		return unJugador.obtenerPosicionXVehiculo();
@@ -335,7 +333,7 @@ public abstract class Juego extends Observable {
 	public void actualizar() {
 		setChanged();
 		notifyObservers(this.unJugador);
-		this.unJugador.devolverVehiculo().actualizar();
+		this.unJugador.actualizarVehiculo();
 
 	}
 

@@ -10,8 +10,8 @@ public class PosicionTest {
 	public void testPosicionDeberiaCrearseConUnaFilaYUnaColumna() {
 		Posicion unaPosicion = new Posicion(3,3);
 		
-		assertTrue(unaPosicion.devolverPosicionFila() == 3);
-		assertTrue(unaPosicion.devolverPosicionColumna() == 3);
+		assertTrue(unaPosicion.devolverPosicionAlto() == 3);
+		assertTrue(unaPosicion.devolverPosicionAncho() == 3);
 		
 	}
 	

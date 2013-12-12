@@ -29,9 +29,9 @@ public class CambiadorDeVisibilidadTest {
 				boolean visibilidad = unEncendedor.devolverVisibilidad(unMapa
 						.devolverUnaEsquina(new Posicion(unAuto
 								.devolverEsquina().devolverPosicion()
-								.devolverPosicionFila()
+								.devolverPosicionAlto()
 								+ i, unAuto.devolverEsquina()
-								.devolverPosicion().devolverPosicionColumna()
+								.devolverPosicion().devolverPosicionAncho()
 								+ j)));
 
 				assertTrue(visibilidad);
@@ -69,9 +69,9 @@ public class CambiadorDeVisibilidadTest {
 		for (int i = -2; i <= 2; i++) {
 			for (int j = -2; j <= 2; j++) {
 				Posicion unaPosicion = new Posicion(unAuto.devolverEsquina()
-						.devolverPosicion().devolverPosicionFila()
+						.devolverPosicion().devolverPosicionAlto()
 						+ i, unAuto.devolverEsquina().devolverPosicion()
-						.devolverPosicionColumna()
+						.devolverPosicionAncho()
 						+ j);
 				if (unMapa.existeEsquina(unaPosicion)) {
 					boolean visibilidad = unEncendedor.devolverVisibilidad(unMapa
@@ -114,9 +114,9 @@ public class CambiadorDeVisibilidadTest {
 		for (int i = 3; i <= 5; i++) {
 			for (int j = 3; j <= 5; j++) {
 				Posicion unaPosicion = new Posicion(unAuto.devolverEsquina()
-						.devolverPosicion().devolverPosicionFila()
+						.devolverPosicion().devolverPosicionAlto()
 						+ i, unAuto.devolverEsquina().devolverPosicion()
-						.devolverPosicionColumna()
+						.devolverPosicionAncho()
 						+ j);
 				if (unMapa.existeEsquina(unaPosicion)) {
 					boolean visibilidad = unApagador.devolverVisibilidad(unMapa
