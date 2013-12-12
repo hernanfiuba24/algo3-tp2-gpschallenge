@@ -28,7 +28,7 @@ public abstract class CambiadorDeVisibilidad {
 		return posicionesRadioUnRadio;
 	}
 
-	protected void recorrerPosiciones(Esquina esquinaActual)
+	protected void recorrerPosicionesCambiandoVisibilidad(Esquina esquinaActual)
 			throws ExcepcionEsquinaInvalida {
 
 		ArrayList<Posicion> posicionesRadioDos = this

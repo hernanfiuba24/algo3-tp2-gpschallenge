@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.HashMap;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;

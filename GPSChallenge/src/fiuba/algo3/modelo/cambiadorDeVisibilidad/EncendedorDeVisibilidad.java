@@ -16,7 +16,7 @@ public class EncendedorDeVisibilidad extends CambiadorDeVisibilidad {
 	
 	public void encenderVisibilidadDosALaRedonda(Esquina esquinaActual)
 			throws ExcepcionEsquinaInvalida {
-		this.recorrerPosiciones(esquinaActual);
+		this.recorrerPosicionesCambiandoVisibilidad(esquinaActual);
 	}
 	
 	protected void cambiarVisiblidad(Esquina unaEsquina){

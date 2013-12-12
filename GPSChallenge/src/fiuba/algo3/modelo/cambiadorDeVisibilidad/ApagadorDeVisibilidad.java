@@ -16,7 +16,7 @@ public class ApagadorDeVisibilidad extends CambiadorDeVisibilidad {
 	
 	public void apagarVisibilidadDosALaRedonda(Esquina esquinaActual)
 			throws ExcepcionEsquinaInvalida {		
-		this.recorrerPosiciones(esquinaActual);
+		this.recorrerPosicionesCambiandoVisibilidad(esquinaActual);
 	}
 	
 	@Override

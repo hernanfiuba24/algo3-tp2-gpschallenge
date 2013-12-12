@@ -7,8 +7,6 @@ import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Mapa;
 import fiuba.algo3.modelo.Posicion;
-import fiuba.algo3.modelo.cambiadorDeVisibilidad.ApagadorDeVisibilidad;
-import fiuba.algo3.modelo.cambiadorDeVisibilidad.EncendedorDeVisibilidad;
 import fiuba.algo3.modelo.direccion.Direccion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
@@ -51,9 +49,7 @@ public abstract class Vehiculo extends ObjetoObservable {
 			throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
 		
-		//this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
-		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
-		unApagador.apagarVisibilidadDosALaRedonda(this.esquinaActual);
+		this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
 
 		Posicion posicionActual = this.devolverEsquina().devolverPosicion();
 		Posicion posicionFutura = posicionActual
@@ -62,19 +58,15 @@ public abstract class Vehiculo extends ObjetoObservable {
 		if (unMapa.existeEsquina(posicionFutura)) {
 			Esquina esquinaFutura = unMapa.devolverUnaEsquina(posicionFutura);
 
-			// SETEA AL PIQUETE LA ESQUINA ANTERIOR PARA DESPUES EVITAR QUE
-			// SE MUEVA EL VEHICULO
 			if (esquinaFutura.puedeAvanzar(this)) {
 				esquinaFutura.setearVehiculo(this);
 				esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
 			}
 		}
-		//this.esquinaActual.encenderVisibilidadDosALaRedonda(unMapa);
-		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(
-				unMapa);
-		unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
+		
+		this.esquinaActual.encenderVisibilidadDosALaRedonda(unMapa);
+		
 		this.esquinaActual.borrarVehiculo();
-
 	}
 
 	public Jugador devolverJugador() {
