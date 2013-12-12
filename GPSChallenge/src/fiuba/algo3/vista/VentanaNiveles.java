@@ -40,9 +40,6 @@ public class VentanaNiveles extends JFrame {
 		setJMenuBar(barraMenu);
 
 		this.nombreDeJugador = nombreJugador;
-//		while (nombreJugador.equalsIgnoreCase("")) {
-//			nombreJugador = JOptionPane.showInputDialog("Ingrese su nombre:");
-//		}
 
 		JButton btnFacil = new JButton(
 				new ImageIcon(

@@ -23,6 +23,7 @@ import fiuba.algo3.modelo.sorpresa.CambioDeVehiculo;
 import fiuba.algo3.modelo.sorpresa.Desfavorable;
 import fiuba.algo3.modelo.sorpresa.Favorable;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
+import fiuba.algo3.vista.observadorDeObjetos.ObservadorDeVehiculos;
 
 public abstract class Juego extends Observable {
 
@@ -306,20 +307,16 @@ public abstract class Juego extends Observable {
 		} catch (ExcepcionJuegoTerminado e2) {
 		}
 
-		// } else {
-		// // ACA HAY QUE LANZAR UNA VENTANA DICIENDO QUE GANO RAUL
-		// System.out.println("Gananste Raulito");
-		// }
 	}
 
 	protected abstract void setearCantidadSorprepasYObstaculos();
 
 	public int obtenerPosicionXVehiculo() {
-		return unJugador.obtenerPosicionXVehiculo();
+		return unJugador.devolverPosicionXVehiculo();
 	}
 
 	public int obtenerPosicionYVehiculo() {
-		return unJugador.obtenerPosicionYVehiculo();
+		return unJugador.devolverPosicionYVehiculo();
 	}
 
 	public boolean seTermino() {
@@ -354,5 +351,11 @@ public abstract class Juego extends Observable {
 	}
 
 	public abstract int calcularPuntajeFinal();
+
+	public void agregarObservadorAlVehiculo(
+			ObservadorDeVehiculos observadorDeVehiculos) {
+		this.devolverVehiculo().agregarObservador(observadorDeVehiculos);
+		
+	}
 
 }

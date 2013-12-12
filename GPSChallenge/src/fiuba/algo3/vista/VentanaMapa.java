@@ -58,16 +58,13 @@ public class VentanaMapa extends JLayeredPane {
 		setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		this.cargarListaDeImagenes();
-		
-//		CORREGIR ESTAS LLAMADAS PARA NO ROMPER ENCAPSULAMIENTO		
+
 //--------------------------------------------------------------------------------------------------------		
 		
 		ObservadorDeVehiculos observadorDeVehiculos = new ObservadorDeVehiculos(this);
-		unJuego.devolverVehiculo().agregarObservador(observadorDeVehiculos);
+		unJuego.agregarObservadorAlVehiculo(observadorDeVehiculos);
 		
-//		ObervadorDeSorpresas observadorDeSorpresas = new ObservadorDeSorpresas(this);
-//		unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverSorpresa().agregarObservador(observadorDeSorpresas);
-		
+
 // --------------------------------------------------------------------------------------------------------			
 			
 			

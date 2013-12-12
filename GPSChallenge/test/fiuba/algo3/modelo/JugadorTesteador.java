@@ -16,7 +16,6 @@ public class JugadorTesteador implements Jugador{
     }
     
 	public void jugar(Mapa unMapa) throws ExcepcionEsquinaInvalida {
-		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -26,13 +25,11 @@ public class JugadorTesteador implements Jugador{
 
 	@Override
 	public Vehiculo devolverVehiculo() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void cambiarDireccion(Direccion direccion) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -44,45 +41,48 @@ public class JugadorTesteador implements Jugador{
 
 	@Override
 	public void setearVehiculo(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void aumentarMovimientoHechos(int cantidad) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public Direccion devolverDireccion() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void cambiarDireccionContraria() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public String devolverNombre() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void ganar() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void aplicarCambioDeVehiculo()
 			throws ExcepcionJugadorYaAsignadoAlVehiculo {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int devolverPosicionXVehiculo() {
+		return 0;
+	}
+
+	@Override
+	public int devolverPosicionYVehiculo() {
+		return 0;
 	}
 	
 

@@ -79,11 +79,11 @@ public class JugadorImplementacion extends Observable implements Jugador {
 		return this.nombre;
 	}
 
-	public int obtenerPosicionXVehiculo() {
+	public int devolverPosicionXVehiculo() {
 		return unVehiculo.obtenerPosicionX();
 	}
 
-	public int obtenerPosicionYVehiculo() {
+	public int devolverPosicionYVehiculo() {
 		return unVehiculo.obtenerPosicionY();
 	}
 
@@ -123,5 +123,7 @@ public class JugadorImplementacion extends Observable implements Jugador {
 			throws ExcepcionJugadorYaAsignadoAlVehiculo {
 		this.unVehiculo.cambioDeVehiculo();
 	}
+
+	
 
 }

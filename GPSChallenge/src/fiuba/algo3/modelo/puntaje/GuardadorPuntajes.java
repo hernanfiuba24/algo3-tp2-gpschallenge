@@ -14,9 +14,6 @@ public class GuardadorPuntajes {
 
 	private TreeMap<Integer, String> puntajesTotales = new TreeMap<Integer, String>(Collections.reverseOrder());
 
-//	public GuardadorPuntajes(){
-//		this.guardarPuntaje(unPuntaje.devolverNombre(), unPuntaje.devolverValor());
-//	}
 	
 	public void guardarPuntaje(Puntaje unPuntaje) {
 		this.puntajesTotales.put(unPuntaje.devolverValor(), unPuntaje.devolverNombre());

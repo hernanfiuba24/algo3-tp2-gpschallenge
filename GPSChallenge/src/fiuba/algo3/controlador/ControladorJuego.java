@@ -18,7 +18,6 @@ public class ControladorJuego {
 	public ControladorJuego(Juego unGPSChallenge) throws ExcepcionEsquinaInvalida{
 		this.GPSChallenge = unGPSChallenge;		
 		this.GPSChallenge.actualizar();
-		//GPSChallenge.setearPosicionInicial(GPSChallenge.devolverPosicionInicial());
 	}
 	
 	public int devolverDimensionMapaFila() {

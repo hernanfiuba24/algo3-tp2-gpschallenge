@@ -16,12 +16,5 @@ public abstract class Direccion {
 
 	public abstract Direccion cambiarDireccionContraria();
 
-//	PUBLIC NODE TOXML(DOCUMENT DOC) {
-//		ELEMENT XMLELEMENT = DOC.CREATEELEMENT("DIRECCION");
-//		XMLELEMENT.SETATTRIBUTE("X", STRING.VALUEOF(THIS.X));
-//		XMLELEMENT.SETATTRIBUTE("Y", STRING.VALUEOF(THIS.Y));
-//
-//		RETURN XMLELEMENT;
-//	}
 	
 }

@@ -34,4 +34,8 @@ public interface Jugador {
 
 	void aplicarCambioDeVehiculo() throws ExcepcionJugadorYaAsignadoAlVehiculo;
 
+	int devolverPosicionXVehiculo();
+
+	int devolverPosicionYVehiculo();
+
 }

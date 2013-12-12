@@ -42,12 +42,10 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 	private VentanaMapa ventanaMapa;
 	private JPanel panelObstaculos;
 	private PanelInformacion panelInformacion;
-	// private final Action action = new SwingAction();
 	private boolean seGuardoJuego = false;
 	private ControladorJuego unControladorJuego;
 	private Juego unJuego;
 
-	// private VistaVisibilidad unaVistaVisibilidad;
 
 	/**
 	 * Create the frame.
@@ -68,17 +66,11 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		this.unJuego = juego;
 		this.unJuego.addObserver(this);
 		contentPane.setLayout(null);
-		// this.unaVistaVisibilidad = new
-		// VistaVisibilidad((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionFila()-1)*(40+35),((unJuego.devolverJugador().devolverVehiculo().devolverEsquina().devolverPosicion().devolverPosicionColumna()-1)*(40+42)));
 		
 		ventanaMapa = new VentanaMapa(this.unJuego.devolverMapa(), this.unJuego);
 		ventanaMapa.setBounds(10, 5, 660, 695);
 		contentPane.add(ventanaMapa);
 		ventanaMapa.setLayout(null);
-
-		// ObservadorDeVehiculos observadorDeVehiculos = new
-		// ObservadorDeVehiculos(this.panelMapa);
-		// this.unJuego.devolverJugador().devolverVehiculo().agregarObservador(observadorDeVehiculos);
 
 		panelObstaculos = new JPanel();
 		panelObstaculos.setOpaque(false);
@@ -122,8 +114,6 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 							"Desea salir sin guardar?");
 				}
 				if (eleccion == 0) {
-					// JOptionPane.showMessageDialog(null,
-					// "Saliendo del GPSChallenge...");
 					System.exit(0);
 				}
 
@@ -210,18 +200,9 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		panel.add(leyendaPozo);
 	
 		barraMenu = new Menu(this);
-		//barraMenu.deshabilitarGuardar();
 		setJMenuBar(barraMenu);
 		
 	}
-
-	/*
-	 * private class SwingAction extends AbstractAction { public SwingAction() {
-	 * putValue(NAME, "SwingAction"); putValue(SHORT_DESCRIPTION,
-	 * "Some short description"); }
-	 * 
-	 * public void actionPerformed(ActionEvent e) { } }
-	 */
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -230,13 +211,9 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		} catch (ExcepcionEsquinaInvalida e) {
 			e.printStackTrace();
 		}
-		// this.panelMapa.dibujarVehiculo(((Jugador)arg).devolverVehiculo());
 		this.ventanaMapa.dibujarVisibilidad(
-				(((Jugador) arg).devolverVehiculo().devolverEsquina()
-						.devolverPosicion().devolverPosicionAncho() - 1)
-						* (40 + 35), ((((Jugador) arg).devolverVehiculo()
-						.devolverEsquina().devolverPosicion()
-						.devolverPosicionAlto() - 1) * (40 + 42)));
+				(((Jugador) arg).devolverPosicionXVehiculo()- 1)
+						* (40 + 35), ((((Jugador) arg).devolverPosicionYVehiculo() - 1) * (40 + 42)));
 		this.panelInformacion.actualizarMovimientos(((Jugador) arg)
 				.devolverMovimientosHechos());
 		this.panelInformacion.actualizarVehiculo(((Jugador) arg)
@@ -256,7 +233,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 	
 	public void guardarJuego(){
 		final String tipoJuego = "C:\\"
-				+ this.unJuego.devolverJugador().devolverNombre() + ".xml";
+				+ this.unJuego.devolverNombreJugador() + ".xml";
 
 		try {
 			JuegoPersistencia.guardarGpsChallenge(tipoJuego, unJuego);

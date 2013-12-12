@@ -144,11 +144,11 @@ public class Esquina {
 	}
 
 	public int obtenerPosicionX() {
-		return unaPosicion.devolverPosicionAlto();
+		return unaPosicion.devolverPosicionAncho();
 	}
 
 	public int obtenerPosicionY() {
-		return unaPosicion.devolverPosicionAncho();
+		return unaPosicion.devolverPosicionAlto();
 	}
 
 	public void apagarVisibilidadDosALaRedonda(Mapa unMapa)
