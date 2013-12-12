@@ -23,6 +23,8 @@ import fiuba.algo3.vista.observadorDeObjetos.ObservadorDeVehiculos;
 public class VentanaMapa extends JLayeredPane {
 
 	private static final long serialVersionUID = 1L;
+	private int anchoEsquina = 65;
+	private int altoEsquina = 45;
 	
 	private JLabel vehiculo;
 	private JPanel panelObstaculos;
@@ -81,7 +83,7 @@ public class VentanaMapa extends JLayeredPane {
 	
 	private void setearPanel(JPanel unPanel, int posicionDelPanel){		
 		unPanel.setOpaque(false);
-		unPanel.setBounds(0, 0, 660, 730);
+		unPanel.setBounds(0, 0, 740, 730);
 		unPanel.setLayout(null);
 		this.add(unPanel, new Integer(posicionDelPanel));
 	}
@@ -124,20 +126,21 @@ public class VentanaMapa extends JLayeredPane {
 //	--------------------------------------------------------------------------------------- //	
 	
 	public void dibujarMapa(int dimensionFila, int dimensionColumna) {
-		int tamanioEsquina = 40;
 		int anchoVehiculo = 35;
 		int altoVehiculo = 40;
 
 		for (int fila = 0; fila < dimensionFila - 1; fila++) {
 			for (int columna = 0; columna < dimensionColumna - 1; columna++) {
 				JLabel btnEsquina = new JLabel("");
+				btnEsquina.setIcon(new ImageIcon(VentanaMapa.class
+				.getResource("/fiuba/algo3/vista/imagenes/manzana.jpg")));
 				btnEsquina.setOpaque(true);
 				btnEsquina.setBackground(new Color(50, 205, 50));
-				btnEsquina.setBounds((tamanioEsquina * fila)
+				btnEsquina.setBounds((anchoEsquina * fila)
 						+ (anchoVehiculo * (fila + 1)),
-						(tamanioEsquina * columna)
+						(altoEsquina * columna)
 								+ (altoVehiculo * (columna + 1)),
-						tamanioEsquina, tamanioEsquina);
+						anchoEsquina, altoEsquina);
 				add(btnEsquina, new Integer(0));
 			}
 		}
@@ -155,8 +158,8 @@ public class VentanaMapa extends JLayeredPane {
 						String clave = unObstaculo.getClass().getName();
 						if (ListaDeImagenes.containsKey(clave)){
 							JLabel iconoObstaculo = new JLabel(ListaDeImagenes.get(clave));
-							iconoObstaculo.setBounds((j - 1) * (40 + 35),
-									(i - 1) * (40 + 40), 35, 35);
+							iconoObstaculo.setBounds((j - 1) * (anchoEsquina + 35),
+									(i - 1) * (altoEsquina + 40), 35, 35);
 							if (clave.contains("Bandera")) 
 								panelBandera.add(iconoObstaculo);
 							else 
@@ -168,8 +171,8 @@ public class VentanaMapa extends JLayeredPane {
 						String clave = unaSorpresa.getClass().getName();
 						if (ListaDeImagenes.containsKey(clave)){
 							JLabel iconoSorpresa = new JLabel(ListaDeImagenes.get(clave));
-							iconoSorpresa.setBounds((j - 1) * (40 + 35),
-									(i - 1) * (40 + 40), 35, 35);
+							iconoSorpresa.setBounds((j - 1) * (anchoEsquina + 35),
+									(i - 1) * (altoEsquina + 40), 35, 35);
 							panelObstaculos.add(iconoSorpresa);
 						}
 					}
@@ -184,7 +187,7 @@ public class VentanaMapa extends JLayeredPane {
 		this.unaVistaVisibilidad = new VistaVisibilidad(x, y);
 		this.unaVistaVisibilidad.setOpaque(false);
 		this.unaVistaVisibilidad.setForeground(Color.gray);
-		this.unaVistaVisibilidad.setBounds(1, 1, 658, 728);
+		this.unaVistaVisibilidad.setBounds(1, 1, 738, 730);
 		add(unaVistaVisibilidad, new Integer(2));
 		this.unaVistaVisibilidad.repaint();
 	}
@@ -196,8 +199,8 @@ public class VentanaMapa extends JLayeredPane {
 	public void dibujarAuto(Posicion unaPosicion) {
 				
 		vehiculo.setBounds((unaPosicion.devolverPosicionAncho() - 1)
-				* (40 + 35), (unaPosicion.devolverPosicionAlto() - 1)
-				* (40 + 42), 40, 17);
+				* (anchoEsquina + 35), (unaPosicion.devolverPosicionAlto() - 1)
+				* (altoEsquina + 42), 40, 17);
 		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/car.png")));
 
@@ -206,8 +209,8 @@ public class VentanaMapa extends JLayeredPane {
 	public void dibujarMoto(Posicion unaPosicion) {
 		
 		vehiculo.setBounds((unaPosicion.devolverPosicionAncho() - 1)
-				* (40 + 34), (unaPosicion.devolverPosicionAlto() - 1)
-				* (40 + 40), 40, 30);
+				* (anchoEsquina + 34), (unaPosicion.devolverPosicionAlto() - 1)
+				* (altoEsquina + 40), 40, 30);
 		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/moto.png")));
 	}
@@ -215,8 +218,8 @@ public class VentanaMapa extends JLayeredPane {
 	public void dibujarCamioneta(Posicion unaPosicion) {
 				
 		vehiculo.setBounds((unaPosicion.devolverPosicionAncho() - 1)
-				* (40 + 34), (unaPosicion.devolverPosicionAlto() - 1)
-				* (40 + 40), 40, 30);
+				* (anchoEsquina + 34), (unaPosicion.devolverPosicionAlto() - 1)
+				* (altoEsquina + 40), 40, 30);
 		vehiculo.setIcon(new ImageIcon(VentanaMapa.class
 				.getResource("/fiuba/algo3/vista/imagenes/camioneta.png")));
 	}

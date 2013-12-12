@@ -51,7 +51,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge");
-		setBounds(100, 100, 881, 768);
+		setBounds(100, 100, 957, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,16 +62,16 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		contentPane.setLayout(null);
 		
 		ventanaMapa = new VentanaMapa(this.unJuego.devolverMapa(), this.unJuego);
-		ventanaMapa.setBounds(10, 5, 660, 695);
+		ventanaMapa.setBounds(10, 5, 740, 695);
 		contentPane.add(ventanaMapa);
 		ventanaMapa.setLayout(null);
 
 		panelObstaculos = new JPanel();
 		panelObstaculos.setOpaque(false);
-		panelObstaculos.setBounds(5, 5, 660, 730);
+		panelObstaculos.setBounds(5, 5, 714, 730);
 
 		panelInformacion = new PanelInformacion();
-		panelInformacion.setBounds(675, 5, 180, 713);
+		panelInformacion.setBounds(760, 5, 180, 713);
 		panelInformacion.setNombreJugador(unNombreDeJugador);
 		contentPane.add(panelInformacion);
 		panelInformacion.setLayout(null);
@@ -164,7 +164,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		}
 		this.ventanaMapa.dibujarVisibilidad(
 				(((Jugador) arg).devolverPosicionXVehiculo()- 1)
-						* (40 + 35), ((((Jugador) arg).devolverPosicionYVehiculo() - 1) * (40 + 42)));
+						* (60 + 35), ((((Jugador) arg).devolverPosicionYVehiculo() - 1) * (45 + 42)));
 		this.panelInformacion.actualizarMovimientos(((Jugador) arg)
 				.devolverMovimientosHechos());
 		this.panelInformacion.actualizarMovimientosRestantes(this.unJuego.devolverMovimientosRestantes());
