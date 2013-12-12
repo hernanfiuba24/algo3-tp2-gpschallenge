@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.TreeMap;
@@ -27,6 +28,7 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.persistencia.JuegoPersistencia;
+
 import javax.swing.JLabel;
 public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
@@ -150,15 +152,24 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		btnGuardarMapa.setBounds(19, 510, 151, 50);
 		panelInformacion.add(btnGuardarMapa);
 		
-		JLabel lblFondo = new JLabel("fondo");
-		lblFondo.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/fondoVentanaJuego.jpg")));
-		lblFondo.setBounds(10, 5, 740, 695);
-		contentPane.add(lblFondo);
+		crearFondo();
 
 	
 		barraMenu = new Menu(this);
 		setJMenuBar(barraMenu);
 		
+	}
+	
+	public void crearFondo(){
+		HashMap<String,ImageIcon> ListaDeImagenes = new HashMap<String,ImageIcon>();
+		ListaDeImagenes.put("fiuba.algo3.modelo.juego.JuegoDificil", new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/ventanaDificil.jpg")));
+		ListaDeImagenes.put("fiuba.algo3.modelo.juego.JuegoIntermedio", new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/ventanaIntermedio.jpg")));
+		ListaDeImagenes.put("fiuba.algo3.modelo.juego.JuegoFacil", new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/ventanaFacil.jpg")));
+		String clave = this.unJuego.getClass().getName();
+		JLabel lblFondo = new JLabel();
+		lblFondo.setIcon(ListaDeImagenes.get(clave));
+		lblFondo.setBounds(10, 5, 740, 695);
+		contentPane.add(lblFondo);
 	}
 
 	@Override
