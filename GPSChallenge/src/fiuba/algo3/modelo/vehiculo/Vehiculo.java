@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.vehiculo;
 
 import org.w3c.dom.Document;
-
 import org.w3c.dom.Node;
 
 import fiuba.algo3.modelo.Esquina;
@@ -52,7 +51,7 @@ public abstract class Vehiculo extends ObjetoObservable {
 			throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
 		
-		this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
+		//this.esquinaActual.apagarVisibilidadDosALaRedonda(unMapa);
 		ApagadorDeVisibilidad unApagador = new ApagadorDeVisibilidad(unMapa);
 		unApagador.apagarVisibilidadDosALaRedonda(this.esquinaActual);
 
@@ -70,7 +69,7 @@ public abstract class Vehiculo extends ObjetoObservable {
 				esquinaFutura.aplicarExtras(this.jugadorAlQuePertenece);
 			}
 		}
-		this.esquinaActual.encenderVisibilidadDosALaRedonda(unMapa);
+		//this.esquinaActual.encenderVisibilidadDosALaRedonda(unMapa);
 		EncendedorDeVisibilidad unEncendedor = new EncendedorDeVisibilidad(
 				unMapa);
 		unEncendedor.encenderVisibilidadDosALaRedonda(this.esquinaActual);
