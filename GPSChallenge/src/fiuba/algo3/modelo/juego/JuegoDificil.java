@@ -21,11 +21,11 @@ public class JuegoDificil extends Juego {
 			Posicion posicionBandera, Vehiculo unVehiculo) throws ExcepcionEsquinaInvalida,
 			ExcepcionJugadorYaAsignadoAlVehiculo {
 		super(nombreDeJugador, tamanioMapa, posicionBandera, unVehiculo);
-		this.movimientosMaximo = 30;
+		this.movimientosMaximo = calcularLimiteDeMovimientos()+ 5;
 	}
 	
-	public JuegoDificil(JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera){
-		super(unJugador, unMapa, posicionBandera);
+	public JuegoDificil(JugadorImplementacion unJugador, Mapa unMapa, Posicion posicionBandera, int movimientosRestantes){
+		super(unJugador, unMapa, posicionBandera, movimientosRestantes);
 	}
 
 	@Override
@@ -41,6 +41,7 @@ public class JuegoDificil extends Juego {
 	
 	public Node toXml(Document doc) throws DOMException, ExcepcionEsquinaInvalida{
 		Element xmlElement = doc.createElement("GpsChallengeDificil");
+		xmlElement.setAttribute("Movimientos_Restantes", String.valueOf(this.movimientosMaximo));
 		xmlElement.appendChild(this.unMapa.toXml(doc));
 		xmlElement.appendChild(this.unJugador.toXml(doc));
 		xmlElement.appendChild(this.posicionBandera.toXml(doc));

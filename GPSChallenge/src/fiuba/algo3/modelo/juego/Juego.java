@@ -2,6 +2,8 @@ package fiuba.algo3.modelo.juego;
 
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,7 +50,8 @@ public abstract class Juego extends Observable {
 		this.posicionBandera = posicionBandera;
 		this.unMapa = new Mapa(tamanioMapa, tamanioMapa);
 		this.unJugador = new JugadorImplementacion(unVehiculo, nombreDeJugador);
-
+		this.posicionInicialVehiculo = this.unJugador.devolverPosicionDelVehiculo();
+		
 		this.completarMapaConExtras(posicionBandera);
 
 		setChanged();
@@ -57,11 +60,29 @@ public abstract class Juego extends Observable {
 	}
 
 	public Juego(JugadorImplementacion unJugador, Mapa unMapa,
-			Posicion posicionBandera) {
+			Posicion posicionBandera, int movimientosRestantes) {
 		this.unJugador = unJugador;
 		this.unMapa = unMapa;
 		this.posicionBandera = posicionBandera;
 		this.posicionInicialVehiculo = this.unJugador.devolverPosicionDelVehiculo();
+		this.movimientosMaximo = movimientosRestantes;
+	}
+	
+	protected int calcularLimiteDeMovimientos(){
+		int distanciaX = 0;
+		int distanciaY = 0;
+		if (this.posicionBandera.devolverPosicionAlto() > this.posicionInicialVehiculo.devolverPosicionAlto()){
+			distanciaX = posicionBandera.devolverPosicionAlto() - posicionInicialVehiculo.devolverPosicionAlto();
+		}else{
+			distanciaX = posicionInicialVehiculo.devolverPosicionAlto() - posicionBandera.devolverPosicionAlto();
+		}if (this.posicionBandera.devolverPosicionAncho() > this.posicionInicialVehiculo.devolverPosicionAncho()){
+			distanciaY = posicionBandera.devolverPosicionAncho() - posicionInicialVehiculo.devolverPosicionAncho();
+		}else{
+			distanciaY = posicionInicialVehiculo.devolverPosicionAncho() - posicionBandera.devolverPosicionAncho();
+		}
+		
+		int distanciaTotal = distanciaX + distanciaY;
+		return distanciaTotal;
 	}
 
 	private Esquina devolverEsquinaConExtra(int min, int maxFilas,
@@ -300,7 +321,12 @@ public abstract class Juego extends Observable {
 		// if (this.unaBandera.saberSiGano() == false) {
 		this.unJugador.cambiarDireccion(unaDireccion);
 		try {
-			this.unJugador.jugar(unMapa);
+			if (this.perdio() == false){
+				int movimientosJugador = this.unJugador.devolverMovimientosHechos();
+				this.unJugador.jugar(unMapa);
+				int movimientosDespuesDeJugar = this.unJugador.devolverMovimientosHechos();
+				if (movimientosDespuesDeJugar > movimientosJugador)	this.movimientosMaximo -= 1;
+			}
 			setChanged();
 			notifyObservers(this.unJugador);
 		} catch (ExcepcionEsquinaInvalida e1) {
@@ -321,6 +347,10 @@ public abstract class Juego extends Observable {
 
 	public boolean seTermino() {
 		return this.unJugador.gano();
+	}
+	
+	public boolean perdio(){
+		return (movimientosMaximo <= 0);
 	}
 
 	public Posicion devolverPosicionInicial() {
@@ -352,10 +382,13 @@ public abstract class Juego extends Observable {
 
 	public abstract int calcularPuntajeFinal();
 
+	public int devolverMovimientosRestantes() {
+		return this.movimientosMaximo;
+	}
+
 	public void agregarObservadorAlVehiculo(
 			ObservadorDeVehiculos observadorDeVehiculos) {
 		this.devolverVehiculo().agregarObservador(observadorDeVehiculos);
 		
 	}
-
 }

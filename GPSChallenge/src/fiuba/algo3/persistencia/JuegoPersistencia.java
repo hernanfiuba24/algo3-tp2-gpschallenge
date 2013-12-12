@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument.ElementEdit;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -96,28 +97,30 @@ public class JuegoPersistencia {
 		Element elementRaiz = docXml.getDocumentElement();
 
 		String nombreRaiz = elementRaiz.getNodeName();
+		
+		int movimientosRestantes = Integer.parseInt(elementRaiz.getAttribute("Movimientos_Restantes"));
 
 		Posicion posicionBandera = cargarPosicionBandera(elementRaiz);
 
 		Mapa unMapa = cargarMapa(elementRaiz);
 		JugadorImplementacion unJugador = cargarJugador(elementRaiz, unMapa);
-		return cargarJuego(nombreRaiz, unJugador, unMapa, posicionBandera);
+		return cargarJuego(nombreRaiz, unJugador, unMapa, posicionBandera, movimientosRestantes);
 	}
 
 	private static Juego cargarJuego(String nombreRaiz,
 			JugadorImplementacion unJugador, Mapa unMapa,
-			Posicion posicionBandera) {
+			Posicion posicionBandera, int movimientosRestantes) {
 		Juego unJuego = null;
 
 		if (nombreRaiz.equalsIgnoreCase("GpsChallengeDificil")) {
-			unJuego = new JuegoDificil(unJugador, unMapa, posicionBandera);
+			unJuego = new JuegoDificil(unJugador, unMapa, posicionBandera, movimientosRestantes);
 		} else {
 			if (nombreRaiz.equalsIgnoreCase("GpsChallengeIntermedio")) {
 				unJuego = new JuegoIntermedio(unJugador, unMapa,
-						posicionBandera);
+						posicionBandera, movimientosRestantes);
 			} else {
 				if (nombreRaiz.equalsIgnoreCase("GpsChallengeFacil")) {
-					unJuego = new JuegoFacil(unJugador, unMapa, posicionBandera);
+					unJuego = new JuegoFacil(unJugador, unMapa, posicionBandera, movimientosRestantes);
 				}
 			}
 		}

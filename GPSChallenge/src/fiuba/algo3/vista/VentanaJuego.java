@@ -154,50 +154,7 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		});
 		btnGuardarMapa.setBounds(19, 510, 151, 50);
 		panelInformacion.add(btnGuardarMapa);
-		
-		JLabel etiquetaLeyenda = new JLabel("Leyenda");
-		etiquetaLeyenda.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		etiquetaLeyenda.setBounds(10, 278, 71, 14);
-		panelInformacion.add(etiquetaLeyenda);
-		
-		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		panel.setBounds(10, 303, 120, 143);
-		panelInformacion.add(panel);
-		
-		JLabel leyendaSorpresa = new JLabel("Sorpresa");
-		leyendaSorpresa.setPreferredSize(new Dimension(100, 30));
-		leyendaSorpresa.setBounds(new Rectangle(6, 0, 0, 0));
-		leyendaSorpresa.setHorizontalAlignment(SwingConstants.LEFT);
-		leyendaSorpresa.setVerticalAlignment(SwingConstants.BOTTOM);
-		leyendaSorpresa.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		leyendaSorpresa.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/sorpresa.png")));
-		panel.add(leyendaSorpresa);
-		
-		JLabel leyendaPiquete = new JLabel("Piquete");
-		leyendaPiquete.setPreferredSize(new Dimension(100, 30));
-		leyendaPiquete.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/piquete.png")));
-		leyendaPiquete.setVerticalAlignment(SwingConstants.BOTTOM);
-		leyendaPiquete.setHorizontalAlignment(SwingConstants.LEFT);
-		leyendaPiquete.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		panel.add(leyendaPiquete);
-		
-		JLabel leyendaPolicia = new JLabel("Policia");
-		leyendaPolicia.setPreferredSize(new Dimension(100, 30));
-		leyendaPolicia.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/policia.png")));
-		leyendaPolicia.setVerticalAlignment(SwingConstants.BOTTOM);
-		leyendaPolicia.setHorizontalAlignment(SwingConstants.LEFT);
-		leyendaPolicia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		panel.add(leyendaPolicia);
-		
-		JLabel leyendaPozo = new JLabel("Pozo");
-		leyendaPozo.setPreferredSize(new Dimension(100, 30));
-		leyendaPozo.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/pozo.png")));
-		leyendaPozo.setVerticalAlignment(SwingConstants.BOTTOM);
-		leyendaPozo.setHorizontalAlignment(SwingConstants.LEFT);
-		leyendaPozo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		panel.add(leyendaPozo);
+
 	
 		barraMenu = new Menu(this);
 		setJMenuBar(barraMenu);
@@ -216,17 +173,22 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 						* (40 + 35), ((((Jugador) arg).devolverPosicionYVehiculo() - 1) * (40 + 42)));
 		this.panelInformacion.actualizarMovimientos(((Jugador) arg)
 				.devolverMovimientosHechos());
+		this.panelInformacion.actualizarMovimientosRestantes(this.unJuego.devolverMovimientosRestantes());
 		this.panelInformacion.actualizarVehiculo(((Jugador) arg)
 				.devolverVehiculo());
 		if (this.unJuego.seTermino()) {
 			this.ventanaMapa.visualizarMapaEntero();
 			JuegoPersistencia.cargarPuntajes("C:\\Ranking.xml");
 			JuegoPersistencia.guardarPuntajes(this.unJuego);
-			
 			TreeMap<Integer, String> puntajesTotales = JuegoPersistencia.devolverRankingPuntajes();
 
 			VentanaGano ventanaGano = new VentanaGano(puntajesTotales, this);
 			ventanaGano.setVisible(true);
+		}
+		if (this.unJuego.perdio() == true){
+			this.ventanaMapa.visualizarMapaEntero();
+			VentanaPerdio ventanaPerdio = new VentanaPerdio(this);
+			ventanaPerdio.setVisible(true);
 		}
 
 	}
