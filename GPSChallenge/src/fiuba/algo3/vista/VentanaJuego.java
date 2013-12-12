@@ -27,6 +27,7 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.juego.Juego;
 import fiuba.algo3.persistencia.JuegoPersistencia;
+import javax.swing.JLabel;
 public class VentanaJuego extends JFrame implements KeyListener, Observer {
 
 	private static final long serialVersionUID = 1L;
@@ -148,6 +149,11 @@ public class VentanaJuego extends JFrame implements KeyListener, Observer {
 		});
 		btnGuardarMapa.setBounds(19, 510, 151, 50);
 		panelInformacion.add(btnGuardarMapa);
+		
+		JLabel lblFondo = new JLabel("fondo");
+		lblFondo.setIcon(new ImageIcon(VentanaJuego.class.getResource("/fiuba/algo3/vista/imagenes/fondoVentanaJuego.jpg")));
+		lblFondo.setBounds(10, 5, 740, 695);
+		contentPane.add(lblFondo);
 
 	
 		barraMenu = new Menu(this);
