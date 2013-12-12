@@ -129,14 +129,14 @@
 	</target>
 
 	<target name="empaquetar" depends="compilar.paquete">
-		<copydir dest="${build}/classes/Vista" 
-			src="src/fiuba/algo3/vista/imagenes"
-			includes="**/*.png"/>
+		<copydir src="src/fiuba/algo3/vista/imagenes"
+				dest="${build}/classes/Vista" 
+				includes="**/*.png"/>
 		<jar destfile="${build}/dist/gpsChallenge.jar" basedir="${build}/classes"/>
 	</target>
 	
 	<target name="ejecutar.aplicacion" depends="empaquetar">
-		<java classname="fiuba.algo3.vista.VentanaPpal" fork="true">
+		<java classname="fiuba.algo3.vista.VentanaPrincipal" fork="true">
 			<classpath refid="classpath" />
 			<classpath location="${build}/dist/gpsChallenge.jar" />
 		</java>

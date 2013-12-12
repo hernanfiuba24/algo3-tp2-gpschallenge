@@ -2,8 +2,6 @@ package fiuba.algo3.modelo.juego;
 
 import java.util.Observable;
 
-import javax.swing.JOptionPane;
-
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

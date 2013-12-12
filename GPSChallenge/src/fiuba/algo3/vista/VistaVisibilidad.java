@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 
 public class VistaVisibilidad extends JPanel{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int posX, posY;
 	BasicStroke grosor = new BasicStroke(800);
 	int diametro = 1100;

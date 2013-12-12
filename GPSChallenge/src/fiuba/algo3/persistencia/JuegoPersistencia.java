@@ -6,12 +6,10 @@ import java.util.List;
 import java.util.TreeMap;
 
 import javax.swing.JOptionPane;
-import javax.swing.text.AbstractDocument.ElementEdit;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -20,6 +18,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.sun.org.apache.xerces.internal.parsers.DOMParser;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
 import fiuba.algo3.modelo.JugadorImplementacion;

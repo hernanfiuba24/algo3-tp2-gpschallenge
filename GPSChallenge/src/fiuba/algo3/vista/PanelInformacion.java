@@ -17,12 +17,14 @@ import fiuba.algo3.modelo.vehiculo.Moto;
 import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class PanelInformacion extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField movimientos;
 	private JTextField movimientosRestantes;
 	private JLabel imagenVehiculo;
 	private JLabel NombreJugador;
-	private JTextField textField;
-
 	/**
 	 * Create the panel.
 	 */

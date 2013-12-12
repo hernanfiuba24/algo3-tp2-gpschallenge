@@ -9,7 +9,6 @@ import fiuba.algo3.modelo.Posicion;
 import fiuba.algo3.modelo.excepcion.ExcepcionEsquinaInvalida;
 import fiuba.algo3.modelo.excepcion.ExcepcionJugadorYaAsignadoAlVehiculo;
 import fiuba.algo3.modelo.vehiculo.Camioneta;
-import fiuba.algo3.modelo.vehiculo.Vehiculo;
 
 public class JuegoDificilTest {
 

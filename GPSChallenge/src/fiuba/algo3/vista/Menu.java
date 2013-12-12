@@ -8,6 +8,10 @@ import javax.swing.border.BevelBorder;
 
 public class Menu extends JMenuBar {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private AccionMenues accionGuardar;
 	private VentanaJuego ventanaPerteneciente;
 	

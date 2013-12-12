@@ -11,6 +11,11 @@ import javax.swing.SwingConstants;
 
 public class VentanaInstrucciones extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public VentanaInstrucciones() throws HeadlessException {
 		getContentPane().setLayout(null);
 		setBounds(100, 100, 450, 225);

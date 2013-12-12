@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 import fiuba.algo3.modelo.Esquina;
 import fiuba.algo3.modelo.Posicion;
@@ -25,8 +24,6 @@ public class VentanaSeleccionVehiculo extends JFrame {
 
 	private Menu barraMenu;
 	private String nombreJugador;
-	private JTextField txtSelccioneElVehiculo;
-
 	public VentanaSeleccionVehiculo(String nombre){
 		this.nombreJugador = nombre;
 		setBackground(Color.WHITE);

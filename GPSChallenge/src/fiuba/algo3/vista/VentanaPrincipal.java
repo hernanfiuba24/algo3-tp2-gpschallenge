@@ -2,7 +2,6 @@ package fiuba.algo3.vista;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -25,7 +24,6 @@ public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private Image fondo;
 	private JPanel contentPane;
 	private Menu barraMenu;
 

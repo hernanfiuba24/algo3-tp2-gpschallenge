@@ -6,6 +6,10 @@ import javax.swing.AbstractAction;
 
 public class AccionMenues  extends AbstractAction{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String cadena;
 	private VentanaJuego ventanaPerteneciente;
 	

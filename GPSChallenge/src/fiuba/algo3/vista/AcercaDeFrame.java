@@ -10,6 +10,11 @@ import javax.swing.JLabel;
 
 public class AcercaDeFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public AcercaDeFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("GPS Challenge/Acerca De");
