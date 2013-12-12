@@ -13,6 +13,7 @@ public class VentanaInstrucciones extends JFrame {
 
 	public VentanaInstrucciones() throws HeadlessException {
 		getContentPane().setLayout(null);
+		setBounds(100, 100, 450, 225);
 		
 		JPanel panelTexto = new JPanel();
 		panelTexto.setBounds(0, 36, 434, 184);
@@ -25,27 +26,27 @@ public class VentanaInstrucciones extends JFrame {
 		lblGpsChallenge.setBounds(148, 11, 141, 36);
 		panelTexto.add(lblGpsChallenge);
 		
-		JLabel lblNewLabel = new JLabel("Gps Challenge es un juego para toda la familia, lleno de diversion, donde usted tendra");
+		JLabel lblNewLabel = new JLabel("Gps Challenge es un juego para toda la familia, lleno de diversion, donde");
 		lblNewLabel.setBounds(10, 46, 424, 14);
 		panelTexto.add(lblNewLabel);
 		
-		JLabel lblQueElegirEl = new JLabel("que elegir el vehiculo con el que quiere comenzar, y dirigirlo hacia la meta utilizando");
+		JLabel lblQueElegirEl = new JLabel("usted tendra que elegir el vehiculo con el que quiere comenzar, y dirigirlo");
 		lblQueElegirEl.setBounds(10, 58, 424, 14);
 		panelTexto.add(lblQueElegirEl);
 		
-		JLabel lblLasFlechasDel = new JLabel("las flechas del teclado. Con cuidado, ya que va a enfrentarse a obstaculos que le ");
+		JLabel lblLasFlechasDel = new JLabel("hacia la meta utilizando las flechas del teclado. Con cuidado, ya que va a");
 		lblLasFlechasDel.setBounds(10, 71, 424, 14);
 		panelTexto.add(lblLasFlechasDel);
 		
-		JLabel lblRestaranPuntosY = new JLabel("restaran puntos y sumaran movimiento. o directamente no lo dejaran pasar, o sorpre-");
+		JLabel lblRestaranPuntosY = new JLabel("enfrentarse a obstaculos que le restaran puntos y sumaran movimiento. o");
 		lblRestaranPuntosY.setBounds(10, 83, 424, 14);
 		panelTexto.add(lblRestaranPuntosY);
 		
-		JLabel lblSasQueLe = new JLabel("sas que le ayudaran a sumar mas puntos y restar movimientos, y asi usted pueda ser");
+		JLabel lblSasQueLe = new JLabel(" directamente no lo dejaran pasar, o sorpresas que le ayudaran a sumar");
 		lblSasQueLe.setBounds(10, 96, 424, 14);
 		panelTexto.add(lblSasQueLe);
 		
-		JLabel lblElGranGanador = new JLabel("el gran ganador.");
+		JLabel lblElGranGanador = new JLabel("mas puntos y restar movimientos, y asi usted pueda ser el gran ganador.");
 		lblElGranGanador.setBounds(10, 108, 424, 14);
 		panelTexto.add(lblElGranGanador);
 		

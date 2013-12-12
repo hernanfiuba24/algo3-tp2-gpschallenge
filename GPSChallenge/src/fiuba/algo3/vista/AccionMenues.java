@@ -35,6 +35,10 @@ public class AccionMenues  extends AbstractAction{
 			AcercaDeFrame acercaDe = new AcercaDeFrame();
 			acercaDe.setVisible(true);
 		}
+		else if (accion.equals("Instrucciones")){
+			VentanaInstrucciones ventanaInstrucciones = new VentanaInstrucciones();
+			ventanaInstrucciones.setVisible(true);
+		}
 	}
 
 }
