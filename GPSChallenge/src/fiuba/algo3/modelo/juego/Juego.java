@@ -37,7 +37,7 @@ public abstract class Juego extends Observable {
 	protected Mapa unMapa;
 	protected JugadorImplementacion unJugador;
 	private Posicion posicionInicialVehiculo;
-	protected int movimientosMaximo;
+	protected int movimientosRestantes;
 
 	public Juego(String nombreDeJugador, int tamanioMapa,
 			Posicion posicionBandera, Vehiculo unVehiculo)
@@ -63,7 +63,7 @@ public abstract class Juego extends Observable {
 		this.unMapa = unMapa;
 		this.posicionBandera = posicionBandera;
 		this.posicionInicialVehiculo = this.unJugador.devolverPosicionDelVehiculo();
-		this.movimientosMaximo = movimientosRestantes;
+		this.movimientosRestantes = movimientosRestantes;
 	}
 	
 	protected int calcularLimiteDeMovimientos(){
@@ -323,7 +323,7 @@ public abstract class Juego extends Observable {
 				int movimientosJugador = this.unJugador.devolverMovimientosHechos();
 				this.unJugador.jugar(unMapa);
 				int movimientosDespuesDeJugar = this.unJugador.devolverMovimientosHechos();
-				if (movimientosDespuesDeJugar > movimientosJugador)	this.movimientosMaximo -= 1;
+				if (movimientosDespuesDeJugar > movimientosJugador)	this.movimientosRestantes -= 1;
 			}
 			setChanged();
 			notifyObservers(this.unJugador);
@@ -348,7 +348,7 @@ public abstract class Juego extends Observable {
 	}
 	
 	public boolean perdio(){
-		return (movimientosMaximo <= 0);
+		return (movimientosRestantes <= 0);
 	}
 
 	public Posicion devolverPosicionInicial() {
@@ -381,7 +381,7 @@ public abstract class Juego extends Observable {
 	public abstract int calcularPuntajeFinal();
 
 	public int devolverMovimientosRestantes() {
-		return this.movimientosMaximo;
+		return this.movimientosRestantes;
 	}
 
 	public void agregarObservadorAlVehiculo(
