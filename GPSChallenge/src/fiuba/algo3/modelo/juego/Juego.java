@@ -89,7 +89,10 @@ public abstract class Juego extends Observable {
 		
 		int unNumeroRandom = randomizador.obtenerNumeroEntre(min, maxFilas);
 		int otroNumeroRandom = randomizador.obtenerNumeroEntre(min, maxColumnas);
-		Esquina esquinaConExtra = this.unMapa.devolverUnaEsquina(new Posicion(unNumeroRandom, otroNumeroRandom));
+		Esquina esquinaConExtra = null;
+		if (this.unMapa.existeEsquina(new Posicion(unNumeroRandom, otroNumeroRandom))){
+		esquinaConExtra = this.unMapa.devolverUnaEsquina(new Posicion(unNumeroRandom, otroNumeroRandom));
+		}
 		return esquinaConExtra;
 	}
 
@@ -285,7 +288,9 @@ public abstract class Juego extends Observable {
 
 	public void setearPosicionInicial(Posicion unaPosicion)
 			throws ExcepcionEsquinaInvalida {
-		this.unJugador.setearEsquinaDelVehiculo(unMapa.devolverUnaEsquina(unaPosicion));
+		if (unMapa.existeEsquina(unaPosicion)){
+			this.unJugador.setearEsquinaDelVehiculo(unMapa.devolverUnaEsquina(unaPosicion));
+		}
 		setChanged();
 		notifyObservers(this.unJugador);
 	}
